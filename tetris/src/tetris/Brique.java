@@ -174,6 +174,11 @@ public class Brique {
 		return this.rotation;
 	}
 	
+	public boolean drop(){
+		this.position.weight--;
+		return true;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
