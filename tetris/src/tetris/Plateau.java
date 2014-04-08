@@ -54,7 +54,9 @@ public class Plateau {
 
 				}
 			}
-		}	
+		}			
+		/* ????? PAS COMPRIS ????*/
+		
 		/* if (action utilisateur){
 		 * 	brique.updatePosition(Cellule newposition);	
 		 * }
@@ -66,6 +68,10 @@ public class Plateau {
 		
 		this.placeBrick(brique);	
 		
+		return true; //POURQUOI BOOLEAN ?
+	}
+	
+	public boolean verifMove(Cellule newposition){
 		return true;
 	}
 		
