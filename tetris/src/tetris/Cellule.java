@@ -3,8 +3,8 @@ package tetris;
 public class Cellule {
 	int id;
 	int forme;
-	int weight;
-	int height;
+	int posX;
+	int posY;
 
 	public Cellule() {
 		// TODO Auto-generated constructor stub

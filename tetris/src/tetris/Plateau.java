@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Plateau {
 	Cellule tab[][];
-	Map briques;
+	Map<Integer,Brique> briques;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -12,17 +12,17 @@ public class Plateau {
 		this.briques = new HashMap();
 		}
 	
-	public boolean placeBrick(Brique brique){
+	public boolean placeBrique(Brique brique){
 		//récupération de la position de la brique pour la placer sur le plateau
-		int weight=brique.getPosition().weight;
-		int height=brique.getPosition().height;
-		tab[weight][height]=brique.getPosition();
+		int X=brique.getPosition().posX;
+		int Y=brique.getPosition().posY;
+		tab[X][Y]=brique.getPosition();
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
 		for (int i=0; i<3; ++i){
 			for (int j=0; j<3 ; ++j){
-				if(brique.tab[i][j]==true){
-					tab[weight+i][height+j].forme=brique.getPosition().forme;
-					tab[weight+i][height+j].id=brique.getId();
+				if(brique.tab[j][i]==true){
+					tab[Y+j][X+i].forme=brique.getPosition().forme;
+					tab[Y+j][X+i].id=brique.getId();
 
 				}
 			}
@@ -34,27 +34,28 @@ public class Plateau {
 		return true;
 	}
 	
-	public boolean deplaceBrick(Brique brique, Cellule newposition){
+	public boolean deplaceBrique(Brique brique, Cellule newposition){
 		/*
 		 * Vérifie si le déplacement est possible
-		 * if (!verifMove(brique)){
+		 * if (!verifMove(newposition)){
 		 * 	// throw exception "déplacement pas possible
 		 * return false
 		 * }
 		 */
 		//récupération de la position de la brique pour la placer sur le plateau
-		int weight=brique.getPosition().weight;
-		int height=brique.getPosition().height;
+		int X=brique.getPosition().posX;
+		int Y=brique.getPosition().posY;
+		tab[X][Y]=brique.getPosition();
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
 		for (int i=0; i<3; ++i){
 			for (int j=0; j<3 ; ++j){
-				if(brique.tab[i][j]==true){
-					tab[weight+i][height+j].forme=0;
-					tab[weight+i][height+j].id=0;
+				if(brique.tab[j][i]==true){
+					tab[Y+j][X+i].forme=brique.getPosition().forme;
+					tab[Y+j][X+i].id=brique.getId();
 
 				}
 			}
-		}	
+		}
 		/* if (action utilisateur){
 		 * 	brique.updatePosition(Cellule newposition);	
 		 * }
@@ -64,7 +65,7 @@ public class Plateau {
 		 * 	
 		 */
 		
-		this.placeBrick(brique);	
+		this.placeBrique(brique);	
 		
 		return true;
 	}
@@ -73,12 +74,12 @@ public class Plateau {
 	public static void main(String[] args){
 		// test de récupération de données par clés = OK
 		Plateau plateau = new Plateau();
-		plateau.briques.put(1, "element 1");
+		/*plateau.briques.put(1, "element 1");
 		plateau.briques.put(2, "element 2");
 		plateau.briques.put(3, "element 3");
 		String element1 = (String) plateau.briques.get(3);
-		System.out.println(element1);
-		//
+		System.out.println(element1);*/
+		
 
 	}
 

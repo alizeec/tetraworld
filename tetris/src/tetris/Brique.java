@@ -9,7 +9,7 @@ public class Brique {
 	static int cpt =0;
 	
 	public Brique (int forme){
-		this.tab = new boolean[3][3];
+		this.tab = new boolean[4][4];
 		this.id=this.cpt;
 		cpt++;
 		this.forme=forme;
@@ -18,7 +18,7 @@ public class Brique {
 		
 	}
 
-	public void drawShape(){
+	public void configureForme(){
 		switch (this.forme){
 		/*
 		 * T    
@@ -29,14 +29,20 @@ public class Brique {
 			this.tab[0][0]=true;
 			this.tab[0][1]=false;
 			this.tab[0][2]=false;
+			this.tab[0][3]=false;
+
 
 			this.tab[1][0]=true;
 			this.tab[1][1]=true;
 			this.tab[1][2]=false;
+			this.tab[1][3]=false;
+
 
 			this.tab[2][0]=false;
 			this.tab[2][1]=true;
 			this.tab[2][2]=false;
+			this.tab[2][3]=false;
+
 			break;
 
 			/*
@@ -174,8 +180,8 @@ public class Brique {
 		return this.rotation;
 	}
 	
-	public boolean drop(){
-		this.position.weight--;
+	public boolean descendre(){
+		this.position.posY--;
 		return true;
 	}
 	
