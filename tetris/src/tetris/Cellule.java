@@ -5,6 +5,7 @@ public class Cellule {
 	int forme;
 	int posX;
 	int posY;
+	char lettre;
 
 	public Cellule() {
 		// TODO Auto-generated constructor stub

@@ -1,174 +1,37 @@
 package tetris;
 
-public class Brique {
+public abstract class Brique {
+	//tableau courant (haut de base)
 	boolean tab[][];
+	// toutes les rotations possibles
+	boolean haut[][];
+	boolean droite[][];
+	boolean bas[][];
+	boolean gauche[][];
 	private int id;
-	private int forme;
+	private Forme forme;
+	//position de la case en haut à gauche
 	private Cellule position;
 	private int rotation;
+	private char lettre;
 	static int cpt =0;
 	
-	public Brique (int forme){
-		this.tab = new boolean[4][4];
+	
+	public Brique (char lettre){
 		this.id=this.cpt;
 		cpt++;
-		this.forme=forme;
 		this.position=new Cellule();
 		this.rotation = 0;
+		this.lettre=lettre;
 		
 	}
-
-	public void configureForme(){
-		switch (this.forme){
-		/*
-		 * T    
-		 * T T  
-		 *   T  
-		 */
-		case 1:
-			this.tab[0][0]=true;
-			this.tab[0][1]=false;
-			this.tab[0][2]=false;
-			this.tab[0][3]=false;
-
-
-			this.tab[1][0]=true;
-			this.tab[1][1]=true;
-			this.tab[1][2]=false;
-			this.tab[1][3]=false;
-
-
-			this.tab[2][0]=false;
-			this.tab[2][1]=true;
-			this.tab[2][2]=false;
-			this.tab[2][3]=false;
-
-			break;
-
-			/*
-			 *     T
-			 *   T T
-			 *   T 
-			 */	
-		case 2:
-			this.tab[0][0]=false;
-			this.tab[0][1]=false;
-			this.tab[0][2]=true;
-
-			this.tab[1][0]=false;
-			this.tab[1][1]=true;
-			this.tab[1][2]=true;
-
-			this.tab[2][0]=false;
-			this.tab[2][1]=true;
-			this.tab[2][2]=false;
-			break;
-			
-			/*
-			 * T
-			 * T
-			 * T
-			 */
-			
-		case 3:
-			this.tab[0][0]=true;
-			this.tab[0][1]=false;
-			this.tab[0][2]=false;
-
-			this.tab[1][0]=true;
-			this.tab[1][1]=false;
-			this.tab[1][2]=false;
-
-			this.tab[2][0]=true;
-			this.tab[2][1]=false;
-			this.tab[2][2]=false;
-			break;
-		
-			/*
-			 * T T
-			 * T T
-			 */
-		case 4:
-			this.tab[0][0]=false;
-			this.tab[0][1]=false;
-			this.tab[0][2]=false;
-
-			this.tab[1][0]=true;
-			this.tab[1][1]=true;
-			this.tab[1][2]=false;
-
-			this.tab[2][0]=true;
-			this.tab[2][1]=true;
-			this.tab[2][2]=false;
-			break;
-		
-			/*
-			 * T
-			 * T T
-			 * T
-			 */
-		case 5 : 
-			this.tab[0][0]=true;
-			this.tab[0][1]=false;
-			this.tab[0][2]=false;
-
-			this.tab[1][0]=true;
-			this.tab[1][1]=true;
-			this.tab[1][2]=false;
-
-			this.tab[2][0]=true;
-			this.tab[2][1]=false;
-			this.tab[2][2]=false;
-			break;
-			
-			/* 
-			 * 	 T
-			 *   T
-			 * T T
-			 * 	
-			 * 
-			 */
-		case 6 : 
-			this.tab[0][0]=false;
-			this.tab[0][1]=false;
-			this.tab[0][2]=true;
-
-			this.tab[1][0]=false;
-			this.tab[1][1]=false;
-			this.tab[1][2]=true;
-
-			this.tab[2][0]=false;
-			this.tab[2][1]=true;
-			this.tab[2][2]=true;
-			break;
-			
-			/*
-			 * T
-			 * T
-			 * T T
-			 */
-		case 7 : 
-			this.tab[0][0]=true;
-			this.tab[0][1]=false;
-			this.tab[0][2]=false;
-
-			this.tab[1][0]=true;
-			this.tab[1][1]=false;
-			this.tab[1][2]=false;
-
-			this.tab[2][0]=true;
-			this.tab[2][1]=true;
-			this.tab[2][2]=false;
-			break;
-		}
-				
-	}
+	
 	
 	public int getId(){
 		return this.id;
 	}
 	
-	public int getForme(){
+	public Forme getForme(){
 		return this.forme;
 	}
 	
@@ -180,17 +43,35 @@ public class Brique {
 		return this.rotation;
 	}
 	
+	public char getLettre(){
+		return this.lettre;
+	}
+	
 	public boolean descendre(){
 		this.position.posY--;
 		return true;
 	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+
+	public void setForme(Forme forme) {
+		this.forme = forme;
+	}
+
+	public Brique creerBrique(){
+		// valeurs à générer aléatoirement, MAGENTA et a pour les tests
+		Forme forme = Forme.MAGENTA;
+		char lettre = 'a';
+		Brique b = null;
+		switch(forme){
+			case MAGENTA:
+				 b = new BriqueMagenta(lettre);
+				 break;				
+		}
+		// ajouter une exception pour verifier que b n'est pas null
+		return b;
 
 	}
-	
-	
+
+
 
 }
