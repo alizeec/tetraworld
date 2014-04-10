@@ -21,24 +21,24 @@ public class BriqueMagenta extends Brique {
 
 	public void configurehaut(){
 		this.haut = new boolean[4][4];
-		this.haut[0][0]=true;
-		this.haut[0][1]=false;
+		this.haut[0][0]=false;
+		this.haut[0][1]=true;
 		this.haut[0][2]=false;
 		this.haut[0][3]=false;
 
 
-		this.haut[1][0]=true;
-		this.haut[1][1]=false;
+		this.haut[1][0]=false;
+		this.haut[1][1]=true;
 		this.haut[1][2]=false;
 		this.haut[1][3]=false;
 
-		this.haut[2][0]=true;
-		this.haut[2][1]=false;
+		this.haut[2][0]=false;
+		this.haut[2][1]=true;
 		this.haut[2][2]=false;
 		this.haut[2][3]=false;
 		
-		this.haut[3][0]=true;
-		this.haut[3][1]=false;
+		this.haut[3][0]=false;
+		this.haut[3][1]=true;
 		this.haut[3][2]=false;
 		this.haut[3][3]=false;
 	}
@@ -68,50 +68,14 @@ public class BriqueMagenta extends Brique {
 	}
 	
 	public void configurebas(){
-		this.bas = new boolean[4][4];
-		this.bas[0][0]=true;
-		this.bas[0][1]=false;
-		this.bas[0][2]=false;
-		this.bas[0][3]=false;
-
-
-		this.bas[1][0]=true;
-		this.bas[1][1]=false;
-		this.bas[1][2]=false;
-		this.bas[1][3]=false;
-
-		this.bas[2][0]=true;
-		this.bas[2][1]=false;
-		this.bas[2][2]=false;
-		this.bas[2][3]=false;
-		
-		this.bas[3][0]=true;
-		this.bas[3][1]=false;
-		this.bas[3][2]=false;
-		this.bas[3][3]=false;	}
+		this.bas = (boolean[][])haut.clone();
+	}
 	
 	public void configuregauche(){
-		this.gauche = new boolean[4][4];
-		this.gauche[0][0]=true;
-		this.gauche[0][1]=true;
-		this.gauche[0][2]=true;
-		this.gauche[0][3]=true;
+		this.gauche = (boolean[][])droite.clone();
+	}
+	
 
-
-		this.gauche[1][0]=false;
-		this.gauche[1][1]=false;
-		this.gauche[1][2]=false;
-		this.gauche[1][3]=false;
-
-		this.gauche[2][0]=false;
-		this.gauche[2][1]=false;
-		this.gauche[2][2]=false;
-		this.gauche[2][3]=false;
-		
-		this.gauche[3][0]=false;
-		this.gauche[3][1]=false;
-		this.gauche[3][2]=false;
-		this.gauche[3][3]=false;	}
 
 	
 }
