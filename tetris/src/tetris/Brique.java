@@ -1,5 +1,8 @@
 package tetris;
 
+
+
+
 public abstract class Brique {
 	//tableau courant (haut de base)
 	boolean tab[][];
@@ -57,21 +60,44 @@ public abstract class Brique {
 		this.forme = forme;
 	}
 
-	public Brique creerBrique(){
-		// valeurs à générer aléatoirement, MAGENTA et a pour les tests
-		Forme forme = Forme.MAGENTA;
-		char lettre = 'a';
-		Brique b = null;
-		switch(forme){
-			case MAGENTA:
-				 b = new BriqueMagenta(lettre);
-				 break;				
-		}
-		// ajouter une exception pour verifier que b n'est pas null
-		return b;
 
+	
+	public void tournerBrique(Rotation rotation){
+		switch(rotation){
+			case HAUT:
+				this.tab = this.haut;
+			break;
+			case DROITE:
+				this.tab = this.droite;
+			break;
+			case BAS:
+				this.tab=this.bas;
+			break;
+			case GAUCHE:
+				this.tab = this.gauche;
+			break;
+			default:
+				// à remplacer par une exception
+				System.out.println(" la rotation est inconnnue");
+			break;
+		}
 	}
+
+	// pour le débug
+	public void afficher(){
+		int i, j;
+		for(i=0; i<this.tab.length; i++) {
+			System.out.println("   ");
+
+			for(j=0; j<this.tab[i].length; j++) {
+				System.out.println(this.tab[i][j]);
+			}
+		}
+	}
+	
+	
 
 
 
 }
+

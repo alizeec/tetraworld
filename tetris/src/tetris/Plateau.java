@@ -74,6 +74,21 @@ public class Plateau {
 		return true;
 	}
 	
+	public Brique creerBrique(){
+		// valeurs à générer aléatoirement, MAGENTA et a pour les tests
+		Forme forme = Forme.MAGENTA;
+		char lettre = 'a';
+		Brique b = null;
+		switch(forme){
+			case MAGENTA:
+				 b = new BriqueMagenta(lettre);
+				 break;				
+		}
+		// ajouter une exception pour verifier que b n'est pas null
+		return b;
+
+	}
+	
 	public static void main(String[] args){
 		// test de récupération de données par clés = OK
 		Plateau plateau = new Plateau();
@@ -82,7 +97,22 @@ public class Plateau {
 		plateau.briques.put(3, "element 3");
 		String element1 = (String) plateau.briques.get(3);*/
 		
+		//test de rotation = OK
+		System.out.println("HAUT");
+		Brique b= plateau.creerBrique();
+		b.afficher();
 		
+		System.out.println("DROITE");
+		b.tournerBrique(Rotation.DROITE);
+		b.afficher();
+		
+		System.out.println("BAS");
+		b.tournerBrique(Rotation.BAS);
+		b.afficher();
+
+		System.out.println("GAUCHE");
+		b.tournerBrique(Rotation.GAUCHE);
+		b.afficher();
 
 	}
 
