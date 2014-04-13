@@ -20,12 +20,13 @@ public abstract class Brique {
 	static int cpt =0;
 	
 	
-	public Brique (char lettre){
+	public Brique (Forme forme, char lettre){
 		this.id=this.cpt;
 		cpt++;
-		this.position=new Cellule();
+		this.position=new Cellule(this.id, forme, this.lettre);
 		this.rotation = 0;
 		this.lettre=lettre;
+		this.forme = forme;
 		
 	}
 	

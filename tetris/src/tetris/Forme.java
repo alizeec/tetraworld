@@ -8,6 +8,8 @@ public enum Forme {
 	MAGENTA,
 	CYAN,
 	JAUNE;
-	
+	public static Forme getForme() {
+        return values()[(int) (Math.random() * values().length)];
+    }
 
 }

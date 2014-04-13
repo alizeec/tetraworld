@@ -4,7 +4,7 @@ public class BriqueMagenta extends Brique {
 
 	public BriqueMagenta(char lettre) {
 		// TODO Auto-generated constructor stub
-		super(lettre);
+		super(Forme.MAGENTA, lettre);
 		this.setForme(Forme.MAGENTA);
 		
 		// on configure les tableaux des 4 rotations

@@ -4,25 +4,39 @@ import java.util.Map;
 
 public class Plateau {
 	Cellule tab[][];
+	int LARGEUR = 10;
+	int HAUTEUR = 20;
 	Map<Integer,Brique> briques;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
-		this.tab = new Cellule[10][20];
+		this.tab = new Cellule[LARGEUR][HAUTEUR];
 		this.briques = new HashMap();
-		}
+	}
+	
+	public int getLargeur(){
+		return LARGEUR;
+	}
+	
+	public int getHauteur(){
+		return HAUTEUR;
+	}
 	
 	public boolean placeBrique(Brique brique){
 		//récupération de la position de la brique pour la placer sur le plateau
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
-		tab[X][Y]=brique.getPosition();
+		//tab[X][Y]=brique.getPosition();
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
-		for (int i=0; i<3; ++i){
-			for (int j=0; j<3 ; ++j){
-				if(brique.tab[j][i]==true){
-					tab[Y+j][X+i].forme=brique.getPosition().forme;
-					tab[Y+j][X+i].id=brique.getId();
+		for (int i=0; i<4; ++i){
+			for (int j=0; j<4 ; ++j){
+				if(brique.tab[i][j]==true){
+					if(tab[X+j][Y+i] == null){
+						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.getPosition().lettre);
+					}else{
+						tab[X+j][Y+i].forme=brique.getPosition().forme;
+						tab[X+j][Y+i].id=brique.getId();
+					}
 
 				}
 			}
@@ -33,6 +47,7 @@ public class Plateau {
 
 		return true;
 	}
+
 	
 	public boolean deplaceBrique(Brique brique, Cellule newposition){
 		/*
@@ -76,13 +91,31 @@ public class Plateau {
 	
 	public Brique creerBrique(){
 		// valeurs à générer aléatoirement, MAGENTA et a pour les tests
-		Forme forme = Forme.MAGENTA;
+		Forme formeAleatoire = Forme.getForme();
 		char lettre = 'a';
 		Brique b = null;
-		switch(forme){
+		switch(formeAleatoire){
 			case MAGENTA:
 				 b = new BriqueMagenta(lettre);
-				 break;				
+			break;
+			case BLEU:
+				 b = new BriqueBleue(lettre);
+			break;
+			case CYAN:
+				 b = new BriqueCyan(lettre);
+			break;
+			case JAUNE:
+				 b = new BriqueJaune(lettre);
+			break;
+			case ORANGE:
+				 b = new BriqueOrange(lettre);
+			break;
+			case ROUGE:
+				 b = new BriqueRouge(lettre);
+			break;
+			case VERT:
+				 b = new BriqueVerte(lettre);
+			break;
 		}
 		// ajouter une exception pour verifier que b n'est pas null
 		return b;
@@ -98,7 +131,8 @@ public class Plateau {
 		String element1 = (String) plateau.briques.get(3);*/
 		
 		//test de rotation = OK
-		System.out.println("HAUT");
+		
+		/*System.out.println("HAUT");
 		Brique b= plateau.creerBrique();
 		b.afficher();
 		
@@ -112,7 +146,7 @@ public class Plateau {
 
 		System.out.println("GAUCHE");
 		b.tournerBrique(Rotation.GAUCHE);
-		b.afficher();
+		b.afficher();*/
 
 	}
 

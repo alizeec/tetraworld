@@ -4,8 +4,8 @@ public class BriqueOrange extends Brique {
 
 	public BriqueOrange(char lettre) {
 		// TODO Auto-generated constructor stub
-		super(lettre);
-		this.setForme(Forme.ORANGE);
+		super(Forme.ORANGE, lettre);
+		//this.setForme(Forme.ORANGE);
 		
 		// on configure les tableaux des 4 rotations
 		this.configurehaut();
