@@ -32,6 +32,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		case KeyEvent.VK_C :
 			Brique b = plateau.creerBrique();
+			System.out.println(b.getPosition().posY);
 			plateau.placeBrique(b);
 			
 		break;

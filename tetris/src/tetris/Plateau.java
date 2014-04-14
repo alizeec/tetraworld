@@ -7,6 +7,7 @@ public class Plateau {
 	int LARGEUR = 10;
 	int HAUTEUR = 20;
 	Map<Integer,Brique> briques;
+	Brique briqueActuelle;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -57,26 +58,15 @@ public class Plateau {
 		 * return false
 		 * }
 		 */
-		//récupération de la position de la brique pour la placer sur le plateau
-		int X=brique.getPosition().posX;
-		int Y=brique.getPosition().posY;
-		tab[X][Y]=brique.getPosition();
-		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
-		for (int i=0; i<3; ++i){
-			for (int j=0; j<3 ; ++j){
-				if(brique.tab[j][i]==true){
-					tab[Y+j][X+i].forme=brique.getPosition().forme;
-					tab[Y+j][X+i].id=brique.getId();
-
-				}
-			}
-		}
-		/* if (action utilisateur){
-		 * 	brique.updatePosition(Cellule newposition);	
+		
+		/* if (action utilisateur){*/
+		 	brique.updatePosition(newposition);	
+		/* 	
 		 * }
 		 * else {
-		 * 	brique.drop();
-		 * }
+		 */
+		 	brique.descendre();
+		 /*}
 		 * 	
 		 */
 		
@@ -118,6 +108,8 @@ public class Plateau {
 			break;
 		}
 		// ajouter une exception pour verifier que b n'est pas null
+		this.briqueActuelle=b;
+		this.briques.put(b.getId(), b);
 		return b;
 
 	}

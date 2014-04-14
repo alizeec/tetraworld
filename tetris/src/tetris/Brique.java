@@ -52,7 +52,8 @@ public abstract class Brique {
 	}
 	
 	public boolean descendre(){
-		this.position.posY--;
+		this.getPosition().posY -= 1;
+		this.updatePosition(this.getPosition());
 		return true;
 	}
 
@@ -82,6 +83,11 @@ public abstract class Brique {
 				System.out.println(" la rotation est inconnnue");
 			break;
 		}
+	}
+	
+	public void updatePosition(Cellule newposition){
+		this.getPosition().posX=newposition.posX;
+		this.getPosition().posY=newposition.posY;
 	}
 
 	// pour le débug
