@@ -10,7 +10,7 @@ public class Cellule {
 	public Cellule(int id, Forme forme, char lettre) {
 		this.id = id;
 		this.forme = forme;
-		this.posX = 4;
+		this.posX = 3;
 		this.posY=0;
 		this.lettre = lettre;
 	}
