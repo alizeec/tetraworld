@@ -15,7 +15,7 @@ public abstract class Brique {
 	private Forme forme;
 	//position de la case en haut ˆ gauche
 	private Cellule position;
-	private int rotation;
+	private Rotation rotation;
 	private char lettre;
 	static int cpt =0;
 	
@@ -24,7 +24,7 @@ public abstract class Brique {
 		this.id=this.cpt;
 		cpt++;
 		this.position=new Cellule(this.id, forme, this.lettre);
-		this.rotation = 0;
+		this.rotation = Rotation.HAUT;
 		this.lettre=lettre;
 		this.forme = forme;
 		
@@ -43,7 +43,7 @@ public abstract class Brique {
 		return this.position;
 	}
 	
-	public int getRotation(){
+	public Rotation getRotation(){
 		return this.rotation;
 	}
 	
@@ -52,7 +52,7 @@ public abstract class Brique {
 	}
 	
 	public boolean descendre(){
-		this.getPosition().posY -= 1;
+		this.getPosition().posY += 1;
 		this.updatePosition(this.getPosition());
 		return true;
 	}
@@ -62,7 +62,31 @@ public abstract class Brique {
 		this.forme = forme;
 	}
 
-
+	public void tourner(){
+		switch(this.rotation){
+			case HAUT:
+				this.rotation = Rotation.DROITE;
+				this.tab = this.droite;
+			break;
+			
+			case DROITE:
+				this.rotation = Rotation.BAS;
+				this.tab = this.bas;
+			break;
+			
+			case BAS:
+				this.rotation = Rotation.GAUCHE;
+				this.tab = this.gauche;
+			
+			break;
+			
+			case GAUCHE:
+				this.rotation = Rotation.HAUT;
+				this.tab = this.haut;
+				
+			break;
+		}
+	}
 	
 	public void tournerBrique(Rotation rotation){
 		switch(rotation){
@@ -97,7 +121,7 @@ public abstract class Brique {
 			System.out.println("   ");
 
 			for(j=0; j<this.tab[i].length; j++) {
-				System.out.println(this.tab[i][j]);
+				System.out.println("aaa"+this.tab[i][j]);
 			}
 		}
 	}

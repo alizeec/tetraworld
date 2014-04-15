@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 public class EcouteurClavier implements KeyListener{
 	Plateau plateau;
 	FrameJeu frame;
+	int X;
+	int Y;
+	Cellule newposition;
 	EcouteurClavier(Plateau plateau, FrameJeu frame){
 		this.frame = frame;
 		this.plateau = plateau;
@@ -19,20 +22,39 @@ public class EcouteurClavier implements KeyListener{
 		
 		switch (touche) {
 		case KeyEvent.VK_RIGHT :
+			X = plateau.briqueActuelle.getPosition().posX;
+			Y = plateau.briqueActuelle.getPosition().posY;
+			newposition = new Cellule(X+1, Y);
+			if(plateau.verifMove(plateau.briqueActuelle, newposition)){
+				plateau.deplaceBrique(plateau.briqueActuelle, newposition);
+			}
 			//Déplacer la pièce vers la droite
 		break;
 		case KeyEvent.VK_LEFT :
 			//Déplacer la pièce vers la gauche
+			X = plateau.briqueActuelle.getPosition().posX;
+			Y = plateau.briqueActuelle.getPosition().posY;
+			newposition = new Cellule(X-1, Y);
+			if(plateau.verifMove(plateau.briqueActuelle, newposition)){
+				plateau.deplaceBrique(plateau.briqueActuelle, newposition);
+			}
 		break;
 		case KeyEvent.VK_DOWN :
 			//Accélérer la déscente
+			X = plateau.briqueActuelle.getPosition().posX;
+			Y = plateau.briqueActuelle.getPosition().posY;
+			newposition = new Cellule(X, Y+1);
+			if(plateau.verifMove(plateau.briqueActuelle, newposition)){
+				plateau.deplaceBrique(plateau.briqueActuelle, newposition);
+			}
 		break;
 		case KeyEvent.VK_SPACE :
+			plateau.briqueActuelle.tourner();
+			plateau.deplaceBrique(plateau.briqueActuelle, plateau.briqueActuelle.getPosition());
 			//Rotation
 		break;
 		case KeyEvent.VK_C :
 			Brique b = plateau.creerBrique();
-			System.out.println(b.getPosition().posY);
 			plateau.placeBrique(b);
 			
 		break;

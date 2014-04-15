@@ -52,10 +52,10 @@ public class BriqueBleue extends Brique {
 		this.droite[0][3]=false;
 
 
-		this.droite[1][0]=true;
-		this.droite[1][1]=true;
-		this.droite[1][2]=false;
-		this.droite[1][3]=false;
+		this.droite[1][0]=false;
+		this.droite[1][1]=false;
+		this.droite[1][2]=true;
+		this.droite[1][3]=true;
 
 		this.droite[2][0]=false;
 		this.droite[2][1]=true;

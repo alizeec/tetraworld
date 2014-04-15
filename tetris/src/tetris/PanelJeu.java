@@ -34,66 +34,58 @@ public class PanelJeu extends JPanel{
 	}
 	
 	public int getPixelX(int i){
-		int y = (int)(0 + 400 / plateau.getLargeur()*i);
-		return y;
+		int x = (int)(200 / plateau.getLargeur()*i);
+		return x;
 	}
 
 	public int getPixelY(int j){
-		int x = (int)(700 / plateau.getHauteur()*j);
-		return x;
+		int y = (int)(400 / plateau.getHauteur()*j);
+		return y;
 	}
 	
 	public void afficherCelluleMagenta(Graphics g, int i, int j){
-		System.out.println("Magenta");
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueMagenta, x, y, null);
 	}
 	
 	public void afficherCelluleBleu(Graphics g, int i, int j){
-		System.out.println("Bleu");
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueBleu, x, y, null);
 	}
 	
 	public void afficherCelluleCyan(Graphics g, int i, int j){
-		System.out.println("Cyan");
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueCyan, x, y, null);
 	}
 	
 	public void afficherCelluleJaune(Graphics g, int i, int j){
-		System.out.println("Jaune");
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueJaune, x, y, null);
 	}
 	
 	public void afficherCelluleOrange(Graphics g, int i, int j){
-		System.out.println("Orange");
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueOrange, x, y, null);
 	}
 	
 	public void afficherCelluleRouge(Graphics g, int i, int j){
-		System.out.println("Rouge");
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueRouge, x, y, null);
 	}
 	
 	public void afficherCelluleVert(Graphics g, int i, int j){
-		System.out.println("Magenta");
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueVert, x, y, null);
 	}
 	
 	public void paintComponent(Graphics g){
-		System.out.println("hola");
 		super.paintComponent(g);
 		setBackground(new Color (155, 204, 234));//modifie la couleur de fond
 		afficherPlateau(g);

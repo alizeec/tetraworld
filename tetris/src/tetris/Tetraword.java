@@ -7,7 +7,7 @@ package tetris;
 public class Tetraword {
 	
 
-	private static final int UPDATES_PER_SECOND = 10;
+	private static final int UPDATES_PER_SECOND = 3;
 
 	
 	public void startGame(Plateau plateau , FrameJeu jeu) {
@@ -17,7 +17,6 @@ public class Tetraword {
 
 
 	 while(true) {
-
 	  /*
 	   * début de la boucle
 	   */
@@ -28,7 +27,19 @@ public class Tetraword {
 	   */
 	  //test de la fonction descendre()
 	  if(plateau.briqueActuelle != null){
-		  plateau.briqueActuelle.descendre();
+		  int X = plateau.briqueActuelle.getPosition().posX;
+		  int Y = plateau.briqueActuelle.getPosition().posY;
+		  Cellule newposition = new Cellule(X, Y+1);
+		  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
+			  plateau.videCaseBrique(plateau.briqueActuelle);
+			  plateau.briqueActuelle.descendre();
+			  plateau.placeBrique(plateau.briqueActuelle);
+		  }else{
+			  plateau.briqueActuelle = null;
+			  Brique newBrique = plateau.creerBrique();
+			  plateau.briqueActuelle = newBrique;
+			  plateau.placeBrique(newBrique);
+		  }
 	  }
 
 	  /*affichage*/

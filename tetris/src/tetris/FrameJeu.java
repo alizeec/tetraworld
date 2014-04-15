@@ -11,7 +11,7 @@ public class FrameJeu extends JFrame{
 		setTitle("Tetra Word");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    setLocationRelativeTo(null);
-	    setSize(400,700);
+	    setSize(200,430);
 	    setResizable(false);
 	    this.plateau = plateau;
 	    panelJeu = new PanelJeu(this.plateau);

@@ -34,7 +34,7 @@ public class Plateau {
 				if(brique.tab[i][j]==true){
 					if(tab[X+j][Y+i] == null){
 						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.getPosition().lettre);
-					}else{
+					}else if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
 						tab[X+j][Y+i].forme=brique.getPosition().forme;
 						tab[X+j][Y+i].id=brique.getId();
 					}
@@ -44,8 +44,49 @@ public class Plateau {
 		}
 		
 		// ajout de la brique dans la map, avec son identifiant pour clé
-		briques.put(brique.getId(),brique);
+		//briques.put(brique.getId(),brique);
 
+		return true;
+	}
+	
+	public boolean videCaseBrique(Brique brique){
+		int X=brique.getPosition().posX;
+		int Y=brique.getPosition().posY;
+		//tab[X][Y]=brique.getPosition();
+		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
+		for (int i=0; i<4; ++i){
+			for (int j=0; j<4 ; ++j){
+				if(X+j <= getLargeur()-1 && Y+i <= getHauteur()-1 && X+j >= 0){
+					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id == brique.getId()){
+						tab[X+j][Y+i] = null;
+					}
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	public boolean verifMove(Brique brique, Cellule newposition){
+		int X=newposition.posX;
+		int Y=newposition.posY;
+		//tab[X][Y]=brique.getPosition();
+		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
+		for (int i=0; i<4; ++i){
+			for (int j=0; j<4 ; ++j){
+				if(brique.tab[i][j]==true){
+					System.out.println(X+j);
+					if(X+j > getLargeur()-1 || Y+i > getHauteur()-1 || X+j < 0){
+						return false;
+						//Y+i > getHauteur() || tab[X+j][Y+i] != null){
+					}
+					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
+						return false;
+					}
+					
+				}
+			}
+		}
 		return true;
 	}
 
@@ -58,7 +99,7 @@ public class Plateau {
 		 * return false
 		 * }
 		 */
-		
+			videCaseBrique(brique);
 		/* if (action utilisateur){*/
 		 	brique.updatePosition(newposition);	
 		/* 	
@@ -75,9 +116,6 @@ public class Plateau {
 		return true;
 	}
 	
-	public boolean verifMove(Cellule newposition){
-		return true;
-	}
 	
 	public Brique creerBrique(){
 		// valeurs à générer aléatoirement, MAGENTA et a pour les tests
