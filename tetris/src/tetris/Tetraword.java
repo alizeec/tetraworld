@@ -10,7 +10,7 @@ public class Tetraword {
 	private static final int UPDATES_PER_SECOND = 10;
 
 	
-	public void startGame(Plateau plateau) {
+	public void startGame(Plateau plateau , FrameJeu jeu) {
 
 	 long start = 0L;
 	 long sleepDuration = 0L;
@@ -32,6 +32,7 @@ public class Tetraword {
 	  }
 
 	  /*affichage*/
+	  jeu.repaint();
 	  
 	  /* nettoyage de l'Žcran*/
 	   
@@ -59,7 +60,7 @@ public class Tetraword {
 		Plateau plateau= new Plateau();
 		FrameJeu framejeu = new FrameJeu(plateau);
 		Tetraword jeu=new Tetraword();
-		jeu.startGame(plateau);
+		jeu.startGame(plateau,framejeu);
 		
 	}
 		
