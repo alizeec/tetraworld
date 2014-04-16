@@ -3,8 +3,6 @@ package tetris;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,18 +20,15 @@ public class WindowsGame extends JFrame{
 	    {
 	        panel = new JPanel();
 	        panel.setOpaque(true);
-	       /* panel.setOpaque(false);
-	        panel.setSize(400,700);*/
-	        		 	     	        
-	        //Display score 
+	       		
+	     
+		    //Display score 
 	        Container cont = this.getContentPane();	        
 	        JLabel score = new JLabel();
 	        score.setForeground(Color.white);
-	        score.setFont(new Font("Serif", Font.BOLD, 30));
 	        score.setText(String.valueOf(recupScore));
-		    cont.add(score, BorderLayout.SOUTH);
-	        
-			       
+		    cont.add(score, BorderLayout.SOUTH);	
+		   			       
 	        //Add background       
 	        background = new ImageIcon(this.getClass().getResource("../img/tetris.gif"));
 	        picture = new JLabel(new ImageIcon(background.getImage()));
@@ -50,10 +45,7 @@ public class WindowsGame extends JFrame{
 	        this.setResizable(false);
 	        this.setVisible(true);
 			this.add(panel, BorderLayout.SOUTH);
-	     
-			
-			
-	    }
+	}
 	 
 	 public static void main(String agrs[])
 	    {

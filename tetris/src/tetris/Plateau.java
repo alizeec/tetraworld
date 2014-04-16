@@ -2,10 +2,13 @@ package tetris;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JLabel;
+
 public class Plateau {
 	Cellule tab[][];
 	int LARGEUR = 10;
 	int HAUTEUR = 20;
+	int points = 0;
 	Map<Integer,Brique> briques;
 	Brique briqueActuelle;
 	boolean perdu = false;
@@ -22,6 +25,10 @@ public class Plateau {
 	
 	public int getHauteur(){
 		return HAUTEUR;
+	}
+	
+	public int getScore(){
+		return points;
 	}
 	
 	public boolean placeBrique(Brique brique){
@@ -85,7 +92,6 @@ public class Plateau {
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]==true){
-					System.out.println(X+j);
 					if(X+j > getLargeur()-1 || Y+i > getHauteur()-1 || X+j < 0){
 
 						return false;
@@ -103,6 +109,50 @@ public class Plateau {
 			}
 		}
 		return true;
+	}
+	
+	public boolean verfiUneLigne(int indexLigne){
+		for(int i=0; i<getLargeur();++i){
+			if(tab[i][indexLigne] == null){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public void verifLignes(Brique brique){
+		int X=brique.getPosition().posX;
+		int Y=brique.getPosition().posY;
+		int cpt = 0;
+		for (int i=0; i<4; ++i){
+			for (int j=0; j<4 ; ++j){
+				if(brique.tab[i][0]==true || brique.tab[i][1]==true || brique.tab[i][2]==true || brique.tab[i][3]==true){
+					if(verfiUneLigne(Y+i)){
+						suppLigne(Y+i);
+						toutDescendre(Y+i);
+						points++;
+						//System.out.println(points);
+					}
+					
+				}
+			}
+		}
+	}
+	
+	public void suppLigne(int index){
+		for(int i=0; i<getLargeur();++i){
+			tab[i][index]= null;
+			
+		}
+	}
+	
+	public void toutDescendre(int index){
+		for(int i=index;i>=1;--i){
+			for(int j=0;j<getLargeur();++j){
+				tab[j][i] = tab[j][i-1];
+			}
+			
+		}
 	}
 
 	
@@ -167,33 +217,6 @@ public class Plateau {
 
 	}
 	
-	public static void main(String[] args){
-		// test de rŽcupŽration de donnŽes par clŽs = OK
-		Plateau plateau = new Plateau();
-		/*plateau.briques.put(1, "element 1");
-		plateau.briques.put(2, "element 2");
-		plateau.briques.put(3, "element 3");
-		String element1 = (String) plateau.briques.get(3);*/
-		
-		//test de rotation = OK
-		
-		/*System.out.println("HAUT");
-		Brique b= plateau.creerBrique();
-		b.afficher();
-		
-		System.out.println("DROITE");
-		b.tournerBrique(Rotation.DROITE);
-		b.afficher();
-		
-		System.out.println("BAS");
-		b.tournerBrique(Rotation.BAS);
-		b.afficher();
-
-		System.out.println("GAUCHE");
-		b.tournerBrique(Rotation.GAUCHE);
-		b.afficher();*/
-
-	}
 
 }
 

@@ -17,7 +17,6 @@ public class EcouteurClavier implements KeyListener{
 		this.plateau = plateau;
 	}
 	public void keyPressed(KeyEvent e){//méthode qui écoute lorsque l'on appui sur une touche
-		System.out.println("touche");
 		int touche = e.getKeyCode();
 		
 		switch (touche) {
