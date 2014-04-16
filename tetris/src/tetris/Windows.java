@@ -9,7 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import tetris.WindowsGame;
 
+
+@SuppressWarnings("serial")
 public class Windows extends JFrame implements ActionListener
 {
     JButton startG,exitG;
@@ -28,7 +31,7 @@ public class Windows extends JFrame implements ActionListener
         getContentPane().add(panel);        
         
         //Start Game Button
-        bt_start = new ImageIcon(this.getClass().getResource("../img/start.gif"));
+        bt_start = new ImageIcon(this.getClass().getResource("../img/start.gif" ));
         startG = new JButton(bt_start);
         startG.setBounds(110, 250, 177, 42);
         startG.setFocusable(false);
@@ -36,7 +39,7 @@ public class Windows extends JFrame implements ActionListener
                 
         
         //Exit Game Button
-        bt_exit = new ImageIcon(this.getClass().getResource("../img/exit.gif"));
+        bt_exit = new ImageIcon(this.getClass().getResource("../img/exit.gif" ));
         exitG = new JButton(bt_exit);
         exitG.setBounds(110, 350, 177, 42);
         exitG.setFocusable(false);
@@ -55,6 +58,7 @@ public class Windows extends JFrame implements ActionListener
         setTitle("Tetra Word");        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setLocation(500,100);
         setSize(400,700);
         setResizable(false);
         setVisible(true);
@@ -70,6 +74,7 @@ public class Windows extends JFrame implements ActionListener
         if(e.getSource() == startG)
         {            
              System.out.println("New Game - button is working");
+             new WindowsGame();
         }
         else if(e.getSource() == exitG)
         {
