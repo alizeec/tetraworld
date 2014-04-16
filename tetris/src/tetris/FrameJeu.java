@@ -41,7 +41,7 @@ public class FrameJeu extends JFrame{
 	    //Affichage du background 
 	    panelBackground = new JPanel();
 	    panelBackground.setOpaque(true);
-        background = new ImageIcon(this.getClass().getResource("../img/tetris.jpg"));
+        background = new ImageIcon(this.getClass().getResource("../img/tetris.gif"));
         picture = new JLabel(new ImageIcon(background.getImage()));
         panelBackground.add(picture); 
         

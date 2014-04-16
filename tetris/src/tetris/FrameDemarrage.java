@@ -52,7 +52,7 @@ public class FrameDemarrage extends JFrame implements ActionListener
         exitG.addActionListener(this);
         
         //Windows
-        setTitle("Tetra Word");        
+        setTitle("TetraWord");        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLocation(500,100);
