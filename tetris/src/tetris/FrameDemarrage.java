@@ -9,11 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import tetris.WindowsGame;
-
-
 @SuppressWarnings("serial")
-public class Windows extends JFrame implements ActionListener
+public class FrameDemarrage extends JFrame implements ActionListener
 {
     JButton startG,exitG;
     JPanel panel;   
@@ -22,7 +19,7 @@ public class Windows extends JFrame implements ActionListener
     ImageIcon bt_exit; 
     ImageIcon bt_start; 
     
-    public Windows()
+    public FrameDemarrage()
     {
         panel = new JPanel();
         panel.setLayout(null);
@@ -66,19 +63,20 @@ public class Windows extends JFrame implements ActionListener
         
     public static void main(String agrs[])
     {
-        new Windows();
+        new FrameDemarrage();
     }
     
     public void actionPerformed(ActionEvent e) 
     {
         if(e.getSource() == startG)
         {            
-             System.out.println("New Game - button is working");
-             new WindowsGame();
+             //System.out.println("New Game - button is working");
+             Plateau plateau = new Plateau();
+ 	         new FrameJeu(plateau);
         }
         else if(e.getSource() == exitG)
         {
-            System.out.println("Game is exiting - button is working");
+            //System.out.println("Game is exiting - button is working");
             System.exit(0);
         }
     }
