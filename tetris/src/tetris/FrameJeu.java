@@ -34,7 +34,6 @@ public class FrameJeu extends JFrame{
 	    
 	    
 	    JPanel panelscore = new JPanel();
-	    System.out.println(plateau.getScore());
 		labelscore = new JLabel("Score : "+plateau.getScore());
 		panelscore.add(labelscore);
 		panelscore.setBackground(new Color(183,141,110));
