@@ -35,6 +35,7 @@ public class Tetraword {
 			  plateau.briqueActuelle.descendre();
 			  plateau.placeBrique(plateau.briqueActuelle);
 		  }else{
+			  plateau.verifLignes(plateau.briqueActuelle);
 			  plateau.briqueActuelle = null;
 			  Brique newBrique = plateau.creerBrique();
 			  plateau.briqueActuelle = newBrique;
