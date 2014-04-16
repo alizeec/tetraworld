@@ -22,6 +22,10 @@ public class Cellule {
 		this.posY=Y;
 		this.lettre = 'a';
 	}
+	
+	public int getId(){
+		return this.id;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -88,7 +88,7 @@ public abstract class Brique {
 		}
 	}
 	
-	public void tournerBrique(Rotation rotation){
+	/*public void tournerBrique(Rotation rotation){
 		switch(rotation){
 			case HAUT:
 				this.tab = this.haut;
@@ -107,7 +107,7 @@ public abstract class Brique {
 				System.out.println(" la rotation est inconnnue");
 			break;
 		}
-	}
+	}*/
 	
 	public void updatePosition(Cellule newposition){
 		this.getPosition().posX=newposition.posX;
