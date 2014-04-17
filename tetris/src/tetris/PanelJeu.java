@@ -93,7 +93,7 @@ public class PanelJeu extends JPanel{
 		setBackground(new Color (155, 204, 234, 0));//modifie la couleur de fond
 		g.drawImage(background, 0, 0, null);
 		afficherPlateau(g);
-		g.drawString(String.valueOf(plateau.getScore()), 125, 125);
+		g.drawString(String.valueOf(plateau.getScore()), 190, 630);
         //score.setText("Weeeeeesh"+String.valueOf(plateau.getScore()));
 		//printTab();
 	}
