@@ -32,7 +32,7 @@ public class WindowsGame extends JFrame{
 	        //Add background       
 	        background = new ImageIcon(this.getClass().getResource("../img/tetris.gif"));
 	        picture = new JLabel(new ImageIcon(background.getImage()));
-	       // add(picture);
+	       //add(picture);
 	        panel.add(picture); 
 	      	        
 	        	        

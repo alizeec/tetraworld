@@ -11,6 +11,7 @@ public class Plateau {
 	int points = 0;
 	Map<Integer,Brique> briques;
 	Brique briqueActuelle;
+	boolean perdu = false;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -74,6 +75,15 @@ public class Plateau {
 		return true;
 	}
 	
+	public void JeuPerdu(){
+		for (int i=1 ; i<getLargeur()-1; ++i){
+			if (this.tab[i][0]!=null && this.tab[i][0].getId()!=0){
+				perdu=true;
+			} 
+		}
+
+	}
+	
 	public boolean verifMove(Brique brique, Cellule newposition){
 		int X=newposition.posX;
 		int Y=newposition.posY;
@@ -83,10 +93,15 @@ public class Plateau {
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]==true){
 					if(X+j > getLargeur()-1 || Y+i > getHauteur()-1 || X+j < 0){
+
 						return false;
 						//Y+i > getHauteur() || tab[X+j][Y+i] != null){
 					}
+					
+					// si on met juste tab tab[X+j][Y+i].id == 0 ça suffit pas?
 					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
+						this.JeuPerdu();
+
 						return false;
 					}
 					

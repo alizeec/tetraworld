@@ -8,6 +8,7 @@ public class Tetraword {
 	
 
 	private static final int UPDATES_PER_SECOND = 3;
+	boolean game=true;
 
 	
 	public void startGame(Plateau plateau , FrameJeu jeu) {
@@ -16,7 +17,7 @@ public class Tetraword {
 	 long sleepDuration = 0L;
 
 
-	 while(true) {
+	 while(game) {
 	  /*
 	   * début de la boucle
 	   */
@@ -45,6 +46,12 @@ public class Tetraword {
 
 	  /*affichage*/
 	  jeu.repaint();
+/*System.out.println(result);*/
+	  if(plateau.perdu==true){
+		  System.out.println("perduuuuuu");
+		  game=false;
+	  }
+
 	  
 	  /* nettoyage de l'écran*/
 	   
@@ -67,6 +74,7 @@ public class Tetraword {
 	}
 
 
+	
 
 	public static void main(String[] args) {
 		Plateau plateau= new Plateau();
