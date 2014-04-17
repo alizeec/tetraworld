@@ -12,6 +12,7 @@ public class Plateau {
 	Map<Integer,Brique> briques;
 	Brique briqueActuelle;
 	boolean perdu = false;
+	Forme AVenir=Forme.BLEU;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -58,6 +59,7 @@ public class Plateau {
 	}
 	
 	public boolean videCaseBrique(Brique brique){
+
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
 		//tab[X][Y]=brique.getPosition();
@@ -71,13 +73,13 @@ public class Plateau {
 				}
 			}
 		}
-		
 		return true;
 	}
 	
 	public void JeuPerdu(){
 		for (int i=1 ; i<getLargeur()-1; ++i){
 			if (this.tab[i][0]!=null && this.tab[i][0].getId()!=0){
+				//met l'Žtat du "jeu" ˆ perdu, pour que Tetraword sache qu'il faut arreter la boucle
 				perdu=true;
 			} 
 		}
@@ -93,7 +95,6 @@ public class Plateau {
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]==true){
 					if(X+j > getLargeur()-1 || Y+i > getHauteur()-1 || X+j < 0){
-
 						return false;
 						//Y+i > getHauteur() || tab[X+j][Y+i] != null){
 					}
@@ -142,7 +143,6 @@ public class Plateau {
 	public void suppLigne(int index){
 		for(int i=0; i<getLargeur();++i){
 			tab[i][index]= null;
-			
 		}
 	}
 	
@@ -184,10 +184,11 @@ public class Plateau {
 	
 	public Brique creerBrique(){
 		// valeurs ˆ gŽnŽrer alŽatoirement, MAGENTA et a pour les tests
-		Forme formeAleatoire = Forme.getForme();
+		Forme forme = AVenir;
+		AVenir = Forme.getForme();
 		char lettre = 'a';
 		Brique b = null;
-		switch(formeAleatoire){
+		switch(forme){
 			case MAGENTA:
 				 b = new BriqueMagenta(lettre);
 			break;

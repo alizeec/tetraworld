@@ -14,6 +14,7 @@ public class FrameJeu extends JFrame{
 	private PanelJeu panelJeu;
 	private Plateau plateau;
 	private JLabel labelscore;
+	private JLabel labelpreview;
 	private JPanel border;
 	ImageIcon background;
 	 JLabel picture;
@@ -49,10 +50,13 @@ public class FrameJeu extends JFrame{
 		panelscore.setBackground(new Color(183,141,110));
 		panelscore.setBorder(BorderFactory.createLineBorder(Color.black));
 		border.add(panelscore,BorderLayout.NORTH);*/
+	    
+		
 		
 		
 		this.getContentPane().add(border);
 	    setVisible(true);
 	}
+	
 	
 }

@@ -21,6 +21,7 @@ public class PanelJeu extends JPanel{
 	Plateau plateau;
 	Image background;
 	JLabel score;
+	Image next;
 	
 	int x;
 	int y;
@@ -36,6 +37,7 @@ public class PanelJeu extends JPanel{
 		imageBriqueVert = new ImageIcon("cellule_vert.png").getImage();
 		background = new ImageIcon("tetris.gif").getImage();
 		score = new JLabel();
+
 	}
 	
 	public int getPixelX(int i){
@@ -99,6 +101,8 @@ public class PanelJeu extends JPanel{
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
+		next = getNext(plateau).getImage();
+		g.drawImage(next, 770, 100, null);
         //score.setText("Weeeeeesh"+String.valueOf(plateau.getScore()));
 		//printTab();
 	}
@@ -168,5 +172,36 @@ public class PanelJeu extends JPanel{
 				}
 			}
 		}
+	}
+	
+	
+	public ImageIcon getNext(Plateau plateau){
+		ImageIcon icon=null;
+
+		switch(plateau.AVenir){
+			case MAGENTA:
+				icon= new ImageIcon("cellule_magenta.png");
+			break;
+			case BLEU:
+				icon= new ImageIcon("cellule_bleu.png");
+			break;
+			case CYAN:
+				icon= new ImageIcon("cellule_cyan.png");
+			break;
+			case ORANGE:
+				icon= new ImageIcon("cellule_orange.png");
+			break;
+			case ROUGE:
+				icon= new ImageIcon("cellule_rouge.png");
+			break;
+			case VERT:
+				icon= new ImageIcon("cellule_vert.png");
+			break;
+			case JAUNE:
+				icon= new ImageIcon("cellule_jaune.png");
+			break;
+			
+		}
+		return icon;
 	}
 }

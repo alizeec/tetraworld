@@ -40,6 +40,7 @@ public class Tetraword {
 			  plateau.briqueActuelle = null;
 			  Brique newBrique = plateau.creerBrique();
 			  plateau.briqueActuelle = newBrique;
+
 			  plateau.placeBrique(newBrique);
 		  }
 	  }
