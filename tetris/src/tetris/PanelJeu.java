@@ -1,11 +1,13 @@
 package tetris;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 
 
 public class PanelJeu extends JPanel{
@@ -88,18 +90,20 @@ public class PanelJeu extends JPanel{
 		g.drawImage(imageBriqueVert, x, y, null);
 	}
 	
+	 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		setBackground(new Color (155, 204, 234, 0));//modifie la couleur de fond
 		g.drawImage(background, 0, 0, null);
 		afficherPlateau(g);
-		g.drawString(String.valueOf(plateau.getScore()), 190, 630);
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
         //score.setText("Weeeeeesh"+String.valueOf(plateau.getScore()));
 		//printTab();
 	}
-	
-	
-	
+
+
 	public void printTab(){
 		String str = "";
 		for(int i=0;i<plateau.getHauteur();i++){		
