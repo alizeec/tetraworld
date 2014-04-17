@@ -23,11 +23,11 @@ public class WindowsGame extends JFrame{
 	       		
 	     
 		    //Display score 
-	        Container cont = this.getContentPane();	        
+	        /*Container cont = this.getContentPane();	        
 	        JLabel score = new JLabel();
 	        score.setForeground(Color.white);
 	        score.setText(String.valueOf(recupScore));
-		    cont.add(score, BorderLayout.SOUTH);	
+		    cont.add(score, BorderLayout.SOUTH);	*/
 		   			       
 	        //Add background       
 	        background = new ImageIcon(this.getClass().getResource("../img/tetris.gif"));

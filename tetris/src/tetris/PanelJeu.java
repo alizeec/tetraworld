@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -16,6 +17,9 @@ public class PanelJeu extends JPanel{
 	Image imageBriqueRouge;
 	Image imageBriqueVert;
 	Plateau plateau;
+	Image background;
+	JLabel score;
+	
 	int x;
 	int y;
 	
@@ -28,18 +32,17 @@ public class PanelJeu extends JPanel{
 		imageBriqueOrange = new ImageIcon("cellule_orange.png").getImage();
 		imageBriqueRouge = new ImageIcon("cellule_rouge.png").getImage();
 		imageBriqueVert = new ImageIcon("cellule_vert.png").getImage();
-		
-		JPanel panelPlateau = new JPanel();//Créé un panel
-		panelPlateau.setBackground(new Color (155, 204, 234));//modifie la couleur de fond
+		background = new ImageIcon("tetris.gif").getImage();
+		score = new JLabel();
 	}
 	
 	public int getPixelX(int i){
-		int x = (int)(200 / plateau.getLargeur()*i);
+		int x = (int)(349 + 300 / plateau.getLargeur()*i);
 		return x;
 	}
 
 	public int getPixelY(int j){
-		int y = (int)(400 / plateau.getHauteur()*j);
+		int y = (int)(45 + 600 / plateau.getHauteur()*j);
 		return y;
 	}
 	
@@ -87,8 +90,11 @@ public class PanelJeu extends JPanel{
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		setBackground(new Color (155, 204, 234));//modifie la couleur de fond
+		setBackground(new Color (155, 204, 234, 0));//modifie la couleur de fond
+		g.drawImage(background, 0, 0, null);
 		afficherPlateau(g);
+		g.drawString(String.valueOf(plateau.getScore()), 125, 125);
+        //score.setText("Weeeeeesh"+String.valueOf(plateau.getScore()));
 		//printTab();
 	}
 	
