@@ -102,7 +102,7 @@ public class PanelJeu extends JPanel{
 		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
 		next = getNext(plateau).getImage();
-		g.drawImage(next, 770, 100, null);
+		g.drawImage(next, 720, 80, null);
         //score.setText("Weeeeeesh"+String.valueOf(plateau.getScore()));
 		//printTab();
 	}
@@ -180,25 +180,25 @@ public class PanelJeu extends JPanel{
 
 		switch(plateau.AVenir){
 			case MAGENTA:
-				icon= new ImageIcon("cellule_magenta.png");
+				icon= new ImageIcon("briqueMagenta.png");
 			break;
 			case BLEU:
-				icon= new ImageIcon("cellule_bleu.png");
+				icon= new ImageIcon("briqueBleu.png");
 			break;
 			case CYAN:
-				icon= new ImageIcon("cellule_cyan.png");
+				icon= new ImageIcon("briqueCyan.png");
 			break;
 			case ORANGE:
-				icon= new ImageIcon("cellule_orange.png");
+				icon= new ImageIcon("briqueOrange.png");
 			break;
 			case ROUGE:
-				icon= new ImageIcon("cellule_rouge.png");
+				icon= new ImageIcon("briqueRouge.png");
 			break;
 			case VERT:
-				icon= new ImageIcon("cellule_vert.png");
+				icon= new ImageIcon("briqueVerte.png");
 			break;
 			case JAUNE:
-				icon= new ImageIcon("cellule_jaune.png");
+				icon= new ImageIcon("briqueJaune.png");
 			break;
 			
 		}
