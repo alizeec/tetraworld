@@ -23,7 +23,8 @@ public class Plateau {
 		this.briques = new HashMap();
 		points=0;
 		perdu=false;
-		AVenir=Forme.ORANGE;
+		
+		AVenir=Forme.getForme();
 		niveau=0;
 		nbLignes=0;
 		pause=false;
@@ -42,11 +43,11 @@ public class Plateau {
 	}
 	
 	public boolean placeBrique(Brique brique){
-		//récupération de la position de la brique pour la placer sur le plateau
+		//r≈Ωcup≈Ωration de la position de la brique pour la placer sur le plateau
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
 		//tab[X][Y]=brique.getPosition();
-		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
+		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ÀÜ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]==true){
@@ -61,7 +62,7 @@ public class Plateau {
 			}
 		}
 		
-		// ajout de la brique dans la map, avec son identifiant pour clé
+		// ajout de la brique dans la map, avec son identifiant pour cl≈Ω
 		//briques.put(brique.getId(),brique);
 
 		return true;
@@ -72,7 +73,7 @@ public class Plateau {
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
 		//tab[X][Y]=brique.getPosition();
-		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
+		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ÀÜ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(X+j <= getLargeur()-1 && Y+i <= getHauteur()-1 && X+j >= 0){
@@ -88,7 +89,7 @@ public class Plateau {
 	public void JeuPerdu(){
 		for (int i=1 ; i<getLargeur()-1; ++i){
 			if (this.tab[i][0]!=null && this.tab[i][0].getId()!=0){
-				//met l'état du "jeu" à perdu, pour que Tetraword sache qu'il faut arreter la boucle
+				//met l'≈Ωtat du "jeu" ÀÜ perdu, pour que Tetraword sache qu'il faut arreter la boucle
 				perdu=true;
 			} 
 		}
@@ -99,7 +100,7 @@ public class Plateau {
 		int X=newposition.posX;
 		int Y=newposition.posY;
 		//tab[X][Y]=brique.getPosition();
-		// ajout de la forme (niveau graphique) et de l'id (niveau physique) à la cellule du plateau
+		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ÀÜ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]==true){
@@ -108,7 +109,7 @@ public class Plateau {
 						//Y+i > getHauteur() || tab[X+j][Y+i] != null){
 					}
 					
-					// si on met juste tab tab[X+j][Y+i].id == 0 ça suffit pas?
+					// si on met juste tab tab[X+j][Y+i].id == 0 ÔøΩa suffit pas?
 					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
 						this.JeuPerdu();
 
@@ -182,9 +183,9 @@ public class Plateau {
 	
 	public boolean deplaceBrique(Brique brique, Cellule newposition){
 		/*
-		 * Vérifie si le déplacement est possible
+		 * V≈Ωrifie si le d≈Ωplacement est possible
 		 * if (!verifMove(newposition)){
-		 * 	// throw exception "déplacement pas possible
+		 * 	// throw exception "d≈Ωplacement pas possible
 		 * return false
 		 * }
 		 */
@@ -207,7 +208,7 @@ public class Plateau {
 	
 	
 	public Brique creerBrique(){
-		// valeurs à générer aléatoirement, MAGENTA et a pour les tests
+		// valeurs ÀÜ g≈Ωn≈Ωrer al≈Ωatoirement, MAGENTA et a pour les tests
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
 		char lettre = 'a';
