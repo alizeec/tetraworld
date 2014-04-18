@@ -20,6 +20,7 @@ public class PanelJeu extends JPanel{
 	Image imageBriqueVert;
 	Plateau plateau;
 	Image background;
+	Image perdu;
 	JLabel score;
 	Image next;
 	JLabel level;
@@ -37,6 +38,8 @@ public class PanelJeu extends JPanel{
 		imageBriqueRouge = new ImageIcon("cellule_rouge.png").getImage();
 		imageBriqueVert = new ImageIcon("cellule_vert.png").getImage();
 		background = new ImageIcon("tetris.gif").getImage();
+		perdu = new ImageIcon("perdu.png").getImage();
+
 		score = new JLabel();
 		level=new JLabel();
 
@@ -106,8 +109,10 @@ public class PanelJeu extends JPanel{
 		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
 		next = getNext(plateau).getImage();
 		g.drawImage(next, 720, 80, null);
-        //score.setText("Weeeeeesh"+String.valueOf(plateau.getScore()));
-		//printTab();
+		if(plateau.perdu==true){
+			g.drawImage(perdu, 0, 0, null);
+
+		}
 	}
 
 
