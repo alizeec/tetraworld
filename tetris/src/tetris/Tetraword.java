@@ -23,35 +23,38 @@ public class Tetraword {
 	   */
 	  start = System.currentTimeMillis();
 	  
+	  
 	  /*
 	   * Update the game.
 	   */
-	  //test de la fonction descendre()
-	  if(plateau.briqueActuelle != null){
-		  int X = plateau.briqueActuelle.getPosition().posX;
-		  int Y = plateau.briqueActuelle.getPosition().posY;
-		  Cellule newposition = new Cellule(X, Y+1);
-		  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
-			  plateau.videCaseBrique(plateau.briqueActuelle);
-			  plateau.briqueActuelle.descendre(plateau.getNiveau()+1);
-			  plateau.placeBrique(plateau.briqueActuelle);
-		  }else{
-			  plateau.verifLignes(plateau.briqueActuelle);
-			  plateau.briqueActuelle = null;
-			  Brique newBrique = plateau.creerBrique();
-			  plateau.briqueActuelle = newBrique;
-
-			  plateau.placeBrique(newBrique);
-		  }
-	  }
-
-	  /*affichage*/
-	  jeu.repaint();
-/*System.out.println(result);*/
-	  if(plateau.perdu==true){
-		  System.out.println("perduuuuuu");
-		  game=false;
-	  }
+	  if(plateau.pause==false){
+			  //test de la fonction descendre()
+			  if(plateau.briqueActuelle != null){
+				  int X = plateau.briqueActuelle.getPosition().posX;
+				  int Y = plateau.briqueActuelle.getPosition().posY;
+				  Cellule newposition = new Cellule(X, Y+1);
+				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
+					  plateau.videCaseBrique(plateau.briqueActuelle);
+					  plateau.briqueActuelle.descendre(plateau.getNiveau()+1);
+					  plateau.placeBrique(plateau.briqueActuelle);
+				  }else{
+					  plateau.verifLignes(plateau.briqueActuelle);
+					  plateau.briqueActuelle = null;
+					  Brique newBrique = plateau.creerBrique();
+					  plateau.briqueActuelle = newBrique;
+		
+					  plateau.placeBrique(newBrique);
+				  }
+			  }
+		
+			  /*affichage*/
+			  jeu.repaint();
+		/*System.out.println(result);*/
+			  if(plateau.perdu==true){
+				  System.out.println("perduuuuuu");
+				  game=false;
+			  }
+	  }	  
 
 	  
 	  /* nettoyage de l'Žcran*/
@@ -74,6 +77,8 @@ public class Tetraword {
 	 }
 	}
 
+	
+
 
 	
 
@@ -82,7 +87,7 @@ public class Tetraword {
 		FrameJeu framejeu = new FrameJeu(plateau);
 		Tetraword jeu=new Tetraword();
 		jeu.startGame(plateau,framejeu);
-		
+				
 	}
 		
 		 

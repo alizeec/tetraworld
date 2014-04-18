@@ -57,9 +57,18 @@ public class EcouteurClavier implements KeyListener{
 			plateau.placeBrique(b);
 			
 		break;
+		case KeyEvent.VK_P:
+			plateau.pause=true;
+		break;
+		case KeyEvent.VK_O:
+			plateau.pause=false;
+		break;
+
 		}
 		frame.repaint();
 	}
+	
+
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {

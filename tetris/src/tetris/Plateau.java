@@ -15,6 +15,7 @@ public class Plateau {
 	Forme AVenir;
 	private int niveau;
 	int nbLignes;
+	boolean pause;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -25,6 +26,7 @@ public class Plateau {
 		AVenir=Forme.ORANGE;
 		niveau=0;
 		nbLignes=0;
+		pause=false;
 	}
 	
 	public int getLargeur(){
