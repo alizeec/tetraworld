@@ -33,7 +33,7 @@ public class Tetraword {
 		  Cellule newposition = new Cellule(X, Y+1);
 		  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 			  plateau.videCaseBrique(plateau.briqueActuelle);
-			  plateau.briqueActuelle.descendre();
+			  plateau.briqueActuelle.descendre(plateau.getNiveau()+1);
 			  plateau.placeBrique(plateau.briqueActuelle);
 		  }else{
 			  plateau.verifLignes(plateau.briqueActuelle);

@@ -22,8 +22,8 @@ public class Plateau {
 		this.briques = new HashMap();
 		points=0;
 		perdu=false;
-		AVenir=Forme.BLEU;
-		niveau=1;
+		AVenir=Forme.ORANGE;
+		niveau=0;
 		nbLignes=0;
 	}
 	
@@ -138,7 +138,7 @@ public class Plateau {
 					if(verfiUneLigne(Y+i)){
 						suppLigne(Y+i);
 						toutDescendre(Y+i);
-						points++;
+						points+=niveau+1;
 						nbLignes++;
 						changementNiveau();
 						System.out.println(niveau);
@@ -193,7 +193,7 @@ public class Plateau {
 		 * }
 		 * else {
 		 */
-		 	brique.descendre();
+		 	brique.descendre(getNiveau()+1);
 		 /*}
 		 * 	
 		 */
