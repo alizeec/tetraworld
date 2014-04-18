@@ -22,6 +22,7 @@ public class PanelJeu extends JPanel{
 	Image background;
 	JLabel score;
 	Image next;
+	JLabel level;
 	
 	int x;
 	int y;
@@ -37,6 +38,7 @@ public class PanelJeu extends JPanel{
 		imageBriqueVert = new ImageIcon("cellule_vert.png").getImage();
 		background = new ImageIcon("tetris.gif").getImage();
 		score = new JLabel();
+		level=new JLabel();
 
 	}
 	
@@ -101,6 +103,7 @@ public class PanelJeu extends JPanel{
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
+		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
 		next = getNext(plateau).getImage();
 		g.drawImage(next, 720, 80, null);
         //score.setText("Weeeeeesh"+String.valueOf(plateau.getScore()));

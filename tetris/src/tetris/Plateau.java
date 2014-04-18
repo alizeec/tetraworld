@@ -8,16 +8,23 @@ public class Plateau {
 	Cellule tab[][];
 	int LARGEUR = 10;
 	int HAUTEUR = 20;
-	int points = 0;
+	int points;
 	Map<Integer,Brique> briques;
 	Brique briqueActuelle;
-	boolean perdu = false;
-	Forme AVenir=Forme.BLEU;
+	boolean perdu;
+	Forme AVenir;
+	private int niveau;
+	int nbLignes;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
 		this.tab = new Cellule[LARGEUR][HAUTEUR];
 		this.briques = new HashMap();
+		points=0;
+		perdu=false;
+		AVenir=Forme.BLEU;
+		niveau=1;
+		nbLignes=0;
 	}
 	
 	public int getLargeur(){
@@ -132,7 +139,9 @@ public class Plateau {
 						suppLigne(Y+i);
 						toutDescendre(Y+i);
 						points++;
-						//System.out.println(points);
+						nbLignes++;
+						changementNiveau();
+						System.out.println(niveau);
 					}
 					
 				}
@@ -153,6 +162,19 @@ public class Plateau {
 			}
 			
 		}
+	}
+	
+	public int changementNiveau(){
+		if(nbLignes==3){
+			niveau++;
+			nbLignes=0;
+		}
+		
+		return niveau;
+	}
+	
+	public int getNiveau(){
+		return niveau;
 	}
 
 	
