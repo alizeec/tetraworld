@@ -51,7 +51,6 @@ public class Tetraword {
 			  jeu.repaint();
 		/*System.out.println(result);*/
 			  if(plateau.perdu==true){
-				  System.out.println("perduuuuuu");
 				  game=false;
 			  }
 	  }	  

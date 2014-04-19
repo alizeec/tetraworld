@@ -42,6 +42,8 @@ public class FrameJeu extends JFrame{
 	    panelJeu.setFocusable(true);
 	    panelJeu.requestFocus();
 	    panelJeu.addKeyListener(new EcouteurClavier(this.plateau, this));
+        panelJeu.addMouseListener(new EcouteurSouris(this.plateau,this));
+
 	    border.add(panelJeu,BorderLayout.CENTER);
 	    
 	    /*JPanel panelscore = new JPanel();
