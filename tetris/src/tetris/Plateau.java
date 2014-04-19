@@ -216,8 +216,28 @@ public class Plateau {
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
 		//char lettre = 'a';
+		Integer quotient = (int)(Math.random() * (10-1)) + 1;
+		final String consonnes = "bcdfghjlmnpqrst"; 
+		final String rares = "kvwxyz"; 
+
+		final String voyelles = "aeiou"; 
+		final int number_voyelles = 5; 
+		final int number_consonnes = 15; 
+		final int number_rares = 6; 
+
+		char lettre='p';
+
 		Random r = new Random();
-		char lettre = (char)(r.nextInt(26) + 'a');
+		System.out.println("Q: "+quotient);
+
+		if(quotient < 3)
+		lettre = rares.charAt (r.nextInt (number_rares)); //20%
+
+        else if(quotient < 8)
+    		lettre = consonnes.charAt (r.nextInt (number_consonnes)); //50%
+        else if(quotient < 11)
+    		lettre = voyelles.charAt (r.nextInt (number_voyelles)); //30%
+		
 		Brique b = null;
 		switch(forme){
 			case MAGENTA:
