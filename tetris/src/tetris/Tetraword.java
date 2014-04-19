@@ -62,7 +62,7 @@ public class Tetraword {
 	  /*
 	   * Set the time that the loop finished.
 	   */
-	  sleepDuration = (1000L / UPDATES_PER_SECOND) - (System.currentTimeMillis() - start);
+	  sleepDuration = (1000L / (UPDATES_PER_SECOND + plateau.getNiveau())) - (System.currentTimeMillis() - start);
 	   
 	  /*
 	   * If the sleep duration is greater than 0 milliseconds, attempt to sleep.
