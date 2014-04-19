@@ -1,5 +1,8 @@
 package tetris;
 
+import java.io.FileNotFoundException;
+import java.util.Timer;
+
 
 
 
@@ -54,6 +57,26 @@ public class Tetraword {
 				  game=false;
 			  }
 	  }	  
+	  if (plateau.mode==Mode.ANAGRAMME){
+		  
+		  Mots anagramme=new Mots();
+		  if(plateau.motEnCours!=null){
+			  if(anagramme.motfini(plateau.motEnCours)){
+	
+				try {
+					anagramme.findWord(plateau.motEnCours);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				plateau.motEnCours=null;
+				  plateau.mode=Mode.TETRIS;
+
+			  }
+		  }
+
+		  
+	  }
 
 	  
 	  /* nettoyage de l'Žcran*/

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -24,6 +25,7 @@ public class PanelJeu extends JPanel{
 	JLabel score;
 	Image next;
 	JLabel level;
+	JButton finish;
 	
 	int x;
 	int y;
@@ -42,6 +44,7 @@ public class PanelJeu extends JPanel{
 
 		score = new JLabel();
 		level=new JLabel();
+		finish=new JButton();
 
 	}
 	
@@ -118,7 +121,6 @@ public class PanelJeu extends JPanel{
 		g.drawImage(next, 720, 80, null);
 		if(plateau.perdu==true){
 			g.drawImage(perdu, 0, 0, null);
-
 		}
 	}
 

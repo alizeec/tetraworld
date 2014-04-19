@@ -18,6 +18,7 @@ public class Plateau {
 	int nbLignes;
 	boolean pause;
 	Mode mode;
+	String motEnCours;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -31,6 +32,7 @@ public class Plateau {
 		nbLignes=0;
 		pause=false;
 		mode=Mode.TETRIS;
+		motEnCours=null;
 	}
 	
 	public int getLargeur(){
@@ -143,6 +145,8 @@ public class Plateau {
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][0]==true || brique.tab[i][1]==true || brique.tab[i][2]==true || brique.tab[i][3]==true){
 					if(verfiUneLigne(Y+i)){
+						this.mode=Mode.ANAGRAMME;
+
 						suppLigne(Y+i);
 						toutDescendre(Y+i);
 						points+=niveau+1;

@@ -7,6 +7,7 @@ public class EcouteurSouris implements MouseListener
 {
 	Plateau plateau;
 	FrameJeu frame;
+	Mots anagramme;
 	
 	EcouteurSouris(Plateau plateau, FrameJeu frame){
 		this.frame = frame;
@@ -24,14 +25,23 @@ public class EcouteurSouris implements MouseListener
 
         	}
         	else{
-                System.out.printf("dans le tableau \n");
                 int X = (e.getX()-349)/30;
                 int Y = (e.getY() - 42)/30;
-                System.out.printf("X repère tableau: "+X + "Y: "+Y);
+            	StringBuffer tmp = new StringBuffer();
+
                 if(plateau.tab[X][Y]!=null){
                 	int id=plateau.tab[X][Y].getId();
                 	char lettre=plateau.briques.get(id).getLettre();
-                    System.out.println("lettre: "+lettre);
+                	
+                	tmp=tmp.append(lettre);
+                	if(plateau.motEnCours==null){
+                		plateau.motEnCours=tmp.toString();
+                	}
+                	else{
+                		plateau.motEnCours=plateau.motEnCours+tmp.toString();
+                	}
+                	
+                	System.out.println(plateau.motEnCours);
 
                 }
                 else{

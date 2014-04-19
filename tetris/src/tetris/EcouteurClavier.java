@@ -63,6 +63,9 @@ public class EcouteurClavier implements KeyListener{
 		case KeyEvent.VK_O:
 			plateau.pause=false;
 		break;
+		case KeyEvent.VK_Z:
+			plateau.motEnCours+="\n";
+		break;
 
 		}
 		frame.repaint();
