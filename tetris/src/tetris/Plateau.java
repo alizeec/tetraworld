@@ -198,7 +198,7 @@ public class Plateau {
 		 * }
 		 * else {
 		 */
-		 	brique.descendre(getNiveau()+1);
+		 	brique.descendre();
 		 /*}
 		 * 	
 		 */

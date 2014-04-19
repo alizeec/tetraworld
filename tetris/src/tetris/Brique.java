@@ -51,8 +51,8 @@ public abstract class Brique {
 		return this.lettre;
 	}
 	
-	public boolean descendre(int vitesse){
-		this.getPosition().posY += vitesse;
+	public boolean descendre(){
+		this.getPosition().posY += 1;
 		this.updatePosition(this.getPosition());
 		return true;
 	}
