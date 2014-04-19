@@ -230,7 +230,7 @@ public class Plateau {
 
 		if(quotient < 3){
 		lettre = rares.charAt (r.nextInt (number_rares)); //20%
-		point=1;
+		point=3;
 		}
         else if(quotient < 7){
     		lettre = consonnes.charAt (r.nextInt (number_consonnes)); //40%
@@ -240,7 +240,7 @@ public class Plateau {
         else if(quotient < 11){
     		lettre = voyelles.charAt (r.nextInt (number_voyelles)); //40%
 
-			point=3;
+			point=1;
         }
 
 		Brique b = null;
