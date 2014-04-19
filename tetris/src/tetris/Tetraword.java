@@ -35,7 +35,7 @@ public class Tetraword {
 				  Cellule newposition = new Cellule(X, Y+1);
 				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 					  plateau.videCaseBrique(plateau.briqueActuelle);
-					  plateau.briqueActuelle.descendre(plateau.getNiveau()+1);
+					  plateau.briqueActuelle.descendre();
 					  plateau.placeBrique(plateau.briqueActuelle);
 				  }else{
 					  plateau.verifLignes(plateau.briqueActuelle);
@@ -62,7 +62,7 @@ public class Tetraword {
 	  /*
 	   * Set the time that the loop finished.
 	   */
-	  sleepDuration = (1000L / UPDATES_PER_SECOND) - (System.currentTimeMillis() - start);
+	  sleepDuration = (1000L / (UPDATES_PER_SECOND + plateau.getNiveau())) - (System.currentTimeMillis() - start);
 	   
 	  /*
 	   * If the sleep duration is greater than 0 milliseconds, attempt to sleep.
