@@ -65,7 +65,7 @@ public class Tetraword {
 	  sleepDuration = (1000L / (UPDATES_PER_SECOND + plateau.getNiveau())) - (System.currentTimeMillis() - start);
 	   
 	  /*
-	   * If the sleep duration is greater than 0 milliseconds, attempt to sleep.
+	   * If the sleep duration is greater than  0 milliseconds, attempt to sleep.
 	   */
 	  if(sleepDuration > 0) {
 	   try {
