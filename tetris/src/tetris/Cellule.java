@@ -1,5 +1,7 @@
 package tetris;
 
+import javax.swing.JButton;
+
 public class Cellule {
 	int id;
 	Forme forme;
