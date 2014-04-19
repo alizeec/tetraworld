@@ -1,6 +1,7 @@
 package tetris;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.swing.JLabel;
 
@@ -54,10 +55,11 @@ public class Plateau {
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]==true){
 					if(tab[X+j][Y+i] == null){
-						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.getPosition().lettre);
+						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.getLettre());
 					}else if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
 						tab[X+j][Y+i].forme=brique.getPosition().forme;
 						tab[X+j][Y+i].id=brique.getId();
+						tab[X+j][Y+i].lettre=brique.getLettre();
 					}
 
 				}
@@ -213,7 +215,9 @@ public class Plateau {
 		// valeurs ˆ gŽnŽrer alŽatoirement, MAGENTA et a pour les tests
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
-		char lettre = 'a';
+		//char lettre = 'a';
+		Random r = new Random();
+		char lettre = (char)(r.nextInt(26) + 'a');
 		Brique b = null;
 		switch(forme){
 			case MAGENTA:
