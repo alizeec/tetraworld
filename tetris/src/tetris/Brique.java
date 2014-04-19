@@ -18,15 +18,17 @@ public abstract class Brique {
 	private Rotation rotation;
 	private char lettre;
 	static int cpt =0;
+	int point;
 	
 	
-	public Brique (Forme forme, char lettre){
+	public Brique (Forme forme, char lettre, int point){
 		this.id=this.cpt;
 		cpt++;
 		this.position=new Cellule(this.id, forme, this.lettre);
 		this.rotation = Rotation.HAUT;
 		this.lettre=lettre;
 		this.forme = forme;
+		this.point=point;
 		
 	}
 	
@@ -118,7 +120,6 @@ public abstract class Brique {
 	public void afficher(){
 		int i, j;
 		for(i=0; i<this.tab.length; i++) {
-			System.out.println("   ");
 
 			for(j=0; j<this.tab[i].length; j++) {
 				System.out.println("aaa"+this.tab[i][j]);

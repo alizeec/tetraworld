@@ -148,7 +148,6 @@ public class Plateau {
 						points+=niveau+1;
 						nbLignes++;
 						changementNiveau();
-						System.out.println(niveau);
 					}
 					
 				}
@@ -215,7 +214,6 @@ public class Plateau {
 		// valeurs ˆ gŽnŽrer alŽatoirement, MAGENTA et a pour les tests
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
-		//char lettre = 'a';
 		Integer quotient = (int)(Math.random() * (10-1)) + 1;
 		final String consonnes = "bcdfghjlmnpqrst"; 
 		final String rares = "kvwxyz"; 
@@ -226,40 +224,47 @@ public class Plateau {
 		final int number_rares = 6; 
 
 		char lettre='p';
+		int point=0;
 
 		Random r = new Random();
-		System.out.println("Q: "+quotient);
 
-		if(quotient < 3)
+		if(quotient < 3){
 		lettre = rares.charAt (r.nextInt (number_rares)); //20%
+		point=1;
+		}
+        else if(quotient < 7){
+    		lettre = consonnes.charAt (r.nextInt (number_consonnes)); //40%
 
-        else if(quotient < 8)
-    		lettre = consonnes.charAt (r.nextInt (number_consonnes)); //50%
-        else if(quotient < 11)
-    		lettre = voyelles.charAt (r.nextInt (number_voyelles)); //30%
-		
+			point=2;
+        }
+        else if(quotient < 11){
+    		lettre = voyelles.charAt (r.nextInt (number_voyelles)); //40%
+
+			point=3;
+        }
+
 		Brique b = null;
 		switch(forme){
 			case MAGENTA:
-				 b = new BriqueMagenta(lettre);
+				 b = new BriqueMagenta(lettre,point);
 			break;
 			case BLEU:
-				 b = new BriqueBleue(lettre);
+				 b = new BriqueBleue(lettre,point);
 			break;
 			case CYAN:
-				 b = new BriqueCyan(lettre);
+				 b = new BriqueCyan(lettre,point);
 			break;
 			case JAUNE:
-				 b = new BriqueJaune(lettre);
+				 b = new BriqueJaune(lettre,point);
 			break;
 			case ORANGE:
-				 b = new BriqueOrange(lettre);
+				 b = new BriqueOrange(lettre,point);
 			break;
 			case ROUGE:
-				 b = new BriqueRouge(lettre);
+				 b = new BriqueRouge(lettre,point);
 			break;
 			case VERT:
-				 b = new BriqueVerte(lettre);
+				 b = new BriqueVerte(lettre,point);
 			break;
 		}
 		// ajouter une exception pour verifier que b n'est pas null

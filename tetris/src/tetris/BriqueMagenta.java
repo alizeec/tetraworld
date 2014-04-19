@@ -2,9 +2,9 @@ package tetris;
 
 public class BriqueMagenta extends Brique {
 
-	public BriqueMagenta(char lettre) {
+	public BriqueMagenta(char lettre, int point) {
 		// TODO Auto-generated constructor stub
-		super(Forme.MAGENTA, lettre);
+		super(Forme.MAGENTA, lettre,point);
 		this.setForme(Forme.MAGENTA);
 		
 		// on configure les tableaux des 4 rotations

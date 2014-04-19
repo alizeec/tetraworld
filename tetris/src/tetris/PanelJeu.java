@@ -59,7 +59,6 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueMagenta, x, y, null);
-		System.out.println(lettre);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
@@ -67,7 +66,6 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueBleu, x, y, null);
-		System.out.println(lettre);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
@@ -75,7 +73,6 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueCyan, x, y, null);
-		System.out.println(lettre);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
@@ -83,7 +80,6 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueJaune, x, y, null);
-		System.out.println(lettre);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
@@ -91,7 +87,6 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueOrange, x, y, null);
-		System.out.println(lettre);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
@@ -99,7 +94,6 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueRouge, x, y, null);
-		System.out.println(lettre);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
@@ -107,7 +101,6 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueVert, x, y, null);
-		System.out.println(lettre);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
