@@ -16,6 +16,7 @@ public class Plateau {
 	private int niveau;
 	int nbLignes;
 	boolean pause;
+	Mode mode;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -27,6 +28,7 @@ public class Plateau {
 		niveau=0;
 		nbLignes=0;
 		pause=false;
+		mode=Mode.TETRIS;
 	}
 	
 	public int getLargeur(){

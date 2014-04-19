@@ -27,7 +27,7 @@ public class Tetraword {
 	  /*
 	   * Update the game.
 	   */
-	  if(plateau.pause==false){
+	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
 			  //test de la fonction descendre()
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
