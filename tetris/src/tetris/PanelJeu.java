@@ -122,6 +122,11 @@ public class PanelJeu extends JPanel{
 		if(plateau.perdu==true){
 			g.drawImage(perdu, 0, 0, null);
 		}
+		if(plateau.mode==Mode.ANAGRAMME || plateau.mode==Mode.WORDDLE){
+			if(plateau.motEnCours!=null){
+				g.drawString(plateau.motEnCours, 200, 400);
+			}
+		}
 	}
 
 

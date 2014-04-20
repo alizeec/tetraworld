@@ -60,6 +60,8 @@ public class Tetraword {
 		  
 		  Mots anagramme=new Mots();
 		  boolean result=false;
+		  jeu.repaint();
+
 		  if(plateau.motEnCours!=null){
 			  if(anagramme.motfini(plateau.motEnCours)){
 	
