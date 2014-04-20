@@ -1,5 +1,6 @@
 package tetris;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Random;
 
@@ -18,7 +19,11 @@ public class Plateau {
 	int nbLignes;
 	boolean pause;
 	Mode mode;
+	
+	//pour le mode ANAGRAMME et WORDDLE
 	String motEnCours;
+	int  totalMot;
+	int indexLigneSupp;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -26,13 +31,16 @@ public class Plateau {
 		this.briques = new HashMap();
 		points=0;
 		perdu=false;
-		
 		AVenir=Forme.getForme();
 		niveau=0;
 		nbLignes=0;
 		pause=false;
+		
 		mode=Mode.TETRIS;
 		motEnCours=null;
+		totalMot=0;
+		
+		indexLigneSupp=0;
 	}
 	
 	public int getLargeur(){
@@ -145,13 +153,10 @@ public class Plateau {
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][0]==true || brique.tab[i][1]==true || brique.tab[i][2]==true || brique.tab[i][3]==true){
 					if(verfiUneLigne(Y+i)){
+						this.indexLigneSupp=Y+i;
 						this.mode=Mode.ANAGRAMME;
+							
 
-						suppLigne(Y+i);
-						toutDescendre(Y+i);
-						points+=niveau+1;
-						nbLignes++;
-						changementNiveau();
 					}
 					
 				}

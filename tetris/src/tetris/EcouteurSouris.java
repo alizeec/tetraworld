@@ -18,37 +18,70 @@ public class EcouteurSouris implements MouseListener
     public void mouseClicked(MouseEvent e) 
     {
         if (e.getButton()==MouseEvent.BUTTON1){
+        	//verifie qu"on est dans le tableau
         	if(e.getX()<349 || e.getX()>650 || e.getY()<42 || e.getY()>647){
                 System.out.printf("hors du  tableau \n ");
-
-
-
         	}
         	else{
+        		//pour avoir la cellule correspondante
                 int X = (e.getX()-349)/30;
                 int Y = (e.getY() - 42)/30;
-            	StringBuffer tmp = new StringBuffer();
+                
+                
+                /*   MODE ANAGRAMME   */
+                if(plateau.mode==Mode.ANAGRAMME){
+                	if(Y==plateau.indexLigneSupp){
+                		StringBuffer tmp = new StringBuffer();
+                		if(plateau.tab[X][Y]!=null){
+                			//récupération de la brique et de sa lettre
+                        	int id=plateau.tab[X][Y].getId();
+                        	char lettre=plateau.briques.get(id).getLettre();
+                        	
+                        	//formation du mot
+                        	tmp=tmp.append(lettre);
+                        	if(plateau.motEnCours==null){
+                        		plateau.motEnCours=tmp.toString();
+                        	}
+                        	else{
+                        		plateau.motEnCours=plateau.motEnCours+tmp.toString();
+                        	}
+                        	// récupération du total de point que vaut le mot
+                        	plateau.totalMot+=plateau.briques.get(id).point; 	                		
+                		}
 
-                if(plateau.tab[X][Y]!=null){
-                	int id=plateau.tab[X][Y].getId();
-                	char lettre=plateau.briques.get(id).getLettre();
-                	
-                	tmp=tmp.append(lettre);
-                	if(plateau.motEnCours==null){
-                		plateau.motEnCours=tmp.toString();
                 	}
-                	else{
-                		plateau.motEnCours=plateau.motEnCours+tmp.toString();
-                	}
+            		else{
+            			System.out.println("Vous devez cliquer sur la ligne complète");
+            		}
+                }
+                
+                /* MODE WORDDLE  */
+                
+                if(plateau.mode==Mode.WORDDLE){
+                		StringBuffer tmp = new StringBuffer();
+                		if(plateau.tab[X][Y]!=null){
+                			//récupération de la brique et de sa lettre
+                        	int id=plateau.tab[X][Y].getId();
+                        	char lettre=plateau.briques.get(id).getLettre();
+                        	
+                        	//formation du mot
+                        	tmp=tmp.append(lettre);
+                        	if(plateau.motEnCours==null){
+                        		plateau.motEnCours=tmp.toString();
+                        	}
+                        	else{
+                        		plateau.motEnCours=plateau.motEnCours+tmp.toString();
+                        	}
+                        	// récupération du total de point que vaut le mot
+                        	plateau.totalMot+=plateau.briques.get(id).point; 	                		
+                		}
+                		else{
+                			System.out.println("Il n'y a rien ici");
+                		}
+                		
                 	
-                	System.out.println(plateau.motEnCours);
-
                 }
-                else{
-                    System.out.println("il n'y a rien ici");
-
-                }
-
+                
         	}
         }
     }

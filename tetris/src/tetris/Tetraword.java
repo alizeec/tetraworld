@@ -52,7 +52,6 @@ public class Tetraword {
 		
 			  /*affichage*/
 			  jeu.repaint();
-		/*System.out.println(result);*/
 			  if(plateau.perdu==true){
 				  game=false;
 			  }
@@ -60,17 +59,27 @@ public class Tetraword {
 	  if (plateau.mode==Mode.ANAGRAMME){
 		  
 		  Mots anagramme=new Mots();
+		  boolean result=false;
 		  if(plateau.motEnCours!=null){
 			  if(anagramme.motfini(plateau.motEnCours)){
 	
 				try {
-					anagramme.findWord(plateau.motEnCours);
+					result=anagramme.findWord(plateau.motEnCours);
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				if(result){
+					anagramme.resultatCorrect(plateau);
+				}
+				else{
+					anagramme.resultatInCorrect();
+				}
 				plateau.motEnCours=null;
-				  plateau.mode=Mode.TETRIS;
+				plateau.totalMot=0;
+
+
+				plateau.mode=Mode.TETRIS;
 
 			  }
 		  }
