@@ -1,5 +1,6 @@
 package tetris;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -26,6 +27,7 @@ public class PanelJeu extends JPanel{
 	Image next;
 	JLabel level;
 	JButton finish;
+	JButton valider;
 	
 	int x;
 	int y;
@@ -45,6 +47,7 @@ public class PanelJeu extends JPanel{
 		score = new JLabel();
 		level=new JLabel();
 		finish=new JButton();
+		valider= new JButton(new ImageIcon("bt_ok.png" ));
 
 	}
 	
@@ -115,12 +118,18 @@ public class PanelJeu extends JPanel{
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 		afficherPlateau(g);
+		valider.setBounds(180, 130, 62, 29);
+		valider.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		valider.setContentAreaFilled(false);
+		valider.setBorderPainted(false);
+		add(valider);
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
 		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
 		next = getNext(plateau).getImage();
 		g.drawImage(next, 720, 80, null);
 		if(plateau.perdu==true){
 			g.drawImage(perdu, 0, 0, null);
+			valider.setVisible(false);
 		}
 		if(plateau.mode==Mode.ANAGRAMME || plateau.mode==Mode.WORDDLE){
 			if(plateau.motEnCours!=null){
