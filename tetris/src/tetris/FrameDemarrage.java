@@ -68,7 +68,9 @@ public class FrameDemarrage extends JFrame implements ActionListener
     
     public void actionPerformed(ActionEvent e) 
     {
-        if(e.getSource() == startG)
+        System.out.println(e.getSource());
+        System.out.println(e.getID());
+    	if(e.getSource() == startG)
         {            
              //System.out.println("New Game - button is working");
              Plateau plateau = new Plateau();
