@@ -12,7 +12,7 @@ public class Tetraword {
 
 	private static final int UPDATES_PER_SECOND = 3;
 	boolean game=true;
-
+	int cpt = 0;
 	
 	public void startGame(Plateau plateau , FrameJeu jeu) {
 
@@ -61,7 +61,8 @@ public class Tetraword {
 		  Mots anagramme=new Mots();
 		  boolean result=false;
 		  jeu.repaint();
-
+		  System.out.println(plateau.indexLigneSupp);
+		  System.out.println(plateau.nbLignesCompletes);
 		  if(plateau.motEnCours!=null){
 			  if(anagramme.motfini(plateau.motEnCours)){
 	
@@ -79,9 +80,14 @@ public class Tetraword {
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
-				plateau.verifLignes(plateau.briqueActuelle);
-
-				plateau.mode=Mode.TETRIS;
+				plateau.nbLignesCompletes--;
+				cpt++;
+				System.out.println(plateau.nbLignesCompletes);
+				if(plateau.nbLignesCompletes > 0){
+					plateau.indexLigneSupp = plateau.lignesCompletes[cpt];
+				}else{
+					plateau.mode=Mode.TETRIS;
+				}
 
 			  }
 		  }

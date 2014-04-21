@@ -25,11 +25,11 @@ public class Plateau {
 	int  totalMot;
 	int indexLigneSupp;
 	int lignesCompletes[];
+	int nbLignesCompletes;
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
 		this.tab = new Cellule[LARGEUR][HAUTEUR];
-		this.lignesCompletes = new int[20];
 		this.briques = new HashMap();
 		points=0;
 		perdu=false;
@@ -43,6 +43,8 @@ public class Plateau {
 		totalMot=0;
 		
 		indexLigneSupp=0;
+		nbLignesCompletes = 0;
+		this.lignesCompletes = new int[20];
 	}
 	
 	public int getLargeur(){
@@ -150,21 +152,22 @@ public class Plateau {
 	public void verifLignes(Brique brique){
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
-		int cpt = 0;
+		nbLignesCompletes = 0;
 		for (int i=0; i<4; ++i){
-			for (int j=0; j<4 ; ++j){
+			//for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][0]==true || brique.tab[i][1]==true || brique.tab[i][2]==true || brique.tab[i][3]==true){
 					if(verfiUneLigne(Y+i)){
-						cpt++;
-						lignesCompletes[cpt] = Y+i;
-
+						System.out.println("ligne");
+						lignesCompletes[nbLignesCompletes] = Y+i;
+						nbLignesCompletes++;
 					}
 					
 				}
-			}
+			//}
 		}
-		//this.indexLigneSupp=Y+i;
-		if(cpt > 0){
+		System.out.println(nbLignesCompletes);
+		if(nbLignesCompletes > 0){
+			indexLigneSupp = lignesCompletes[0];
 			this.mode=Mode.ANAGRAMME;
 		}
 	}

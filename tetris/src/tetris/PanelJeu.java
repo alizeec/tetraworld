@@ -29,6 +29,7 @@ public class PanelJeu extends JPanel{
 	JButton finish;
 	JButton valider;
 	JButton supp;
+	Image fleche;
 	
 	int x;
 	int y;
@@ -44,6 +45,8 @@ public class PanelJeu extends JPanel{
 		imageBriqueVert = new ImageIcon("cellule_vert.png").getImage();
 		background = new ImageIcon("tetris.gif").getImage();
 		perdu = new ImageIcon("perdu.png").getImage();
+		
+		fleche = new ImageIcon("fleche.png").getImage();
 
 		score = new JLabel();
 		level=new JLabel();
@@ -139,6 +142,7 @@ public class PanelJeu extends JPanel{
 			valider.setVisible(false);
 		}
 		if(plateau.mode==Mode.ANAGRAMME || plateau.mode==Mode.WORDDLE){
+			g.drawImage(fleche, 310, getPixelY(plateau.indexLigneSupp)+4, null);
 			if(plateau.motEnCours!=null){
 				g.drawString(plateau.motEnCours, 177, 107);
 			}
