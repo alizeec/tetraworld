@@ -17,7 +17,13 @@ public class EcouteurSouris implements MouseListener
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        System.out.println("bouton numero :"+e.getID());
+    	if(e.getSource() == frame.getPanel().valider){
+			plateau.motEnCours+="\n";
+		}
+		
+		if(e.getSource() == frame.getPanel().supp){
+			plateau.motEnCours = plateau.motEnCours.substring(0, plateau.motEnCours.length()-1);
+		}
     	if (e.getButton()==MouseEvent.BUTTON1){
         	//verifie qu"on est dans le tableau
         	if(e.getX()<349 || e.getX()>650 || e.getY()<42 || e.getY()>647){

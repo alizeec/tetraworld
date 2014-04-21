@@ -79,7 +79,7 @@ public class Tetraword {
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
-
+				plateau.verifLignes(plateau.briqueActuelle);
 
 				plateau.mode=Mode.TETRIS;
 
