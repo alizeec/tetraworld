@@ -18,7 +18,7 @@ public class EcouteurSouris implements MouseListener
     public void mouseClicked(MouseEvent e) 
     {
         if (e.getButton()==MouseEvent.BUTTON1){
-        	//verifie qu"on est dans le tableau
+        	//verifie qu'on est dans le tableau
         	if(e.getX()<349 || e.getX()>650 || e.getY()<42 || e.getY()>647){
                 System.out.printf("hors du  tableau \n ");
         	}
