@@ -24,10 +24,12 @@ public class Plateau {
 	String motEnCours;
 	int  totalMot;
 	int indexLigneSupp;
+	int lignesCompletes[];
 
 	public Plateau() {
 		// TODO Auto-generated constructor stub
 		this.tab = new Cellule[LARGEUR][HAUTEUR];
+		this.lignesCompletes = new int[20];
 		this.briques = new HashMap();
 		points=0;
 		perdu=false;
@@ -153,14 +155,17 @@ public class Plateau {
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][0]==true || brique.tab[i][1]==true || brique.tab[i][2]==true || brique.tab[i][3]==true){
 					if(verfiUneLigne(Y+i)){
-						this.indexLigneSupp=Y+i;
-						this.mode=Mode.ANAGRAMME;
-							
+						cpt++;
+						lignesCompletes[cpt] = Y+i;
 
 					}
 					
 				}
 			}
+		}
+		//this.indexLigneSupp=Y+i;
+		if(cpt > 0){
+			this.mode=Mode.ANAGRAMME;
 		}
 	}
 	

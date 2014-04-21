@@ -18,7 +18,6 @@ public class FrameJeu extends JFrame{
 	private JPanel border;
 	ImageIcon background;
 	 JLabel picture;
-	 GestionBoutons ecouteur;
 	
 	public FrameJeu(Plateau plateau){
 		this.setTitle("TetraWord");        
@@ -37,7 +36,7 @@ public class FrameJeu extends JFrame{
         //border.add(picture); 
 	    
 	    this.plateau = plateau;
-	    //ecouteur = new GestionBoutons(this.plateau, this);
+
 	    panelJeu = new PanelJeu(this.plateau);
 	    panelJeu.setOpaque(false);
 	    panelJeu.setBackground(new Color(129,0,0));
@@ -45,8 +44,8 @@ public class FrameJeu extends JFrame{
 	    panelJeu.requestFocus();
 	    panelJeu.addKeyListener(new EcouteurClavier(this.plateau, this));
         panelJeu.addMouseListener(new EcouteurSouris(this.plateau,this));
-        panelJeu.valider.addActionListener(ecouteur);
-        panelJeu.supp.addActionListener(ecouteur);
+        panelJeu.valider.addMouseListener(new EcouteurSouris(this.plateau,this));
+        panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau,this));
 	    border.add(panelJeu,BorderLayout.CENTER);
 	    
 
