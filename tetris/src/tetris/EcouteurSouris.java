@@ -17,7 +17,8 @@ public class EcouteurSouris implements MouseListener
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        if (e.getButton()==MouseEvent.BUTTON1){
+        System.out.println("bouton numero :"+e.getID());
+    	if (e.getButton()==MouseEvent.BUTTON1){
         	//verifie qu"on est dans le tableau
         	if(e.getX()<349 || e.getX()>650 || e.getY()<42 || e.getY()>647){
                 System.out.printf("hors du  tableau \n ");
@@ -33,7 +34,7 @@ public class EcouteurSouris implements MouseListener
                 	if(Y==plateau.indexLigneSupp){
                 		StringBuffer tmp = new StringBuffer();
                 		if(plateau.tab[X][Y]!=null){
-                			//récupération de la brique et de sa lettre
+                			//r≈Ωcup≈Ωration de la brique et de sa lettre
                         	int id=plateau.tab[X][Y].getId();
                         	char lettre=plateau.briques.get(id).getLettre();
                         	
@@ -45,13 +46,13 @@ public class EcouteurSouris implements MouseListener
                         	else{
                         		plateau.motEnCours=plateau.motEnCours+tmp.toString();
                         	}
-                        	// récupération du total de point que vaut le mot
+                        	// r≈Ωcup≈Ωration du total de point que vaut le mot
                         	plateau.totalMot+=plateau.briques.get(id).point; 	                		
                 		}
 
                 	}
             		else{
-            			System.out.println("Vous devez cliquer sur la ligne complète");
+            			System.out.println("Vous devez cliquer sur la ligne complÔøΩte");
             		}
                 }
                 
@@ -60,7 +61,7 @@ public class EcouteurSouris implements MouseListener
                 if(plateau.mode==Mode.WORDDLE){
                 		StringBuffer tmp = new StringBuffer();
                 		if(plateau.tab[X][Y]!=null){
-                			//récupération de la brique et de sa lettre
+                			//r≈Ωcup≈Ωration de la brique et de sa lettre
                         	int id=plateau.tab[X][Y].getId();
                         	char lettre=plateau.briques.get(id).getLettre();
                         	
@@ -72,7 +73,7 @@ public class EcouteurSouris implements MouseListener
                         	else{
                         		plateau.motEnCours=plateau.motEnCours+tmp.toString();
                         	}
-                        	// récupération du total de point que vaut le mot
+                        	// r≈Ωcup≈Ωration du total de point que vaut le mot
                         	plateau.totalMot+=plateau.briques.get(id).point; 	                		
                 		}
                 		else{
