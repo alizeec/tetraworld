@@ -15,6 +15,7 @@ public class Mots  {
 	public Cellule positionActuelle;
 
 
+
 	public Mots() {
 		// TODO Auto-generated constructor stub
 		file=new File("src/tetris/mots.txt");
@@ -26,7 +27,6 @@ public class Mots  {
 		if(plateau.positionEnCours==null){
 			initialiseWorddle( plateau);
 			System.out.println("partez de la brique : "+plateau.positionEnCours.posX+" Y:"+ plateau.positionEnCours.posY);
-
 		}
 	}
 	
@@ -62,10 +62,20 @@ public class Mots  {
 		plateau.changementNiveau();
 		System.out.println("Bravo!");
 
+
 	}
 	
 	public void resultatCorrectWorddle(Plateau plateau){
 		plateau.points+=plateau.totalMot;
+		//Iterator iterator = plateau.BriquesUtilisees.iterator();
+		int taille=plateau.BriquesUtilisees.size();
+		for (int i=0; i<taille; ++i){
+			System.out.println(plateau.BriquesUtilisees.get(i));
+			plateau.videCaseBrique(plateau.BriquesUtilisees.get(i));
+			plateau.briques.remove(plateau.BriquesUtilisees.get(i).getId());
+
+		}
+
 		System.out.println("Bravo!");
 
 	}

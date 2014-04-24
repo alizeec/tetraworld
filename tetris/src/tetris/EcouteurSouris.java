@@ -25,6 +25,9 @@ public class EcouteurSouris implements MouseListener
 		
 		if(e.getSource() == frame.getPanel().supp){
 			plateau.motEnCours = plateau.motEnCours.substring(0, plateau.motEnCours.length()-1);
+			if(plateau.mode==Mode.WORDDLE && plateau.nbConnexion>=1){
+				plateau.nbConnexion--;
+			}
 		}
     	if (e.getButton()==MouseEvent.BUTTON1){
         	//verifie qu"on est dans le tableau
@@ -77,6 +80,10 @@ public class EcouteurSouris implements MouseListener
                 			if((plateau.positionEnCours.posY==Y  && plateau.positionEnCours.posX==X)){
                 				System.out.println("Il faut cliquer sur une case à côté");
                 			}
+                			else if(plateau.nbConnexion>7){
+                				System.out.println("Le mot est trop long");
+
+                			}
                 			else{
 	                    		if(plateau.tab[X][Y]!=null){
 	                    			//r≈Ωcup≈Ωration de la brique et de sa lettre
@@ -95,7 +102,8 @@ public class EcouteurSouris implements MouseListener
 	                            	plateau.totalMot+=plateau.briques.get(id).point; 
 	                        		plateau.positionEnCours.posY=Y;
 	                        		plateau.positionEnCours.posX=X;
-	                        		System.out.println(plateau.totalMot);
+	                        		plateau.nbConnexion++;
+	                        		plateau.BriquesUtilisees.add(plateau.briques.get(id));
 	                    		}
 	                    		else{
 	                    			System.out.println("rien dans cette case");

@@ -34,6 +34,7 @@ public class Tetraword {
 	   */
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
 
+
 			  //test de la fonction descendre()
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
@@ -116,11 +117,15 @@ public class Tetraword {
 					worddle.resultatCorrectWorddle(plateau);
 				}
 				else{
-					worddle.resultatInCorrect();
+					worddle.resultatCorrectWorddle(plateau);
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
+				plateau.nbConnexion=0;
 				plateau.mode=Mode.TETRIS;
+				plateau.positionEnCours=null;
+
+
 			  }
 		  }
 	  }

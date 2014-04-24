@@ -29,6 +29,8 @@ public class Plateau {
 	int nbLignesCompletes;
 
 	Cellule positionEnCours;
+	LinkedList<Brique> BriquesUtilisees;
+	int nbConnexion;
 	
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -49,6 +51,8 @@ public class Plateau {
 		indexLigneSupp=0;
 		nbLignesCompletes = 0;
 		this.lignesCompletes = new int[20];
+		nbConnexion=0;
+		BriquesUtilisees = new LinkedList();
 	}
 	
 	public int getLargeur(){
