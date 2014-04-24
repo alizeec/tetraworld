@@ -2,6 +2,7 @@ package tetris;
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 public class EcouteurSouris implements MouseListener
 {
@@ -62,33 +63,50 @@ public class EcouteurSouris implements MouseListener
             			System.out.println("Vous devez cliquer sur la ligne compl�te");
             		}
                 }
+                //fin mode anagramme
                 
                 /* MODE WORDDLE  */
                 
                 if(plateau.mode==Mode.WORDDLE){
                 		StringBuffer tmp = new StringBuffer();
-                		if(plateau.tab[X][Y]!=null){
-                			//rŽcupŽration de la brique et de sa lettre
-                        	int id=plateau.tab[X][Y].getId();
-                        	char lettre=plateau.briques.get(id).getLettre();
-                        	
-                        	//formation du mot
-                        	tmp=tmp.append(lettre);
-                        	if(plateau.motEnCours==null){
-                        		plateau.motEnCours=tmp.toString();
-                        	}
-                        	else{
-                        		plateau.motEnCours=plateau.motEnCours+tmp.toString();
-                        	}
-                        	// rŽcupŽration du total de point que vaut le mot
-                        	plateau.totalMot+=plateau.briques.get(id).point; 	                		
+                		/*System.out.println("X: "+plateau.worddle.pointDepart.posX);
+                		System.out.println("Y: "+plateau.worddle.pointDepart.posY);*/
+
+                		if(((plateau.positionEnCours.posY-Y)<=1 && (plateau.positionEnCours.posY-Y)>=-1 )  && ((plateau.positionEnCours.posX-X)<=1 && (plateau.positionEnCours.posX-X)>=-1 ) )
+                		{
+                			if((plateau.positionEnCours.posY==Y  && plateau.positionEnCours.posX==X)){
+                				System.out.println("Il faut cliquer sur une case � c�t�");
+                			}
+                			else{
+	                    		if(plateau.tab[X][Y]!=null){
+	                    			//rŽcupŽration de la brique et de sa lettre
+	                            	int id=plateau.tab[X][Y].getId();
+	                            	char lettre=plateau.briques.get(id).getLettre();
+	                            	
+	                            	//formation du mot
+	                            	tmp=tmp.append(lettre);
+	                            	if(plateau.motEnCours==null){
+	                            		plateau.motEnCours=tmp.toString();
+	                            	}
+	                            	else{
+	                            		plateau.motEnCours=plateau.motEnCours+tmp.toString();
+	                            	}
+	                            	// rŽcupŽration du total de point que vaut le mot
+	                            	plateau.totalMot+=plateau.briques.get(id).point; 
+	                        		plateau.positionEnCours.posY=Y;
+	                        		plateau.positionEnCours.posX=X;
+	                        		System.out.println(plateau.totalMot);
+	                    		}
+	                    		else{
+	                    			System.out.println("rien dans cette case");
+	
+	                    		}
+                			}
+
                 		}
-                		else{
-                			System.out.println("Il n'y a rien ici");
-                		}
-                		
-                	
                 }
+                
+                // Fin mode worddle
                 
         	}
         }

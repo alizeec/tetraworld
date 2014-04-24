@@ -12,6 +12,7 @@ public class Plateau {
 	int HAUTEUR = 20;
 	int points;
 	Map<Integer,Brique> briques;
+
 	Brique briqueActuelle;
 	boolean perdu;
 	Forme AVenir;
@@ -27,10 +28,13 @@ public class Plateau {
 	int lignesCompletes[];
 	int nbLignesCompletes;
 
+	Cellule positionEnCours;
+	
 	public Plateau() {
 		// TODO Auto-generated constructor stub
 		this.tab = new Cellule[LARGEUR][HAUTEUR];
 		this.briques = new HashMap();
+
 		points=0;
 		perdu=false;
 		AVenir=Forme.getForme();
@@ -287,6 +291,7 @@ public class Plateau {
 		// ajouter une exception pour verifier que b n'est pas null
 		this.briqueActuelle=b;
 		this.briques.put(b.getId(), b);
+
 		return b;
 
 	}

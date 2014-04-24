@@ -25,6 +25,15 @@ public class Cellule {
 		this.lettre = 'a';
 	}
 	
+	public Cellule(int X, int Y, char lettre) { //Pour les cellules temporaires (pour vérifier les deplacements par exemple)
+		this.id = 0;
+		this.forme = null;
+		this.posX = X;
+		this.posY=Y;
+		this.lettre = lettre;
+	}
+
+	
 	public int getId(){
 		return this.id;
 	}
