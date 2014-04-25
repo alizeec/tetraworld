@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 
 public class FrameJeu extends JFrame{
 	private PanelJeu panelJeu;
-	private PanelParameters panelParametres;
+	PanelParameters panelParametres;
 	private Plateau plateau;
 	private JLabel labelscore;
 	private JPanel border;

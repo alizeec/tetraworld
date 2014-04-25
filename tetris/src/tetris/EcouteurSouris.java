@@ -28,6 +28,35 @@ public class EcouteurSouris implements MouseListener
     if(e.getSource() == frame.getPanel().valider){
 			plateau.motEnCours+="\n";
 	}
+    
+    if(e.getSource() == frame.panelParametres.play_song)
+    {            
+    	frame. musique_geek.stop();
+    	frame.panelParametres.stop_song.setVisible(true);
+    	frame.panelParametres.song_played.setVisible(true);
+    	frame.panelParametres.play_song.setVisible(false);
+         
+    }
+    else if(e.getSource() == frame.panelParametres.stop_song)
+    {
+    	frame.musique_geek.lecture();
+    	frame.panelParametres.stop_song.setVisible(false);
+    	frame.panelParametres.play_song.setVisible(true);
+    }
+    else if(e.getSource() == frame.panelParametres.song_stoped)
+    {
+    	frame.musique_geek.stop();
+    	frame.panelParametres.play_song.setVisible(false);
+    	frame.panelParametres.stop_song.setVisible(true);
+    	frame.panelParametres.song_played.setVisible(true);
+    }
+    else if(e.getSource() == frame.panelParametres.song_played)
+    {
+    	frame.musique_geek.lecture();
+    	frame.panelParametres.stop_song.setVisible(false);
+    	frame.panelParametres.play_song.setVisible(true);
+    	frame.panelParametres.song_stoped.setVisible(true);
+    }
 		
 		if(e.getSource() == frame.getPanel().supp){
 			plateau.motEnCours = plateau.motEnCours.substring(0, plateau.motEnCours.length()-1);

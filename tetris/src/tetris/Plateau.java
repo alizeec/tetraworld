@@ -118,7 +118,7 @@ public class Plateau {
 						if(tab[j][k] != null){
 							if(briques.get(tab[j][k].getId()).nbCellules < 4){ //Si la brique n'est pas entière
 								System.out.println("Incomplet");
-								tab[j][i] = new Cellule(tab[j][k].getId(), tab[j][k].forme, tab[j][k].lettre, j, k);
+								tab[j][k+1] = new Cellule(tab[j][k].getId(), tab[j][k].forme, tab[j][k].lettre, j, k);
 								tab[j][k] = null;
 							}else{
 								System.out.println("Complet");
