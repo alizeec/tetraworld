@@ -18,7 +18,12 @@ public class EcouteurSouris implements MouseListener
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-
+   
+    if(e.getSource() == frame.getPanel().param){
+    	    System.out.println("Paramètres");
+    		plateau.mode=Mode.PARAMETRES;
+    	}
+    		
     if(e.getSource() == frame.getPanel().valider){
 			plateau.motEnCours+="\n";
 	}

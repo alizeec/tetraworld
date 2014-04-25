@@ -36,6 +36,7 @@ public class PanelJeu extends JPanel{
 	JButton finish;
 	JButton valider;
 	JButton supp;
+	JButton param;
 	Image fleche;
 	
 	int x;
@@ -60,6 +61,7 @@ public class PanelJeu extends JPanel{
 		finish=new JButton();
 		valider= new JButton(new ImageIcon("bt_ok.png" ));
 		supp= new JButton(new ImageIcon("bt_supp.png" ));
+		param= new JButton(new ImageIcon("parametres_bt.gif" ));
 
 	}
 	
@@ -140,6 +142,11 @@ public class PanelJeu extends JPanel{
 		supp.setContentAreaFilled(false);
 		supp.setBorderPainted(false);
 		add(supp);
+		param.setBounds(950,10, 34, 34);
+		param.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		param.setContentAreaFilled(false);
+		param.setBorderPainted(false);
+		add(param);
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
 		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
 		next = getNext(plateau).getImage();
