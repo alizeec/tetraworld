@@ -17,7 +17,7 @@ public class FrameJeu extends JFrame{
 	private JLabel labelpreview;
 	private JPanel border;
 	ImageIcon background;
-	 JLabel picture;
+	JLabel picture;
 	
 	public FrameJeu(Plateau plateau){
 		this.setTitle("TetraWord");        
