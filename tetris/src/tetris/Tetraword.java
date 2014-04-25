@@ -127,9 +127,10 @@ public class Tetraword {
 	  }
 	  
 	     if (plateau.mode==Mode.PARAMETRES){
-	    	 plateau.pause=true;
+	    	 /*plateau.pause=true;
 			  WindowsParameters param = new WindowsParameters();
-			  param.repaint();
+			  param.repaint();*/
+	    	 jeu.repaint();
 			  }
 
 	  

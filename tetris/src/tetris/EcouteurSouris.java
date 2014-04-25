@@ -20,8 +20,9 @@ public class EcouteurSouris implements MouseListener
     {
    
     if(e.getSource() == frame.getPanel().param){
-    	    System.out.println("Paramètres");
+    	    frame.setPanel(2);
     		plateau.mode=Mode.PARAMETRES;
+    		plateau.pause=true;
     	}
     		
     if(e.getSource() == frame.getPanel().valider){
