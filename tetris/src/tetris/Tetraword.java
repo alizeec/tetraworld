@@ -125,6 +125,12 @@ public class Tetraword {
 			  }
 		  }
 	  }
+	  
+	     if (plateau.mode==Mode.PARAMETRES){
+	    	 plateau.pause=true;
+			  WindowsParameters param = new WindowsParameters();
+			  param.repaint();
+			  }
 
 	  
 	  /* nettoyage de l'Žcran*/

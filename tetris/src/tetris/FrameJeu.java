@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.TextArea;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -21,8 +22,8 @@ public class FrameJeu extends JFrame{
 	private JLabel labelscore;
 	private JPanel border;
 	ImageIcon background;
-	 JLabel picture;
-	 JTextArea text;
+	JLabel picture;
+	JTextArea text;
 	
 	public FrameJeu(Plateau plateau){
 		this.setTitle("TetraWord");        
@@ -51,8 +52,8 @@ public class FrameJeu extends JFrame{
         panelJeu.addMouseListener(new EcouteurSouris(this.plateau,this));
         panelJeu.valider.addMouseListener(new EcouteurSouris(this.plateau,this));
         panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    panelJeu.param.addMouseListener(new EcouteurSouris(this.plateau,this));
 	    border.add(panelJeu,BorderLayout.CENTER);
-	    
 	    
 
 	  	
