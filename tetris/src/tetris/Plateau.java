@@ -1,8 +1,11 @@
 package tetris;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JLabel;
 
@@ -31,6 +34,9 @@ public class Plateau {
 	Cellule positionEnCours;
 	LinkedList<Cellule> BriquesUtilisees;
 	int nbConnexion;
+	
+	long instantDepart;
+	long tempsEcoule;
 	
 	public Plateau() {
 		// TODO Auto-generated constructor stub
@@ -111,29 +117,31 @@ public class Plateau {
 	}
 	
 	public void gravite(){
+		System.out.println("gravité");
 		for(int i=getHauteur()-1;i>=1;--i){
 			for(int j=0;j<getLargeur();j++){
 				if(tab[j][i]==null){
 					for(int k=i-1;k>=1;--k){
-						if(tab[j][k] != null){
+						if(tab[j][k] != null && tab[j][k].getId()!= briqueActuelle.getId()){
 							if(briques.get(tab[j][k].getId()).nbCellules < 4){ //Si la brique n'est pas entière
-								System.out.println("Incomplet");
-								tab[j][k+1] = new Cellule(tab[j][k].getId(), tab[j][k].forme, tab[j][k].lettre, j, k);
-								tab[j][k] = null;
+								int cpt = 1;
+								int l = k;
+								System.out.println(k+cpt);
+								while(k+cpt < 20){
+									if(tab[j][k+cpt] != null) break;
+									System.out.println(tab[j][l].getId());
+									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].forme, tab[j][l].lettre, j, l);
+									tab[j][l] = null;
+									cpt++;
+									l++;
+								}
 							}else{
-								System.out.println("Complet");
 								Cellule newposition = new Cellule(briques.get(tab[j][k].getId()).getPosition().posX, briques.get(tab[j][k].getId()).getPosition().posY+1);
 								if(verifMove(briques.get(tab[j][k].getId()), newposition)){
 									deplaceBrique(briques.get(tab[j][k].getId()), newposition);
 								}
 							}
-						}/*else{
-							if(tab[j][k+1] !=null){
-								if(briques.get(tab[j][k+1].getId()).nbCellules < 4){
-									tab[j][k+1] = null;
-								}
-							}
-						}*/
+						}
 					}
 				}
 			}
@@ -324,6 +332,11 @@ public class Plateau {
 
 		return b;
 
+	}
+	
+	public void timer(){
+		instantDepart = System.currentTimeMillis();
+		tempsEcoule = 0L;
 	}
 	
 

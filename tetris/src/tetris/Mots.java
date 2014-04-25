@@ -15,7 +15,6 @@ public class Mots  {
 	public Cellule positionActuelle;
 
 
-
 	public Mots() {
 		// TODO Auto-generated constructor stub
 		file=new File("src/tetris/mots.txt");
@@ -74,9 +73,12 @@ public class Mots  {
 			int X = plateau.BriquesUtilisees.get(0).posX;
 			int Y = plateau.BriquesUtilisees.get(0).posY;
 			//plateau.suppCasesWorddle(plateau.tab[X][Y]);
-			plateau.briques.get(plateau.tab[X][Y].getId()).nbCellules--;
-			plateau.tab[X][Y] = null;
-			plateau.BriquesUtilisees.remove(0);
+			System.out.println("X : "+X+", Y : "+Y);
+			//if(plateau.briques.get(plateau.tab[X][Y]) != null){
+				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).nbCellules--;
+				plateau.tab[X][Y] = null;
+				plateau.BriquesUtilisees.remove(0);
+			//}
 		}
 		plateau.gravite();
 		System.out.println("Bravo!");
@@ -95,7 +97,7 @@ public class Mots  {
 	
 	for(int i=0; i<plateau.LARGEUR; ++i){
 		for (int j=0; j<plateau.HAUTEUR; ++j){
-			if(plateau.tab[i][j]!=null){
+			if(plateau.tab[i][j]!=null && plateau.tab[i][j].getId() != plateau.briqueActuelle.getId()){
 				positionsPossibles.add(new Cellule(i,j,plateau.tab[i][j].lettre));
 			}
 		}

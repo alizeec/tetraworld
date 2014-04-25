@@ -1,6 +1,7 @@
 package tetris;
 
 import java.io.FileNotFoundException;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Timer;
@@ -99,30 +100,39 @@ public class Tetraword {
 		  Mots worddle=new Mots(plateau);
 		  boolean result=false;
 
+		  if (plateau.tempsEcoule < 60*1000) {
 		  jeu.repaint();
-		  if(plateau.motEnCours!=null){
-			  if(worddle.motfini(plateau.motEnCours)){
+			  //System.out.println("Timer en marche : "+plateau.tempsEcoule);
+			    //perform db poll/check
+			  plateau.tempsEcoule = (new Date()).getTime() - plateau.instantDepart;
+			  if(plateau.motEnCours!=null){
+				  if(worddle.motfini(plateau.motEnCours)){
+		
+					try {
+						result=worddle.findWord(plateau.motEnCours);
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					if(result){
+						worddle.resultatCorrectWorddle(plateau);
+					}
+					else{
+						worddle.resultatCorrectWorddle(plateau);
+					}
+					plateau.motEnCours=null;
+					plateau.totalMot=0;
+					plateau.nbConnexion=0;
+					//plateau.mode=Mode.TETRIS;
+					plateau.positionEnCours=null;
 	
-				try {
-					result=worddle.findWord(plateau.motEnCours);
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				if(result){
-					worddle.resultatCorrectWorddle(plateau);
-				}
-				else{
-					worddle.resultatCorrectWorddle(plateau);
-				}
-				plateau.motEnCours=null;
-				plateau.totalMot=0;
-				plateau.nbConnexion=0;
-				plateau.mode=Mode.TETRIS;
-				plateau.positionEnCours=null;
-
-
+	
+				  }
 			  }
+			  
+		  }else{
+			  System.out.println("temps ecoulé");
+			  plateau.mode=Mode.TETRIS;
 		  }
 	  }
 	  

@@ -74,6 +74,7 @@ public class EcouteurClavier implements KeyListener{
 				plateau.mode=Mode.WORDDLE;
 				
 			}
+			plateau.timer();
 		break;
 
 
