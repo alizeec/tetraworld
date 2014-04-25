@@ -1,6 +1,8 @@
 package tetris;
 
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.Map;
 import java.util.Timer;
 
 
@@ -31,6 +33,8 @@ public class Tetraword {
 	   * Update the game.
 	   */
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
+
+
 			  //test de la fonction descendre()
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
@@ -93,6 +97,37 @@ public class Tetraword {
 		  }
 
 		  
+	  }
+	  
+	  if(plateau.mode==Mode.WORDDLE){
+		  Mots worddle=new Mots(plateau);
+		  boolean result=false;
+
+		  jeu.repaint();
+		  if(plateau.motEnCours!=null){
+			  if(worddle.motfini(plateau.motEnCours)){
+	
+				try {
+					result=worddle.findWord(plateau.motEnCours);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if(result){
+					worddle.resultatCorrectWorddle(plateau);
+				}
+				else{
+					worddle.resultatCorrectWorddle(plateau);
+				}
+				plateau.motEnCours=null;
+				plateau.totalMot=0;
+				plateau.nbConnexion=0;
+				plateau.mode=Mode.TETRIS;
+				plateau.positionEnCours=null;
+
+
+			  }
+		  }
 	  }
 
 	  

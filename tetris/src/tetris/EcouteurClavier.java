@@ -53,19 +53,29 @@ public class EcouteurClavier implements KeyListener{
 			//Rotation
 		break;
 		case KeyEvent.VK_C :
-			Brique b = plateau.creerBrique();
-			plateau.placeBrique(b);
+			if(plateau.mode != Mode.WORDDLE){
+				Brique b = plateau.creerBrique();
+				plateau.placeBrique(b);
+			}
 			
 		break;
 		case KeyEvent.VK_P:
-			plateau.pause=true;
+			if(plateau.mode != Mode.WORDDLE){
+				plateau.pause=true;
+			}
 		break;
 		case KeyEvent.VK_O:
-			plateau.pause=false;
+			if(plateau.mode != Mode.WORDDLE){
+				plateau.pause=false;
+			}
 		break;
-		case KeyEvent.VK_Z:
-			plateau.motEnCours+="\n";
+		case KeyEvent.VK_W:
+			if(plateau.mode != Mode.WORDDLE){
+				plateau.mode=Mode.WORDDLE;
+				
+			}
 		break;
+
 
 		}
 		frame.repaint();

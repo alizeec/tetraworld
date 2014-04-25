@@ -3,21 +3,26 @@ package tetris;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.TextArea;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class FrameJeu extends JFrame{
 	private PanelJeu panelJeu;
 	private Plateau plateau;
 	private JLabel labelscore;
-	private JLabel labelpreview;
 	private JPanel border;
 	ImageIcon background;
 	JLabel picture;
+	JTextArea text;
 	
 	public FrameJeu(Plateau plateau){
 		this.setTitle("TetraWord");        
@@ -36,6 +41,7 @@ public class FrameJeu extends JFrame{
         //border.add(picture); 
 	    
 	    this.plateau = plateau;
+
 	    panelJeu = new PanelJeu(this.plateau);
 	    panelJeu.setOpaque(false);
 	    panelJeu.setBackground(new Color(129,0,0));
@@ -47,16 +53,9 @@ public class FrameJeu extends JFrame{
         panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau,this));
 	    border.add(panelJeu,BorderLayout.CENTER);
 	    
-	    /*JPanel panelscore = new JPanel();
-		labelscore = new JLabel("Score : "+plateau.getScore());
-		panelscore.add(labelscore);
-		panelscore.setBackground(new Color(183,141,110));
-		panelscore.setBorder(BorderFactory.createLineBorder(Color.black));
-		border.add(panelscore,BorderLayout.NORTH);*/
 	    
-		
-		
-		
+
+	  	
 		this.getContentPane().add(border);
 	    setVisible(true);
 	}

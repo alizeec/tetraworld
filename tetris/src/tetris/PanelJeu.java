@@ -1,14 +1,21 @@
 package tetris;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.TextArea;
 
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 
 
@@ -136,17 +143,33 @@ public class PanelJeu extends JPanel{
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
 		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
 		next = getNext(plateau).getImage();
+
+
+		
+		
 		g.drawImage(next, 720, 80, null);
 		if(plateau.perdu==true){
 			g.drawImage(perdu, 0, 0, null);
 			valider.setVisible(false);
 		}
-		if(plateau.mode==Mode.ANAGRAMME || plateau.mode==Mode.WORDDLE){
+		if(plateau.mode==Mode.ANAGRAMME){
 			g.drawImage(fleche, 310, getPixelY(plateau.indexLigneSupp)+4, null);
 			if(plateau.motEnCours!=null){
 				g.drawString(plateau.motEnCours, 177, 107);
 			}
 		}
+		if(plateau.mode==Mode.WORDDLE){
+			
+			if(plateau.positionEnCours!=null){
+				g.drawImage(fleche, getPixelX(plateau.positionEnCours.posX), getPixelY(plateau.positionEnCours.posY)+4, null);
+				if(plateau.motEnCours!=null){
+					g.drawString(plateau.motEnCours, 177, 107);
+				}
+			}
+		}
+		
+		
+
 	}
 
 
@@ -176,6 +199,21 @@ public class PanelJeu extends JPanel{
 					if(plateau.tab[j][i].forme == Forme.VERT){
 						str += "V";
 					}
+				}else{
+					str += "0";
+				}
+			}
+			str += "\n";
+		}
+		System.out.println(str);
+	}
+	
+	public void printTabLettres(){
+		String str = "";
+		for(int i=0;i<plateau.getHauteur();i++){		
+			for(int j=0;j<plateau.getLargeur();j++){
+				if(plateau.tab[j][i] != null){
+					str+=plateau.tab[j][i].lettre;
 				}else{
 					str += "0";
 				}

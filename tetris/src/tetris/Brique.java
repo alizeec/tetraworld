@@ -90,26 +90,7 @@ public abstract class Brique {
 		}
 	}
 	
-	/*public void tournerBrique(Rotation rotation){
-		switch(rotation){
-			case HAUT:
-				this.tab = this.haut;
-			break;
-			case DROITE:
-				this.tab = this.droite;
-			break;
-			case BAS:
-				this.tab=this.bas;
-			break;
-			case GAUCHE:
-				this.tab = this.gauche;
-			break;
-			default:
-				// ˆ remplacer par une exception
-				System.out.println(" la rotation est inconnnue");
-			break;
-		}
-	}*/
+	
 	
 	public void updatePosition(Cellule newposition){
 		this.getPosition().posX=newposition.posX;
