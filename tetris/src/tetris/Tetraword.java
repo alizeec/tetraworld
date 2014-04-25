@@ -34,7 +34,6 @@ public class Tetraword {
 	   */
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
 
-
 			  //test de la fonction descendre()
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
@@ -65,8 +64,6 @@ public class Tetraword {
 		  Mots anagramme=new Mots();
 		  boolean result=false;
 		  jeu.repaint();
-		  System.out.println(plateau.indexLigneSupp);
-		  System.out.println(plateau.nbLignesCompletes);
 		  if(plateau.motEnCours!=null){
 			  if(anagramme.motfini(plateau.motEnCours)){
 	
@@ -86,7 +83,6 @@ public class Tetraword {
 				plateau.totalMot=0;
 				plateau.nbLignesCompletes--;
 				cpt++;
-				System.out.println(plateau.nbLignesCompletes);
 				if(plateau.nbLignesCompletes > 0){
 					plateau.indexLigneSupp = plateau.lignesCompletes[cpt];
 				}else{

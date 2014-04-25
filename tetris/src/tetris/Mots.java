@@ -55,7 +55,8 @@ public class Mots  {
 	//on ajoute les points que valent les letttres + du niveau et on détruit la ligne
 	public void resultatCorrect(Plateau plateau){
 		plateau.suppLigne(plateau.indexLigneSupp);
-		plateau.toutDescendre(plateau.indexLigneSupp);
+		plateau.gravite();
+		//plateau.toutDescendre(plateau.indexLigneSupp);
 		plateau.points+=plateau.totalMot;
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
@@ -70,12 +71,14 @@ public class Mots  {
 		//Iterator iterator = plateau.BriquesUtilisees.iterator();
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
-			System.out.println(plateau.BriquesUtilisees.get(i));
-			plateau.videCaseBrique(plateau.BriquesUtilisees.get(i));
-			plateau.briques.remove(plateau.BriquesUtilisees.get(i).getId());
-
+			int X = plateau.BriquesUtilisees.get(0).posX;
+			int Y = plateau.BriquesUtilisees.get(0).posY;
+			//plateau.suppCasesWorddle(plateau.tab[X][Y]);
+			plateau.briques.get(plateau.tab[X][Y].getId()).nbCellules--;
+			plateau.tab[X][Y] = null;
+			plateau.BriquesUtilisees.remove(0);
 		}
-
+		plateau.gravite();
 		System.out.println("Bravo!");
 
 	}

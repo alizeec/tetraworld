@@ -78,7 +78,7 @@ public class EcouteurSouris implements MouseListener
                 		if(((plateau.positionEnCours.posY-Y)<=1 && (plateau.positionEnCours.posY-Y)>=-1 )  && ((plateau.positionEnCours.posX-X)<=1 && (plateau.positionEnCours.posX-X)>=-1 ) )
                 		{
                 			if((plateau.positionEnCours.posY==Y  && plateau.positionEnCours.posX==X)){
-                				System.out.println("Il faut cliquer sur une case ˆ c™tŽ");
+                				System.out.println("Il faut cliquer sur une case ï¿½ cï¿½tï¿½");
                 			}
                 			else if(plateau.nbConnexion>7){
                 				System.out.println("Le mot est trop long");
@@ -103,7 +103,7 @@ public class EcouteurSouris implements MouseListener
 	                        		plateau.positionEnCours.posY=Y;
 	                        		plateau.positionEnCours.posX=X;
 	                        		plateau.nbConnexion++;
-	                        		plateau.BriquesUtilisees.add(plateau.briques.get(id));
+	                        		plateau.BriquesUtilisees.add(plateau.tab[X][Y]);
 	                    		}
 	                    		else{
 	                    			System.out.println("rien dans cette case");

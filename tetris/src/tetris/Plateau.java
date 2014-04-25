@@ -29,7 +29,7 @@ public class Plateau {
 	int nbLignesCompletes;
 
 	Cellule positionEnCours;
-	LinkedList<Brique> BriquesUtilisees;
+	LinkedList<Cellule> BriquesUtilisees;
 	int nbConnexion;
 	
 	public Plateau() {
@@ -52,7 +52,7 @@ public class Plateau {
 		nbLignesCompletes = 0;
 		this.lignesCompletes = new int[20];
 		nbConnexion=0;
-		BriquesUtilisees = new LinkedList();
+		BriquesUtilisees = new LinkedList<Cellule>();
 	}
 	
 	public int getLargeur(){
@@ -71,13 +71,12 @@ public class Plateau {
 		//rŽcupŽration de la position de la brique pour la placer sur le plateau
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
-		//tab[X][Y]=brique.getPosition();
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ˆ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]==true){
 					if(tab[X+j][Y+i] == null){
-						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.getLettre());
+						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.getLettre(), X+j, Y+i);
 					}else if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
 						tab[X+j][Y+i].forme=brique.getPosition().forme;
 						tab[X+j][Y+i].id=brique.getId();
@@ -98,7 +97,6 @@ public class Plateau {
 
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
-		//tab[X][Y]=brique.getPosition();
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ˆ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
@@ -110,6 +108,36 @@ public class Plateau {
 			}
 		}
 		return true;
+	}
+	
+	public void gravite(){
+		for(int i=getHauteur()-1;i>=1;--i){
+			for(int j=0;j<getLargeur();j++){
+				if(tab[j][i]==null){
+					for(int k=i-1;k>=1;--k){
+						if(tab[j][k] != null){
+							if(briques.get(tab[j][k].getId()).nbCellules < 4){ //Si la brique n'est pas entière
+								System.out.println("Incomplet");
+								tab[j][i] = new Cellule(tab[j][k].getId(), tab[j][k].forme, tab[j][k].lettre, j, k);
+								tab[j][k] = null;
+							}else{
+								System.out.println("Complet");
+								Cellule newposition = new Cellule(briques.get(tab[j][k].getId()).getPosition().posX, briques.get(tab[j][k].getId()).getPosition().posY+1);
+								if(verifMove(briques.get(tab[j][k].getId()), newposition)){
+									deplaceBrique(briques.get(tab[j][k].getId()), newposition);
+								}
+							}
+						}/*else{
+							if(tab[j][k+1] !=null){
+								if(briques.get(tab[j][k+1].getId()).nbCellules < 4){
+									tab[j][k+1] = null;
+								}
+							}
+						}*/
+					}
+				}
+			}
+		}
 	}
 	
 	public void JeuPerdu(){
@@ -132,12 +160,11 @@ public class Plateau {
 				if(brique.tab[i][j]==true){
 					if(X+j > getLargeur()-1 || Y+i > getHauteur()-1 || X+j < 0){
 						return false;
-						//Y+i > getHauteur() || tab[X+j][Y+i] != null){
 					}
 					
 					// si on met juste tab tab[X+j][Y+i].id == 0 �a suffit pas?
 					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
-						this.JeuPerdu();
+						//this.JeuPerdu();
 
 						return false;
 					}
@@ -162,18 +189,14 @@ public class Plateau {
 		int Y=brique.getPosition().posY;
 		nbLignesCompletes = 0;
 		for (int i=0; i<4; ++i){
-			//for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][0]==true || brique.tab[i][1]==true || brique.tab[i][2]==true || brique.tab[i][3]==true){
 					if(verfiUneLigne(Y+i)){
-						System.out.println("ligne");
 						lignesCompletes[nbLignesCompletes] = Y+i;
 						nbLignesCompletes++;
 					}
 					
 				}
-			//}
 		}
-		System.out.println(nbLignesCompletes);
 		if(nbLignesCompletes > 0){
 			indexLigneSupp = lignesCompletes[0];
 			this.mode=Mode.ANAGRAMME;
@@ -182,6 +205,10 @@ public class Plateau {
 	
 	public void suppLigne(int index){
 		for(int i=0; i<getLargeur();++i){
+			briques.get(tab[i][index].getId()).nbCellules--;
+			if(briques.get(tab[i][index].getId()).nbCellules <= 0 ){
+				briques.remove(tab[i][index].getId());
+			}
 			tab[i][index]= null;
 		}
 	}
@@ -224,7 +251,6 @@ public class Plateau {
 		 * }
 		 * else {
 		 */
-		 	brique.descendre();
 		 /*}
 		 * 	
 		 */

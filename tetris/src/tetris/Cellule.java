@@ -9,11 +9,11 @@ public class Cellule {
 	int posY;
 	char lettre;
 
-	public Cellule(int id, Forme forme, char lettre) {
+	public Cellule(int id, Forme forme, char lettre, int X, int Y) {
 		this.id = id;
 		this.forme = forme;
-		this.posX = 3;
-		this.posY=0;
+		this.posX = X;
+		this.posY=Y;
 		this.lettre = lettre;
 	}
 	

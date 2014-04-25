@@ -19,16 +19,18 @@ public abstract class Brique {
 	private char lettre;
 	static int cpt =0;
 	int point;
+	int nbCellules;
 	
 	
 	public Brique (Forme forme, char lettre, int point){
 		this.id=this.cpt;
 		cpt++;
-		this.position=new Cellule(this.id, forme, this.lettre);
+		this.position=new Cellule(this.id, forme, this.lettre, 3, 0);
 		this.rotation = Rotation.HAUT;
 		this.lettre=lettre;
 		this.forme = forme;
 		this.point=point;
+		this.nbCellules = 4;
 		
 	}
 	
