@@ -9,15 +9,16 @@ public class Son {
     public AudioClip ac ;
     public String name_song;
     
-	public Son() {
+	/*public Son() {
 		url = Son.class.getResource("musique_tetris1.wav");
 		ac = Applet.newAudioClip(url);
-	}
+	}*/
 	
 	public Son(String name) {
 		name_song = name;
-		url = Son.class.getResource(name_song +".wav");
+		url = Son.class.getResource(name_song+".wav");
 		ac = Applet.newAudioClip(url);
+		
 	}
 	
 	public void lecture(){		

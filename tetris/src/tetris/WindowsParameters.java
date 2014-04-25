@@ -1,25 +1,24 @@
 package tetris;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
 @SuppressWarnings("serial")
-public class WindowsParameters extends JFrame {
+public class WindowsParameters extends JFrame implements ActionListener {
 	
     private PanelParameters panelParametres;
     private JPanel border;
-	static Son musique1;
+	static Son musique_geek;
+	static Son musique_girly;
 	
 	public WindowsParameters(){
 		
-		/*panelParametres = new PanelParameters();
-	    this.setContentPane(panelParametres);*/
-	    //this.getContentPane().repaint();
-	    
+	    //fenetre
 	    this.setTitle("Parameters");        
 	    this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
@@ -27,32 +26,69 @@ public class WindowsParameters extends JFrame {
 	    this.setSize(1000,700);
 	    this.setResizable(false);
 	    
+	    //création panel
 	    border = new JPanel();
 		border.setLayout(new BorderLayout());
 		
+		// panel = panelParameters
 		panelParametres = new PanelParameters();
 		panelParametres.setOpaque(false);
-		panelParametres.setBackground(new Color(129,0,0));
 		panelParametres.setFocusable(true);
 		panelParametres.requestFocus();
+		panelParametres.stop_song.setVisible(false);
+		panelParametres.song_played.setVisible(false);
 	    border.add(panelParametres,BorderLayout.CENTER);
-	    
-
-		this.getContentPane().add(border);
+	    this.getContentPane().add(border);
 	    setVisible(true);
 	    
-		
+	    //musique	    
+	    musique_geek = new Son("musique_tetris1"); 	    
+	    musique_girly = new Son("musique_tetris2");
 	    
-	   	musique1 = new Son("musique_tetris2");
-	   	
-	   /* this.setVisible(true);*/
+	    //action boutons
+	    panelParametres.play_song.addActionListener(this);
+	    panelParametres.stop_song.addActionListener(this);
+	    panelParametres.song_played.addActionListener(this);
+	    panelParametres.song_stoped.addActionListener(this);
 	}
+
 	
-	public PanelParameters getPanelParameters(){
-		return panelParametres;
-	}
 	 public static void main(String[] args){
 		 new WindowsParameters();
-		 musique1.lecture();
+		 musique_geek.lecture();
 	}
+	 
+	 public void actionPerformed(ActionEvent e) 
+	    {
+	        System.out.println(e.getSource());
+	        System.out.println(e.getID());
+	    	if(e.getSource() == panelParametres.play_song)
+	        {            
+	             musique_geek.stop();
+	             panelParametres.stop_song.setVisible(true);
+	             panelParametres.song_played.setVisible(true);
+	             panelParametres.play_song.setVisible(false);
+	             
+	        }
+	        else if(e.getSource() == panelParametres.stop_song)
+	        {
+	        	 musique_geek.lecture();
+	             panelParametres.stop_song.setVisible(false);
+	             panelParametres.play_song.setVisible(true);
+	        }
+	        else if(e.getSource() == panelParametres.song_stoped)
+	        {
+	        	 musique_geek.stop();
+	             panelParametres.play_song.setVisible(false);
+	             panelParametres.stop_song.setVisible(true);
+	             panelParametres.song_played.setVisible(true);
+	        }
+	        else if(e.getSource() == panelParametres.song_played)
+	        {
+	        	 musique_geek.lecture();
+	             panelParametres.stop_song.setVisible(false);
+	             panelParametres.play_song.setVisible(true);
+	             panelParametres.song_stoped.setVisible(true);
+	        }
+	    }
 }
