@@ -171,10 +171,10 @@ public class PanelJeu extends JPanel{
 				g.drawImage(fleche, getPixelX(plateau.positionEnCours.posX), getPixelY(plateau.positionEnCours.posY)+4, null);
 				if(plateau.motEnCours!=null){
 					g.drawString(plateau.motEnCours, 177, 107);
-					int temps = (int)(60 -( plateau.tempsEcoule/1000));
-					g.drawString("Temps restant : "+temps, 120, 220);
 				}
 			}
+			int temps = (int)(60 -( plateau.tempsEcoule/1000));
+			g.drawString("Temps restant : "+temps, 120, 220);
 		}
 		
 		
