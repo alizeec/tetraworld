@@ -67,22 +67,26 @@ public class Mots  {
 	
 	public void resultatCorrectWorddle(Plateau plateau){
 		plateau.points+=plateau.totalMot;
-		//Iterator iterator = plateau.BriquesUtilisees.iterator();
+		int taille=plateau.BriquesUtilisees.size();
+		for (int i=0; i<taille; ++i){
+			int X = plateau.BriquesUtilisees.get(i).posX;
+			int Y = plateau.BriquesUtilisees.get(i).posY;
+				plateau.tab[X][Y].utilisee = false;
+		}
+		System.out.println("Bravo!");
+
+	}
+	
+	public void supprLettresWorddle(Plateau plateau){
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtilisees.get(0).posX;
 			int Y = plateau.BriquesUtilisees.get(0).posY;
-			//plateau.suppCasesWorddle(plateau.tab[X][Y]);
-			System.out.println("X : "+X+", Y : "+Y);
-			//if(plateau.briques.get(plateau.tab[X][Y]) != null){
 				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).nbCellules--;
 				plateau.tab[X][Y] = null;
 				plateau.BriquesUtilisees.remove(0);
-			//}
 		}
 		plateau.gravite();
-		System.out.println("Bravo!");
-
 	}
 	
 	// si le mot n'existe pas, on ne fait rien

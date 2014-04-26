@@ -114,12 +114,12 @@ public class Tetraword {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					if(result){
+					if(!result){
+						worddle.resultatCorrectWorddle(plateau);
+					}else{
 						worddle.resultatCorrectWorddle(plateau);
 					}
-					else{
-						worddle.resultatCorrectWorddle(plateau);
-					}
+					System.out.println("fini");
 					plateau.motEnCours=null;
 					plateau.totalMot=0;
 					plateau.nbConnexion=0;
@@ -132,6 +132,7 @@ public class Tetraword {
 			  
 		  }else{
 			  System.out.println("temps ecoulé");
+			  worddle.supprLettresWorddle(plateau);
 			  plateau.mode=Mode.TETRIS;
 		  }
 	  }
