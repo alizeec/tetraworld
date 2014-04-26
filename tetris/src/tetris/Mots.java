@@ -20,14 +20,6 @@ public class Mots  {
 		file=new File("src/tetris/mots.txt");
 	}
 	
-	public Mots(Plateau plateau) {
-		// TODO Auto-generated constructor stub
-		file=new File("src/tetris/mots.txt");
-		if(plateau.positionEnCours==null){
-			initialiseWorddle( plateau);
-			System.out.println("partez de la brique : "+plateau.positionEnCours.posX+" Y:"+ plateau.positionEnCours.posY);
-		}
-	}
 	
 	public boolean findWord(String word)  throws FileNotFoundException  {
 		String mot = word.substring(0, word.length()-1);

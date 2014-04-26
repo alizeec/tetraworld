@@ -23,7 +23,7 @@ public class Tetraword {
 
 	
 	
-	public void startGame(Plateau plateau , FrameJeu jeu) {
+	public void startGame(Plateau plateau , FrameJeu jeu, Mots worddle, Mots anagramme) {
 
 	 long start = 0L;
 	 long sleepDuration = 0L;
@@ -68,7 +68,6 @@ public class Tetraword {
 	  }	  
 	  if (plateau.mode==Mode.ANAGRAMME){
 		  
-		  Mots anagramme=new Mots();
 		  boolean result=false;
 		  jeu.repaint();
 		  if(plateau.motEnCours!=null){
@@ -105,8 +104,11 @@ public class Tetraword {
 	  }
 	  
 	  if(plateau.mode==Mode.WORDDLE){
-		  Mots worddle=new Mots(plateau);
 		  boolean result=false;
+		  if(plateau.positionEnCours==null){
+				worddle.initialiseWorddle( plateau);
+				System.out.println("partez de la brique : "+plateau.positionEnCours.posX+" Y:"+ plateau.positionEnCours.posY);
+			}
 
 		  if (plateau.tempsEcoule < 60*1000) {
 		  jeu.repaint();
@@ -183,7 +185,11 @@ public class Tetraword {
 		Plateau plateau= new Plateau();
 		FrameJeu framejeu = new FrameJeu(plateau);
 		Tetraword jeu=new Tetraword();
-		jeu.startGame(plateau,framejeu);
+		Mots worddle=new Mots();
+		Mots anagramme=new Mots();
+
+
+		jeu.startGame(plateau,framejeu, worddle, anagramme);
 				
 	}
 		
