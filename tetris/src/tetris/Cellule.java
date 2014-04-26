@@ -8,6 +8,7 @@ public class Cellule {
 	int posX;
 	int posY;
 	char lettre;
+	boolean utilisee;
 
 	public Cellule(int id, Forme forme, char lettre, int X, int Y) {
 		this.id = id;
@@ -15,6 +16,7 @@ public class Cellule {
 		this.posX = X;
 		this.posY=Y;
 		this.lettre = lettre;
+		this.utilisee = false;
 	}
 	
 	public Cellule(int X, int Y) { //Pour les cellules temporaires (pour vérifier les deplacements par exemple)

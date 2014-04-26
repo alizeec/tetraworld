@@ -27,6 +27,7 @@ public class PanelJeu extends JPanel{
 	Image imageBriqueOrange;
 	Image imageBriqueRouge;
 	Image imageBriqueVert;
+	Image imageBriqueGris;
 	Plateau plateau;
 	Image background;
 	Image perdu;
@@ -51,6 +52,7 @@ public class PanelJeu extends JPanel{
 		imageBriqueOrange = new ImageIcon("cellule_orange.png").getImage();
 		imageBriqueRouge = new ImageIcon("cellule_rouge.png").getImage();
 		imageBriqueVert = new ImageIcon("cellule_vert.png").getImage();
+		imageBriqueGris = new ImageIcon("cellule_gris.png").getImage();
 		background = new ImageIcon("tetris.gif").getImage();
 		perdu = new ImageIcon("perdu.png").getImage();
 		
@@ -121,6 +123,12 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueVert, x, y, null);
+		g.drawString(""+lettre, x+7, y+15);
+	}
+	public void afficherCelluleGris(Graphics g, int i, int j, char lettre){
+		int x = (getPixelX(j));
+		int y = (getPixelY(i));
+		g.drawImage(imageBriqueGris, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
@@ -236,26 +244,30 @@ public class PanelJeu extends JPanel{
 		for(int i=0;i<plateau.getHauteur();i++){		
 			for(int j=0;j<plateau.getLargeur();j++){
 				if(plateau.tab[j][i] != null){
-					if(plateau.tab[j][i].forme == Forme.MAGENTA){
-						afficherCelluleMagenta(g,i,j, plateau.tab[j][i].lettre);
-					}
-					if(plateau.tab[j][i].forme == Forme.BLEU){
-						afficherCelluleBleu(g,i,j, plateau.tab[j][i].lettre);
-					}
-					if(plateau.tab[j][i].forme == Forme.CYAN){
-						afficherCelluleCyan(g,i,j, plateau.tab[j][i].lettre);
-					}
-					if(plateau.tab[j][i].forme == Forme.JAUNE){
-						afficherCelluleJaune(g,i,j, plateau.tab[j][i].lettre);
-					}
-					if(plateau.tab[j][i].forme == Forme.ORANGE){
-						afficherCelluleOrange(g,i,j, plateau.tab[j][i].lettre);
-					}
-					if(plateau.tab[j][i].forme == Forme.ROUGE){
-						afficherCelluleRouge(g,i,j, plateau.tab[j][i].lettre);
-					}
-					if(plateau.tab[j][i].forme == Forme.VERT){
-						afficherCelluleVert(g,i,j, plateau.tab[j][i].lettre);
+					if(plateau.tab[j][i].utilisee == true){
+						afficherCelluleGris(g,i,j, plateau.tab[j][i].lettre);
+					}else{
+						if(plateau.tab[j][i].forme == Forme.MAGENTA){
+							afficherCelluleMagenta(g,i,j, plateau.tab[j][i].lettre);
+						}
+						if(plateau.tab[j][i].forme == Forme.BLEU){
+							afficherCelluleBleu(g,i,j, plateau.tab[j][i].lettre);
+						}
+						if(plateau.tab[j][i].forme == Forme.CYAN){
+							afficherCelluleCyan(g,i,j, plateau.tab[j][i].lettre);
+						}
+						if(plateau.tab[j][i].forme == Forme.JAUNE){
+							afficherCelluleJaune(g,i,j, plateau.tab[j][i].lettre);
+						}
+						if(plateau.tab[j][i].forme == Forme.ORANGE){
+							afficherCelluleOrange(g,i,j, plateau.tab[j][i].lettre);
+						}
+						if(plateau.tab[j][i].forme == Forme.ROUGE){
+							afficherCelluleRouge(g,i,j, plateau.tab[j][i].lettre);
+						}
+						if(plateau.tab[j][i].forme == Forme.VERT){
+							afficherCelluleVert(g,i,j, plateau.tab[j][i].lettre);
+						}
 					}
 				}else{
 				}

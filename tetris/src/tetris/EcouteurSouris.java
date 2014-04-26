@@ -120,11 +120,11 @@ public class EcouteurSouris implements MouseListener
 
                 			}
                 			else{
-	                    		if(plateau.tab[X][Y]!=null){
+	                    		if(plateau.tab[X][Y]!=null && plateau.tab[X][Y].utilisee == false){
 	                    			//rŽcupŽration de la brique et de sa lettre
 	                            	int id=plateau.tab[X][Y].getId();
 	                            	char lettre=plateau.briques.get(id).getLettre();
-	                            	
+	                            	plateau.tab[X][Y].utilisee = true;
 	                            	//formation du mot
 	                            	tmp=tmp.append(lettre);
 	                            	if(plateau.motEnCours==null){
