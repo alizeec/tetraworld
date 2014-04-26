@@ -1,8 +1,10 @@
 package tetris;
 
+import java.io.Serializable;
+
 import javax.swing.JButton;
 
-public class Cellule {
+public class Cellule implements Serializable{
 	int id;
 	Forme forme;
 	int posX;

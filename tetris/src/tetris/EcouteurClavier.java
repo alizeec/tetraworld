@@ -2,6 +2,8 @@ package tetris;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
@@ -75,6 +77,31 @@ public class EcouteurClavier implements KeyListener{
 				
 			}
 			plateau.timer();
+		break;
+		case KeyEvent.VK_S:
+			try {
+				plateau.sauvegarder();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		break;
+		case KeyEvent.VK_D:
+			try {
+				plateau.charger();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		break;
 
 

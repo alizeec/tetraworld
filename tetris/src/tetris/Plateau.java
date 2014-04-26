@@ -1,4 +1,11 @@
 package tetris;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.ObjectInputStream;
+import java.io.Serializable; // java.io.* concerne les transferts.
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,7 +16,7 @@ import java.util.TimerTask;
 
 import javax.swing.JLabel;
 
-public class Plateau {
+public class Plateau implements Serializable {
 	Cellule tab[][];
 	int LARGEUR = 10;
 	int HAUTEUR = 20;
@@ -339,6 +346,45 @@ public class Plateau {
 		tempsEcoule = 0L;
 	}
 	
+	public void sauvegarder()throws FileNotFoundException, IOException {
+        Sauvegarde sauvegarde = new Sauvegarde();
+        sauvegarde.plateau = this;
+        FileOutputStream sortieDeFicher = sortieDeFicher = new FileOutputStream("MaSauvegarde.sa");
+        ObjectOutputStream sortieDObjet = new ObjectOutputStream(sortieDeFicher);
+        sortieDObjet.writeObject(sauvegarde);
+        sortieDObjet.close();
+        System.out.println("sauvegarde");
+
+    }
+	
+	public void transformeEn(Plateau plateau){
+		tab= plateau.tab.clone();
+		points= plateau.points;
+		briques= new HashMap<Integer,Brique>(plateau.briques);
+
+		briqueActuelle=plateau.briqueActuelle;
+		niveau= plateau.niveau;
+		nbLignes = plateau.nbLignes;
+		
+		//pour le mode ANAGRAMME et WORDDLE
+		motEnCours = plateau.motEnCours;
+		totalMot= plateau.totalMot;
+		lignesCompletes = plateau.lignesCompletes;
+		nbLignesCompletes= plateau.nbLignesCompletes;
+
+		positionEnCours=null;
+
+	}
+	
+	 public void charger() throws FileNotFoundException, IOException, ClassNotFoundException {
+	        FileInputStream entreeDeFicher  = new FileInputStream("MaSauvegarde.sa");
+	        ObjectInputStream entreeDObjet = new ObjectInputStream(entreeDeFicher);
+	        Sauvegarde sauvegarde = (Sauvegarde) entreeDObjet.readObject();
+	        entreeDObjet.close();
+	        this.transformeEn(sauvegarde.plateau);
+	        System.out.println("chargement");
+
+	    }
 
 }
 

@@ -1,9 +1,11 @@
 package tetris;
 
+import java.io.Serializable;
 
 
 
-public abstract class Brique {
+
+public abstract class Brique implements Serializable{
 	//tableau courant (haut de base)
 	boolean tab[][];
 	// toutes les rotations possibles

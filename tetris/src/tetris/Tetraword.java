@@ -1,6 +1,9 @@
 package tetris;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Map;
@@ -16,6 +19,9 @@ public class Tetraword {
 	private static final int UPDATES_PER_SECOND = 3;
 	boolean game=true;
 	int cpt = 0;
+	
+
+	
 	
 	public void startGame(Plateau plateau , FrameJeu jeu) {
 
@@ -92,6 +98,8 @@ public class Tetraword {
 
 			  }
 		  }
+		  
+		  
 
 		  
 	  }
@@ -166,6 +174,7 @@ public class Tetraword {
 	}
 
 	
+
 
 
 	
