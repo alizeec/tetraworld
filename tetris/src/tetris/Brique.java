@@ -101,16 +101,7 @@ public abstract class Brique implements Serializable{
 		this.getPosition().posY=newposition.posY;
 	}
 
-	// pour le débug
-	public void afficher(){
-		int i, j;
-		for(i=0; i<this.tab.length; i++) {
 
-			for(j=0; j<this.tab[i].length; j++) {
-				System.out.println("aaa"+this.tab[i][j]);
-			}
-		}
-	}
 	
 	
 

@@ -23,22 +23,26 @@ public class Plateau implements Serializable {
 	int points;
 	Map<Integer,Brique> briques;
 
+	//brique actuellement en mouvement
 	Brique briqueActuelle;
 	boolean perdu;
 	Forme AVenir;
 	private int niveau;
+	// nombre de lignes explosées depuis le changement de niveau
 	int nbLignes;
 	boolean pause;
 	Mode mode;
 	
 	//pour le mode ANAGRAMME et WORDDLE
 	String motEnCours;
+	// message au joueur sur la validité du mot
 	String message;
 	int  totalMot;
 	int indexLigneSupp;
 	int lignesCompletes[];
 	int nbLignesCompletes;
 
+	// en mode worddle, position de la brique "centrale"
 	Cellule positionEnCours;
 	LinkedList<Cellule> BriquesUtilisees;
 	int nbConnexion;
@@ -70,6 +74,9 @@ public class Plateau implements Serializable {
 		BriquesUtilisees = new LinkedList<Cellule>();
 	}
 	
+	
+	// GETTER et SETTER
+	
 	public int getLargeur(){
 		return LARGEUR;
 	}
@@ -81,6 +88,21 @@ public class Plateau implements Serializable {
 	public int getScore(){
 		return points;
 	}
+	
+	public int getNiveau(){
+		return niveau;
+	}
+	
+	 public void setMessage(String message){
+		 this.message=message;
+	 }
+	 
+	 public String getMessage(){
+		 return this.message;
+	 }
+	 
+	 
+	 ///////////////////////
 	
 	public boolean placeBrique(Brique brique){
 		//rŽcupŽration de la position de la brique pour la placer sur le plateau
@@ -97,19 +119,13 @@ public class Plateau implements Serializable {
 						tab[X+j][Y+i].id=brique.getId();
 						tab[X+j][Y+i].lettre=brique.getLettre();
 					}
-
 				}
 			}
 		}
-		
-		// ajout de la brique dans la map, avec son identifiant pour clŽ
-		//briques.put(brique.getId(),brique);
-
 		return true;
 	}
 	
 	public boolean videCaseBrique(Brique brique){
-
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ˆ la cellule du plateau
@@ -125,6 +141,7 @@ public class Plateau implements Serializable {
 		return true;
 	}
 	
+	// en mode worddle, fait tomber les bouts de briques en suspension
 	public void gravite(){
 		System.out.println("gravité");
 		for(int i=getHauteur()-1;i>=1;--i){
@@ -167,11 +184,10 @@ public class Plateau implements Serializable {
 
 	}
 	
+	//verification de possibilité pour la brique de se déplacer à droite/gauche/bas
 	public boolean verifMove(Brique brique, Cellule newposition){
 		int X=newposition.posX;
 		int Y=newposition.posY;
-		//tab[X][Y]=brique.getPosition();
-		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ˆ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]==true){
@@ -179,7 +195,6 @@ public class Plateau implements Serializable {
 						return false;
 					}
 					
-					// si on met juste tab tab[X+j][Y+i].id == 0 �a suffit pas?
 					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
 						//this.JeuPerdu();
 
@@ -191,6 +206,7 @@ public class Plateau implements Serializable {
 		}
 		return true;
 	}
+	
 	
 	public boolean verfiUneLigne(int indexLigne){
 		for(int i=0; i<getLargeur();++i){
@@ -220,6 +236,7 @@ public class Plateau implements Serializable {
 		}
 	}
 	
+	
 	public void suppLigne(int index){
 		for(int i=0; i<getLargeur();++i){
 			briques.get(tab[i][index].getId()).nbCellules--;
@@ -248,45 +265,26 @@ public class Plateau implements Serializable {
 		return niveau;
 	}
 	
-	public int getNiveau(){
-		return niveau;
-	}
+
 
 	
 	public boolean deplaceBrique(Brique brique, Cellule newposition){
-		/*
-		 * VŽrifie si le dŽplacement est possible
-		 * if (!verifMove(newposition)){
-		 * 	// throw exception "dŽplacement pas possible
-		 * return false
-		 * }
-		 */
-			videCaseBrique(brique);
-		/* if (action utilisateur){*/
-		 	brique.updatePosition(newposition);	
-		/* 	
-		 * }
-		 * else {
-		 */
-		 /*}
-		 * 	
-		 */
-		
+		videCaseBrique(brique);
+		brique.updatePosition(newposition);	
 		this.placeBrique(brique);	
-		
 		return true;
 	}
 	
 	
 	public Brique creerBrique(){
-		// valeurs ˆ gŽnŽrer alŽatoirement, MAGENTA et a pour les tests
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
+		// génération aléatoire pondérée de la lettre
 		Integer quotient = (int)(Math.random() * (10-1)) + 1;
 		final String consonnes = "bcdfghjlmnpqrst"; 
 		final String rares = "kvwxyz"; 
-
 		final String voyelles = "aeiou"; 
+		
 		final int number_voyelles = 5; 
 		final int number_consonnes = 15; 
 		final int number_rares = 6; 
@@ -310,6 +308,7 @@ public class Plateau implements Serializable {
 
 			point=1;
         }
+		////////
 
 		Brique b = null;
 		switch(forme){
@@ -335,10 +334,8 @@ public class Plateau implements Serializable {
 				 b = new BriqueVerte(lettre,point);
 			break;
 		}
-		// ajouter une exception pour verifier que b n'est pas null
 		this.briqueActuelle=b;
 		this.briques.put(b.getId(), b);
-
 		return b;
 
 	}
@@ -348,6 +345,10 @@ public class Plateau implements Serializable {
 		tempsEcoule = 0L;
 	}
 	
+	
+	
+	
+	/// Fonctions pour la sauvegarde et le chargement d'une sauvegarde 
 	public void sauvegarder()throws FileNotFoundException, IOException {
         Sauvegarde sauvegarde = new Sauvegarde();
         sauvegarde.plateau = this;
@@ -379,23 +380,19 @@ public class Plateau implements Serializable {
 	}
 	
 	 public void charger() throws FileNotFoundException, IOException, ClassNotFoundException {
-	        FileInputStream entreeDeFicher  = new FileInputStream("MaSauvegarde.sa");
-	        ObjectInputStream entreeDObjet = new ObjectInputStream(entreeDeFicher);
-	        Sauvegarde sauvegarde = (Sauvegarde) entreeDObjet.readObject();
-	        entreeDObjet.close();
-	        this.transformeEn(sauvegarde.plateau);
-	        System.out.println("chargement");
+        FileInputStream entreeDeFicher  = new FileInputStream("MaSauvegarde.sa");
+        ObjectInputStream entreeDObjet = new ObjectInputStream(entreeDeFicher);
+        Sauvegarde sauvegarde = (Sauvegarde) entreeDObjet.readObject();
+        entreeDObjet.close();
+        this.transformeEn(sauvegarde.plateau);
+        System.out.println("chargement");
+     }
+	 
+	 
+	 //////////
+	 
+	 
 
-	    }
-	 
-	 
-	 public void setMessage(String message){
-		 this.message=message;
-	 }
-	 
-	 public String getMessage(){
-		 return this.message;
-	 }
 
 }
 

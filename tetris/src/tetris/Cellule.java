@@ -42,9 +42,4 @@ public class Cellule implements Serializable{
 		return this.id;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

@@ -64,8 +64,9 @@ public class EcouteurSouris implements MouseListener
 				plateau.nbConnexion--;
 			}
 		}
+		
     	if (e.getButton()==MouseEvent.BUTTON1){
-        	//verifie qu"on est dans le tableau
+        	//verifie qu'on est dans le tableau
         	if(e.getX()<349 || e.getX()>650 || e.getY()<42 || e.getY()>647){
                 System.out.printf("hors du  tableau \n ");
         	}
@@ -78,9 +79,10 @@ public class EcouteurSouris implements MouseListener
                 /*   MODE ANAGRAMME   */
                 if(plateau.mode==Mode.ANAGRAMME){
                 	if(Y==plateau.indexLigneSupp){
+        				plateau.setMessage("");
                 		StringBuffer tmp = new StringBuffer();
                 		if(plateau.tab[X][Y]!=null){
-                			//rŽcupŽration de la brique et de sa lettre
+                			//récupération de la brique et de sa lettre
                         	int id=plateau.tab[X][Y].getId();
                         	char lettre=plateau.briques.get(id).getLettre();
                         	
@@ -92,36 +94,35 @@ public class EcouteurSouris implements MouseListener
                         	else{
                         		plateau.motEnCours=plateau.motEnCours+tmp.toString();
                         	}
-                        	// rŽcupŽration du total de point que vaut le mot
+                        	// récupération du total de point que vaut le mot
                         	plateau.totalMot+=plateau.briques.get(id).point; 	                		
                 		}
 
                 	}
             		else{
-            			System.out.println("Vous devez cliquer sur la ligne compl�te");
+            			plateau.setMessage("Vous devez cliquer sur la ligne complète");
             		}
                 }
-                //fin mode anagramme
                 
                 /* MODE WORDDLE  */
                 
                 if(plateau.mode==Mode.WORDDLE){
                 		StringBuffer tmp = new StringBuffer();
-                		/*System.out.println("X: "+plateau.worddle.pointDepart.posX);
-                		System.out.println("Y: "+plateau.worddle.pointDepart.posY);*/
 
                 		if(((plateau.positionEnCours.posY-Y)<=1 && (plateau.positionEnCours.posY-Y)>=-1 )  && ((plateau.positionEnCours.posX-X)<=1 && (plateau.positionEnCours.posX-X)>=-1 ) )
                 		{
                 			if((plateau.positionEnCours.posY==Y  && plateau.positionEnCours.posX==X)){
-                				System.out.println("Il faut cliquer sur une case � c�t�");
+                				plateau.setMessage("Il faut cliquer sur une case autour");
                 			}
                 			else if(plateau.nbConnexion>7){
-                				System.out.println("Le mot est trop long");
+                				plateau.setMessage("Le mot est trop long");
 
                 			}
                 			else{
+                				plateau.setMessage("");
+
 	                    		if(plateau.tab[X][Y]!=null && plateau.tab[X][Y].utilisee == false){
-	                    			//rŽcupŽration de la brique et de sa lettre
+	                    			//récupération de la brique et de sa lettre
 	                            	int id=plateau.tab[X][Y].getId();
 	                            	char lettre=plateau.briques.get(id).getLettre();
 	                            	plateau.tab[X][Y].utilisee = true;
@@ -133,7 +134,7 @@ public class EcouteurSouris implements MouseListener
 	                            	else{
 	                            		plateau.motEnCours=plateau.motEnCours+tmp.toString();
 	                            	}
-	                            	// rŽcupŽration du total de point que vaut le mot
+	                            	// récupération du total de point que vaut le mot
 	                            	plateau.totalMot+=plateau.briques.get(id).point; 
 	                        		plateau.positionEnCours.posY=Y;
 	                        		plateau.positionEnCours.posX=X;
@@ -157,9 +158,7 @@ public class EcouteurSouris implements MouseListener
 
                 		}
                 }
-                
-                // Fin mode worddle
-                
+                                
         	}
         }
     }

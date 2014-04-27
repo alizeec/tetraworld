@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.xml.ws.handler.Handler;
 
 
 
@@ -161,7 +162,16 @@ public class PanelJeu extends JPanel{
 		add(param);
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
 		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
-		g.drawString(String.valueOf(plateau.getMessage()), 177, 190);
+		
+		if(!plateau.getMessage().equals("Perdu!") || !plateau.getMessage().equals("Bravo!")){
+			g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
+		}
+		if(plateau.getMessage().equals("Perdu!") || plateau.getMessage().equals("Bravo!")){
+			g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+		}
+		g.drawString(String.valueOf(plateau.getMessage()), 50, 190);
+		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+
 
 		
 		next = getNext(plateau).getImage();
