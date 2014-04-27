@@ -19,7 +19,7 @@ public class Tetraword {
 	private static final int UPDATES_PER_SECOND = 3;
 	boolean game=true;
 	int cpt = 0;
-	
+	int TAUX_ANAGRAMME = 30;
 
 	
 	
@@ -79,11 +79,11 @@ public class Tetraword {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				if(result){
+				if(result && plateau.motEnCours.length()>=calculPourcentage(TAUX_ANAGRAMME)+1){
 					anagramme.resultatCorrect(plateau);
 				}
 				else{
-					anagramme.resultatInCorrect();
+					anagramme.resultatInCorrect(plateau);
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
@@ -176,7 +176,10 @@ public class Tetraword {
 	}
 
 	
-
+	public  int calculPourcentage(int taux){
+		System.out.println((10*taux)/100);
+		return (10*taux)/100;
+	}
 
 
 	

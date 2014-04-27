@@ -33,6 +33,7 @@ public class Plateau implements Serializable {
 	
 	//pour le mode ANAGRAMME et WORDDLE
 	String motEnCours;
+	String message;
 	int  totalMot;
 	int indexLigneSupp;
 	int lignesCompletes[];
@@ -59,6 +60,7 @@ public class Plateau implements Serializable {
 		
 		mode=Mode.TETRIS;
 		motEnCours=null;
+		message="";
 		totalMot=0;
 		
 		indexLigneSupp=0;
@@ -294,17 +296,17 @@ public class Plateau implements Serializable {
 
 		Random r = new Random();
 
-		if(quotient < 3){
-		lettre = rares.charAt (r.nextInt (number_rares)); //20%
+		if(quotient < 2){
+		lettre = rares.charAt (r.nextInt (number_rares)); 
 		point=3;
 		}
-        else if(quotient < 7){
-    		lettre = consonnes.charAt (r.nextInt (number_consonnes)); //40%
+        else if(quotient < 6){
+    		lettre = consonnes.charAt (r.nextInt (number_consonnes)); 
 
 			point=2;
         }
         else if(quotient < 11){
-    		lettre = voyelles.charAt (r.nextInt (number_voyelles)); //40%
+    		lettre = voyelles.charAt (r.nextInt (number_voyelles)); 
 
 			point=1;
         }
@@ -385,6 +387,15 @@ public class Plateau implements Serializable {
 	        System.out.println("chargement");
 
 	    }
+	 
+	 
+	 public void setMessage(String message){
+		 this.message=message;
+	 }
+	 
+	 public String getMessage(){
+		 return this.message;
+	 }
 
 }
 

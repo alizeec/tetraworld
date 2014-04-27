@@ -13,11 +13,14 @@ import java.util.Vector;
 public class Mots  {
 	File file;
 	public Cellule positionActuelle;
+	LinkedList<String> listMeilleursMots;
+
 
 
 	public Mots() {
 		// TODO Auto-generated constructor stub
 		file=new File("src/tetris/mots.txt");
+		listMeilleursMots= new LinkedList();
 	}
 	
 	
@@ -52,7 +55,7 @@ public class Mots  {
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
 		plateau.changementNiveau();
-		System.out.println("Bravo!");
+		plateau.setMessage("bravo!");
 
 
 	}
@@ -65,7 +68,8 @@ public class Mots  {
 			int Y = plateau.BriquesUtilisees.get(i).posY;
 				plateau.tab[X][Y].utilisee = false;
 		}
-		System.out.println("Bravo!");
+		plateau.setMessage("bravo!");
+
 
 	}
 	
@@ -82,8 +86,8 @@ public class Mots  {
 	}
 	
 	// si le mot n'existe pas, on ne fait rien
-	public void resultatInCorrect(){
-		  System.out.println("BOOUUHHH tu sais pas parler la France");
+	public void resultatInCorrect(Plateau plateau){
+		plateau.setMessage("Perdu!");
 
 	}
 	
@@ -103,17 +107,15 @@ public class Mots  {
 	Integer r = (int)(Math.random() * (nbPositionsPossibles-1)) + 1;
 	System.out.println(r);
 	plateau.positionEnCours=positionsPossibles.get(r);
-
-	
-	
-	
-
-
-	
 	}
 	
 
 	
+
+	
+	
+
+	 
 
 
 

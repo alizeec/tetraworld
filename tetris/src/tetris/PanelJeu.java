@@ -39,6 +39,8 @@ public class PanelJeu extends JPanel{
 	JButton supp;
 	JButton param;
 	Image fleche;
+	JLabel message;
+
 	
 	int x;
 	int y;
@@ -60,6 +62,8 @@ public class PanelJeu extends JPanel{
 
 		score = new JLabel();
 		level=new JLabel();
+
+
 		finish=new JButton();
 		valider= new JButton(new ImageIcon("bt_ok.png" ));
 		supp= new JButton(new ImageIcon("bt_supp.png" ));
@@ -157,6 +161,9 @@ public class PanelJeu extends JPanel{
 		add(param);
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
 		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
+		g.drawString(String.valueOf(plateau.getMessage()), 177, 190);
+
+		
 		next = getNext(plateau).getImage();
 
 

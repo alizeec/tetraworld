@@ -3,6 +3,7 @@ package tetris;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.TextArea;
@@ -14,7 +15,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 public class FrameJeu extends JFrame{
 	private PanelJeu panelJeu;
@@ -24,7 +24,6 @@ public class FrameJeu extends JFrame{
 	private JPanel border;
 	ImageIcon background;
 	JLabel picture;
-	JTextArea text;
 	
 	static Son musique_geek;
 	static Son musique_girly;
@@ -57,6 +56,7 @@ public class FrameJeu extends JFrame{
         panelJeu.valider.addMouseListener(new EcouteurSouris(this.plateau,this));
         panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau,this));
 	    panelJeu.param.addMouseListener(new EcouteurSouris(this.plateau,this));
+
 	    
 	    panelParametres = new PanelParameters();
 		panelParametres.setOpaque(false);
@@ -74,6 +74,9 @@ public class FrameJeu extends JFrame{
 	    panelParametres.addMouseListener(new EcouteurSouris(this.plateau,this));
 	    panelParametres.song_played.addMouseListener(new EcouteurSouris(this.plateau,this));
 	    panelParametres.song_stoped.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    
+	    
+
 	    //border.add(panelJeu,BorderLayout.CENTER);
 	    
 	    this.setPanel(1);
@@ -93,6 +96,10 @@ public class FrameJeu extends JFrame{
 			this.setContentPane(panelParametres);
 		}
 		setVisible(true);
+	}
+	
+	public void setMessage(){
+
 	}
 	
 	
