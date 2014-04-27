@@ -62,7 +62,7 @@ public class EcouteurClavier implements KeyListener{
 		
 		//crée la première brique
 		case KeyEvent.VK_C :
-				Brique b = plateau.creerBrique();
+				Brique b = plateau.creerBrique(plateau.TAUX_VOYELLES, plateau.TAUX_CONSONNES, plateau.TAUX_RARES);
 				plateau.placeBrique(b);	
 		break;
 		

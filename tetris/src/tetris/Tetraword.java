@@ -20,6 +20,10 @@ public class Tetraword {
 	boolean game=true;
 	int cpt = 0;
 	int TAUX_ANAGRAMME = 30;
+	static int TAUX_VOYELLES=5;
+	static int TAUX_CONSONNES=4;
+	static int TAUX_RARES=2;
+
 
 	
 	
@@ -40,8 +44,6 @@ public class Tetraword {
 	   * Update the game.
 	   */
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
-
-			  //test de la fonction descendre()
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
 				  int Y = plateau.briqueActuelle.getPosition().posY;
@@ -53,7 +55,7 @@ public class Tetraword {
 				  }else{
 					  plateau.verifLignes(plateau.briqueActuelle);
 					  plateau.briqueActuelle = null;
-					  Brique newBrique = plateau.creerBrique();
+					  Brique newBrique = plateau.creerBrique(TAUX_VOYELLES, TAUX_CONSONNES, TAUX_RARES);
 					  plateau.briqueActuelle = newBrique;
 		
 					  plateau.placeBrique(newBrique);
@@ -76,7 +78,6 @@ public class Tetraword {
 				try {
 					result=anagramme.findWord(plateau.motEnCours);
 				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				if(result && plateau.motEnCours.length()>=calculPourcentage(TAUX_ANAGRAMME)+1){
@@ -97,10 +98,6 @@ public class Tetraword {
 
 			  }
 		  }
-		  
-		  
-
-		  
 	  }
 	  
 	  if(plateau.mode==Mode.WORDDLE){
@@ -111,9 +108,7 @@ public class Tetraword {
 			}
 
 		  if (plateau.tempsEcoule < 60*1000) {
-		  jeu.repaint();
-			  //System.out.println("Timer en marche : "+plateau.tempsEcoule);
-			    //perform db poll/check
+			  jeu.repaint();
 			  plateau.tempsEcoule = (new Date()).getTime() - plateau.instantDepart;
 			  if(plateau.motEnCours!=null){
 				  if(worddle.motfini(plateau.motEnCours)){
@@ -121,7 +116,6 @@ public class Tetraword {
 					try {
 						result=worddle.findWord(plateau.motEnCours);
 					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					if(!result){
@@ -133,10 +127,7 @@ public class Tetraword {
 					plateau.motEnCours=null;
 					plateau.totalMot=0;
 					plateau.nbConnexion=0;
-					//plateau.mode=Mode.TETRIS;
 					plateau.positionEnCours=null;
-	
-	
 				  }
 			  }
 			  
@@ -148,23 +139,11 @@ public class Tetraword {
 	  }
 	  
 	     if (plateau.mode==Mode.PARAMETRES){
-	    	 /*plateau.pause=true;
-			  WindowsParameters param = new WindowsParameters();
-			  param.repaint();*/
 	    	 jeu.repaint();
 			  }
 
 	  
-	  /* nettoyage de l'Žcran*/
-	   
-	  /*
-	   * Set the time that the loop finished.
-	   */
 	  sleepDuration = (1000L / (UPDATES_PER_SECOND + plateau.getNiveau())) - (System.currentTimeMillis() - start);
-	   
-	  /*
-	   * If the sleep duration is greater than  0 milliseconds, attempt to sleep.
-	   */
 	  if(sleepDuration > 0) {
 	   try {
 	    Thread.sleep(sleepDuration);
@@ -174,6 +153,8 @@ public class Tetraword {
 	  }
 	 }
 	}
+	
+//// FIN DE LA BOUCLE PRINCIPALE
 
 	
 	public  int calculPourcentage(int taux){
@@ -181,6 +162,13 @@ public class Tetraword {
 		return (10*taux)/100;
 	}
 
+	// pour le panneau de conf
+	public static void setLettersRates(Plateau plateau){
+		plateau.TAUX_CONSONNES =TAUX_CONSONNES;
+		plateau.TAUX_VOYELLES =TAUX_VOYELLES;
+		plateau.TAUX_RARES =TAUX_RARES;
+
+	}
 
 	
 
@@ -190,6 +178,7 @@ public class Tetraword {
 		Tetraword jeu=new Tetraword();
 		Mots worddle=new Mots();
 		Mots anagramme=new Mots();
+		setLettersRates(plateau);
 
 
 		jeu.startGame(plateau,framejeu, worddle, anagramme);

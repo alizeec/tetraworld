@@ -21,6 +21,9 @@ public class Plateau implements Serializable {
 	int LARGEUR = 10;
 	int HAUTEUR = 20;
 	int points;
+	int TAUX_VOYELLES;
+	int TAUX_CONSONNES;
+	int TAUX_RARES;
 	Map<Integer,Brique> briques;
 
 	//brique actuellement en mouvement
@@ -276,7 +279,7 @@ public class Plateau implements Serializable {
 	}
 	
 	
-	public Brique creerBrique(){
+	public Brique creerBrique(int taux_voyelles,int taux_consonnes, int taux_rares){
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
 		// génération aléatoire pondérée de la lettre
@@ -294,16 +297,16 @@ public class Plateau implements Serializable {
 
 		Random r = new Random();
 
-		if(quotient < 2){
+		if(quotient < taux_rares){
 		lettre = rares.charAt (r.nextInt (number_rares)); 
 		point=3;
 		}
-        else if(quotient < 6){
+        else if(quotient < taux_rares+taux_consonnes){
     		lettre = consonnes.charAt (r.nextInt (number_consonnes)); 
 
 			point=2;
         }
-        else if(quotient < 11){
+        else if(quotient < taux_rares+taux_consonnes+taux_voyelles){
     		lettre = voyelles.charAt (r.nextInt (number_voyelles)); 
 
 			point=1;

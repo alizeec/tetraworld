@@ -163,13 +163,16 @@ public class PanelJeu extends JPanel{
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
 		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
 		
-		if(!plateau.getMessage().equals("Perdu!") || !plateau.getMessage().equals("Bravo!")){
+		if(!plateau.getMessage().equals("Perdu!") && !plateau.getMessage().equals("Bravo!")){
 			g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
+			g.drawString(String.valueOf(plateau.getMessage()), 50, 190);
+
 		}
 		if(plateau.getMessage().equals("Perdu!") || plateau.getMessage().equals("Bravo!")){
 			g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+			g.drawString(String.valueOf(plateau.getMessage()), 200, 190);
+
 		}
-		g.drawString(String.valueOf(plateau.getMessage()), 50, 190);
 		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 
 
