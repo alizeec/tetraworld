@@ -107,7 +107,7 @@ public class Tetraword {
 				System.out.println("partez de la brique : "+plateau.positionEnCours.posX+" Y:"+ plateau.positionEnCours.posY);
 			}
 
-		  if (plateau.tempsEcoule < 60*1000) {
+		  if (plateau.tempsEcoule < 30*1000) {
 			  jeu.repaint();
 			  plateau.tempsEcoule = (new Date()).getTime() - plateau.instantDepart;
 			  if(plateau.motEnCours!=null){
