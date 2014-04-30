@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class PanelParameters extends JPanel {
 	Image background;
 	JLabel picture;	
-	JButton play_song, stop_song, song_played, song_stoped;
+	JButton play_song, stop_song, song_played, song_stoped, param;
 
 	public PanelParameters(){
 		this.setLayout(new FlowLayout());
@@ -24,6 +24,7 @@ public class PanelParameters extends JPanel {
 	    stop_song = new JButton(new ImageIcon("sound_off_jaune.png"));
 	    song_played = new JButton(new ImageIcon("sound_on_gris.png"));
 	    song_stoped = new JButton(new ImageIcon("sound_off_gris.png"));
+	    param= new JButton(new ImageIcon("parametres_bt.gif" ));
 	
 	
 	    //Add background       
@@ -53,6 +54,11 @@ public class PanelParameters extends JPanel {
 		    song_stoped.setContentAreaFilled(false);
 		    song_stoped.setBorderPainted(false);
 		    add(song_stoped);
+			param.setBounds(950,10, 34, 34);
+			param.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			param.setContentAreaFilled(false);
+			param.setBorderPainted(false);
+			add(param);
      } 
 	
 }	

@@ -19,13 +19,21 @@ public class EcouteurSouris implements MouseListener
     public void mouseClicked(MouseEvent e) 
     {
    
-    if(e.getSource() == frame.getPanel().param){
+    if(e.getSource() == frame.getPanelJeu().param  && plateau.mode!=Mode.PARAMETRES){
+    	System.out.println("j;hj;hhiil");
     	    frame.setPanel(2);
     		plateau.mode=Mode.PARAMETRES;
     		plateau.pause=true;
     	}
+    
+    if(e.getSource() == frame.getPanelParametres().param){
+    	System.out.println("hekveljtrgkhjrkthjrtmh");
+	    frame.setPanel(1);
+		plateau.mode=plateau.SauvegardeMode;
+		plateau.pause=false;
+	}
     		
-    if(e.getSource() == frame.getPanel().valider){
+    if(e.getSource() == frame.getPanelJeu().valider){
 			plateau.motEnCours+="\n";
 	}
     
@@ -58,7 +66,7 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.song_stoped.setVisible(true);
     }
 		
-		if(e.getSource() == frame.getPanel().supp){
+		if(e.getSource() == frame.getPanelJeu().supp){
 			plateau.motEnCours = plateau.motEnCours.substring(0, plateau.motEnCours.length()-1);
 			if(plateau.mode==Mode.WORDDLE && plateau.nbConnexion>=1){
 				plateau.nbConnexion--;
