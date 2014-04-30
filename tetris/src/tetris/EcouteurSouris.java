@@ -73,7 +73,7 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.geek_gris.setVisible(true);
     	frame.panelParametres.girly_jaune.setVisible(true);
     	frame.panelParametres.girly_gris.setVisible(false);
-    	background = "girly";
+    	frame.getPanelJeu().background = frame.getPanelJeu().background_girly;
     	
          
     }
@@ -84,7 +84,7 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.geek_jaune.setVisible(true);
     	frame.panelParametres.girly_jaune.setVisible(false);
     	frame.panelParametres.girly_gris.setVisible(true);
-    	background = "geek";
+    	frame.getPanelJeu().background = frame.getPanelJeu().background_geek;
     	
     }
     else if(e.getSource() == frame.panelParametres.girly_gris)
@@ -94,7 +94,7 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.girly_jaune.setVisible(true);
     	frame.panelParametres.geek_jaune.setVisible(false);
     	frame.panelParametres.geek_gris.setVisible(true);
-    	background = "girly";
+    	frame.getPanelJeu().background = frame.getPanelJeu().background_girly;
     	
     }
     else if(e.getSource() == frame.panelParametres.girly_jaune)
@@ -104,7 +104,7 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.girly_gris.setVisible(true);
     	frame.panelParametres.geek_jaune.setVisible(true);
     	frame.panelParametres.geek_gris.setVisible(false);
-    	background = "geek";
+    	frame.getPanelJeu().background = frame.getPanelJeu().background_geek;
     }
 		
 		

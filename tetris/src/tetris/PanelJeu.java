@@ -30,7 +30,7 @@ public class PanelJeu extends JPanel{
 	Image imageBriqueVert;
 	Image imageBriqueGris;
 	Plateau plateau;
-	Image background_geek,background_girly;
+	Image background_geek,background_girly, background;
 	Image perdu;
 	JLabel score;
 	Image next;
@@ -58,6 +58,7 @@ public class PanelJeu extends JPanel{
 		imageBriqueGris = new ImageIcon("cellule_gris.png").getImage();
 		background_geek = new ImageIcon("tetris.gif").getImage();
 		background_girly = new ImageIcon("tetris_girly.gif").getImage();
+		background = background_geek;
 		perdu = new ImageIcon("perdu.png").getImage();
 		
 		fleche = new ImageIcon("fleche.png").getImage();
@@ -142,7 +143,7 @@ public class PanelJeu extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		setBackground(new Color (155, 204, 234, 0));//modifie la couleur de fond
-		g.drawImage(background_geek, 0, 0, null);
+		g.drawImage(background, 0, 0, null);
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 		afficherPlateau(g);
