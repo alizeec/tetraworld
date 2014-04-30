@@ -13,7 +13,7 @@ import java.util.Timer;
 
 
 
-public class Tetraword {
+public class Tetraword extends Thread{
 	
 
 	private static final int UPDATES_PER_SECOND = 3;
@@ -23,6 +23,10 @@ public class Tetraword {
 	static int TAUX_VOYELLES=5;
 	static int TAUX_CONSONNES=4;
 	static int TAUX_RARES=2;
+	
+	Plateau joueur;
+
+
 
 
 	
@@ -170,15 +174,23 @@ public class Tetraword {
 
 	}
 
+
 	
 
 	public static void main(String[] args) {
 		Plateau plateau= new Plateau();
+		Plateau plateau2= new Plateau();
+
 		FrameJeu framejeu = new FrameJeu(plateau);
-		Tetraword jeu=new Tetraword();
+
 		Mots worddle=new Mots();
 		Mots anagramme=new Mots();
 		setLettersRates(plateau);
+		setLettersRates(plateau2);
+
+		Tetraword jeu = new Tetraword();
+
+		
 
 
 		jeu.startGame(plateau,framejeu, worddle, anagramme);

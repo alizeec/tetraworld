@@ -19,7 +19,8 @@ import javax.swing.JPanel;
 public class FrameJeu extends JFrame{
 	private PanelJeu panelJeu;
 	PanelParameters panelParametres;
-	private Plateau plateau;
+	private Plateau plateau1;
+
 	private JLabel labelscore;
 	private JPanel border;
 	ImageIcon background;
@@ -28,7 +29,7 @@ public class FrameJeu extends JFrame{
 	static Son musique_geek;
 	static Son musique_girly;
 	
-	public FrameJeu(Plateau plateau){
+	public FrameJeu(Plateau plateau1){
 		this.setTitle("TetraWord");        
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -44,18 +45,21 @@ public class FrameJeu extends JFrame{
        // add(picture);
         //border.add(picture); 
 	    
-	    this.plateau = plateau;
+	    this.plateau1 = plateau1;
 
-	    panelJeu = new PanelJeu(this.plateau);
+	    panelJeu = new PanelJeu(this.plateau1);
 	    panelJeu.setOpaque(false);
 	    panelJeu.setBackground(new Color(129,0,0));
 	    panelJeu.setFocusable(true);
 	    panelJeu.requestFocus();
-	    panelJeu.addKeyListener(new EcouteurClavier(this.plateau, this));
-        panelJeu.addMouseListener(new EcouteurSouris(this.plateau,this));
-        panelJeu.valider.addMouseListener(new EcouteurSouris(this.plateau,this));
-        panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau,this));
-	    panelJeu.param.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    panelJeu.addKeyListener(new EcouteurClavier(this.plateau1, this));
+        panelJeu.addMouseListener(new EcouteurSouris(this.plateau1,this));
+        panelJeu.valider.addMouseListener(new EcouteurSouris(this.plateau1,this));
+        panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelJeu.param.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    
+	    
+
 
 	    
 	    panelParametres = new PanelParameters();
@@ -70,10 +74,10 @@ public class FrameJeu extends JFrame{
 	    musique_girly = new Son("musique_tetris2");
 	    
 	    //action boutons
-	    panelParametres.play_song.addMouseListener(new EcouteurSouris(this.plateau,this));
-	    panelParametres.addMouseListener(new EcouteurSouris(this.plateau,this));
-	    panelParametres.song_played.addMouseListener(new EcouteurSouris(this.plateau,this));
-	    panelParametres.song_stoped.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    panelParametres.play_song.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelParametres.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelParametres.song_played.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelParametres.song_stoped.addMouseListener(new EcouteurSouris(this.plateau1,this));
 	    
 	    
 

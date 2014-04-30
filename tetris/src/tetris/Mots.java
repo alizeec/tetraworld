@@ -55,7 +55,7 @@ public class Mots  {
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
 		plateau.changementNiveau();
-		plateau.setMessage("bravo!");
+		plateau.setMessage("Bravo!");
 
 
 	}
@@ -68,7 +68,7 @@ public class Mots  {
 			int Y = plateau.BriquesUtilisees.get(i).posY;
 				plateau.tab[X][Y].utilisee = false;
 		}
-		plateau.setMessage("bravo!");
+		plateau.setMessage("Bravo!");
 
 
 	}

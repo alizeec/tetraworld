@@ -377,6 +377,7 @@ public class Plateau implements Serializable {
 		totalMot= plateau.totalMot;
 		lignesCompletes = plateau.lignesCompletes;
 		nbLignesCompletes= plateau.nbLignesCompletes;
+		mode = plateau.mode;
 
 		positionEnCours=null;
 
