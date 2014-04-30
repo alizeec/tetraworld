@@ -9,6 +9,7 @@ public class EcouteurSouris implements MouseListener
 	Plateau plateau;
 	FrameJeu frame;
 	Mots anagramme;
+	String background;
 	
 	EcouteurSouris(Plateau plateau, FrameJeu frame){
 		this.frame = frame;
@@ -19,15 +20,13 @@ public class EcouteurSouris implements MouseListener
     public void mouseClicked(MouseEvent e) 
     {
    
-    if(e.getSource() == frame.getPanelJeu().param  && plateau.mode!=Mode.PARAMETRES){
-    	System.out.println("j;hj;hhiil");
+    if(e.getSource() == frame.getPanelJeu().paramJeu){
     	    frame.setPanel(2);
     		plateau.mode=Mode.PARAMETRES;
     		plateau.pause=true;
     	}
     
     if(e.getSource() == frame.getPanelParametres().param){
-    	System.out.println("hekveljtrgkhjrkthjrtmh");
 	    frame.setPanel(1);
 		plateau.mode=plateau.SauvegardeMode;
 		plateau.pause=false;
@@ -65,6 +64,49 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.play_song.setVisible(true);
     	frame.panelParametres.song_stoped.setVisible(true);
     }
+    
+    //bt bg
+    if(e.getSource() == frame.panelParametres.geek_jaune)
+    {            
+    	//frame.musique_geek.stop();
+    	frame.panelParametres.geek_jaune.setVisible(false);
+    	frame.panelParametres.geek_gris.setVisible(true);
+    	frame.panelParametres.girly_jaune.setVisible(true);
+    	frame.panelParametres.girly_gris.setVisible(false);
+    	background = "girly";
+    	
+         
+    }
+    else if(e.getSource() == frame.panelParametres.geek_gris)
+    {
+    	//frame.musique_geek.lecture();
+    	frame.panelParametres.geek_gris.setVisible(false);
+    	frame.panelParametres.geek_jaune.setVisible(true);
+    	frame.panelParametres.girly_jaune.setVisible(false);
+    	frame.panelParametres.girly_gris.setVisible(true);
+    	background = "geek";
+    	
+    }
+    else if(e.getSource() == frame.panelParametres.girly_gris)
+    {
+    	//frame.musique_geek.stop();
+    	frame.panelParametres.girly_gris.setVisible(false);
+    	frame.panelParametres.girly_jaune.setVisible(true);
+    	frame.panelParametres.geek_jaune.setVisible(false);
+    	frame.panelParametres.geek_gris.setVisible(true);
+    	background = "girly";
+    	
+    }
+    else if(e.getSource() == frame.panelParametres.girly_jaune)
+    {
+    	//frame.musique_geek.lecture();
+    	frame.panelParametres.girly_jaune.setVisible(false);
+    	frame.panelParametres.girly_gris.setVisible(true);
+    	frame.panelParametres.geek_jaune.setVisible(true);
+    	frame.panelParametres.geek_gris.setVisible(false);
+    	background = "geek";
+    }
+		
 		
 		if(e.getSource() == frame.getPanelJeu().supp){
 			plateau.motEnCours = plateau.motEnCours.substring(0, plateau.motEnCours.length()-1);

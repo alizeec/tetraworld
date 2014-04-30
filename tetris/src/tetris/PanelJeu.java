@@ -30,7 +30,7 @@ public class PanelJeu extends JPanel{
 	Image imageBriqueVert;
 	Image imageBriqueGris;
 	Plateau plateau;
-	Image background;
+	Image background_geek,background_girly;
 	Image perdu;
 	JLabel score;
 	Image next;
@@ -38,7 +38,7 @@ public class PanelJeu extends JPanel{
 	JButton finish;
 	JButton valider;
 	JButton supp;
-	JButton param;
+	JButton paramJeu;
 	Image fleche;
 	JLabel message;
 
@@ -56,7 +56,8 @@ public class PanelJeu extends JPanel{
 		imageBriqueRouge = new ImageIcon("cellule_rouge.png").getImage();
 		imageBriqueVert = new ImageIcon("cellule_vert.png").getImage();
 		imageBriqueGris = new ImageIcon("cellule_gris.png").getImage();
-		background = new ImageIcon("tetris.gif").getImage();
+		background_geek = new ImageIcon("tetris.gif").getImage();
+		background_girly = new ImageIcon("tetris_girly.gif").getImage();
 		perdu = new ImageIcon("perdu.png").getImage();
 		
 		fleche = new ImageIcon("fleche.png").getImage();
@@ -68,7 +69,7 @@ public class PanelJeu extends JPanel{
 		finish=new JButton();
 		valider= new JButton(new ImageIcon("bt_ok.png" ));
 		supp= new JButton(new ImageIcon("bt_supp.png" ));
-		param= new JButton(new ImageIcon("parametres_bt.gif" ));
+		paramJeu= new JButton(new ImageIcon("parametres_bt.gif" ));
 
 	}
 	
@@ -141,7 +142,7 @@ public class PanelJeu extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		setBackground(new Color (155, 204, 234, 0));//modifie la couleur de fond
-		g.drawImage(background, 0, 0, null);
+		g.drawImage(background_geek, 0, 0, null);
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 		afficherPlateau(g);
@@ -155,11 +156,11 @@ public class PanelJeu extends JPanel{
 		supp.setContentAreaFilled(false);
 		supp.setBorderPainted(false);
 		add(supp);
-		param.setBounds(950,10, 34, 34);
-		param.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		param.setContentAreaFilled(false);
-		param.setBorderPainted(false);
-		add(param);
+		paramJeu.setBounds(950,10, 34, 34);
+		paramJeu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		paramJeu.setContentAreaFilled(false);
+		paramJeu.setBorderPainted(false);
+		add(paramJeu);
 		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
 		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
 		

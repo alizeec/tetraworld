@@ -55,8 +55,8 @@ public class FrameJeu extends JFrame{
         panelJeu.addMouseListener(new EcouteurSouris(this.plateau,this));
         panelJeu.valider.addMouseListener(new EcouteurSouris(this.plateau,this));
         panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau,this));
-	    panelJeu.param.addMouseListener(new EcouteurSouris(this.plateau,this));
-
+	    panelJeu.paramJeu.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    
 	    
 	    panelParametres = new PanelParameters();
 		panelParametres.setOpaque(false);
@@ -64,6 +64,10 @@ public class FrameJeu extends JFrame{
 		panelParametres.requestFocus();
 		panelParametres.stop_song.setVisible(false);
 		panelParametres.song_played.setVisible(false);
+		panelParametres.geek_gris.setVisible(false);
+		panelParametres.girly_jaune.setVisible(false);
+		
+		panelParametres.param.addMouseListener(new EcouteurSouris(this.plateau,this));
 		
 		//musique	    
 	    musique_geek = new Son("musique_tetris1"); 	    
@@ -72,9 +76,14 @@ public class FrameJeu extends JFrame{
 	    
 	    //action boutons
 	    panelParametres.play_song.addMouseListener(new EcouteurSouris(this.plateau,this));
-	    panelParametres.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    panelParametres.stop_song.addMouseListener(new EcouteurSouris(this.plateau,this));
 	    panelParametres.song_played.addMouseListener(new EcouteurSouris(this.plateau,this));
 	    panelParametres.song_stoped.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    panelParametres.geek_jaune.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    panelParametres.geek_gris.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    panelParametres.girly_jaune.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    panelParametres.girly_gris.addMouseListener(new EcouteurSouris(this.plateau,this));
+	    
 	    
 	    
 
