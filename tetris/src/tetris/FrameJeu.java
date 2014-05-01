@@ -72,6 +72,7 @@ public class FrameJeu extends JFrame{
 		//musique	    
 	    musique_geek = new Son("musique_tetris1"); 	    
 	    musique_girly = new Son("musique_tetris2");
+	    musique_geek.lecture();
 	    
 	    //action boutons
 	    panelParametres.play_song.addMouseListener(new EcouteurSouris(this.plateau1,this));
@@ -89,9 +90,13 @@ public class FrameJeu extends JFrame{
 	    setVisible(true);
 	}
 	
-	public PanelJeu getPanel(){
-		return panelJeu;
+	public PanelJeu getPanelJeu(){
+			return panelJeu;
 	}
+	
+	public PanelParameters getPanelParametres(){
+		return panelParametres;
+}
 	
 	public void setPanel(int panel){
 		if(panel == 1){//Si PanelJeu

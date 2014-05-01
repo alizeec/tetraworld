@@ -36,6 +36,9 @@ public class Plateau implements Serializable {
 	boolean pause;
 	Mode mode;
 	
+	//sauvegarde mode de jeu
+	public Mode SauvegardeMode;
+	
 	//pour le mode ANAGRAMME et WORDDLE
 	String motEnCours;
 	// message au joueur sur la validité du mot
@@ -69,6 +72,8 @@ public class Plateau implements Serializable {
 		motEnCours=null;
 		message="";
 		totalMot=0;
+		
+		SauvegardeMode =  this.mode;
 		
 		indexLigneSupp=0;
 		nbLignesCompletes = 0;
