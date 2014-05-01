@@ -31,12 +31,16 @@ public class Tetraword extends Thread{
 
 	
 	
-	public void startGame(Plateau plateau , FrameJeu jeu, Mots worddle, Mots anagramme) {
+	public void startGame(LinkedList<Plateau> joueurs , FrameJeu jeu, Mots worddle, Mots anagramme) {
 
 	 long start = 0L;
 	 long sleepDuration = 0L;
 
-
+	  Plateau plateau = joueurs.get(0);
+	  Plateau plateau2 = null;
+	  if(joueurs.size()>1){
+		   plateau2 = joueurs.get(1);
+	  }
 	 while(game) {
 	  /*
 	   * dŽbut de la boucle
@@ -47,7 +51,12 @@ public class Tetraword extends Thread{
 	  /*
 	   * Update the game.
 	   */
+
+		  
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
+		  System.out.println("salut");
+
+
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
 				  int Y = plateau.briqueActuelle.getPosition().posY;
@@ -71,7 +80,40 @@ public class Tetraword extends Thread{
 			  if(plateau.perdu==true){
 				  game=false;
 			  }
-	  }	  
+	  }	 
+	  if(joueurs.size()>1){
+	  if(plateau2.pause==false && plateau2.mode==Mode.TETRIS){
+		  System.out.println("coucou");
+
+
+		  if(plateau2.briqueActuelle != null){
+			  int X = plateau2.briqueActuelle.getPosition().posX;
+			  int Y = plateau2.briqueActuelle.getPosition().posY;
+			  Cellule newposition = new Cellule(X, Y+1);
+			  if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
+				  plateau2.videCaseBrique(plateau2.briqueActuelle);
+				  plateau2.briqueActuelle.descendre();
+				  plateau2.placeBrique(plateau2.briqueActuelle);
+			  }else{
+				  plateau2.verifLignes(plateau2.briqueActuelle);
+				  plateau2.briqueActuelle = null;
+				  Brique newBrique = plateau2.creerBrique(TAUX_VOYELLES, TAUX_CONSONNES, TAUX_RARES);
+				  plateau2.briqueActuelle = newBrique;
+	
+				  plateau2.placeBrique(newBrique);
+			  }
+		  }
+	
+		  /*affichage*/
+		  jeu.repaint();
+		  if(plateau2.perdu==true){
+			  game=false;
+		  }
+  }	
+	  }
+	  
+	  
+	  
 	  if (plateau.mode==Mode.ANAGRAMME){
 		  
 		  boolean result=false;
@@ -145,9 +187,11 @@ public class Tetraword extends Thread{
 	     if (plateau.mode==Mode.PARAMETRES){
 	    	 jeu.repaint();
 			  }
+	  
 
 	  
 	  sleepDuration = (1000L / (UPDATES_PER_SECOND + plateau.getNiveau())) - (System.currentTimeMillis() - start);
+	  
 	  if(sleepDuration > 0) {
 	   try {
 	    Thread.sleep(sleepDuration);
@@ -157,6 +201,7 @@ public class Tetraword extends Thread{
 	  }
 	 }
 	}
+	
 	
 //// FIN DE LA BOUCLE PRINCIPALE
 
@@ -179,8 +224,8 @@ public class Tetraword extends Thread{
 
 	public static void main(String[] args) {
 		LinkedList<Plateau> joueurs = new LinkedList<Plateau>();
-		Plateau plateau= new Plateau(349);
-		//Plateau plateau2= new Plateau(499);
+		Plateau plateau= new Plateau(349, "Joueur 1");
+		//Plateau plateau2= new Plateau(499, "Joueur 2");
 		joueurs.add(plateau);
 		//joueurs.add(plateau2);
 
@@ -196,7 +241,7 @@ public class Tetraword extends Thread{
 		
 
 
-		jeu.startGame(plateau,framejeu, worddle, anagramme);
+		jeu.startGame(joueurs,framejeu, worddle, anagramme);
 				
 	}
 		

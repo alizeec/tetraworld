@@ -26,6 +26,7 @@ public class Plateau implements Serializable {
 	int TAUX_CONSONNES;
 	int TAUX_RARES;
 	Map<Integer,Brique> briques;
+	String nom;
 
 	//brique actuellement en mouvement
 	Brique briqueActuelle;
@@ -57,11 +58,12 @@ public class Plateau implements Serializable {
 	long instantDepart;
 	long tempsEcoule;
 	
-	public Plateau(int position) {
+	public Plateau(int position, String nom) {
 		// TODO Auto-generated constructor stub
 		this.tab = new Cellule[LARGEUR][HAUTEUR];
 		this.briques = new HashMap();
 		coinSuppGauche = position;
+		this.nom = nom;
 
 		points=0;
 		perdu=false;
@@ -287,6 +289,7 @@ public class Plateau implements Serializable {
 	
 	
 	public Brique creerBrique(int taux_voyelles,int taux_consonnes, int taux_rares){
+		System.out.println ("Brique créée par "+this.nom+ " de couleur "+AVenir);
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
 		// génération aléatoire pondérée de la lettre

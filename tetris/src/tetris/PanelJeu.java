@@ -273,32 +273,32 @@ public class PanelJeu extends JPanel{
 	
 	public void afficherPlateau(Graphics g){//affiche le monde dans le panel.
 		for(int k=0; k<nbJoueurs; ++k){
-			for(int i=0;i<plateau.getHauteur();i++){		
-				for(int j=0;j<plateau.getLargeur();j++){
-					if(plateau.tab[j][i] != null){
-						if(plateau.tab[j][i].utilisee == true){
-							afficherCelluleGris(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+			for(int i=0;i<joueurs.get(k).getHauteur();i++){		
+				for(int j=0;j<joueurs.get(k).getLargeur();j++){
+					if(joueurs.get(k).tab[j][i] != null){
+						if(joueurs.get(k).tab[j][i].utilisee == true){
+							afficherCelluleGris(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
 						}else{
-							if(plateau.tab[j][i].forme == Forme.MAGENTA){
-								afficherCelluleMagenta(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].forme == Forme.MAGENTA){
+								afficherCelluleMagenta(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
 							}
-							if(plateau.tab[j][i].forme == Forme.BLEU){
-								afficherCelluleBleu(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].forme == Forme.BLEU){
+								afficherCelluleBleu(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
 							}
-							if(plateau.tab[j][i].forme == Forme.CYAN){
-								afficherCelluleCyan(g,i,j, plateau.tab[j][i].lettre ,joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].forme == Forme.CYAN){
+								afficherCelluleCyan(g,i,j, joueurs.get(k).tab[j][i].lettre ,joueurs.get(k));
 							}
-							if(plateau.tab[j][i].forme == Forme.JAUNE){
-								afficherCelluleJaune(g,i,j, plateau.tab[j][i].lettre ,joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].forme == Forme.JAUNE){
+								afficherCelluleJaune(g,i,j, joueurs.get(k).tab[j][i].lettre ,joueurs.get(k));
 							}
-							if(plateau.tab[j][i].forme == Forme.ORANGE){
-								afficherCelluleOrange(g,i,j, plateau.tab[j][i].lettre ,joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].forme == Forme.ORANGE){
+								afficherCelluleOrange(g,i,j, joueurs.get(k).tab[j][i].lettre ,joueurs.get(k));
 							}
-							if(plateau.tab[j][i].forme == Forme.ROUGE){
-								afficherCelluleRouge(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].forme == Forme.ROUGE){
+								afficherCelluleRouge(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
 							}
-							if(plateau.tab[j][i].forme == Forme.VERT){
-								afficherCelluleVert(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].forme == Forme.VERT){
+								afficherCelluleVert(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
 							}
 						}
 					}

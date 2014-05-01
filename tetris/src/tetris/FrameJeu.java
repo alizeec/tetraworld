@@ -54,7 +54,7 @@ public class FrameJeu extends JFrame{
 	    panelJeu.setBackground(new Color(129,0,0));
 	    panelJeu.setFocusable(true);
 	    panelJeu.requestFocus();
-	    panelJeu.addKeyListener(new EcouteurClavier(this.plateau1, this));
+	    panelJeu.addKeyListener(new EcouteurClavier(joueurs, this));
         panelJeu.addMouseListener(new EcouteurSouris(this.plateau1,this));
         panelJeu.valider.addMouseListener(new EcouteurSouris(this.plateau1,this));
         panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau1,this));
