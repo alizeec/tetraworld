@@ -68,7 +68,8 @@ public class EcouteurSouris implements MouseListener
     //bt bg
     if(e.getSource() == frame.panelParametres.geek_jaune)
     {            
-    	//frame.musique_geek.stop();
+    	frame.musique_geek.stop();
+    	frame.musique_girly.lecture();
     	frame.panelParametres.geek_jaune.setVisible(false);
     	frame.panelParametres.geek_gris.setVisible(true);
     	frame.panelParametres.girly_jaune.setVisible(true);
@@ -95,6 +96,8 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.geek_jaune.setVisible(false);
     	frame.panelParametres.geek_gris.setVisible(true);
     	frame.getPanelJeu().background = frame.getPanelJeu().background_girly;
+    	frame.musique_geek.stop();
+    	frame.musique_girly.lecture();
     	
     }
     else if(e.getSource() == frame.panelParametres.girly_jaune)
