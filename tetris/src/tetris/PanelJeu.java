@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.TextArea;
+import java.util.LinkedList;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -29,6 +30,8 @@ public class PanelJeu extends JPanel{
 	Image imageBriqueRouge;
 	Image imageBriqueVert;
 	Image imageBriqueGris;
+	LinkedList<Plateau> joueurs;
+	int nbJoueurs; 
 	Plateau plateau;
 	Image background_geek,background_girly, background;
 	Image perdu;
@@ -46,8 +49,10 @@ public class PanelJeu extends JPanel{
 	int x;
 	int y;
 	
-	PanelJeu(Plateau plateau){
-		this.plateau = plateau;
+	PanelJeu(LinkedList<Plateau> joueurs){
+		this.joueurs = joueurs;
+		nbJoueurs = this.joueurs.size();
+		this.plateau = joueurs.get(0);
 		imageBriqueMagenta = new ImageIcon("cellule_magenta.png").getImage();
 		imageBriqueBleu = new ImageIcon("cellule_bleu.png").getImage();
 		imageBriqueCyan = new ImageIcon("cellule_cyan.png").getImage();
@@ -74,8 +79,8 @@ public class PanelJeu extends JPanel{
 
 	}
 	
-	public int getPixelX(int i){
-		int x = (int)(349 + 300 / plateau.getLargeur()*i);
+	public int getPixelX(int i, Plateau plateau){
+		int x = (int)(plateau.coinSuppGauche + 300 / plateau.getLargeur()*i);
 		return x;
 	}
 
@@ -84,56 +89,56 @@ public class PanelJeu extends JPanel{
 		return y;
 	}
 	
-	public void afficherCelluleMagenta(Graphics g, int i, int j, char lettre){
-		int x = (getPixelX(j));
+	public void afficherCelluleMagenta(Graphics g, int i, int j, char lettre, Plateau plateau){
+		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueMagenta, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
-	public void afficherCelluleBleu(Graphics g, int i, int j, char lettre){
-		int x = (getPixelX(j));
+	public void afficherCelluleBleu(Graphics g, int i, int j, char lettre, Plateau plateau){
+		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueBleu, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
-	public void afficherCelluleCyan(Graphics g, int i, int j, char lettre){
-		int x = (getPixelX(j));
+	public void afficherCelluleCyan(Graphics g, int i, int j, char lettre, Plateau plateau){
+		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueCyan, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
-	public void afficherCelluleJaune(Graphics g, int i, int j, char lettre){
-		int x = (getPixelX(j));
+	public void afficherCelluleJaune(Graphics g, int i, int j, char lettre, Plateau plateau){
+		int x = (getPixelX(j,plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueJaune, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
-	public void afficherCelluleOrange(Graphics g, int i, int j, char lettre){
-		int x = (getPixelX(j));
+	public void afficherCelluleOrange(Graphics g, int i, int j, char lettre, Plateau plateau){
+		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueOrange, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
-	public void afficherCelluleRouge(Graphics g, int i, int j, char lettre){
-		int x = (getPixelX(j));
+	public void afficherCelluleRouge(Graphics g, int i, int j, char lettre, Plateau plateau){
+		int x = (getPixelX(j,plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueRouge, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
-	public void afficherCelluleVert(Graphics g, int i, int j, char lettre){
-		int x = (getPixelX(j));
+	public void afficherCelluleVert(Graphics g, int i, int j, char lettre, Plateau plateau){
+		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueVert, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
-	public void afficherCelluleGris(Graphics g, int i, int j, char lettre){
-		int x = (getPixelX(j));
+	public void afficherCelluleGris(Graphics g, int i, int j, char lettre, Plateau plateau){
+		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueGris, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
@@ -162,49 +167,53 @@ public class PanelJeu extends JPanel{
 		paramJeu.setContentAreaFilled(false);
 		paramJeu.setBorderPainted(false);
 		add(paramJeu);
-		g.drawString(String.valueOf(plateau.getScore()), 200, 635);
-		g.drawString(String.valueOf(plateau.getNiveau()), 770, 635);
-		
-		if(!plateau.getMessage().equals("Perdu!") && !plateau.getMessage().equals("Bravo!")){
-			g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
-			g.drawString(String.valueOf(plateau.getMessage()), 50, 190);
-
-		}
-		if(plateau.getMessage().equals("Perdu!") || plateau.getMessage().equals("Bravo!")){
-			g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-			g.drawString(String.valueOf(plateau.getMessage()), 200, 190);
-
-		}
-		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-
-
-		
-		next = getNext(plateau).getImage();
-
-
 		
 		
-		g.drawImage(next, 720, 80, null);
-		if(plateau.perdu==true){
-			g.drawImage(perdu, 0, 0, null);
-			valider.setVisible(false);
-		}
-		if(plateau.mode==Mode.ANAGRAMME){
-			g.drawImage(fleche, 310, getPixelY(plateau.indexLigneSupp)+4, null);
-			if(plateau.motEnCours!=null){
-				g.drawString(plateau.motEnCours, 177, 107);
-			}
-		}
-		if(plateau.mode==Mode.WORDDLE){
+		for (int i=0; i<nbJoueurs; ++i){
+			g.drawString(String.valueOf(joueurs.get(i).getScore()), 200, 635);
+			g.drawString(String.valueOf(joueurs.get(i).getNiveau()), 770, 635);
 			
-			if(plateau.positionEnCours!=null){
-				g.drawImage(fleche, getPixelX(plateau.positionEnCours.posX), getPixelY(plateau.positionEnCours.posY)+4, null);
-				if(plateau.motEnCours!=null){
-					g.drawString(plateau.motEnCours, 177, 107);
+			if(!joueurs.get(i).getMessage().equals("Perdu!") && !joueurs.get(i).getMessage().equals("Bravo!")){
+				g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
+				g.drawString(String.valueOf(joueurs.get(i).getMessage()), 50, 190);
+	
+			}
+			if(joueurs.get(i).getMessage().equals("Perdu!") || joueurs.get(i).getMessage().equals("Bravo!")){
+				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+				g.drawString(String.valueOf(joueurs.get(i).getMessage()), 200, 190);
+	
+			}
+			g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+	
+	
+			
+			next = getNext(joueurs.get(i)).getImage();
+	
+	
+			
+			
+			g.drawImage(next, 720, 80, null);
+			if(joueurs.get(i).perdu==true){
+				g.drawImage(perdu, 0, 0, null);
+				valider.setVisible(false);
+			}
+			if(joueurs.get(i).mode==Mode.ANAGRAMME){
+				g.drawImage(fleche, 310, getPixelY(joueurs.get(i).indexLigneSupp)+4, null);
+				if(joueurs.get(i).motEnCours!=null){
+					g.drawString(joueurs.get(i).motEnCours, 177, 107);
 				}
 			}
-			int temps = (int)(60 -( plateau.tempsEcoule/1000));
-			g.drawString("Temps restant : "+temps, 120, 220);
+			if(joueurs.get(i).mode==Mode.WORDDLE){
+				
+				if(joueurs.get(i).positionEnCours!=null){
+					g.drawImage(fleche, getPixelX(joueurs.get(i).positionEnCours.posX,joueurs.get(i)), getPixelY(joueurs.get(i).positionEnCours.posY)+4, null);
+					if(joueurs.get(i).motEnCours!=null){
+						g.drawString(joueurs.get(i).motEnCours, 177, 107);
+					}
+				}
+				int temps = (int)(60 -( joueurs.get(i).tempsEcoule/1000));
+				g.drawString("Temps restant : "+temps, 120, 220);
+			}
 		}
 		
 		
@@ -263,35 +272,36 @@ public class PanelJeu extends JPanel{
 	}
 	
 	public void afficherPlateau(Graphics g){//affiche le monde dans le panel.
-		for(int i=0;i<plateau.getHauteur();i++){		
-			for(int j=0;j<plateau.getLargeur();j++){
-				if(plateau.tab[j][i] != null){
-					if(plateau.tab[j][i].utilisee == true){
-						afficherCelluleGris(g,i,j, plateau.tab[j][i].lettre);
-					}else{
-						if(plateau.tab[j][i].forme == Forme.MAGENTA){
-							afficherCelluleMagenta(g,i,j, plateau.tab[j][i].lettre);
-						}
-						if(plateau.tab[j][i].forme == Forme.BLEU){
-							afficherCelluleBleu(g,i,j, plateau.tab[j][i].lettre);
-						}
-						if(plateau.tab[j][i].forme == Forme.CYAN){
-							afficherCelluleCyan(g,i,j, plateau.tab[j][i].lettre);
-						}
-						if(plateau.tab[j][i].forme == Forme.JAUNE){
-							afficherCelluleJaune(g,i,j, plateau.tab[j][i].lettre);
-						}
-						if(plateau.tab[j][i].forme == Forme.ORANGE){
-							afficherCelluleOrange(g,i,j, plateau.tab[j][i].lettre);
-						}
-						if(plateau.tab[j][i].forme == Forme.ROUGE){
-							afficherCelluleRouge(g,i,j, plateau.tab[j][i].lettre);
-						}
-						if(plateau.tab[j][i].forme == Forme.VERT){
-							afficherCelluleVert(g,i,j, plateau.tab[j][i].lettre);
+		for(int k=0; k<nbJoueurs; ++k){
+			for(int i=0;i<plateau.getHauteur();i++){		
+				for(int j=0;j<plateau.getLargeur();j++){
+					if(plateau.tab[j][i] != null){
+						if(plateau.tab[j][i].utilisee == true){
+							afficherCelluleGris(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+						}else{
+							if(plateau.tab[j][i].forme == Forme.MAGENTA){
+								afficherCelluleMagenta(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+							}
+							if(plateau.tab[j][i].forme == Forme.BLEU){
+								afficherCelluleBleu(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+							}
+							if(plateau.tab[j][i].forme == Forme.CYAN){
+								afficherCelluleCyan(g,i,j, plateau.tab[j][i].lettre ,joueurs.get(k));
+							}
+							if(plateau.tab[j][i].forme == Forme.JAUNE){
+								afficherCelluleJaune(g,i,j, plateau.tab[j][i].lettre ,joueurs.get(k));
+							}
+							if(plateau.tab[j][i].forme == Forme.ORANGE){
+								afficherCelluleOrange(g,i,j, plateau.tab[j][i].lettre ,joueurs.get(k));
+							}
+							if(plateau.tab[j][i].forme == Forme.ROUGE){
+								afficherCelluleRouge(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+							}
+							if(plateau.tab[j][i].forme == Forme.VERT){
+								afficherCelluleVert(g,i,j, plateau.tab[j][i].lettre, joueurs.get(k));
+							}
 						}
 					}
-				}else{
 				}
 			}
 		}

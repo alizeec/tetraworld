@@ -8,6 +8,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.TextArea;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -20,6 +21,7 @@ public class FrameJeu extends JFrame{
 	private PanelJeu panelJeu;
 	PanelParameters panelParametres;
 	private Plateau plateau1;
+	private LinkedList<Plateau> joueurs;
 
 	private JLabel labelscore;
 	private JPanel border;
@@ -29,7 +31,7 @@ public class FrameJeu extends JFrame{
 	static Son musique_geek;
 	static Son musique_girly;
 	
-	public FrameJeu(Plateau plateau1){
+	public FrameJeu(LinkedList<Plateau> joueurs){
 		this.setTitle("TetraWord");        
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -45,9 +47,9 @@ public class FrameJeu extends JFrame{
        // add(picture);
         //border.add(picture); 
 	    
-	    this.plateau1 = plateau1;
+	    this.plateau1 = joueurs.get(0);
 
-	    panelJeu = new PanelJeu(this.plateau1);
+	    panelJeu = new PanelJeu(joueurs);
 	    panelJeu.setOpaque(false);
 	    panelJeu.setBackground(new Color(129,0,0));
 	    panelJeu.setFocusable(true);

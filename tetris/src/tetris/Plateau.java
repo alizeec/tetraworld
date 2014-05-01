@@ -20,6 +20,7 @@ public class Plateau implements Serializable {
 	Cellule tab[][];
 	int LARGEUR = 10;
 	int HAUTEUR = 20;
+	int coinSuppGauche;
 	int points;
 	int TAUX_VOYELLES;
 	int TAUX_CONSONNES;
@@ -56,10 +57,11 @@ public class Plateau implements Serializable {
 	long instantDepart;
 	long tempsEcoule;
 	
-	public Plateau() {
+	public Plateau(int position) {
 		// TODO Auto-generated constructor stub
 		this.tab = new Cellule[LARGEUR][HAUTEUR];
 		this.briques = new HashMap();
+		coinSuppGauche = position;
 
 		points=0;
 		perdu=false;

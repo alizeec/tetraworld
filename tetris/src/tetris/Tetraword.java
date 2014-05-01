@@ -178,15 +178,18 @@ public class Tetraword extends Thread{
 	
 
 	public static void main(String[] args) {
-		Plateau plateau= new Plateau();
-		Plateau plateau2= new Plateau();
+		LinkedList<Plateau> joueurs = new LinkedList<Plateau>();
+		Plateau plateau= new Plateau(349);
+		//Plateau plateau2= new Plateau(499);
+		joueurs.add(plateau);
+		//joueurs.add(plateau2);
 
-		FrameJeu framejeu = new FrameJeu(plateau);
+		FrameJeu framejeu = new FrameJeu(joueurs);
 
 		Mots worddle=new Mots();
 		Mots anagramme=new Mots();
 		setLettersRates(plateau);
-		setLettersRates(plateau2);
+		//setLettersRates(plateau2);
 
 		Tetraword jeu = new Tetraword();
 
