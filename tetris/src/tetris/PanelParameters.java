@@ -18,7 +18,7 @@ import javax.swing.event.ChangeListener;
 public class PanelParameters extends JPanel {
 	Image background;
 	JLabel picture;	
-	JButton play_song, stop_song, song_played, song_stoped, param, geek_gris, geek_jaune, girly_gris,girly_jaune;
+	JButton play_song, stop_song, song_played, song_stoped, param, geek_gris, geek_jaune, girly_gris,girly_jaune,en,en_gris,fr,fr_gris;
 	JLabel lblResult;
 	Slider slider;
 
@@ -34,7 +34,10 @@ public class PanelParameters extends JPanel {
 	    girly_gris = new JButton(new ImageIcon("girly_gris.png"));
 	    girly_jaune = new JButton(new ImageIcon("girly_jaune.png"));
 	    param= new JButton(new ImageIcon("parametres_bt.gif" ));
-	
+	    en= new JButton(new ImageIcon("en.png" ));
+	    en_gris= new JButton(new ImageIcon("en_gris.png" ));
+	    fr= new JButton(new ImageIcon("fr.png" ));
+	    fr_gris= new JButton(new ImageIcon("fr_gris.png" ));
 	
 	    //Add background       
 	    background = new ImageIcon("fond_param.png").getImage();
@@ -88,6 +91,26 @@ public class PanelParameters extends JPanel {
 		    girly_gris.setContentAreaFilled(false);
 		    girly_gris.setBorderPainted(false);
 		    add(girly_gris);
+		    en.setBounds(855,550, 54, 72);
+		    en.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		    en.setContentAreaFilled(false);
+		    en.setBorderPainted(false);
+		    add(en);
+		    en_gris.setBounds(855,550, 54, 72);
+		    en_gris.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		    en_gris.setContentAreaFilled(false);
+		    en_gris.setBorderPainted(false);
+		    add(en_gris);
+		    fr.setBounds(790,550, 54, 72);
+		    fr.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		    fr.setContentAreaFilled(false);
+		    fr.setBorderPainted(false);
+		    add(fr);
+		    fr_gris.setBounds(790,550, 54, 72);
+		    fr_gris.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		    fr_gris.setContentAreaFilled(false);
+		    fr_gris.setBorderPainted(false);
+		    add(fr_gris);
 			param.setBounds(950,10, 34, 34);
 			param.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			param.setContentAreaFilled(false);

@@ -72,6 +72,7 @@ public class FrameJeu extends JFrame{
 		panelParametres.song_played.setVisible(false);
 		panelParametres.geek_gris.setVisible(false);
 		panelParametres.girly_jaune.setVisible(false);
+		panelParametres.en.setVisible(false);
 		
 		panelParametres.param.addMouseListener(new EcouteurSouris(this.plateau1,this));
 		
@@ -90,6 +91,11 @@ public class FrameJeu extends JFrame{
 	    panelParametres.geek_gris.addMouseListener(new EcouteurSouris(this.plateau1,this));
 	    panelParametres.girly_jaune.addMouseListener(new EcouteurSouris(this.plateau1,this));
 	    panelParametres.girly_gris.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelParametres.en.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelParametres.fr.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelParametres.en_gris.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelParametres.fr_gris.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    
 	    
 	    
 	    

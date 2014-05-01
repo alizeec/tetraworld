@@ -109,6 +109,41 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.geek_gris.setVisible(false);
     	frame.getPanelJeu().background = frame.getPanelJeu().background_geek;
     }
+    
+    //bt langue
+    if(e.getSource() == frame.panelParametres.en_gris)
+    {           
+    	frame.panelParametres.en_gris.setVisible(false);
+    	frame.panelParametres.en.setVisible(true);
+    	frame.panelParametres.fr_gris.setVisible(true);
+    	frame.panelParametres.fr.setVisible(false);
+    	
+         
+    }
+    else if(e.getSource() == frame.panelParametres.en)
+    {
+    	frame.panelParametres.en.setVisible(false);
+    	frame.panelParametres.en_gris.setVisible(true);
+    	frame.panelParametres.fr_gris.setVisible(false);
+    	frame.panelParametres.fr.setVisible(true);
+    	
+    }
+    else if(e.getSource() == frame.panelParametres.fr)
+    {
+    	frame.panelParametres.fr.setVisible(false);
+    	frame.panelParametres.fr_gris.setVisible(true);
+    	frame.panelParametres.en_gris.setVisible(false);
+    	frame.panelParametres.en.setVisible(true);
+
+    	
+    }
+    else if(e.getSource() == frame.panelParametres.fr_gris)
+    {
+    	frame.panelParametres.fr_gris.setVisible(false);
+    	frame.panelParametres.fr.setVisible(true);
+    	frame.panelParametres.en_gris.setVisible(true);
+    	frame.panelParametres.en.setVisible(false);
+    }
 		
 		
 		if(e.getSource() == frame.getPanelJeu().supp){
