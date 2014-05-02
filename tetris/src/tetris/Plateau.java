@@ -289,7 +289,6 @@ public class Plateau implements Serializable {
 	
 	
 	public Brique creerBrique(int taux_voyelles,int taux_consonnes, int taux_rares){
-		System.out.println ("Brique créée par "+this.nom+ " de couleur "+AVenir);
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
 		// génération aléatoire pondérée de la lettre

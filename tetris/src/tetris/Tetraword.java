@@ -25,6 +25,7 @@ public class Tetraword extends Thread{
 	static int TAUX_RARES=2;
 	
 	Plateau joueur;
+	static boolean multijoueur = true;
 
 
 
@@ -81,9 +82,6 @@ public class Tetraword extends Thread{
 	  }	 
 	  if(joueurs.size()>1){
 	  if(plateau2.pause==false && plateau2.mode==Mode.TETRIS){
-		  System.out.println("coucou");
-
-
 		  if(plateau2.briqueActuelle != null){
 			  int X = plateau2.briqueActuelle.getPosition().posX;
 			  int Y = plateau2.briqueActuelle.getPosition().posY;
@@ -112,74 +110,26 @@ public class Tetraword extends Thread{
 	  
 	  
 	  
-	  if (plateau.mode==Mode.ANAGRAMME){
-		  
-		  boolean result=false;
-		  jeu.repaint();
-		  if(plateau.motEnCours!=null){
-			  if(anagramme.motfini(plateau.motEnCours)){
-	
-				try {
-					result=anagramme.findWord(plateau.motEnCours);
-				} catch (FileNotFoundException e1) {
-					e1.printStackTrace();
-				}
-				if(result && plateau.motEnCours.length()>=calculPourcentage(TAUX_ANAGRAMME)+1){
-					anagramme.resultatCorrect(plateau);
-				}
-				else{
-					anagramme.resultatInCorrect(plateau);
-				}
-				plateau.motEnCours=null;
-				plateau.totalMot=0;
-				plateau.nbLignesCompletes--;
-				cpt++;
-				if(plateau.nbLignesCompletes > 0){
-					plateau.indexLigneSupp = plateau.lignesCompletes[cpt];
-				}else{
-					plateau.mode=Mode.TETRIS;
-				}
-
-			  }
+	  if (plateau.mode==Mode.ANAGRAMME || plateau2.mode==Mode.ANAGRAMME){
+		  if(plateau.mode==Mode.ANAGRAMME){
+			  anagramme( plateau,  anagramme,  jeu);
 		  }
+		  if(plateau2.mode==Mode.ANAGRAMME){
+			  anagramme( plateau2,  anagramme,  jeu);
+		  }
+
 	  }
 	  
-	  if(plateau.mode==Mode.WORDDLE){
-		  boolean result=false;
-		  if(plateau.positionEnCours==null){
-				worddle.initialiseWorddle( plateau);
-				System.out.println("partez de la brique : "+plateau.positionEnCours.posX+" Y:"+ plateau.positionEnCours.posY);
-			}
+	  if(plateau.mode==Mode.WORDDLE || plateau2.mode==Mode.WORDDLE){
+		  
+		  if(plateau.mode==Mode.WORDDLE){
 
-		  if (plateau.tempsEcoule < 30*1000) {
-			  jeu.repaint();
-			  plateau.tempsEcoule = (new Date()).getTime() - plateau.instantDepart;
-			  if(plateau.motEnCours!=null){
-				  if(worddle.motfini(plateau.motEnCours)){
-		
-					try {
-						result=worddle.findWord(plateau.motEnCours);
-					} catch (FileNotFoundException e1) {
-						e1.printStackTrace();
-					}
-					if(!result){
-						worddle.resultatCorrectWorddle(plateau);
-					}else{
-						worddle.resultatCorrectWorddle(plateau);
-					}
-					System.out.println("fini");
-					plateau.motEnCours=null;
-					plateau.totalMot=0;
-					plateau.nbConnexion=0;
-					plateau.positionEnCours=null;
-				  }
-			  }
-			  
-		  }else{
-			  System.out.println("temps ecoulé");
-			  worddle.supprLettresWorddle(plateau);
-			  plateau.mode=Mode.TETRIS;
+			  worddle( plateau,  worddle,  jeu);
 		  }
+		  if(plateau2.mode==Mode.WORDDLE){
+			  worddle( plateau2,  worddle,  jeu);
+		  }
+		 
 	  }
 	  
 	     if (plateau.mode==Mode.PARAMETRES){
@@ -217,22 +167,102 @@ public class Tetraword extends Thread{
 
 	}
 
+	public void anagramme(Plateau plateau, Mots anagramme, FrameJeu jeu){
+		  boolean result=false;
+		  jeu.repaint();
+		  if(plateau.motEnCours!=null){
+			  if(anagramme.motfini(plateau.motEnCours)){
+	
+				try {
+					result=anagramme.findWord(plateau.motEnCours);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				if(result && plateau.motEnCours.length()>=calculPourcentage(TAUX_ANAGRAMME)+1){
+					anagramme.resultatCorrect(plateau);
+				}
+				else{
+					anagramme.resultatInCorrect(plateau);
+				}
+				plateau.motEnCours=null;
+				plateau.totalMot=0;
+				plateau.nbLignesCompletes--;
+				cpt++;
+				if(plateau.nbLignesCompletes > 0){
+					plateau.indexLigneSupp = plateau.lignesCompletes[cpt];
+				}else{
+					plateau.mode=Mode.TETRIS;
+				}
+
+			  }
+		  }
+	}
+	
+	public void worddle(Plateau plateau, Mots worddle, FrameJeu jeu){
+		  boolean result=false;
+		  if(plateau.positionEnCours==null){
+				worddle.initialiseWorddle( plateau);
+				System.out.println("partez de la brique : "+plateau.positionEnCours.posX+" Y:"+ plateau.positionEnCours.posY);
+			}
+
+		  if (plateau.tempsEcoule < 30*1000) {
+			  jeu.repaint();
+			  plateau.tempsEcoule = (new Date()).getTime() - plateau.instantDepart;
+			  if(plateau.motEnCours!=null){
+				  if(worddle.motfini(plateau.motEnCours)){
+		
+					try {
+						result=worddle.findWord(plateau.motEnCours);
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					}
+					if(!result){
+						worddle.resultatCorrectWorddle(plateau);
+					}else{
+						worddle.resultatCorrectWorddle(plateau);
+					}
+					System.out.println("fini");
+					plateau.motEnCours=null;
+					plateau.totalMot=0;
+					plateau.nbConnexion=0;
+					plateau.positionEnCours=null;
+				  }
+			  }
+			  
+		  }else{
+			  System.out.println("temps ecoulé");
+			  worddle.supprLettresWorddle(plateau);
+			  plateau.mode=Mode.TETRIS;
+		  }
+	}
 
 	
 
 	public static void main(String[] args) {
 		LinkedList<Plateau> joueurs = new LinkedList<Plateau>();
+		if(!multijoueur){
 		Plateau plateau= new Plateau(349, "Joueur 1");
-		//Plateau plateau2= new Plateau(499, "Joueur 2");
 		joueurs.add(plateau);
-		//joueurs.add(plateau2);
+		setLettersRates(plateau);
+
+
+		}
+		else if(multijoueur){
+		Plateau plateau= new Plateau(256, "Joueur 1");
+
+		Plateau plateau2= new Plateau(716, "Joueur 2");
+		joueurs.add(plateau);
+		joueurs.add(plateau2);
+		setLettersRates(plateau);
+		setLettersRates(plateau2);
+		}
+
 
 		FrameJeu framejeu = new FrameJeu(joueurs);
 
 		Mots worddle=new Mots();
 		Mots anagramme=new Mots();
-		setLettersRates(plateau);
-		//setLettersRates(plateau2);
+
 
 		Tetraword jeu = new Tetraword();
 

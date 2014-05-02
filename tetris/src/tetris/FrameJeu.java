@@ -36,7 +36,13 @@ public class FrameJeu extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setLocation(250,100);
-        this.setSize(1000,700);
+        if(joueurs.size()==1){
+        	this.setSize(1000,700);
+
+        }
+        else if(joueurs.size()==2){
+        	this.setSize(1276,794);
+        }
         this.setResizable(false);
         
         border = new JPanel();
@@ -55,10 +61,10 @@ public class FrameJeu extends JFrame{
 	    panelJeu.setFocusable(true);
 	    panelJeu.requestFocus();
 	    panelJeu.addKeyListener(new EcouteurClavier(joueurs, this));
-        panelJeu.addMouseListener(new EcouteurSouris(this.plateau1,this));
-        panelJeu.valider.addMouseListener(new EcouteurSouris(this.plateau1,this));
-        panelJeu.supp.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelJeu.paramJeu.addMouseListener(new EcouteurSouris(this.plateau1,this));
+        panelJeu.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.valider.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.supp.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelJeu.paramJeu.addMouseListener(new EcouteurSouris(joueurs,this));
 	    
 	    
 
@@ -74,7 +80,7 @@ public class FrameJeu extends JFrame{
 		panelParametres.girly_jaune.setVisible(false);
 		panelParametres.en.setVisible(false);
 		
-		panelParametres.param.addMouseListener(new EcouteurSouris(this.plateau1,this));
+		panelParametres.param.addMouseListener(new EcouteurSouris(joueurs,this));
 		
 		//musique	    
 	    musique_geek = new Son("musique_tetris1"); 	    
@@ -82,19 +88,19 @@ public class FrameJeu extends JFrame{
 	    musique_geek.lecture();
 	    
 	    //action boutons
-	    panelParametres.play_song.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.song_played.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.song_stoped.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.stop_song.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.geek_jaune.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.geek_gris.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.girly_jaune.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.girly_gris.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.en.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.fr.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.en_gris.addMouseListener(new EcouteurSouris(this.plateau1,this));
-	    panelParametres.fr_gris.addMouseListener(new EcouteurSouris(this.plateau1,this));
+	    panelParametres.play_song.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.song_played.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.song_stoped.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.stop_song.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.geek_jaune.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.geek_gris.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.girly_jaune.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.girly_gris.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.en.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.fr.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.en_gris.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametres.fr_gris.addMouseListener(new EcouteurSouris(joueurs,this));
 	    
 	    
 	    

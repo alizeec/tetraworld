@@ -131,11 +131,25 @@ public class EcouteurClavier implements KeyListener{
 		
 		// lance le mode worddle
 		case KeyEvent.VK_W:
-			if(plateau1.mode != Mode.WORDDLE){
+			if(plateau2.mode != Mode.WORDDLE){
 				plateau1.mode=Mode.WORDDLE;
 				
 			}
+			else{
+				System.out.println("Votre adversaire est deja en mode worddle");
+			}
 			plateau1.timer();
+		break;
+		
+		case KeyEvent.VK_X:
+			if(plateau1.mode != Mode.WORDDLE){
+				plateau2.mode=Mode.WORDDLE;
+				
+			}
+			else{
+				System.out.println("Votre adversaire est deja en mode worddle");
+			}
+			plateau2.timer();
 		break;
 		
 		//sauvegarde

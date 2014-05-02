@@ -36,7 +36,8 @@ public class PanelJeu extends JPanel{
 	Image background_geek,background_girly, background;
 	Image perdu;
 	JLabel score;
-	Image next;
+	Image next1;
+	Image next2;
 	JLabel level;
 	JButton finish;
 	JButton valider;
@@ -61,7 +62,13 @@ public class PanelJeu extends JPanel{
 		imageBriqueRouge = new ImageIcon("cellule_rouge.png").getImage();
 		imageBriqueVert = new ImageIcon("cellule_vert.png").getImage();
 		imageBriqueGris = new ImageIcon("cellule_gris.png").getImage();
-		background_geek = new ImageIcon("tetris.gif").getImage();
+		if(nbJoueurs==1){
+			background_geek = new ImageIcon("tetris.gif").getImage();
+		}
+		else if (nbJoueurs==2){
+			background_geek = new ImageIcon("tetrisMultijoueur.png").getImage();
+	
+		}
 		background_girly = new ImageIcon("tetris_girly.gif").getImage();
 		background = background_geek;
 		perdu = new ImageIcon("perdu.png").getImage();
@@ -85,7 +92,14 @@ public class PanelJeu extends JPanel{
 	}
 
 	public int getPixelY(int j){
-		int y = (int)(45 + 600 / plateau.getHauteur()*j);
+		int y=0;
+		if(nbJoueurs==1){
+			y = (int)(45 + 600 / plateau.getHauteur()*j);
+		}
+		else if(nbJoueurs==2){
+			y = (int)(115 + 600 / plateau.getHauteur()*j);
+
+		}
 		return y;
 	}
 	
@@ -187,12 +201,21 @@ public class PanelJeu extends JPanel{
 	
 	
 			
-			next = getNext(joueurs.get(i)).getImage();
 	
 	
 			
+			if(nbJoueurs==1){
+				next1 = getNext(joueurs.get(0)).getImage();
+				g.drawImage(next1, 720, 80, null);
+			}
+			else if(nbJoueurs==2){
+				next1 = getNext(joueurs.get(0)).getImage();
+				g.drawImage(next1, 50, 150, null);
+				next2 = getNext(joueurs.get(1)).getImage();
+				g.drawImage(next2, 1100, 150, null);
+			}
 			
-			g.drawImage(next, 720, 80, null);
+			
 			if(joueurs.get(i).perdu==true){
 				g.drawImage(perdu, 0, 0, null);
 				valider.setVisible(false);

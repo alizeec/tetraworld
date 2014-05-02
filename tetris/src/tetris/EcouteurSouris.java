@@ -2,38 +2,49 @@ package tetris;
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.util.LinkedList;
 import java.util.Vector;
 
 public class EcouteurSouris implements MouseListener
 {
-	Plateau plateau;
+	LinkedList<Plateau> joueurs;
 	FrameJeu frame;
 	Mots anagramme;
 	String background;
 	
-	EcouteurSouris(Plateau plateau, FrameJeu frame){
+	EcouteurSouris(LinkedList<Plateau> joueurs, FrameJeu frame){
 		this.frame = frame;
-		this.plateau = plateau;
+		this.joueurs = joueurs;
 	}
 	
-    @Override
+
+
+	@Override
     public void mouseClicked(MouseEvent e) 
     {
    
     if(e.getSource() == frame.getPanelJeu().paramJeu){
     	    frame.setPanel(2);
-    		plateau.mode=Mode.PARAMETRES;
-    		plateau.pause=true;
+    		joueurs.get(0).mode=Mode.PARAMETRES;
+    		joueurs.get(0).pause=true;
+    		if(joueurs.size()>1){
+        		joueurs.get(1).pause=true;
+
+    		}
     	}
     
     if(e.getSource() == frame.getPanelParametres().param){
 	    frame.setPanel(1);
-		plateau.mode=plateau.SauvegardeMode;
-		plateau.pause=false;
+	    joueurs.get(0).mode=joueurs.get(0).SauvegardeMode;
+	    joueurs.get(0).pause=false;
+		if(joueurs.size()>1){
+    		joueurs.get(1).pause=false;
+
+		}
 	}
     		
     if(e.getSource() == frame.getPanelJeu().valider){
-			plateau.motEnCours+="\n";
+    	joueurs.get(0).motEnCours+="\n";
 	}
     
     if(e.getSource() == frame.panelParametres.play_song)
@@ -147,109 +158,161 @@ public class EcouteurSouris implements MouseListener
 		
 		
 		if(e.getSource() == frame.getPanelJeu().supp){
-			plateau.motEnCours = plateau.motEnCours.substring(0, plateau.motEnCours.length()-1);
-			if(plateau.mode==Mode.WORDDLE && plateau.nbConnexion>=1){
-				plateau.nbConnexion--;
+			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
+			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
+				joueurs.get(0).nbConnexion--;
 			}
 		}
 		
     	if (e.getButton()==MouseEvent.BUTTON1){
+    		
+    		if(joueurs.size()==1){
         	//verifie qu'on est dans le tableau
         	if(e.getX()<349 || e.getX()>650 || e.getY()<42 || e.getY()>647){
                 System.out.printf("hors du  tableau \n ");
         	}
         	else{
         		//pour avoir la cellule correspondante
-                int X = (e.getX()-349)/30;
-                int Y = (e.getY() - 42)/30;
+                 int X = (e.getX()-349)/30;
+                 int Y = (e.getY() - 42)/30;
                 
-                
-                /*   MODE ANAGRAMME   */
-                if(plateau.mode==Mode.ANAGRAMME){
-                	if(Y==plateau.indexLigneSupp){
-        				plateau.setMessage("");
-                		StringBuffer tmp = new StringBuffer();
-                		if(plateau.tab[X][Y]!=null){
-                			//récupération de la brique et de sa lettre
-                        	int id=plateau.tab[X][Y].getId();
-                        	char lettre=plateau.briques.get(id).getLettre();
-                        	
-                        	//formation du mot
-                        	tmp=tmp.append(lettre);
-                        	if(plateau.motEnCours==null){
-                        		plateau.motEnCours=tmp.toString();
-                        	}
-                        	else{
-                        		plateau.motEnCours=plateau.motEnCours+tmp.toString();
-                        	}
-                        	// récupération du total de point que vaut le mot
-                        	plateau.totalMot+=plateau.briques.get(id).point; 	                		
-                		}
-
-                	}
-            		else{
-            			plateau.setMessage("Vous devez cliquer sur la ligne complète");
-            		}
+                if(joueurs.get(0).mode==Mode.ANAGRAMME){
+                	modeAnagramme(X,Y, joueurs.get(0));
                 }
-                
-                /* MODE WORDDLE  */
-                
-                if(plateau.mode==Mode.WORDDLE){
-                		StringBuffer tmp = new StringBuffer();
-
-                		if(((plateau.positionEnCours.posY-Y)<=1 && (plateau.positionEnCours.posY-Y)>=-1 )  && ((plateau.positionEnCours.posX-X)<=1 && (plateau.positionEnCours.posX-X)>=-1 ) )
-                		{
-                			if((plateau.positionEnCours.posY==Y  && plateau.positionEnCours.posX==X)){
-                				plateau.setMessage("Il faut cliquer sur une case autour");
-                			}
-                			else if(plateau.nbConnexion>7){
-                				plateau.setMessage("Le mot est trop long");
-
-                			}
-                			else{
-                				plateau.setMessage("");
-
-	                    		if(plateau.tab[X][Y]!=null && plateau.tab[X][Y].utilisee == false){
-	                    			//récupération de la brique et de sa lettre
-	                            	int id=plateau.tab[X][Y].getId();
-	                            	char lettre=plateau.briques.get(id).getLettre();
-	                            	plateau.tab[X][Y].utilisee = true;
-	                            	//formation du mot
-	                            	tmp=tmp.append(lettre);
-	                            	if(plateau.motEnCours==null){
-	                            		plateau.motEnCours=tmp.toString();
-	                            	}
-	                            	else{
-	                            		plateau.motEnCours=plateau.motEnCours+tmp.toString();
-	                            	}
-	                            	// récupération du total de point que vaut le mot
-	                            	plateau.totalMot+=plateau.briques.get(id).point; 
-	                        		plateau.positionEnCours.posY=Y;
-	                        		plateau.positionEnCours.posX=X;
-	                        		plateau.nbConnexion++;
-	                        		boolean existe = false;
-	                        		for (int i=0; i<plateau.BriquesUtilisees.size(); ++i){
-	                        			if(plateau.BriquesUtilisees.get(i).posX == X && plateau.BriquesUtilisees.get(i).posY == Y){
-	                        				existe = true;
-	                        				break;
-	                        			}
-	                        		}
-	                        		if(existe == false){
-	                        			plateau.BriquesUtilisees.add(plateau.tab[X][Y]);
-	                        		}
-	                    		}
-	                    		else{
-	                    			System.out.println("rien dans cette case");
-	
-	                    		}
-                			}
-
-                		}
+                                
+                if(joueurs.get(0).mode==Mode.WORDDLE){
+                	modeWorddle(X,Y,joueurs.get(0));
                 }
                                 
         	}
         }
+    		
+    	if(joueurs.size()==2){
+    		if(joueurs.get(0).mode==Mode.ANAGRAMME || joueurs.get(0).mode==Mode.WORDDLE){
+            	//verifie qu'on est dans le tableau
+            	if(e.getX()<254 || e.getX()>555 || e.getY()<110 || e.getY()>715){
+                    System.out.printf("hors du  tableau \n ");
+            	}
+            	else{
+            		//pour avoir la cellule correspondante
+                     int X = (e.getX()-254)/30;
+                     int Y = (e.getY() - 110)/30;
+                    
+                    if(joueurs.get(0).mode==Mode.ANAGRAMME){
+                    	modeAnagramme(X,Y, joueurs.get(0));
+                    }
+                                    
+                    if(joueurs.get(0).mode==Mode.WORDDLE){
+                    	modeWorddle(X,Y,joueurs.get(0));
+                    }
+                                    
+            	}
+    		}
+    		if(joueurs.get(1).mode==Mode.ANAGRAMME || joueurs.get(1).mode==Mode.WORDDLE){
+            	//verifie qu'on est dans le tableau
+            	if(e.getX()<715 || e.getX()>1016 || e.getY()<110 || e.getY()>715){
+                    System.out.printf("hors du  tableau \n ");
+            	}
+            	else{
+            		//pour avoir la cellule correspondante
+                     int X = (e.getX()-715)/30;
+                     int Y = (e.getY() - 110)/30;
+                    
+                    if(joueurs.get(1).mode==Mode.ANAGRAMME){
+                    	modeAnagramme(X,Y, joueurs.get(1));
+                    }
+                                    
+                    if(joueurs.get(1).mode==Mode.WORDDLE){
+                    	modeWorddle(X,Y,joueurs.get(1));
+                    }
+                                    
+            	}
+    		}
+        }
+    		
+    	
     }
+    }
+    
+    public void modeAnagramme(int X, int Y,Plateau plateau){
+    	if(Y==plateau.indexLigneSupp){
+			plateau.setMessage("");
+    		StringBuffer tmp = new StringBuffer();
+    		if(plateau.tab[X][Y]!=null){
+    			//récupération de la brique et de sa lettre
+            	int id=plateau.tab[X][Y].getId();
+            	char lettre=plateau.briques.get(id).getLettre();
+            	
+            	//formation du mot
+            	tmp=tmp.append(lettre);
+            	if(plateau.motEnCours==null){
+            		plateau.motEnCours=tmp.toString();
+            	}
+            	else{
+            		plateau.motEnCours=plateau.motEnCours+tmp.toString();
+            	}
+            	// récupération du total de point que vaut le mot
+            	plateau.totalMot+=plateau.briques.get(id).point; 	                		
+    		}
+
+    	}
+		else{
+			plateau.setMessage("Vous devez cliquer sur la ligne complète");
+		}
+    }
+    
+    public void modeWorddle(int X, int Y,Plateau plateau){
+		StringBuffer tmp = new StringBuffer();
+		if(((plateau.positionEnCours.posY-Y)<=1 && (plateau.positionEnCours.posY-Y)>=-1 )  && ((plateau.positionEnCours.posX-X)<=1 && (plateau.positionEnCours.posX-X)>=-1 ) )
+		{
+			if((plateau.positionEnCours.posY==Y  && plateau.positionEnCours.posX==X)){
+				plateau.setMessage("Il faut cliquer sur une case autour");
+			}
+			else if(plateau.nbConnexion>7){
+				plateau.setMessage("Le mot est trop long");
+
+			}
+			else{
+				plateau.setMessage("");
+
+        		if(plateau.tab[X][Y]!=null && plateau.tab[X][Y].utilisee == false){
+        			//récupération de la brique et de sa lettre
+                	int id=plateau.tab[X][Y].getId();
+                	char lettre=plateau.briques.get(id).getLettre();
+                	plateau.tab[X][Y].utilisee = true;
+                	//formation du mot
+                	tmp=tmp.append(lettre);
+                	if(plateau.motEnCours==null){
+                		plateau.motEnCours=tmp.toString();
+                	}
+                	else{
+                		plateau.motEnCours=plateau.motEnCours+tmp.toString();
+                	}
+                	// récupération du total de point que vaut le mot
+                	plateau.totalMot+=plateau.briques.get(id).point; 
+            		plateau.positionEnCours.posY=Y;
+            		plateau.positionEnCours.posX=X;
+            		plateau.nbConnexion++;
+            		boolean existe = false;
+            		for (int i=0; i<plateau.BriquesUtilisees.size(); ++i){
+            			if(plateau.BriquesUtilisees.get(i).posX == X && plateau.BriquesUtilisees.get(i).posY == Y){
+            				existe = true;
+            				break;
+            			}
+            		}
+            		if(existe == false){
+            			plateau.BriquesUtilisees.add(plateau.tab[X][Y]);
+            		}
+        		}
+        		else{
+        			System.out.println("rien dans cette case");
+
+        		}
+			}
+
+		}
+    }
+   
     
 
     @Override
