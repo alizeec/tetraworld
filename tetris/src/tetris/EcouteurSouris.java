@@ -47,6 +47,10 @@ public class EcouteurSouris implements MouseListener
     	joueurs.get(0).motEnCours+="\n";
 	}
     
+    if(e.getSource() == frame.getPanelJeu().valider2){
+    	joueurs.get(1).motEnCours+="\n";
+	}
+    
     if(e.getSource() == frame.panelParametres.play_song)
     {            
     	frame. musique_geek.stop();
@@ -161,6 +165,13 @@ public class EcouteurSouris implements MouseListener
 			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
 			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
 				joueurs.get(0).nbConnexion--;
+			}
+		}
+		
+		if(e.getSource() == frame.getPanelJeu().supp2){
+			joueurs.get(1).motEnCours = joueurs.get(1).motEnCours.substring(0, joueurs.get(1).motEnCours.length()-1);
+			if(joueurs.get(1).mode==Mode.WORDDLE && joueurs.get(1).nbConnexion>=1){
+				joueurs.get(1).nbConnexion--;
 			}
 		}
 		

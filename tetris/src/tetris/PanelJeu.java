@@ -42,6 +42,8 @@ public class PanelJeu extends JPanel{
 	JButton finish;
 	JButton valider;
 	JButton supp;
+	JButton valider2;
+	JButton supp2;
 	JButton paramJeu;
 	Image fleche;
 	JLabel message;
@@ -82,6 +84,8 @@ public class PanelJeu extends JPanel{
 		finish=new JButton();
 		valider= new JButton(new ImageIcon("bt_ok.png" ));
 		supp= new JButton(new ImageIcon("bt_supp.png" ));
+		valider2= new JButton(new ImageIcon("bt_ok.png" ));
+		supp2= new JButton(new ImageIcon("bt_supp.png" ));
 		paramJeu= new JButton(new ImageIcon("parametres_bt.gif" ));
 
 	}
@@ -164,80 +168,180 @@ public class PanelJeu extends JPanel{
 		setBackground(new Color (155, 204, 234, 0));//modifie la couleur de fond
 		g.drawImage(background, 0, 0, null);
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-		afficherPlateau(g);
-		valider.setBounds(150, 130, 62, 29);
-		valider.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		valider.setContentAreaFilled(false);
-		valider.setBorderPainted(false);
-		add(valider);
-		supp.setBounds(220, 130, 62, 29);
-		supp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		supp.setContentAreaFilled(false);
-		supp.setBorderPainted(false);
-		add(supp);
-		paramJeu.setBounds(950,10, 34, 34);
-		paramJeu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		paramJeu.setContentAreaFilled(false);
-		paramJeu.setBorderPainted(false);
-		add(paramJeu);
-		
-		
-		for (int i=0; i<nbJoueurs; ++i){
-			g.drawString(String.valueOf(joueurs.get(i).getScore()), 200, 635);
-			g.drawString(String.valueOf(joueurs.get(i).getNiveau()), 770, 635);
-			
-			if(!joueurs.get(i).getMessage().equals("Perdu!") && !joueurs.get(i).getMessage().equals("Bravo!")){
-				g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
-				g.drawString(String.valueOf(joueurs.get(i).getMessage()), 50, 190);
-	
-			}
-			if(joueurs.get(i).getMessage().equals("Perdu!") || joueurs.get(i).getMessage().equals("Bravo!")){
-				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-				g.drawString(String.valueOf(joueurs.get(i).getMessage()), 200, 190);
-	
-			}
-			g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-	
-	
-			
-	
-	
-			
+
+
 			if(nbJoueurs==1){
+				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+				afficherPlateau(g);
+				valider.setBounds(150, 130, 62, 29);
+				valider.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				valider.setContentAreaFilled(false);
+				valider.setBorderPainted(false);
+				add(valider);
+				supp.setBounds(220, 130, 62, 29);
+				supp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				supp.setContentAreaFilled(false);
+				supp.setBorderPainted(false);
+				add(supp);
+				paramJeu.setBounds(950,10, 34, 34);
+				paramJeu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				paramJeu.setContentAreaFilled(false);
+				paramJeu.setBorderPainted(false);
+				add(paramJeu);
+				
+				g.drawString(String.valueOf(joueurs.get(0).getScore()), 150, 675);
+				g.drawString(String.valueOf(joueurs.get(0).getNiveau()), 770, 635);
 				next1 = getNext(joueurs.get(0)).getImage();
 				g.drawImage(next1, 720, 80, null);
+				
+				if(!joueurs.get(0).getMessage().equals("Perdu!") && !joueurs.get(0).getMessage().equals("Bravo!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
+					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 50, 190);
+		
+				}
+				if(joueurs.get(0).getMessage().equals("Perdu!") || joueurs.get(0).getMessage().equals("Bravo!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 200, 190);
+		
+				}
+				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+				
+				
+				if(joueurs.get(0).mode==Mode.ANAGRAMME){
+					g.drawImage(fleche, 310, getPixelY(joueurs.get(0).indexLigneSupp)+4, null);
+					if(joueurs.get(0).motEnCours!=null){
+						g.drawString(joueurs.get(0).motEnCours, 177, 107);
+					}
+				}
+				
+				if(joueurs.get(0).mode==Mode.WORDDLE){
+					
+					if(joueurs.get(0).positionEnCours!=null){
+						g.drawImage(fleche, getPixelX(joueurs.get(0).positionEnCours.posX,joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.posY)+4, null);
+						if(joueurs.get(0).motEnCours!=null){
+							g.drawString(joueurs.get(0).motEnCours, 177, 107);
+						}
+					}
+					int temps = (int)(60 -( joueurs.get(0).tempsEcoule/1000));
+					g.drawString("Temps restant : "+temps, 120, 220);
+				}
 			}
 			else if(nbJoueurs==2){
+				//Joueur 1
+				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+				afficherPlateau(g);
+				valider.setBounds(30, 380, 62, 29);
+				valider.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				valider.setContentAreaFilled(false);
+				valider.setBorderPainted(false);
+				add(valider);
+				supp.setBounds(120, 380, 62, 29);
+				supp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				supp.setContentAreaFilled(false);
+				supp.setBorderPainted(false);
+				add(supp);
+				paramJeu.setBounds(600,10, 34, 34);
+				paramJeu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				paramJeu.setContentAreaFilled(false);
+				paramJeu.setBorderPainted(false);
+				add(paramJeu);
+				
+				g.drawString(String.valueOf(joueurs.get(0).getScore()), 100, 605);
+				g.drawString(String.valueOf(joueurs.get(0).getNiveau()), 100, 700);
 				next1 = getNext(joueurs.get(0)).getImage();
+				
+				if(!joueurs.get(0).getMessage().equals("Perdu!") && !joueurs.get(0).getMessage().equals("Bravo!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
+					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 5, 470);
+		
+				}
+				if(joueurs.get(0).getMessage().equals("Perdu!") || joueurs.get(0).getMessage().equals("Bravo!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 90, 470);
+		
+				}
+				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+				
+				if(joueurs.get(0).mode==Mode.ANAGRAMME){
+					g.drawImage(fleche, 310, getPixelY(joueurs.get(0).indexLigneSupp)+4, null);
+					if(joueurs.get(0).motEnCours!=null){
+						g.drawString(joueurs.get(0).motEnCours, 100, 342);
+					}
+				}
+				
+				if(joueurs.get(0).mode==Mode.WORDDLE){
+					if(joueurs.get(0).positionEnCours!=null){
+						g.drawImage(fleche, getPixelX(joueurs.get(0).positionEnCours.posX,joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.posY)+4, null);
+						if(joueurs.get(0).motEnCours!=null){
+							g.drawString(joueurs.get(0).motEnCours, 100, 342);
+						}
+					}
+					int temps = (int)(60 -( joueurs.get(0).tempsEcoule/1000));
+					g.drawString("Temps restant : "+temps, 100, 54);
+				}
+				
+				
+				// Joueur2
+				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+				afficherPlateau(g);
+				valider2.setBounds(1060, 380, 62, 29);
+				valider2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				valider2.setContentAreaFilled(false);
+				valider2.setBorderPainted(false);
+				add(valider2);
+				supp2.setBounds(1170, 380, 62, 29);
+				supp2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				supp2.setContentAreaFilled(false);
+				supp2.setBorderPainted(false);
+				add(supp2);
+				
 				g.drawImage(next1, 50, 150, null);
+				g.drawString(String.valueOf(joueurs.get(1).getScore()), 1144, 605);
+				g.drawString(String.valueOf(joueurs.get(1).getNiveau()), 1144, 700);
 				next2 = getNext(joueurs.get(1)).getImage();
 				g.drawImage(next2, 1100, 150, null);
+				
+				if(!joueurs.get(1).getMessage().equals("Perdu!") && !joueurs.get(1).getMessage().equals("Bravo!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
+					g.drawString(String.valueOf(joueurs.get(1).getMessage()), 1020, 470);
+		
+				}
+				if(joueurs.get(1).getMessage().equals("Perdu!") || joueurs.get(1).getMessage().equals("Bravo!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+					g.drawString(String.valueOf(joueurs.get(1).getMessage()), 1122, 470);
+		
+				}
+				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+				
+				if(joueurs.get(1).mode==Mode.ANAGRAMME){
+					g.drawImage(fleche, 310, getPixelY(joueurs.get(1).indexLigneSupp)+4, null);
+					if(joueurs.get(1).motEnCours!=null){
+						g.drawString(joueurs.get(1).motEnCours, 1084, 342);
+					}
+				}
+				
+				if(joueurs.get(1).mode==Mode.WORDDLE){
+					
+					if(joueurs.get(1).positionEnCours!=null){
+						g.drawImage(fleche, getPixelX(joueurs.get(1).positionEnCours.posX,joueurs.get(1)), getPixelY(joueurs.get(1).positionEnCours.posY)+4, null);
+						if(joueurs.get(1).motEnCours!=null){
+							g.drawString(joueurs.get(1).motEnCours, 1084, 342);
+						}
+					}
+					int temps = (int)(60 -( joueurs.get(1).tempsEcoule/1000));
+					g.drawString("Temps restant : "+temps, 1034, 54);
+				}
+				
 			}
 			
-			
-			if(joueurs.get(i).perdu==true){
+
+			if(joueurs.get(0).perdu==true || joueurs.get(1).perdu==true){
 				g.drawImage(perdu, 0, 0, null);
 				valider.setVisible(false);
 			}
-			if(joueurs.get(i).mode==Mode.ANAGRAMME){
-				g.drawImage(fleche, 310, getPixelY(joueurs.get(i).indexLigneSupp)+4, null);
-				if(joueurs.get(i).motEnCours!=null){
-					g.drawString(joueurs.get(i).motEnCours, 177, 107);
-				}
-			}
-			if(joueurs.get(i).mode==Mode.WORDDLE){
-				
-				if(joueurs.get(i).positionEnCours!=null){
-					g.drawImage(fleche, getPixelX(joueurs.get(i).positionEnCours.posX,joueurs.get(i)), getPixelY(joueurs.get(i).positionEnCours.posY)+4, null);
-					if(joueurs.get(i).motEnCours!=null){
-						g.drawString(joueurs.get(i).motEnCours, 177, 107);
-					}
-				}
-				int temps = (int)(60 -( joueurs.get(i).tempsEcoule/1000));
-				g.drawString("Temps restant : "+temps, 120, 220);
-			}
-		}
+			
+
+		
 		
 		
 
