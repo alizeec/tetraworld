@@ -48,10 +48,7 @@ public class FrameJeu extends JFrame{
         border = new JPanel();
 		border.setLayout(new BorderLayout());
 		
-		/*background = new ImageIcon(this.getClass().getResource("tetris.gif"));
-        picture = new JLabel(new ImageIcon(background.getImage()));*/
-       // add(picture);
-        //border.add(picture); 
+ 
 	    
 	    this.plateau1 = joueurs.get(0);
 
@@ -64,6 +61,8 @@ public class FrameJeu extends JFrame{
         panelJeu.addMouseListener(new EcouteurSouris(joueurs,this));
         panelJeu.valider.addMouseListener(new EcouteurSouris(joueurs,this));
         panelJeu.supp.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.valider2.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.supp2.addMouseListener(new EcouteurSouris(joueurs,this));
 	    panelJeu.paramJeu.addMouseListener(new EcouteurSouris(joueurs,this));
 	    
 	    

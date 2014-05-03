@@ -99,7 +99,7 @@ public class Tetraword extends Thread{
 				  plateau2.placeBrique(newBrique);
 			  }
 		  }
-	
+
 		  /*affichage*/
 		  jeu.repaint();
 		  if(plateau2.perdu==true){

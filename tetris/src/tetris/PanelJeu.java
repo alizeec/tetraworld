@@ -169,7 +169,7 @@ public class PanelJeu extends JPanel{
 		g.drawImage(background, 0, 0, null);
 		g.setColor(Color.WHITE);
 
-
+			// SOLO
 			if(nbJoueurs==1){
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 				afficherPlateau(g);
@@ -226,7 +226,9 @@ public class PanelJeu extends JPanel{
 					g.drawString("Temps restant : "+temps, 120, 220);
 				}
 			}
+			//MULTIJOUEUR
 			else if(nbJoueurs==2){
+
 				//Joueur 1
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 				afficherPlateau(g);
@@ -263,7 +265,7 @@ public class PanelJeu extends JPanel{
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 				
 				if(joueurs.get(0).mode==Mode.ANAGRAMME){
-					g.drawImage(fleche, 310, getPixelY(joueurs.get(0).indexLigneSupp)+4, null);
+					g.drawImage(fleche, 220, getPixelY(joueurs.get(0).indexLigneSupp)+4, null);
 					if(joueurs.get(0).motEnCours!=null){
 						g.drawString(joueurs.get(0).motEnCours, 100, 342);
 					}
@@ -314,7 +316,7 @@ public class PanelJeu extends JPanel{
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 				
 				if(joueurs.get(1).mode==Mode.ANAGRAMME){
-					g.drawImage(fleche, 310, getPixelY(joueurs.get(1).indexLigneSupp)+4, null);
+					g.drawImage(fleche, 680, getPixelY(joueurs.get(1).indexLigneSupp)+4, null);
 					if(joueurs.get(1).motEnCours!=null){
 						g.drawString(joueurs.get(1).motEnCours, 1084, 342);
 					}
