@@ -1,27 +1,31 @@
 package tetris;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
-
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import javax.swing.JTextField;
 
 
 @SuppressWarnings("serial")
 public class PanelParameters extends JPanel {
 	Image background;
-	JLabel picture;	
+	JLabel picture, totalBriques, regleTotalBriques, totalLettres, regleTotalLettres;	
 	JButton play_song, stop_song, song_played, song_stoped, param, geek_gris, geek_jaune, girly_gris,girly_jaune,en,en_gris,fr,fr_gris;
 	JLabel lblResult;
-	Slider slider;
-
+	int total_briques, total_lettres;
+	JTextField taux_rouge, taux_vert, taux_bleu, taux_cyan,taux_orange, taux_magenta, taux_jaune,taux_total_briques, taux_voyelles, taux_consonnes, taux_rares, taux_total_lettres;
+	JCheckBox facile, normal, difficile;
+	static public int valeur_taux_voyelles, valeur_taux_consonnes, valeur_taux_rares, difficulte_anagramme ;
+	ButtonGroup bg = new ButtonGroup();
+	
 	public PanelParameters(){
 		this.setLayout(new FlowLayout());
 		//bt play musique
@@ -29,25 +33,63 @@ public class PanelParameters extends JPanel {
 	    stop_song = new JButton(new ImageIcon("sound_off_jaune.png"));
 	    song_played = new JButton(new ImageIcon("sound_on_gris.png"));
 	    song_stoped = new JButton(new ImageIcon("sound_off_gris.png"));
+	    // bt background
 	    geek_gris = new JButton(new ImageIcon("geek_gris.png"));
 	    geek_jaune = new JButton(new ImageIcon("geek_jaune.png"));
 	    girly_gris = new JButton(new ImageIcon("girly_gris.png"));
 	    girly_jaune = new JButton(new ImageIcon("girly_jaune.png"));
+	    //bt param
 	    param= new JButton(new ImageIcon("parametres_bt.gif" ));
+	    // bt langue
 	    en= new JButton(new ImageIcon("en.png" ));
 	    en_gris= new JButton(new ImageIcon("en_gris.png" ));
 	    fr= new JButton(new ImageIcon("fr.png" ));
 	    fr_gris= new JButton(new ImageIcon("fr_gris.png" ));
-	
+	    
+	    //taux briques
+	    taux_rouge = new JTextField("2");
+	    taux_orange = new JTextField("1");
+	    taux_jaune = new JTextField("2");
+	    taux_vert = new JTextField("1");
+	    taux_bleu = new JTextField("1");
+	    taux_cyan = new JTextField("2");
+	    taux_magenta = new JTextField("1");
+	    total_briques = Integer.valueOf(taux_rouge.getText()) + Integer.valueOf(taux_orange.getText()) + Integer.valueOf(taux_jaune.getText())+ Integer.valueOf(taux_vert.getText())+ Integer.valueOf(taux_bleu.getText())+ Integer.valueOf(taux_cyan.getText())+ Integer.valueOf(taux_magenta.getText());
+	    taux_total_briques = new JTextField();
+	    taux_total_briques.setText(String.valueOf(total_briques));
+	    totalBriques =  new JLabel("Total");
+	    regleTotalBriques =  new JLabel("Le total doit valoir 10");
+	    
+	    //taux lettres
+	    taux_consonnes = new JTextField("5");
+	    taux_voyelles = new JTextField("3");
+	    taux_rares = new JTextField("2");
+	    total_lettres = Integer.valueOf(taux_consonnes.getText()) + Integer.valueOf(taux_voyelles.getText()) + Integer.valueOf(taux_rares.getText());
+	    taux_total_lettres = new JTextField();
+	    taux_total_lettres.setText(String.valueOf(total_lettres));
+	    totalLettres =  new JLabel("Total");
+	    regleTotalLettres =  new JLabel("Le total doit valoir 10");
+
+	    valeur_taux_voyelles = Integer.valueOf(taux_voyelles.getText());
+	    valeur_taux_consonnes = Integer.valueOf(taux_voyelles.getText());
+	    valeur_taux_rares = Integer.valueOf(taux_voyelles.getText());
+	    
+	    //Niveau
+	    facile = new JCheckBox("easy");
+	    normal = new JCheckBox("normal");
+	    difficile = new JCheckBox("hard");
+	    normal.setSelected(true);
+	    bg.add(facile);
+	    bg.add(normal);
+	    bg.add(difficile);
+	    
 	    //Add background       
 	    background = new ImageIcon("fond_param.png").getImage();
 	    
-	    //Slider
-	    slider = new Slider();
-	      
-    
-}
 	
+	  	      
+    
+}	
 	 public void paintComponent(Graphics g) {
 		    super.paintComponent(g);
 			g.drawImage(background,0,0,null);    
@@ -115,9 +157,65 @@ public class PanelParameters extends JPanel {
 			param.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			param.setContentAreaFilled(false);
 			param.setBorderPainted(false);
-			add(param);/*
-			slider.setBounds(500,500, 100, 100);
-			slider.repaint();*/
+			add(param);
+			taux_rouge.setBounds(150,215, 60, 25);
+			add(taux_rouge);
+			taux_vert.setBounds(150,285, 60, 25);
+			add(taux_vert);
+			taux_cyan.setBounds(150,350, 60, 25);
+			add(taux_cyan);
+			taux_magenta.setBounds(150,400, 60, 25);
+			add(taux_magenta);
+			taux_orange.setBounds(150,450, 60, 25);
+			add(taux_orange);
+			taux_jaune.setBounds(150,500, 60, 25);
+			add(taux_jaune);
+			taux_bleu.setBounds(150,560, 60, 25);
+			add(taux_bleu);
+			taux_total_briques.setBounds(150,620, 60, 25);
+			add(taux_total_briques);
+			totalBriques.setBounds(100,620, 60, 25);
+			totalBriques.setForeground(new Color(255,255,255));
+			add(totalBriques);
+			regleTotalBriques.setBounds(95,650, 150, 25);
+			regleTotalBriques.setForeground(new Color(255,255,255));
+			add(regleTotalBriques);
+			taux_voyelles.setBounds(500,210, 60, 25);
+			add(taux_voyelles);
+			taux_consonnes.setBounds(500,250, 60, 25);
+			add(taux_consonnes);		
+			taux_rares.setBounds(500,290, 60, 25);
+			add(taux_rares);
+			taux_total_lettres.setBounds(500,330, 60, 25);
+			add(taux_total_lettres);
+			totalLettres.setBounds(450,330, 60, 25);
+			totalLettres.setForeground(new Color(255,255,255));
+			add(totalLettres);
+			regleTotalLettres.setBounds(570,330, 150, 25);
+			regleTotalLettres.setForeground(new Color(255,255,255));
+			add(regleTotalLettres);
+			facile.setBounds(370,580, 60, 25);	
+			facile.setOpaque(false);
+			facile.setForeground(new Color(255,255,255));
+			add(facile);
+			normal.setBounds(470,580, 70, 25);	
+			normal.setOpaque(false);
+			normal.setForeground(new Color(255,255,255));
+			add(normal);
+			difficile.setBounds(570,580, 70, 25);	
+			difficile.setOpaque(false);
+			difficile.setForeground(new Color(255,255,255));
+			add(difficile);
+		    if(facile.isSelected()==true){
+		    	difficulte_anagramme = 10;
+		    	
+		    }
+		    else if (normal.isSelected()==true){
+		    	difficulte_anagramme =30;
+		    }
+		    else if (difficile.isSelected()==true){
+		    	difficulte_anagramme =60;
+		    }
      } 
 	
 }	

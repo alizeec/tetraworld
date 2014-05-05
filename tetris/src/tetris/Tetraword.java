@@ -20,9 +20,9 @@ public class Tetraword extends Thread{
 	boolean game=true;
 	int cpt = 0;
 	int TAUX_ANAGRAMME = 30;
-	static int TAUX_VOYELLES=5;
-	static int TAUX_CONSONNES=4;
-	static int TAUX_RARES=2;
+	static int TAUX_VOYELLES=PanelParameters.valeur_taux_voyelles;
+	static int TAUX_CONSONNES=PanelParameters.valeur_taux_consonnes;
+	static int TAUX_RARES=PanelParameters.valeur_taux_rares;
 	
 	Plateau joueur;
 	static boolean multijoueur = true;
