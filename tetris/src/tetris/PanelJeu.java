@@ -189,7 +189,7 @@ public class PanelJeu extends JPanel{
 				paramJeu.setBorderPainted(false);
 				add(paramJeu);
 				
-				g.drawString(String.valueOf(joueurs.get(0).getScore()), 150, 675);
+				g.drawString(String.valueOf(joueurs.get(0).getScore()), 200, 635);
 				g.drawString(String.valueOf(joueurs.get(0).getNiveau()), 770, 635);
 				next1 = getNext(joueurs.get(0)).getImage();
 				g.drawImage(next1, 720, 80, null);
@@ -223,7 +223,7 @@ public class PanelJeu extends JPanel{
 						}
 					}
 					int temps = (int)(60 -( joueurs.get(0).tempsEcoule/1000));
-					g.drawString("Temps restant : "+temps, 120, 220);
+					g.drawString("Temps restant : "+temps, 100, 220);
 				}
 			}
 			//MULTIJOUEUR
@@ -337,7 +337,12 @@ public class PanelJeu extends JPanel{
 			}
 			
 
-			if(joueurs.get(0).perdu==true || joueurs.get(1).perdu==true){
+			if(joueurs.get(0).perdu==true){
+				g.drawImage(perdu, 0, 0, null);
+				valider.setVisible(false);
+			}
+			
+			if(joueurs.size()>1 && joueurs.get(1).perdu==true){
 				g.drawImage(perdu, 0, 0, null);
 				valider.setVisible(false);
 			}

@@ -25,7 +25,7 @@ public class Tetraword extends Thread{
 	static int TAUX_RARES=2;
 	
 	Plateau joueur;
-	static boolean multijoueur = true;
+	static boolean multijoueur = false;
 
 
 
@@ -110,23 +110,24 @@ public class Tetraword extends Thread{
 	  
 	  
 	  
-	  if (plateau.mode==Mode.ANAGRAMME || plateau2.mode==Mode.ANAGRAMME){
+	  if (plateau.mode==Mode.ANAGRAMME || (plateau2!=null && plateau2.mode==Mode.ANAGRAMME)){
 		  if(plateau.mode==Mode.ANAGRAMME){
 			  anagramme( plateau,  anagramme,  jeu);
 		  }
-		  if(plateau2.mode==Mode.ANAGRAMME){
+		  
+		  if(plateau2!=null && plateau2.mode==Mode.ANAGRAMME){
 			  anagramme( plateau2,  anagramme,  jeu);
 		  }
 
 	  }
 	  
-	  if(plateau.mode==Mode.WORDDLE || plateau2.mode==Mode.WORDDLE){
+	  if(plateau.mode==Mode.WORDDLE || (plateau2!=null && plateau2.mode==Mode.WORDDLE)){
 		  
 		  if(plateau.mode==Mode.WORDDLE){
 
 			  worddle( plateau,  worddle,  jeu);
 		  }
-		  if(plateau2.mode==Mode.WORDDLE){
+		  if(plateau2!=null && plateau2.mode==Mode.WORDDLE){
 			  worddle( plateau2,  worddle,  jeu);
 		  }
 		 
