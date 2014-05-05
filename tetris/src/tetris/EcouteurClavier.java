@@ -69,38 +69,46 @@ public class EcouteurClavier implements KeyListener{
 		
 		//joueur2
 		case KeyEvent.VK_H :
-			X = plateau2.briqueActuelle.getPosition().posX;
-			Y = plateau2.briqueActuelle.getPosition().posY;
-			newposition = new Cellule(X+1, Y);
-			if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
-				plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
+			if(plateau2 != null){
+				X = plateau2.briqueActuelle.getPosition().posX;
+				Y = plateau2.briqueActuelle.getPosition().posY;
+				newposition = new Cellule(X+1, Y);
+				if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
+					plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
+				}
 			}
 			//Déplacer la pièce vers la droite
 		break;
 		
 		case KeyEvent.VK_G :
 			//Déplacer la pièce vers la gauche
-			X = plateau2.briqueActuelle.getPosition().posX;
-			Y = plateau2.briqueActuelle.getPosition().posY;
-			newposition = new Cellule(X-1, Y);
-			if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
-				plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
+			if(plateau2 != null){
+				X = plateau2.briqueActuelle.getPosition().posX;
+				Y = plateau2.briqueActuelle.getPosition().posY;
+				newposition = new Cellule(X-1, Y);
+				if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
+					plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
+				}
 			}
 		break;
 		
 		case KeyEvent.VK_B:
 			//Accélérer la déscente
-			X = plateau2.briqueActuelle.getPosition().posX;
-			Y = plateau2.briqueActuelle.getPosition().posY;
-			newposition = new Cellule(X, Y+1);
-			if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
-				plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
+			if(plateau2 != null){
+				X = plateau2.briqueActuelle.getPosition().posX;
+				Y = plateau2.briqueActuelle.getPosition().posY;
+				newposition = new Cellule(X, Y+1);
+				if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
+					plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
+				}
 			}
 		break;
 		
 		case KeyEvent.VK_SPACE :
+			if(plateau2 != null){
 			plateau2.briqueActuelle.tourner();
 			plateau2.deplaceBrique(plateau2.briqueActuelle, plateau2.briqueActuelle.getPosition());
+			}
 			//Rotation
 		break;
 		
@@ -131,7 +139,7 @@ public class EcouteurClavier implements KeyListener{
 		
 		// lance le mode worddle
 		case KeyEvent.VK_W:
-			if(plateau2.mode != Mode.WORDDLE){
+			if(plateau2 == null ||plateau2.mode != Mode.WORDDLE){
 				plateau1.mode=Mode.WORDDLE;
 				
 			}
@@ -142,7 +150,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		case KeyEvent.VK_X:
-			if(plateau1.mode != Mode.WORDDLE){
+			if(plateau2 != null && plateau1.mode != Mode.WORDDLE){
 				plateau2.mode=Mode.WORDDLE;
 				
 			}
