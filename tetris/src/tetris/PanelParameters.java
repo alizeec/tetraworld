@@ -208,12 +208,9 @@ public class PanelParameters extends JPanel {
 			add(difficile);
 		    if(facile.isSelected()==true){
 		    	difficulte_anagramme = 10;
-		    	
-		    }
-		    else if (normal.isSelected()==true){
+		    }else if (normal.isSelected()==true){
 		    	difficulte_anagramme =30;
-		    }
-		    else if (difficile.isSelected()==true){
+		    }else if (difficile.isSelected()==true){
 		    	difficulte_anagramme =60;
 		    }
      } 
