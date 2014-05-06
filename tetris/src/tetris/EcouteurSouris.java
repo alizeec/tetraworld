@@ -44,10 +44,21 @@ public class EcouteurSouris implements MouseListener
     		}
     	}
     
+
+
+    
     if(e.getSource() == frame.getPanelParametres().param){
-	    frame.setPanel(1);
-	    joueurs.get(0).mode=joueurs.get(0).SauvegardeMode;
+        Tetraword.setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
+	    if(joueurs.size()>1){
+	    	Tetraword.setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(1));
+	    }
+	    System.out.println(joueurs.get(0).mode);
+    	frame.setPanel(1);
+	    joueurs.get(0).mode=Mode.TETRIS;
+
+	    System.out.println(joueurs.get(0).mode);
 	    joueurs.get(0).pause=false;
+
 		if(joueurs.size()>1){
     		joueurs.get(1).pause=false;
 

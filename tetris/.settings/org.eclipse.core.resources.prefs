@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/tetris/EcouteurClavier.java=UTF-8
 encoding//src/tetris/EcouteurSouris.java=UTF-8
+encoding//src/tetris/PanelParameters.java=UTF-8
 encoding//src/tetris/Plateau.java=UTF-8
+encoding//src/tetris/Tetraword.java=UTF-8

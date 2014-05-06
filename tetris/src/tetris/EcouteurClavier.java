@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 /**
  * 
- * récupère les actions clavier de l'utilisateur
+ * r≈ΩcupÔøΩre les actions clavier de l'utilisateur
  *
  */
 public class EcouteurClavier implements KeyListener{
@@ -40,7 +40,7 @@ public class EcouteurClavier implements KeyListener{
 		
 		switch (touche) {
 		/**
-		 * aller à droite pour le joueur1
+		 * aller ÀÜ droite pour le joueur1
 		 */
 		case KeyEvent.VK_RIGHT :
 			X = plateau1.briqueActuelle.getPosition().posX;
@@ -52,7 +52,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * aller à gauche pour le joueur1
+		 * aller ÀÜ gauche pour le joueur1
 		 */
 		case KeyEvent.VK_LEFT :
 			X = plateau1.briqueActuelle.getPosition().posX;
@@ -64,7 +64,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * accélère la descente pour le joueur1
+		 * acc≈ΩlÔøΩre la descente pour le joueur1
 		 */
 		case KeyEvent.VK_DOWN :
 			X = plateau1.briqueActuelle.getPosition().posX;
@@ -84,7 +84,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * aller à droite pour le joueur2
+		 * aller ÀÜ droite pour le joueur2
 		 */
 		//joueur2
 		case KeyEvent.VK_H :
@@ -99,7 +99,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * aller à gauche pour le joueur2
+		 * aller ÀÜ gauche pour le joueur2
 		 */
 		case KeyEvent.VK_G :
 			if(plateau2 != null){
@@ -112,7 +112,7 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
-		/** accélère la descente pour le joueur2
+		/** acc≈ΩlÔøΩre la descente pour le joueur2
 		 * 
 		 */
 		case KeyEvent.VK_B:
@@ -141,13 +141,13 @@ public class EcouteurClavier implements KeyListener{
 		
 		
 		/**
-		 * lancement du jeu, crée la première brique
+		 * lancement du jeu, cr≈Ωe la premiÔøΩre brique
 		 */
 		case KeyEvent.VK_C :
-				Brique b = plateau1.creerBrique(plateau1.TAUX_VOYELLES, plateau1.TAUX_CONSONNES, plateau1.TAUX_RARES);
+				Brique b = plateau1.creerBrique();
 				plateau1.placeBrique(b);
 				if(plateau2!=null){
-					Brique b2 = plateau2.creerBrique(plateau2.TAUX_VOYELLES, plateau2.TAUX_CONSONNES, plateau2.TAUX_RARES);
+					Brique b2 = plateau2.creerBrique();
 					plateau2.placeBrique(b2);
 				}
 		break;
@@ -195,7 +195,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * sauvegarde l'état en cours du joueur1
+		 * sauvegarde l'≈Ωtat en cours du joueur1
 		 */
 		case KeyEvent.VK_S:
 			try {
@@ -209,7 +209,7 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
-		/** charge la dernière sauvegarde du joueur2
+		/** charge la derniÔøΩre sauvegarde du joueur2
 		 * 
 		 */
 		case KeyEvent.VK_D:

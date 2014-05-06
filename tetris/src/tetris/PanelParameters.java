@@ -5,6 +5,9 @@ import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * affiche le panel des paramètres
+ * affiche le panel des paramÔøΩtres
  * 
  *
  */
@@ -22,7 +25,7 @@ import javax.swing.JTextField;
 public class PanelParameters extends JPanel {
 	Image background;
 	JLabel picture, totalBriques, regleTotalBriques, totalLettres, regleTotalLettres;	
-	JButton play_song, stop_song, song_played, song_stoped, param, geek_gris, geek_jaune, girly_gris,girly_jaune,en,en_gris,fr,fr_gris;
+	JButton bt_verif_letters, croix_rouge, play_song, stop_song, song_played, song_stoped, param, geek_gris, geek_jaune, girly_gris,girly_jaune,en,en_gris,fr,fr_gris;
 	JLabel lblResult;
 	int total_briques, total_lettres;
 	JTextField taux_rouge, taux_vert, taux_bleu, taux_cyan,taux_orange, taux_magenta, taux_jaune,taux_total_briques, taux_voyelles, taux_consonnes, taux_rares, taux_total_lettres;
@@ -73,10 +76,36 @@ public class PanelParameters extends JPanel {
 	    taux_total_lettres.setText(String.valueOf(total_lettres));
 	    totalLettres =  new JLabel("Total");
 	    regleTotalLettres =  new JLabel("Le total doit valoir 10");
-
-	    valeur_taux_voyelles = Integer.valueOf(taux_voyelles.getText());
-	    valeur_taux_consonnes = Integer.valueOf(taux_voyelles.getText());
-	    valeur_taux_rares = Integer.valueOf(taux_voyelles.getText());
+	    valeur_taux_voyelles = 3;
+   	    valeur_taux_consonnes = 5;
+   	    valeur_taux_rares = 2;
+	    croix_rouge = new JButton(new ImageIcon("croix_rouge.png"));
+	    croix_rouge.setVisible(false);
+	    
+	   
+	    
+	    bt_verif_letters = new JButton("OK");
+	
+	    
+	    bt_verif_letters.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	          valeur_taux_voyelles = Integer.valueOf(taux_voyelles.getText());
+	     	  valeur_taux_consonnes = Integer.valueOf(taux_voyelles.getText());
+	     	  valeur_taux_rares = Integer.valueOf(taux_voyelles.getText());
+	          total_lettres = Integer.valueOf(taux_consonnes.getText()) + Integer.valueOf(taux_voyelles.getText()) + Integer.valueOf(taux_rares.getText());
+	          taux_total_lettres.setText(String.valueOf(total_lettres));
+	          System.out.println(taux_total_lettres.getText());
+	          
+	  	    if ( total_lettres !=10){
+	  	      	  System.out.println("coucou");
+	  	      	  param.setVisible(false);
+	  	      	  croix_rouge.setVisible(true);
+	  	      	  
+	  	        }
+	        }
+	      });
+	    
+	
 	    
 	    //Niveau
 	    facile = new JCheckBox("easy");
@@ -220,6 +249,12 @@ public class PanelParameters extends JPanel {
 		    }else if (difficile.isSelected()==true){
 		    	difficulte_anagramme =60;
 		    }
+		    System.out.println(valeur_taux_voyelles);
+		    bt_verif_letters.setBounds(300,580, 70, 25);	
+		    add(bt_verif_letters);
+		    croix_rouge.setBounds(300,500, 37, 35);	
+		    croix_rouge.setOpaque(false);
+		    add(croix_rouge);
      } 
 	
 }	

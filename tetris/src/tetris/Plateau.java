@@ -393,7 +393,7 @@ public class Plateau implements Serializable {
 	 * @param taux_rares
 	 * @return
 	 */
-	public Brique creerBrique(int taux_voyelles,int taux_consonnes, int taux_rares){
+	public Brique creerBrique(){
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
 		// génération aléatoire pondérée de la lettre
@@ -411,16 +411,16 @@ public class Plateau implements Serializable {
 
 		Random r = new Random();
 
-		if(quotient < taux_rares){
+		if(quotient < this.TAUX_RARES){
 		lettre = rares.charAt (r.nextInt (number_rares)); 
 		point=3;
 		}
-        else if(quotient < taux_rares+taux_consonnes){
+        else if(quotient < TAUX_RARES+TAUX_CONSONNES){
     		lettre = consonnes.charAt (r.nextInt (number_consonnes)); 
 
 			point=2;
         }
-        else if(quotient < taux_rares+taux_consonnes+taux_voyelles){
+        else if(quotient < TAUX_RARES+TAUX_CONSONNES+TAUX_VOYELLES){
     		lettre = voyelles.charAt (r.nextInt (number_voyelles)); 
 
 			point=1;
