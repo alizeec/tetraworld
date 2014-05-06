@@ -35,6 +35,7 @@ public class EcouteurSouris implements MouseListener
     
     if(e.getSource() == frame.getPanelParametres().param){
 	    frame.setPanel(1);
+	    joueurs.get(0).mode=Mode.TETRIS;
 	    joueurs.get(0).mode=joueurs.get(0).SauvegardeMode;
 	    joueurs.get(0).pause=false;
 		if(joueurs.size()>1){
@@ -252,7 +253,7 @@ public class EcouteurSouris implements MouseListener
     		if(plateau.tab[X][Y]!=null){
     			//récupération de la brique et de sa lettre
             	int id=plateau.tab[X][Y].getId();
-            	char lettre=plateau.briques.get(id).getLettre();
+            	char lettre=plateau.tab[X][Y].getLettre();
             	
             	//formation du mot
             	tmp=tmp.append(lettre);
@@ -289,7 +290,7 @@ public class EcouteurSouris implements MouseListener
         		if(plateau.tab[X][Y]!=null && plateau.tab[X][Y].utilisee == false){
         			//récupération de la brique et de sa lettre
                 	int id=plateau.tab[X][Y].getId();
-                	char lettre=plateau.briques.get(id).getLettre();
+                	char lettre=plateau.tab[X][Y].getLettre();
                 	plateau.tab[X][Y].utilisee = true;
                 	//formation du mot
                 	tmp=tmp.append(lettre);

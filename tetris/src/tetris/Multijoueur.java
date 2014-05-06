@@ -18,7 +18,7 @@ public Multijoueur(Plateau plateau ){
 				  plateau.briqueActuelle.descendre();
 				  plateau.placeBrique(plateau.briqueActuelle);
 			  }else{
-				  plateau.verifLignes(plateau.briqueActuelle);
+				  plateau.verifLignes();
 				  plateau.briqueActuelle = null;
 				  Brique newBrique = plateau.creerBrique(plateau.TAUX_VOYELLES, plateau.TAUX_CONSONNES, plateau.TAUX_RARES);
 				  plateau.briqueActuelle = newBrique;

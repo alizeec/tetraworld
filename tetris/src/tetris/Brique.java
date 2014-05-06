@@ -1,37 +1,39 @@
 package tetris;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
 
 public abstract class Brique implements Serializable{
 	//tableau courant (haut de base)
-	boolean tab[][];
+	Cellule tab[][];
 	// toutes les rotations possibles
-	boolean haut[][];
-	boolean droite[][];
-	boolean bas[][];
-	boolean gauche[][];
+	Cellule haut[][];
+	Cellule droite[][];
+	Cellule bas[][];
+	Cellule gauche[][];
 	private int id;
 	private Forme forme;
-	//position de la case en haut ˆ gauche
+	//position de la case en haut à gauche
+	Map<Integer,Cellule> cellules;
 	private Cellule position;
 	private Rotation rotation;
-	private char lettre;
 	static int cpt =0;
 	int point;
 	int nbCellules;
 	
 	
-	public Brique (Forme forme, char lettre, int point){
+	public Brique (Forme forme, Map<Integer,Cellule> cellules){
 		this.id=this.cpt;
 		cpt++;
-		this.position=new Cellule(this.id, forme, this.lettre, 3, 0);
+		this.position=new Cellule(this.id, forme, cellules.get(0).lettre, 3, 0);
+		this.cellules = new HashMap();
+		this.cellules = cellules;
 		this.rotation = Rotation.HAUT;
-		this.lettre=lettre;
 		this.forme = forme;
-		this.point=point;
 		this.nbCellules = 4;
 		
 	}
@@ -52,10 +54,7 @@ public abstract class Brique implements Serializable{
 	public Rotation getRotation(){
 		return this.rotation;
 	}
-	
-	public char getLettre(){
-		return this.lettre;
-	}
+
 	
 	public boolean descendre(){
 		this.getPosition().posY += 1;

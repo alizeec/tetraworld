@@ -65,9 +65,9 @@ public class Tetraword extends Thread{
 					  plateau.briqueActuelle.descendre();
 					  plateau.placeBrique(plateau.briqueActuelle);
 				  }else{
-					  plateau.verifLignes(plateau.briqueActuelle);
+					  plateau.verifLignes();
 					  plateau.briqueActuelle = null;
-					  Brique newBrique = plateau.creerBrique(TAUX_VOYELLES, TAUX_CONSONNES, TAUX_RARES);
+					  Brique newBrique = plateau.creerBrique(5, 3, 2);
 					  plateau.briqueActuelle = newBrique;
 		
 					  plateau.placeBrique(newBrique);
@@ -91,9 +91,9 @@ public class Tetraword extends Thread{
 				  plateau2.briqueActuelle.descendre();
 				  plateau2.placeBrique(plateau2.briqueActuelle);
 			  }else{
-				  plateau2.verifLignes(plateau2.briqueActuelle);
+				  plateau2.verifLignes();
 				  plateau2.briqueActuelle = null;
-				  Brique newBrique = plateau2.creerBrique(TAUX_VOYELLES, TAUX_CONSONNES, TAUX_RARES);
+				  Brique newBrique = plateau2.creerBrique(5, 3, 2);
 				  plateau2.briqueActuelle = newBrique;
 	
 				  plateau2.placeBrique(newBrique);
@@ -133,8 +133,8 @@ public class Tetraword extends Thread{
 		 
 	  }
 	  
-	     if (plateau.mode==Mode.PARAMETRES){
-	    	 jeu.repaint();
+	     while (plateau.mode==Mode.PARAMETRES){
+	    	 //jeu.repaint();
 			  }
 	  
 

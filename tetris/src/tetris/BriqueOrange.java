@@ -1,10 +1,12 @@
 package tetris;
 
+import java.util.Map;
+
 public class BriqueOrange extends Brique {
 
-	public BriqueOrange(char lettre, int point) {
+	public BriqueOrange(Map<Integer,Cellule> cellules) {
 		// TODO Auto-generated constructor stub
-		super(Forme.ORANGE, lettre,point);
+		super(Forme.ORANGE,cellules);
 		//this.setForme(Forme.ORANGE);
 		
 		// on configure les tableaux des 4 rotations
@@ -20,40 +22,40 @@ public class BriqueOrange extends Brique {
 	
 
 	public void configurehaut(){
-		this.haut = new boolean[4][4];
+		this.haut = new Cellule[4][4];
 		
-		this.haut[0][0]=false;
-		this.haut[0][1]=true;
-		this.haut[0][2]=true;
-		this.haut[0][3]=false;
+		this.haut[0][0]=null;
+		this.haut[0][1]=cellules.get(0);
+		this.haut[0][2]=cellules.get(1);
+		this.haut[0][3]=null;
 
 
-		this.haut[1][0]=false;
-		this.haut[1][1]=true;
-		this.haut[1][2]=true;
-		this.haut[1][3]=false;
+		this.haut[1][0]=null;
+		this.haut[1][1]=cellules.get(2);
+		this.haut[1][2]=cellules.get(3);
+		this.haut[1][3]=null;
 
-		this.haut[2][0]=false;
-		this.haut[2][1]=false;
-		this.haut[2][2]=false;
-		this.haut[2][3]=false;
+		this.haut[2][0]=null;
+		this.haut[2][1]=null;
+		this.haut[2][2]=null;
+		this.haut[2][3]=null;
 		
-		this.haut[3][0]=false;
-		this.haut[3][1]=false;
-		this.haut[3][2]=false;
-		this.haut[3][3]=false;
+		this.haut[3][0]=null;
+		this.haut[3][1]=null;
+		this.haut[3][2]=null;
+		this.haut[3][3]=null;
 	}
 
 	public void configuredroite(){
-		this.droite = (boolean[][])haut.clone();
+		this.droite = (Cellule[][])haut.clone();
 	}
 	
 	public void configurebas(){
-		this.bas = (boolean[][])haut.clone();
+		this.bas = (Cellule[][])haut.clone();
 	}
 	
 	public void configuregauche(){
-		this.gauche = (boolean[][])haut.clone();
+		this.gauche = (Cellule[][])haut.clone();
 	}
 
 	

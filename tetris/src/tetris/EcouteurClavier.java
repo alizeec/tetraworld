@@ -27,7 +27,7 @@ public class EcouteurClavier implements KeyListener{
 		}
 	}
 	
-	public void keyPressed(KeyEvent e){//mÈthode qui Ècoute lorsque l'on appui sur une touche
+	public void keyPressed(KeyEvent e){//m√©thode qui √©coute lorsque l'on appui sur une touche
 		int touche = e.getKeyCode();
 		
 		switch (touche) {
@@ -38,11 +38,11 @@ public class EcouteurClavier implements KeyListener{
 			if(plateau1.verifMove(plateau1.briqueActuelle, newposition)){
 				plateau1.deplaceBrique(plateau1.briqueActuelle, newposition);
 			}
-			//DÈplacer la piËce vers la droite
+			//D√©placer la pi√®ce vers la droite
 		break;
 		
 		case KeyEvent.VK_LEFT :
-			//DÈplacer la piËce vers la gauche
+			//D√©placer la pi√®ce vers la gauche
 			X = plateau1.briqueActuelle.getPosition().posX;
 			Y = plateau1.briqueActuelle.getPosition().posY;
 			newposition = new Cellule(X-1, Y);
@@ -52,7 +52,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		case KeyEvent.VK_DOWN :
-			//AccÈlÈrer la dÈscente
+			//Acc√©l√©rer la d√©scente
 			X = plateau1.briqueActuelle.getPosition().posX;
 			Y = plateau1.briqueActuelle.getPosition().posY;
 			newposition = new Cellule(X, Y+1);
@@ -77,11 +77,11 @@ public class EcouteurClavier implements KeyListener{
 					plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
 				}
 			}
-			//DÈplacer la piËce vers la droite
+			//D√©placer la pi√®ce vers la droite
 		break;
 		
 		case KeyEvent.VK_G :
-			//DÈplacer la piËce vers la gauche
+			//D√©placer la pi√®ce vers la gauche
 			if(plateau2 != null){
 				X = plateau2.briqueActuelle.getPosition().posX;
 				Y = plateau2.briqueActuelle.getPosition().posY;
@@ -93,7 +93,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		case KeyEvent.VK_B:
-			//AccÈlÈrer la dÈscente
+			//Acc√©l√©rer la d√©scente
 			if(plateau2 != null){
 				X = plateau2.briqueActuelle.getPosition().posX;
 				Y = plateau2.briqueActuelle.getPosition().posY;
@@ -117,9 +117,9 @@ public class EcouteurClavier implements KeyListener{
 		
 		
 		
-		//crée la première brique
+		//cr≈Ωe la premiÔøΩre brique
 		case KeyEvent.VK_C :
-				Brique b = plateau1.creerBrique(plateau1.TAUX_VOYELLES, plateau1.TAUX_CONSONNES, plateau1.TAUX_RARES);
+				Brique b = plateau1.creerBrique(5, 3, 2);
 				plateau1.placeBrique(b);
 				if(plateau2!=null){
 					Brique b2 = plateau2.creerBrique(plateau2.TAUX_VOYELLES, plateau2.TAUX_CONSONNES, plateau2.TAUX_RARES);
