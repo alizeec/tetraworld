@@ -13,7 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
+/**
+ * affiche le panel des paramètres
+ * 
+ *
+ */
 @SuppressWarnings("serial")
 public class PanelParameters extends JPanel {
 	Image background;
@@ -90,6 +94,9 @@ public class PanelParameters extends JPanel {
 	  	      
     
 }	
+	/**
+	 * affiche tout
+	 */
 	 public void paintComponent(Graphics g) {
 		    super.paintComponent(g);
 			g.drawImage(background,0,0,null);    

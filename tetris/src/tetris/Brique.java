@@ -2,7 +2,13 @@ package tetris;
 
 import java.io.Serializable;
 
-
+/**
+ * 
+ * classe abstraite qui représente toutes les briques. 
+ * On instancie ses fils selon la forme de la brique demandée
+ * 
+ *
+ */
 
 
 public abstract class Brique implements Serializable{
@@ -23,7 +29,12 @@ public abstract class Brique implements Serializable{
 	int point;
 	int nbCellules;
 	
-	
+	/**
+	 * 
+	 * @param Forme forme
+	 * @param char lettre
+	 * @param int point
+	 */
 	public Brique (Forme forme, char lettre, int point){
 		this.id=this.cpt;
 		cpt++;
@@ -36,27 +47,52 @@ public abstract class Brique implements Serializable{
 		
 	}
 	
-	
+	/**
+	 * 
+	 * @return int id
+	 */
 	public int getId(){
 		return this.id;
 	}
 	
+	/**
+	 * 
+	 * @return Forme
+	 */
 	public Forme getForme(){
 		return this.forme;
 	}
 	
+	
+	/**
+	 * 
+	 * @return Cellule position du coin supérieur gauche
+	 */
 	public Cellule getPosition(){
 		return this.position;
 	}
 	
+	/**
+	 * 
+	 * @return Rotation rotation de la brique(HAUT, GAUCHE, BAS, DROITE)
+	 */
 	public Rotation getRotation(){
 		return this.rotation;
 	}
 	
+	/**
+	 * 
+	 * @return char lettre de la brique
+	 */
 	public char getLettre(){
 		return this.lettre;
 	}
 	
+	/**
+	 * 
+	 * @return boolean
+	 * fait descendre la brique d'une case
+	 */
 	public boolean descendre(){
 		this.getPosition().posY += 1;
 		this.updatePosition(this.getPosition());
@@ -64,10 +100,17 @@ public abstract class Brique implements Serializable{
 	}
 
 
+	/**
+	 * 
+	 * @param Forme forme
+	 */
 	public void setForme(Forme forme) {
 		this.forme = forme;
 	}
 
+	/**
+	 * fait tourner la brique
+	 */
 	public void tourner(){
 		switch(this.rotation){
 			case HAUT:
@@ -95,7 +138,10 @@ public abstract class Brique implements Serializable{
 	}
 	
 	
-	
+	/**
+	 * Prend en paramètre une cellule qui est la nouvelle position du coin supérieur gauche de la brique
+	 * @param Cellule newposition
+	 */
 	public void updatePosition(Cellule newposition){
 		this.getPosition().posX=newposition.posX;
 		this.getPosition().posY=newposition.posY;
