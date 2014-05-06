@@ -25,12 +25,12 @@ import javax.swing.JTextField;
 public class PanelParameters extends JPanel {
 	Image background;
 	JLabel picture, totalBriques, regleTotalBriques, totalLettres, regleTotalLettres;	
-	JButton bt_verif_letters, croix_rouge, play_song, stop_song, song_played, song_stoped, param, geek_gris, geek_jaune, girly_gris,girly_jaune,en,en_gris,fr,fr_gris;
+	JButton bt_verif_letters, croix_rouge_1,croix_rouge_2, play_song, stop_song, song_played, song_stoped, param, geek_gris, geek_jaune, girly_gris,girly_jaune,en,en_gris,fr,fr_gris,bt_verif_briques;
 	JLabel lblResult;
 	int total_briques, total_lettres;
 	JTextField taux_rouge, taux_vert, taux_bleu, taux_cyan,taux_orange, taux_magenta, taux_jaune,taux_total_briques, taux_voyelles, taux_consonnes, taux_rares, taux_total_lettres;
 	JCheckBox facile, normal, difficile;
-	static public int valeur_taux_voyelles, valeur_taux_consonnes, valeur_taux_rares, difficulte_anagramme ;
+	static public int valeur_taux_voyelles, valeur_taux_consonnes, valeur_taux_rares, difficulte_anagramme,valeur_taux_rouge, valeur_taux_vert, valeur_taux_bleu, valeur_taux_cyan,valeur_taux_orange, valeur_taux_magenta, valeur_taux_jaune ;
 	ButtonGroup bg = new ButtonGroup();
 	
 	public PanelParameters(){
@@ -65,7 +65,42 @@ public class PanelParameters extends JPanel {
 	    taux_total_briques = new JTextField();
 	    taux_total_briques.setText(String.valueOf(total_briques));
 	    totalBriques =  new JLabel("Total");
-	    regleTotalBriques =  new JLabel("Le total doit valoir 10");
+	    regleTotalBriques =  new JLabel("Le total doit valoir 14");
+	    valeur_taux_rouge = 2;
+	    valeur_taux_orange = 1;
+	    valeur_taux_jaune = 2;
+	    valeur_taux_vert = 1;
+	    valeur_taux_bleu = 1;
+	    valeur_taux_cyan = 2;
+	    valeur_taux_magenta = 1;
+	    croix_rouge_1 = new JButton(new ImageIcon("croix_rouge.png"));
+	    croix_rouge_1.setVisible(false);
+	    
+	   
+	    
+	    bt_verif_briques = new JButton("OK");
+	    
+	    bt_verif_briques.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	    	    valeur_taux_rouge = Integer.valueOf(taux_rouge.getText());
+	    	    valeur_taux_orange = Integer.valueOf(taux_orange.getText());
+	    	    valeur_taux_jaune = Integer.valueOf(taux_jaune.getText());
+	    	    valeur_taux_vert = Integer.valueOf(taux_vert.getText());
+	    	    valeur_taux_bleu = Integer.valueOf(taux_bleu.getText());
+	    	    valeur_taux_cyan = Integer.valueOf(taux_cyan.getText());
+	    	    valeur_taux_magenta = Integer.valueOf(taux_magenta.getText());
+
+	         
+	          total_briques = Integer.valueOf(taux_rouge.getText()) + Integer.valueOf(taux_orange.getText()) + Integer.valueOf(taux_jaune.getText())+ Integer.valueOf(taux_vert.getText())+ Integer.valueOf(taux_bleu.getText())+ Integer.valueOf(taux_cyan.getText())+ Integer.valueOf(taux_magenta.getText());
+	          taux_total_briques.setText(String.valueOf(total_briques));
+	          
+	  	    if ( total_briques !=14){
+	  	      	  param.setVisible(false);
+	  	      	  croix_rouge_1.setVisible(true);
+	  	      	  
+	  	        }
+	        }
+	      });
 	    
 	    //taux lettres
 	    taux_consonnes = new JTextField("5");
@@ -79,8 +114,8 @@ public class PanelParameters extends JPanel {
 	    valeur_taux_voyelles = 3;
    	    valeur_taux_consonnes = 5;
    	    valeur_taux_rares = 2;
-	    croix_rouge = new JButton(new ImageIcon("croix_rouge.png"));
-	    croix_rouge.setVisible(false);
+	    croix_rouge_2 = new JButton(new ImageIcon("croix_rouge.png"));
+	    croix_rouge_2.setVisible(false);
 	    
 	   
 	    
@@ -97,7 +132,7 @@ public class PanelParameters extends JPanel {
 	          
 	  	    if ( total_lettres !=10){
 	  	      	  param.setVisible(false);
-	  	      	  croix_rouge.setVisible(true);
+	  	      	  croix_rouge_2.setVisible(true);
 	  	      	  
 	  	        }
 	        }
@@ -249,9 +284,14 @@ public class PanelParameters extends JPanel {
 		    }
 		    bt_verif_letters.setBounds(300,580, 70, 25);	
 		    add(bt_verif_letters);
-		    croix_rouge.setBounds(300,500, 37, 35);	
-		    croix_rouge.setOpaque(false);
-		    add(croix_rouge);
+		    croix_rouge_2.setBounds(300,500, 37, 35);	
+		    croix_rouge_2.setOpaque(false);
+		    add(croix_rouge_2);
+		    bt_verif_briques.setBounds(100,480, 70, 25);	
+		    add(bt_verif_briques);
+		    croix_rouge_1.setBounds(300,500, 37, 35);	
+		    croix_rouge_1.setOpaque(false);
+		    add(croix_rouge_1);
      } 
 	
 }	
