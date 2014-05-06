@@ -145,7 +145,8 @@ public class Tetraword extends Thread{
 	  
 	     while (plateau.mode==Mode.PARAMETRES){
 	    	 //jeu.repaint();
-			  }
+
+	     }
 	  
 
 	  
@@ -298,7 +299,7 @@ public class Tetraword extends Thread{
 
 		Tetraword jeu = new Tetraword();
 
-		
+		 
 
 
 		jeu.startGame(joueurs,framejeu, worddle, anagramme);

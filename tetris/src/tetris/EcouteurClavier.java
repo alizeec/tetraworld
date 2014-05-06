@@ -209,12 +209,45 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
-		/** charge la dernière sauvegarde du joueur2
+		/** charge la dernière sauvegarde du joueur1
 		 * 
 		 */
 		case KeyEvent.VK_D:
 			try {
 				plateau1.charger();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		break;
+		
+		/**
+		 * sauvegarde l'état en cours du joueur2
+		 */
+		case KeyEvent.VK_L:
+			try {
+				plateau2.sauvegarder();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		break;
+		
+		/** charge la dernière sauvegarde du joueur2
+		 * 
+		 */
+		case KeyEvent.VK_M:
+			try {
+				plateau2.charger();
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
