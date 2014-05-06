@@ -174,17 +174,8 @@ public class Tetraword extends Thread{
 		return (10*taux)/100;
 	}
 
-	/**
-	 * dŽfinie les taux pour chaques types de lettres (consonnes, voyelles, rares)
-	 * @param plateau
-	 */
-	/*public static void setLettersRates(Plateau plateau){
-		plateau.TAUX_CONSONNES =TAUX_CONSONNES;
-		plateau.TAUX_VOYELLES =TAUX_VOYELLES;
-		plateau.TAUX_RARES =TAUX_RARES;
-		System.out.println(plateau.TAUX_CONSONNES);
 
-	}*/
+
 
 	/**  mode ANAGRAMME
 	 * 
@@ -267,10 +258,29 @@ public class Tetraword extends Thread{
 		  }
 	}
 	
-	public static void setTaux(int consonnes, int voyelles, int rares, Plateau plateau){
+	/**
+	 * dŽfinie les taux pour chaques types de lettres (consonnes, voyelles, rares)
+	 * @param plateau
+	 */
+	public static void setTauxLettres(int consonnes, int voyelles, int rares, Plateau plateau){
 		plateau.TAUX_CONSONNES=consonnes;
 		plateau.TAUX_VOYELLES=voyelles;
 		plateau.TAUX_RARES=rares;
+	}
+	
+	/**
+	 * dŽfinie les taux pour chaques types de briques 
+	 * @param plateau
+	 */
+	public static void setTauxFormes(int bleue, int cyan, int jaune,int magenta, int orange, int rouge, int verte, Plateau plateau){
+		plateau.TAUX_BLEUE=bleue;
+		plateau.TAUX_CYAN=cyan;
+		plateau.TAUX_JAUNE=jaune;
+		plateau.TAUX_MAGENTA=magenta;
+		plateau.TAUX_ORANGE=orange;
+		plateau.TAUX_ROUGE=rouge;
+		plateau.TAUX_VERTE=verte;
+
 	}
 
 	
@@ -284,7 +294,8 @@ public class Tetraword extends Thread{
 		Plateau plateau= new Plateau(349, "Joueur 1");
 		joueurs.add(plateau);
 		//setLettersRates(plateau);
-		setTaux(3, 5, 2, plateau);
+		setTauxLettres(3, 5, 2, plateau);
+		setTauxFormes(2, 2, 2,2, 2, 2, 2,plateau);
 		}
 		else if(multijoueur){
 		Plateau plateau= new Plateau(256, "Joueur 1");
@@ -292,10 +303,13 @@ public class Tetraword extends Thread{
 		Plateau plateau2= new Plateau(716, "Joueur 2");
 		joueurs.add(plateau);
 		joueurs.add(plateau2);
-		//setLettersRates(plateau);
-		//setLettersRates(plateau2);
-		setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, plateau);
-		setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, plateau2);
+
+		setTauxLettres(3, 5, 2, plateau);
+		setTauxLettres(3, 5, 2, plateau2);
+		
+		setTauxFormes(2, 2, 2,2, 2, 2, 2,plateau);
+		setTauxFormes(2, 2, 2,2, 2, 2, 2,plateau2);
+
 
 		}
 
@@ -314,6 +328,10 @@ public class Tetraword extends Thread{
 		jeu.startGame(joueurs,framejeu, worddle, anagramme);
 				
 	}
+
+
+
+
 		
 		 
 }
