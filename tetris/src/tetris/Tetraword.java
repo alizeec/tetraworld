@@ -133,9 +133,9 @@ public class Tetraword extends Thread{
 		 
 	  }
 	  
-	     if (plateau.mode==Mode.PARAMETRES){
-	    	 jeu.repaint();
-			  }
+	     while (plateau.mode==Mode.PARAMETRES){
+	    	 //jeu.repaint();
+	     }
 	  
 
 	  
