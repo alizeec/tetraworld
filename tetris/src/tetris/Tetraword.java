@@ -11,7 +11,11 @@ import java.util.Timer;
 
 
 
-
+/**
+ * boucle principale. Jeu en lui-même
+ * 
+ *
+ */
 
 public class Tetraword extends Thread{
 	
@@ -30,7 +34,13 @@ public class Tetraword extends Thread{
 
 
 
-	
+	/**
+	 * boucle principale
+	 * @param joueurs liste des joueurs
+	 * @param jeu fenêtre
+	 * @param worddle pour le mode WORDDLE
+	 * @param anagramme pour le mode ANAGRAMME
+	 */
 	
 	public void startGame(LinkedList<Plateau> joueurs , FrameJeu jeu, Mots worddle, Mots anagramme) {
 
@@ -152,15 +162,21 @@ public class Tetraword extends Thread{
 	}
 	
 	
-//// FIN DE LA BOUCLE PRINCIPALE
 
-	
+	/**
+	 * calcul de pourcentage pour la difficulté du mode ANAGRAMME
+	 * @param int taux sur 100
+	 * @return
+	 */
 	public  int calculPourcentage(int taux){
 		System.out.println((10*taux)/100);
 		return (10*taux)/100;
 	}
 
-	// pour le panneau de conf
+	/**
+	 * définie les taux pour chaques types de lettres (consonnes, voyelles, rares)
+	 * @param plateau
+	 */
 	public static void setLettersRates(Plateau plateau){
 		plateau.TAUX_CONSONNES =TAUX_CONSONNES;
 		plateau.TAUX_VOYELLES =TAUX_VOYELLES;
@@ -168,6 +184,12 @@ public class Tetraword extends Thread{
 
 	}
 
+	/**  mode ANAGRAMME
+	 * 
+	 * @param Plateau plateau
+	 * @param Mots anagramme
+	 * @param FrameJeu jeu
+	 */
 	public void anagramme(Plateau plateau, Mots anagramme, FrameJeu jeu){
 		  boolean result=false;
 		  jeu.repaint();
@@ -199,6 +221,12 @@ public class Tetraword extends Thread{
 		  }
 	}
 	
+	/**  mode WORDDLE
+	 * 
+	 * @param Plateau plateau
+	 * @param Mots anagramme
+	 * @param FrameJeu jeu
+	 */
 	public void worddle(Plateau plateau, Mots worddle, FrameJeu jeu){
 		  boolean result=false;
 		  if(plateau.positionEnCours==null){
@@ -238,7 +266,10 @@ public class Tetraword extends Thread{
 	}
 
 	
-
+/**
+ * main principal
+ * @param args
+ */
 	public static void main(String[] args) {
 		LinkedList<Plateau> joueurs = new LinkedList<Plateau>();
 		if(!multijoueur){

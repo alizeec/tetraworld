@@ -5,8 +5,16 @@ import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 import java.util.Vector;
 
+/**
+ * 
+ * récupère les actions souris de l'utilisateur
+ *
+ */
 public class EcouteurSouris implements MouseListener
 {
+	/**
+	 * liste des joueurs
+	 */
 	LinkedList<Plateau> joueurs;
 	FrameJeu frame;
 	Mots anagramme;
@@ -20,6 +28,9 @@ public class EcouteurSouris implements MouseListener
 
 
 	@Override
+	/**
+	 * récupère les click de l'utilisateur et agit en conséquence
+	 */
     public void mouseClicked(MouseEvent e) 
     {
    

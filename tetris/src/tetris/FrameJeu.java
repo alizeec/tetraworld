@@ -17,6 +17,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * création de la fenêtre de jeu
+ *
+ */
 public class FrameJeu extends JFrame{
 	private PanelJeu panelJeu;
 	PanelParameters panelParametres;
@@ -31,6 +36,10 @@ public class FrameJeu extends JFrame{
 	static Son musique_geek;
 	static Son musique_girly;
 	
+	/**
+	 * création de la fenêtre en fonction du nombre de joueurs
+	 * @param LinkedList<Plateau> joueurs liste des joueurs
+	 */
 	public FrameJeu(LinkedList<Plateau> joueurs){
 		this.setTitle("TetraWord");        
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -113,14 +122,26 @@ public class FrameJeu extends JFrame{
 	    setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @return PanelJeu panelJeu
+	 */
 	public PanelJeu getPanelJeu(){
 			return panelJeu;
 	}
 	
+	/**
+	 * 
+	 * @return PanelParameters panelParametres
+	 */
 	public PanelParameters getPanelParametres(){
 		return panelParametres;
 }
 	
+	/**
+	 * charge le bon panel (jeu ou paramètres)
+	 * @param int panel
+	 */
 	public void setPanel(int panel){
 		if(panel == 1){//Si PanelJeu
 			this.setContentPane(panelJeu);
@@ -130,9 +151,7 @@ public class FrameJeu extends JFrame{
 		setVisible(true);
 	}
 	
-	public void setMessage(){
 
-	}
 	
 	
 }
