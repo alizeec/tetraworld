@@ -94,10 +94,8 @@ public class PanelParameters extends JPanel {
 	     	  valeur_taux_rares = Integer.valueOf(taux_voyelles.getText());
 	          total_lettres = Integer.valueOf(taux_consonnes.getText()) + Integer.valueOf(taux_voyelles.getText()) + Integer.valueOf(taux_rares.getText());
 	          taux_total_lettres.setText(String.valueOf(total_lettres));
-	          System.out.println(taux_total_lettres.getText());
 	          
 	  	    if ( total_lettres !=10){
-	  	      	  System.out.println("coucou");
 	  	      	  param.setVisible(false);
 	  	      	  croix_rouge.setVisible(true);
 	  	      	  
@@ -249,7 +247,6 @@ public class PanelParameters extends JPanel {
 		    }else if (difficile.isSelected()==true){
 		    	difficulte_anagramme =60;
 		    }
-		    System.out.println(valeur_taux_voyelles);
 		    bt_verif_letters.setBounds(300,580, 70, 25);	
 		    add(bt_verif_letters);
 		    croix_rouge.setBounds(300,500, 37, 35);	

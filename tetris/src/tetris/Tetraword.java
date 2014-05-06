@@ -65,7 +65,6 @@ public class Tetraword extends Thread{
 
 		  
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
-		 System.out.println("coucou");
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
 				  int Y = plateau.briqueActuelle.getPosition().posY;
