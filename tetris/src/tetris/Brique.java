@@ -4,7 +4,13 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * 
+ * classe abstraite qui reprŽsente toutes les briques. 
+ * On instancie ses fils selon la forme de la brique demandŽe
+ * 
+ *
+ */
 
 
 public abstract class Brique implements Serializable{
@@ -17,7 +23,7 @@ public abstract class Brique implements Serializable{
 	Cellule gauche[][];
 	private int id;
 	private Forme forme;
-	//position de la case en haut � gauche
+	//position de la case en haut à gauche
 	Map<Integer,Cellule> cellules;
 	private Cellule position;
 	private Rotation rotation;
@@ -38,24 +44,44 @@ public abstract class Brique implements Serializable{
 		
 	}
 	
-	
+	/**
+	 * 
+	 * @return int id
+	 */
 	public int getId(){
 		return this.id;
 	}
 	
+	/**
+	 * 
+	 * @return Forme
+	 */
 	public Forme getForme(){
 		return this.forme;
 	}
 	
+	
+	/**
+	 * 
+	 * @return Cellule position du coin supŽrieur gauche
+	 */
 	public Cellule getPosition(){
 		return this.position;
 	}
 	
+	/**
+	 * 
+	 * @return Rotation rotation de la brique(HAUT, GAUCHE, BAS, DROITE)
+	 */
 	public Rotation getRotation(){
 		return this.rotation;
 	}
-
 	
+	/**
+	 * 
+	 * @return boolean
+	 * fait descendre la brique d'une case
+	 */
 	public boolean descendre(){
 		this.getPosition().posY += 1;
 		this.updatePosition(this.getPosition());
@@ -63,10 +89,17 @@ public abstract class Brique implements Serializable{
 	}
 
 
+	/**
+	 * 
+	 * @param Forme forme
+	 */
 	public void setForme(Forme forme) {
 		this.forme = forme;
 	}
 
+	/**
+	 * fait tourner la brique
+	 */
 	public void tourner(){
 		switch(this.rotation){
 			case HAUT:
@@ -94,7 +127,10 @@ public abstract class Brique implements Serializable{
 	}
 	
 	
-	
+	/**
+	 * Prend en param�tre une cellule qui est la nouvelle position du coin supŽrieur gauche de la brique
+	 * @param Cellule newposition
+	 */
 	public void updatePosition(Cellule newposition){
 		this.getPosition().posX=newposition.posX;
 		this.getPosition().posY=newposition.posY;

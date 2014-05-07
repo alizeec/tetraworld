@@ -17,23 +17,39 @@ import java.util.TimerTask;
 import javax.swing.JLabel;
 
 public class Plateau implements Serializable {
+	/** tableau de cellule qui représente le plateau
+	 * 
+	 */
 	Cellule tab[][];
 	int LARGEUR = 10;
 	int HAUTEUR = 20;
 	int coinSuppGauche;
 	int points;
+	/**
+	 * taux de chaque types de lettre
+	 */
 	int TAUX_VOYELLES;
 	int TAUX_CONSONNES;
 	int TAUX_RARES;
+	/**
+	 * ensemble des briques posées sur le plateau
+	 */
 	Map<Integer,Brique> briques;
 	String nom;
 
-	//brique actuellement en mouvement
+	/**
+	 * brique actuellement en mouvement
+	 */
 	Brique briqueActuelle;
 	boolean perdu;
+	/**
+	 * forme de la prochaine brique
+	 */
 	Forme AVenir;
 	private int niveau;
-	// nombre de lignes explosées depuis le changement de niveau
+	/** nombre de lignes cassées depuis le dernier changement de niveau
+	 *  
+	 */
 	int nbLignes;
 	boolean pause;
 	Mode mode;
@@ -41,17 +57,28 @@ public class Plateau implements Serializable {
 	//sauvegarde mode de jeu
 	public Mode SauvegardeMode;
 	
-	//pour le mode ANAGRAMME et WORDDLE
+/** pour le mode ANAGRAMME et WORDDLE
+ * 
+ */
 	String motEnCours;
-	// message au joueur sur la validité du mot
+	/** pour le mode ANAGRAMME et WORDDLE
+	 * retour utilisateur
+	 */
 	String message;
+	/** pour le mode ANAGRAMME et WORDDLE
+	 * nombre de point que vaut le mot
+	 */
 	int  totalMot;
+	/** pour le mode ANAGRAMME
+	 * ligne à casser
+	 */
 	int indexLigneSupp;
 	int lignesCompletes[];
 	int nbLignesCompletes;
 
-	// en mode worddle, position de la brique "centrale"
-	Cellule positionEnCours;
+	/** pour le mode WORDDLE
+	 * position de la brique "centrale"
+	 */	Cellule positionEnCours;
 	LinkedList<Cellule> BriquesUtilisees;
 	int nbConnexion;
 	
@@ -89,26 +116,52 @@ public class Plateau implements Serializable {
 	
 	// GETTER et SETTER
 	
+	/**
+	 * 
+	 * @return int largeur
+	 */
 	public int getLargeur(){
 		return LARGEUR;
 	}
 	
+/**
+ * 
+ * @return int hauteur
+ */
 	public int getHauteur(){
 		return HAUTEUR;
 	}
 	
+	/**
+	 * 
+	 * @return int score
+	 */
 	public int getScore(){
 		return points;
 	}
 	
+	/**
+	 * 
+	 * @return int niveau
+	 */
 	public int getNiveau(){
 		return niveau;
 	}
 	
+	/**
+	 * 
+	 * @param String message
+	 * retour utilisateur
+	 */
 	 public void setMessage(String message){
 		 this.message=message;
 	 }
 	 
+	 /**
+	  * 
+	  * @return String message
+	  * retour utilisateur
+	  */
 	 public String getMessage(){
 		 return this.message;
 	 }
@@ -116,6 +169,11 @@ public class Plateau implements Serializable {
 	 
 	 ///////////////////////
 	
+	 /**
+	  * placement de la brique
+	  * @param Brique brique
+	  * @return boolean
+	  */
 	public boolean placeBrique(Brique brique){
 		//rŽcupŽration de la position de la brique pour la placer sur le plateau
 		int X=brique.getPosition().posX;
@@ -137,6 +195,11 @@ public class Plateau implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * vidage des cellules contenant la brique avant son déplacement
+	 * @param Brique brique
+	 * @return boolean
+	 */
 	public boolean videCaseBrique(Brique brique){
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
@@ -153,7 +216,9 @@ public class Plateau implements Serializable {
 		return true;
 	}
 	
-	// en mode worddle, fait tomber les bouts de briques en suspension
+	/**
+	 * en mode worddle, fait tomber les bouts de briques en suspension
+	 */
 	public void gravite(){
 		System.out.println("gravité");
 		for(int i=getHauteur()-1;i>=1;--i){
@@ -187,6 +252,9 @@ public class Plateau implements Serializable {
 		verifLignes();
 	}
 	
+	/**
+	 * indique que le jeu est perdu, pour stopper la boucle dans Tetraword
+	 */
 	public void JeuPerdu(){
 		for (int i=1 ; i<getLargeur()-1; ++i){
 			if (this.tab[i][0]!=null && this.tab[i][0].getId()!=0){
@@ -197,7 +265,13 @@ public class Plateau implements Serializable {
 
 	}
 	
-	//verification de possibilité pour la brique de se déplacer à droite/gauche/bas
+	/**
+	 * verification de possibilité pour la brique de se déplacer à droite/gauche/bas
+	 * @param Brique brique
+	 * @param Cellule newposition
+	 * @return boolean
+	 */
+	//
 	public boolean verifMove(Brique brique, Cellule newposition){
 		int X=newposition.posX;
 		int Y=newposition.posY;
@@ -220,7 +294,11 @@ public class Plateau implements Serializable {
 		return true;
 	}
 	
-	
+	/**
+	 * vérifie si une ligne en particulier est complète
+	 * @param int indexLigne
+	 * @return boolean
+	 */
 	public boolean verfiUneLigne(int indexLigne){
 		for(int i=0; i<getLargeur();++i){
 			if(tab[i][indexLigne] == null){
@@ -230,6 +308,10 @@ public class Plateau implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * vérifie si une ligne dans tout le tableau est complète
+	 * @param Brique brique
+	 */
 	/*public void verifLignes(Brique brique){
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
@@ -264,6 +346,10 @@ public class Plateau implements Serializable {
 	}
 	
 	
+	/**
+	 * supprime une ligne
+	 * @param int index
+	 */
 	public void suppLigne(int index){
 		for(int i=0; i<getLargeur();++i){
 			briques.get(tab[i][index].getId()).nbCellules--;
@@ -274,6 +360,10 @@ public class Plateau implements Serializable {
 		}
 	}
 	
+	/**
+	 * fait descendre les briques restante après la suppression d'une ligne
+	 * @param int index
+	 */
 	public void toutDescendre(int index){
 		for(int i=index;i>=1;--i){
 			for(int j=0;j<getLargeur();++j){
@@ -283,6 +373,10 @@ public class Plateau implements Serializable {
 		}
 	}
 	
+	/**
+	 * passe au niveau supérieur au bout de 3 lignes cassées
+	 * @return int niveau
+	 */
 	public int changementNiveau(){
 		if(nbLignes==3){
 			niveau++;
@@ -294,7 +388,12 @@ public class Plateau implements Serializable {
 	
 
 
-	
+	/**
+	 * déplace une brique
+	 * @param Brique brique
+	 * @param Brique newposition
+	 * @return boolean
+	 */
 	public boolean deplaceBrique(Brique brique, Cellule newposition){
 		videCaseBrique(brique);
 		brique.updatePosition(newposition);	
@@ -302,8 +401,14 @@ public class Plateau implements Serializable {
 		return true;
 	}
 	
-	
-	public Brique creerBrique(int taux_voyelles,int taux_consonnes, int taux_rares){
+	/** 
+	 * crée une brique avec une forme et une lettre aléatoire (suivant certains taux)verification de possibilité pour la brique de se déplacer à droite/gauche/bas
+	 * @param taux_voyelles
+	 * @param taux_consonnes
+	 * @param taux_rares
+	 * @return
+	 */
+	public Brique creerBrique(){
 		Forme forme = AVenir;
 		AVenir = Forme.getForme();
 		Map<Integer,Cellule> tmp_cellules = new HashMap();
@@ -323,21 +428,22 @@ public class Plateau implements Serializable {
 	
 			Random r = new Random();
 	
-			if(quotient < taux_rares){
+			if(quotient < this.TAUX_RARES){
 			lettre = rares.charAt (r.nextInt (number_rares)); 
 			point=3;
 			}
-	        else if(quotient < taux_rares+taux_consonnes){
+	
+	        else if(quotient < TAUX_RARES+TAUX_CONSONNES){
 	    		lettre = consonnes.charAt (r.nextInt (number_consonnes)); 
 	
 				point=2;
 	        }
-	        else if(quotient < taux_rares+taux_consonnes+taux_voyelles){
+	        else if(quotient < TAUX_RARES+TAUX_CONSONNES+TAUX_VOYELLES){
 	    		lettre = voyelles.charAt (r.nextInt (number_voyelles)); 
 	
 				point=1;
 	        }
-			tmp_cellules.put(i, new Cellule(lettre, i, point));
+			tmp_cellules.put(i,  new Cellule(lettre, i, point));
 		}
 		////////
 
@@ -378,8 +484,11 @@ public class Plateau implements Serializable {
 	
 	
 	
-	
-	/// Fonctions pour la sauvegarde et le chargement d'une sauvegarde 
+	/**
+	 * sauvegarde un plateau
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void sauvegarder()throws FileNotFoundException, IOException {
         Sauvegarde sauvegarde = new Sauvegarde();
         sauvegarde.plateau = this;
@@ -391,6 +500,10 @@ public class Plateau implements Serializable {
 
     }
 	
+	/**
+	 * change la plateau en cours par le plateau chargé
+	 * @param Plateau plateau
+	 */
 	public void transformeEn(Plateau plateau){
 		tab= plateau.tab.clone();
 		points= plateau.points;
@@ -411,6 +524,12 @@ public class Plateau implements Serializable {
 
 	}
 	
+	/**
+	 * charge une sauvegarde
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	 public void charger() throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream entreeDeFicher  = new FileInputStream("MaSauvegarde.sa");
         ObjectInputStream entreeDObjet = new ObjectInputStream(entreeDeFicher);
@@ -421,7 +540,6 @@ public class Plateau implements Serializable {
      }
 	 
 	 
-	 //////////
 	 
 	 
 

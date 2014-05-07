@@ -11,7 +11,11 @@ import java.util.Timer;
 
 
 
-
+/**
+ * boucle principale. Jeu en lui-m�me
+ * 
+ *
+ */
 
 public class Tetraword extends Thread{
 	
@@ -20,9 +24,9 @@ public class Tetraword extends Thread{
 	boolean game=true;
 	int cpt = 0;
 	int TAUX_ANAGRAMME = 30;
-	static int TAUX_VOYELLES=PanelParameters.valeur_taux_voyelles;
-	static int TAUX_CONSONNES=PanelParameters.valeur_taux_consonnes;
-	static int TAUX_RARES=PanelParameters.valeur_taux_rares;
+	//static int TAUX_VOYELLES=PanelParameters.valeur_taux_voyelles;
+	//static int TAUX_CONSONNES=PanelParameters.valeur_taux_consonnes;
+	//static int TAUX_RARES=PanelParameters.valeur_taux_rares;
 	
 	Plateau joueur;
 	static boolean multijoueur = false;
@@ -30,10 +34,16 @@ public class Tetraword extends Thread{
 
 
 
-	
+	/**
+	 * boucle principale
+	 * @param joueurs liste des joueurs
+	 * @param jeu fen�tre
+	 * @param worddle pour le mode WORDDLE
+	 * @param anagramme pour le mode ANAGRAMME
+	 */
 	
 	public void startGame(LinkedList<Plateau> joueurs , FrameJeu jeu, Mots worddle, Mots anagramme) {
-
+    
 	 long start = 0L;
 	 long sleepDuration = 0L;
 
@@ -44,7 +54,7 @@ public class Tetraword extends Thread{
 	  }
 	 while(game) {
 	  /*
-	   * d�but de la boucle
+	   * dŽbut de la boucle
 	   */
 	  start = System.currentTimeMillis();
 	  
@@ -55,7 +65,7 @@ public class Tetraword extends Thread{
 
 		  
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
-
+		 System.out.println("coucou");
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
 				  int Y = plateau.briqueActuelle.getPosition().posY;
@@ -67,7 +77,7 @@ public class Tetraword extends Thread{
 				  }else{
 					  plateau.verifLignes();
 					  plateau.briqueActuelle = null;
-					  Brique newBrique = plateau.creerBrique(5, 3, 2);
+					  Brique newBrique = plateau.creerBrique();
 					  plateau.briqueActuelle = newBrique;
 		
 					  plateau.placeBrique(newBrique);
@@ -93,7 +103,7 @@ public class Tetraword extends Thread{
 			  }else{
 				  plateau2.verifLignes();
 				  plateau2.briqueActuelle = null;
-				  Brique newBrique = plateau2.creerBrique(5, 3, 2);
+				  Brique newBrique = plateau2.creerBrique();
 				  plateau2.briqueActuelle = newBrique;
 	
 				  plateau2.placeBrique(newBrique);
@@ -133,9 +143,10 @@ public class Tetraword extends Thread{
 		 
 	  }
 	  
-	     while (plateau.mode==Mode.PARAMETRES){
+	     if (plateau.mode==Mode.PARAMETRES){
 	    	 //jeu.repaint();
-			  }
+
+	     }
 	  
 
 	  
@@ -152,22 +163,35 @@ public class Tetraword extends Thread{
 	}
 	
 	
-//// FIN DE LA BOUCLE PRINCIPALE
 
-	
+	/**
+	 * calcul de pourcentage pour la difficultŽ du mode ANAGRAMME
+	 * @param int taux sur 100
+	 * @return
+	 */
 	public  int calculPourcentage(int taux){
 		System.out.println((10*taux)/100);
 		return (10*taux)/100;
 	}
 
-	// pour le panneau de conf
-	public static void setLettersRates(Plateau plateau){
+	/**
+	 * dŽfinie les taux pour chaques types de lettres (consonnes, voyelles, rares)
+	 * @param plateau
+	 */
+	/*public static void setLettersRates(Plateau plateau){
 		plateau.TAUX_CONSONNES =TAUX_CONSONNES;
 		plateau.TAUX_VOYELLES =TAUX_VOYELLES;
 		plateau.TAUX_RARES =TAUX_RARES;
+		System.out.println(plateau.TAUX_CONSONNES);
 
-	}
+	}*/
 
+	/**  mode ANAGRAMME
+	 * 
+	 * @param Plateau plateau
+	 * @param Mots anagramme
+	 * @param FrameJeu jeu
+	 */
 	public void anagramme(Plateau plateau, Mots anagramme, FrameJeu jeu){
 		  boolean result=false;
 		  jeu.repaint();
@@ -199,6 +223,12 @@ public class Tetraword extends Thread{
 		  }
 	}
 	
+	/**  mode WORDDLE
+	 * 
+	 * @param Plateau plateau
+	 * @param Mots anagramme
+	 * @param FrameJeu jeu
+	 */
 	public void worddle(Plateau plateau, Mots worddle, FrameJeu jeu){
 		  boolean result=false;
 		  if(plateau.positionEnCours==null){
@@ -231,22 +261,30 @@ public class Tetraword extends Thread{
 			  }
 			  
 		  }else{
-			  System.out.println("temps ecoul�");
+			  System.out.println("temps ecoulé");
 			  worddle.supprLettresWorddle(plateau);
 			  plateau.mode=Mode.TETRIS;
 		  }
 	}
+	
+	public static void setTaux(int consonnes, int voyelles, int rares, Plateau plateau){
+		plateau.TAUX_CONSONNES=consonnes;
+		plateau.TAUX_VOYELLES=voyelles;
+		plateau.TAUX_RARES=rares;
+	}
 
 	
-
+/**
+ * main principal
+ * @param args
+ */
 	public static void main(String[] args) {
 		LinkedList<Plateau> joueurs = new LinkedList<Plateau>();
 		if(!multijoueur){
 		Plateau plateau= new Plateau(349, "Joueur 1");
 		joueurs.add(plateau);
-		setLettersRates(plateau);
-
-
+		//setLettersRates(plateau);
+		setTaux(3, 5, 2, plateau);
 		}
 		else if(multijoueur){
 		Plateau plateau= new Plateau(256, "Joueur 1");
@@ -254,8 +292,11 @@ public class Tetraword extends Thread{
 		Plateau plateau2= new Plateau(716, "Joueur 2");
 		joueurs.add(plateau);
 		joueurs.add(plateau2);
-		setLettersRates(plateau);
-		setLettersRates(plateau2);
+		//setLettersRates(plateau);
+		//setLettersRates(plateau2);
+		setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, plateau);
+		setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, plateau2);
+
 		}
 
 
@@ -267,7 +308,7 @@ public class Tetraword extends Thread{
 
 		Tetraword jeu = new Tetraword();
 
-		
+		 
 
 
 		jeu.startGame(joueurs,framejeu, worddle, anagramme);

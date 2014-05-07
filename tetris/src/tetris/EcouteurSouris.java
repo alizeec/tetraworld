@@ -5,8 +5,16 @@ import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 import java.util.Vector;
 
+/**
+ * 
+ * récupère les actions souris de l'utilisateur
+ *
+ */
 public class EcouteurSouris implements MouseListener
 {
+	/**
+	 * liste des joueurs
+	 */
 	LinkedList<Plateau> joueurs;
 	FrameJeu frame;
 	Mots anagramme;
@@ -20,6 +28,9 @@ public class EcouteurSouris implements MouseListener
 
 
 	@Override
+	/**
+	 * récupère les click de l'utilisateur et agit en conséquence
+	 */
     public void mouseClicked(MouseEvent e) 
     {
    
@@ -33,11 +44,21 @@ public class EcouteurSouris implements MouseListener
     		}
     	}
     
+
+
+    
     if(e.getSource() == frame.getPanelParametres().param){
-	    frame.setPanel(1);
+        Tetraword.setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
+	    if(joueurs.size()>1){
+	    	Tetraword.setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(1));
+	    }
+	    System.out.println(joueurs.get(0).mode);
+    	frame.setPanel(1);
 	    joueurs.get(0).mode=Mode.TETRIS;
-	    joueurs.get(0).mode=joueurs.get(0).SauvegardeMode;
+
+	    System.out.println(joueurs.get(0).mode);
 	    joueurs.get(0).pause=false;
+
 		if(joueurs.size()>1){
     		joueurs.get(1).pause=false;
 

@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import javax.swing.JButton;
 
+/**
+ * 
+ * Une cellule représente une unité carré.
+ * Le tableau de jeu est composé de 200 cellules, et les briques de 4 cellules.
+ *
+ */
 public class Cellule implements Serializable{
 	int id;
 	int numero;
@@ -14,6 +20,14 @@ public class Cellule implements Serializable{
 	int point;
 	boolean utilisee;
 
+	/**
+	 * 
+	 * @param int id
+	 * @param Forme forme
+	 * @param char lettre
+	 * @param int X
+	 * @param int Y
+	 */
 	public Cellule(int id, Forme forme, char lettre, int X, int Y) {
 		this.id = id;
 		this.forme = forme;
@@ -23,7 +37,12 @@ public class Cellule implements Serializable{
 		this.utilisee = false;
 	}
 	
-	public Cellule(int X, int Y) { //Pour les cellules temporaires (pour vÈrifier les deplacements par exemple)
+	/**
+	 * Utilisée pour les cellules temporaires
+	 * @param X
+	 * @param Y
+	 */
+	public Cellule(int X, int Y) { 
 		this.id = 0;
 		this.forme = null;
 		this.posX = X;
@@ -31,7 +50,12 @@ public class Cellule implements Serializable{
 		this.lettre = 'a';
 	}
 	
-	public Cellule(int X, int Y, char lettre) { //Pour les cellules temporaires (pour vÈrifier les deplacements par exemple)
+	/**
+	 * Utilisée pour les cellules temporaires
+	 * @param X
+	 * @param Y
+	 */
+	public Cellule(int X, int Y, char lettre) { 
 		this.id = 0;
 		this.forme = null;
 		this.posX = X;
@@ -45,7 +69,10 @@ public class Cellule implements Serializable{
 		this.point = point;
 	}
 
-	
+	/**
+	 * 
+	 * @return int id
+	 */
 	public int getId(){
 		return this.id;
 	}

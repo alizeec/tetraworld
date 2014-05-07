@@ -10,6 +10,11 @@ import java.util.Scanner;
 import java.util.TimerTask;
 import java.util.Vector;
 
+/**
+ * 
+ * pour les jeux de mots ANAGRAMME et WORDDLE
+ *
+ */
 public class Mots  {
 	File file;
 	public Cellule positionActuelle;
@@ -24,6 +29,12 @@ public class Mots  {
 	}
 	
 	
+	/**
+	 * Cherche un mot dans le dictionnaire
+	 * @param String word
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public boolean findWord(String word)  throws FileNotFoundException  {
 		String mot = word.substring(0, word.length()-1);
 		Scanner scanner = new Scanner(file);
@@ -36,6 +47,11 @@ public class Mots  {
 		return false;
 	}
 	
+	/**
+	 * indique que le mot est terminé
+	 * @param String word
+	 * @return boolean
+	 */
 	public boolean motfini(String word){
 		if(word.contains("\n")){
 			System.out.println("Mot : "+word);
@@ -46,11 +62,14 @@ public class Mots  {
 		}
 	}
 	
-	//on ajoute les points que valent les letttres + du niveau et on détruit la ligne
+	/**
+	 * Si le résultat est correct en mode ANAGRAMME
+	 * supprime la ligne et ajoute les points, change de niveau si nécessaire
+	 * @param Plateau plateau
+	 */
 	public void resultatCorrect(Plateau plateau){
 		plateau.suppLigne(plateau.indexLigneSupp);
 		plateau.gravite();
-		//plateau.toutDescendre(plateau.indexLigneSupp);
 		plateau.points+=plateau.totalMot;
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
@@ -60,6 +79,11 @@ public class Mots  {
 
 	}
 	
+	/**
+	 * Si le résultat est correct en mode WORDDLE
+	 * calcul le nombre de points gagné et detruit les briques utilisées
+	 * @param Plateau plateau
+	 */
 	public void resultatCorrectWorddle(Plateau plateau){
 		plateau.points+=plateau.totalMot;
 		int taille=plateau.BriquesUtilisees.size();
@@ -73,6 +97,10 @@ public class Mots  {
 
 	}
 	
+	/**
+	 * supprime les lettres utilisées
+	 * @param Plateau plateau
+	 */
 	public void supprLettresWorddle(Plateau plateau){
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
@@ -85,12 +113,19 @@ public class Mots  {
 		plateau.gravite();
 	}
 	
-	// si le mot n'existe pas, on ne fait rien
+	/**
+	 * si le mot est incorrect en mode WORDDLE ou ANAGRAMME
+	 * @param Plateau plateau
+	 */
 	public void resultatInCorrect(Plateau plateau){
 		plateau.setMessage("Perdu!");
 
 	}
 	
+	/** 
+	 * Cherche la cellule de départ parmis les briques présentes sur le plateau en mode WORDDLE
+	 * @param Plateau plateau
+	 */
 	public void initialiseWorddle(Plateau plateau){
 		/* pour avoir une position de départ aléatoire*/
 	Vector<Cellule> positionsPossibles= new Vector<Cellule>();

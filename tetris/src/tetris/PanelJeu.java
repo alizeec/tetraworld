@@ -20,8 +20,15 @@ import javax.swing.JTextField;
 import javax.xml.ws.handler.Handler;
 
 
-
+/**
+ * affiche dans la fenêtre les éléments de jeu
+ * 
+ *
+ */
 public class PanelJeu extends JPanel{
+	/**
+	 * affichage des plateaux
+	 */
 	Image imageBriqueMagenta;
 	Image imageBriqueBleu;
 	Image imageBriqueCyan;
@@ -33,8 +40,14 @@ public class PanelJeu extends JPanel{
 	LinkedList<Plateau> joueurs;
 	int nbJoueurs; 
 	Plateau plateau;
+	/**
+	 * affichage du fond de plateau
+	 */
 	Image background_geek,background_girly, background;
 	Image perdu;
+	/** affichage des données et des retours utilisateur
+	 * 
+	 */
 	JLabel score;
 	Image next1;
 	Image next2;
@@ -90,11 +103,22 @@ public class PanelJeu extends JPanel{
 
 	}
 	
+	/**
+	 * pour placer verticalement les cellules
+	 * @param int i
+	 * @param Plateau plateau
+	 * @return int
+	 */
 	public int getPixelX(int i, Plateau plateau){
 		int x = (int)(plateau.coinSuppGauche + 300 / plateau.getLargeur()*i);
 		return x;
 	}
 
+	/**
+	 * pour placer horizontalement les cellules
+	 * @param int j
+	 * @return int
+	 */
 	public int getPixelY(int j){
 		int y=0;
 		if(nbJoueurs==1){
@@ -107,6 +131,14 @@ public class PanelJeu extends JPanel{
 		return y;
 	}
 	
+	/**
+	 * pour afficher les cellules magenta
+	 * @param Graphics g
+	 * @param int i position verticale
+	 * @param int j position horizontale
+	 * @param char lettre lettre de la brique
+	 * @param Plateau plateau
+	 */
 	public void afficherCelluleMagenta(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
@@ -114,6 +146,14 @@ public class PanelJeu extends JPanel{
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
+	/**
+	 * pour afficher les cellules bleu
+	 * @param Graphics g
+	 * @param int i position verticale
+	 * @param int j position horizontale
+	 * @param char lettre lettre de la brique
+	 * @param Plateau plateau
+	 */
 	public void afficherCelluleBleu(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
@@ -121,6 +161,14 @@ public class PanelJeu extends JPanel{
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
+	/**
+	 * pour afficher les cellules cyan
+	 * @param Graphics g
+	 * @param int i position verticale
+	 * @param int j position horizontale
+	 * @param char lettre lettre de la brique
+	 * @param Plateau plateau
+	 */
 	public void afficherCelluleCyan(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
@@ -128,6 +176,14 @@ public class PanelJeu extends JPanel{
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
+	/**
+	 * pour afficher les cellules jaune
+	 * @param Graphics g
+	 * @param int i position verticale
+	 * @param int j position horizontale
+	 * @param char lettre lettre de la brique
+	 * @param Plateau plateau
+	 */
 	public void afficherCelluleJaune(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j,plateau));
 		int y = (getPixelY(i));
@@ -135,6 +191,14 @@ public class PanelJeu extends JPanel{
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
+	/**
+	 * pour afficher les cellules orange
+	 * @param Graphics g
+	 * @param int i position verticale
+	 * @param int j position horizontale
+	 * @param char lettre lettre de la brique
+	 * @param Plateau plateau
+	 */
 	public void afficherCelluleOrange(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
@@ -142,6 +206,14 @@ public class PanelJeu extends JPanel{
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
+	/**
+	 * pour afficher les cellules rouge
+	 * @param Graphics g
+	 * @param int i position verticale
+	 * @param int j position horizontale
+	 * @param char lettre lettre de la brique
+	 * @param Plateau plateau
+	 */
 	public void afficherCelluleRouge(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j,plateau));
 		int y = (getPixelY(i));
@@ -149,12 +221,29 @@ public class PanelJeu extends JPanel{
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
+	/**
+	 * pour afficher les cellules vertes
+	 * @param Graphics g
+	 * @param int i position verticale
+	 * @param int j position horizontale
+	 * @param char lettre lettre de la brique
+	 * @param Plateau plateau
+	 */
 	public void afficherCelluleVert(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueVert, x, y, null);
 		g.drawString(""+lettre, x+7, y+15);
 	}
+	
+	/**
+	 * pour afficher les cellules grisées (mode worddle)
+	 * @param Graphics g
+	 * @param int i position verticale
+	 * @param int j position horizontale
+	 * @param char lettre lettre de la brique
+	 * @param Plateau plateau
+	 */
 	public void afficherCelluleGris(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
@@ -162,7 +251,9 @@ public class PanelJeu extends JPanel{
 		g.drawString(""+lettre, x+7, y+15);
 	}
 	
-	 	
+/**
+ * pour tout afficher
+ */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		setBackground(new Color (155, 204, 234, 0));//modifie la couleur de fond
@@ -355,7 +446,7 @@ public class PanelJeu extends JPanel{
 	}
 
 
-	public void printTab(){
+	/*public void printTab(){
 		String str = "";
 		for(int i=0;i<plateau.getHauteur();i++){		
 			for(int j=0;j<plateau.getLargeur();j++){
@@ -403,8 +494,12 @@ public class PanelJeu extends JPanel{
 			str += "\n";
 		}
 		System.out.println(str);
-	}
+	}*/
 	
+	/**
+	 * pour afficher les plateaux
+	 * @param Graphics g
+	 */
 	public void afficherPlateau(Graphics g){//affiche le monde dans le panel.
 		for(int k=0; k<nbJoueurs; ++k){
 			for(int i=0;i<joueurs.get(k).getHauteur();i++){		
@@ -441,7 +536,11 @@ public class PanelJeu extends JPanel{
 		}
 	}
 	
-	
+	/**
+	 * pour avoir et afiicher la pochaine forme de brique
+	 * @param Plateau plateau
+	 * @return ImageIcon
+	 */
 	public ImageIcon getNext(Plateau plateau){
 		ImageIcon icon=null;
 

@@ -8,10 +8,18 @@ import java.util.LinkedList;
 
 import javax.swing.JPanel;
 
-
+/**
+ * 
+ * rŽcup�re les actions clavier de l'utilisateur
+ *
+ */
 public class EcouteurClavier implements KeyListener{
+	/**
+	 * Plateaux des joueurs
+	 */
 	Plateau plateau1;
 	Plateau plateau2=null;
+
 
 	LinkedList<Plateau> joueurs;
 	FrameJeu frame;
@@ -26,11 +34,10 @@ public class EcouteurClavier implements KeyListener{
 			this.plateau2 = joueurs.get(1);
 		}
 	}
-	
 	public void keyPressed(KeyEvent e){//méthode qui écoute lorsque l'on appui sur une touche
 		int touche = e.getKeyCode();
 		
-		switch (touche) {
+		switch(touche){
 		case KeyEvent.VK_RIGHT :
 			X = plateau1.briqueActuelle.getPosition().posX;
 			Y = plateau1.briqueActuelle.getPosition().posY;
@@ -38,11 +45,12 @@ public class EcouteurClavier implements KeyListener{
 			if(plateau1.verifMove(plateau1.briqueActuelle, newposition)){
 				plateau1.deplaceBrique(plateau1.briqueActuelle, newposition);
 			}
-			//Déplacer la pièce vers la droite
 		break;
 		
+		/**
+		 * aller ˆ gauche pour le joueur1
+		 */
 		case KeyEvent.VK_LEFT :
-			//Déplacer la pièce vers la gauche
 			X = plateau1.briqueActuelle.getPosition().posX;
 			Y = plateau1.briqueActuelle.getPosition().posY;
 			newposition = new Cellule(X-1, Y);
@@ -51,8 +59,10 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
+		/**
+		 * accŽl�re la descente pour le joueur1
+		 */
 		case KeyEvent.VK_DOWN :
-			//Accélérer la déscente
 			X = plateau1.briqueActuelle.getPosition().posX;
 			Y = plateau1.briqueActuelle.getPosition().posY;
 			newposition = new Cellule(X, Y+1);
@@ -61,12 +71,17 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
+		/**
+		 * tourne la brique pour le joueur1
+		 */
 		case KeyEvent.VK_UP :
 			plateau1.briqueActuelle.tourner();
 			plateau1.deplaceBrique(plateau1.briqueActuelle, plateau1.briqueActuelle.getPosition());
-			//Rotation
 		break;
 		
+		/**
+		 * aller ˆ droite pour le joueur2
+		 */
 		//joueur2
 		case KeyEvent.VK_H :
 			if(plateau2 != null){
@@ -77,11 +92,12 @@ public class EcouteurClavier implements KeyListener{
 					plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
 				}
 			}
-			//Déplacer la pièce vers la droite
 		break;
 		
+		/**
+		 * aller ˆ gauche pour le joueur2
+		 */
 		case KeyEvent.VK_G :
-			//Déplacer la pièce vers la gauche
 			if(plateau2 != null){
 				X = plateau2.briqueActuelle.getPosition().posX;
 				Y = plateau2.briqueActuelle.getPosition().posY;
@@ -92,8 +108,10 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
+		/** accŽl�re la descente pour le joueur2
+		 * 
+		 */
 		case KeyEvent.VK_B:
-			//Accélérer la déscente
 			if(plateau2 != null){
 				X = plateau2.briqueActuelle.getPosition().posX;
 				Y = plateau2.briqueActuelle.getPosition().posY;
@@ -104,40 +122,49 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
+		/**
+		 * fait tourner la brique pour le joueur2
+		 */
 		case KeyEvent.VK_SPACE :
 			if(plateau2 != null){
 			plateau2.briqueActuelle.tourner();
 			plateau2.deplaceBrique(plateau2.briqueActuelle, plateau2.briqueActuelle.getPosition());
 			}
-			//Rotation
 		break;
 		
 		
 		
 		
 		
-		
-		//crŽe la premi�re brique
+		/**
+		 * lancement du jeu, crŽe la premi�re brique
+		 */
 		case KeyEvent.VK_C :
-				Brique b = plateau1.creerBrique(5, 3, 2);
+				Brique b = plateau1.creerBrique();
 				plateau1.placeBrique(b);
 				if(plateau2!=null){
-					Brique b2 = plateau2.creerBrique(plateau2.TAUX_VOYELLES, plateau2.TAUX_CONSONNES, plateau2.TAUX_RARES);
+					Brique b2 = plateau2.creerBrique();
 					plateau2.placeBrique(b2);
 				}
 		break;
 		
-		// met en pause
+		/**
+		 * met en pause
+		 */
 		case KeyEvent.VK_P:
 				plateau1.pause=true;
 		break;
 		
-		// reprend la partie
+		/**
+		 * reprend la partie
+		 */
 		case KeyEvent.VK_O:
 				plateau1.pause=false;
 		break;
 		
-		// lance le mode worddle
+		/**
+		 * lance le mode WORDDLE pour le joueur1
+		 */
 		case KeyEvent.VK_W:
 			if(plateau2 == null ||plateau2.mode != Mode.WORDDLE){
 				plateau1.mode=Mode.WORDDLE;
@@ -149,6 +176,9 @@ public class EcouteurClavier implements KeyListener{
 			plateau1.timer();
 		break;
 		
+		/**
+		 * lance le mode WORDDLE pour le joueur2
+		 */
 		case KeyEvent.VK_X:
 			if(plateau2 != null && plateau1.mode != Mode.WORDDLE){
 				plateau2.mode=Mode.WORDDLE;
@@ -160,7 +190,9 @@ public class EcouteurClavier implements KeyListener{
 			plateau2.timer();
 		break;
 		
-		//sauvegarde
+		/**
+		 * sauvegarde l'Žtat en cours du joueur1
+		 */
 		case KeyEvent.VK_S:
 			try {
 				plateau1.sauvegarder();
@@ -173,10 +205,47 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
-		//charge une sauvegarde
+
+		
+		/** charge la derni�re sauvegarde du joueur1
+		 * 
+		 */
 		case KeyEvent.VK_D:
 			try {
 				plateau1.charger();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		break;
+		
+		/**
+		 * sauvegarde l'�tat en cours du joueur2
+		 */
+		case KeyEvent.VK_L:
+			try {
+				plateau2.sauvegarder();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		break;
+		
+		/** charge la derni�re sauvegarde du joueur2
+		 * 
+		 */
+		case KeyEvent.VK_M:
+			try {
+				plateau2.charger();
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
