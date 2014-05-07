@@ -75,7 +75,8 @@ public class PanelParameters extends JPanel {
 	    valeur_taux_magenta = 1;
 	    croix_rouge_1 = new JButton(new ImageIcon("croix_rouge.png"));
 	    croix_rouge_1.setVisible(false);
-	    
+	    croix_rouge_1.setBorderPainted(false);
+	    croix_rouge_1.setContentAreaFilled(false);
 	   
 	    
 	    bt_verif_briques = new JButton("OK");
@@ -120,7 +121,8 @@ public class PanelParameters extends JPanel {
    	    valeur_taux_rares = 2;
 	    croix_rouge_2 = new JButton(new ImageIcon("croix_rouge.png"));
 	    croix_rouge_2.setVisible(false);
-	    
+	    croix_rouge_2.setBorderPainted(false);
+	    croix_rouge_2.setContentAreaFilled(false);
 	   
 	    
 	    bt_verif_letters = new JButton("OK");
@@ -171,42 +173,42 @@ public class PanelParameters extends JPanel {
 	 public void paintComponent(Graphics g) {
 		    super.paintComponent(g);
 			g.drawImage(background,0,0,null);    
-			play_song.setBounds(775, 200, 63, 93);
+			play_song.setBounds(775, 170, 63, 93);
 		    play_song.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		    play_song.setContentAreaFilled(false);
 		    play_song.setBorderPainted(false);
 		    add(play_song);
-		    stop_song.setBounds(845, 197, 63, 93);
+		    stop_song.setBounds(845, 167, 63, 93);
 		    stop_song.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		    stop_song.setContentAreaFilled(false);
 		    stop_song.setBorderPainted(false);
 		    add(stop_song);
-		    song_played.setBounds(775, 200, 63, 93);
+		    song_played.setBounds(775, 170, 63, 93);
 		    song_played.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		    song_played.setContentAreaFilled(false);
 		    song_played.setBorderPainted(false);
 		    add(song_played);
-		    song_stoped.setBounds(845, 197, 63, 93);
+		    song_stoped.setBounds(845, 167, 63, 93);
 		    song_stoped.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		    song_stoped.setContentAreaFilled(false);
 		    song_stoped.setBorderPainted(false);
 		    add(song_stoped);
-			geek_jaune.setBounds(770, 420, 74, 60);
+			geek_jaune.setBounds(770, 380, 74, 60);
 			geek_jaune.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			geek_jaune.setContentAreaFilled(false);
 			geek_jaune.setBorderPainted(false);
 		    add(geek_jaune);
-		    geek_gris.setBounds(770, 420, 74, 60);
+		    geek_gris.setBounds(770, 380, 74, 60);
 		    geek_gris.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		    geek_gris.setContentAreaFilled(false);
 		    geek_gris.setBorderPainted(false);
 		    add(geek_gris);
-		    girly_jaune.setBounds(855, 408, 54, 72);
+		    girly_jaune.setBounds(855, 370, 54, 72);
 		    girly_jaune.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		    girly_jaune.setContentAreaFilled(false);
 		    girly_jaune.setBorderPainted(false);
 		    add(girly_jaune);
-		    girly_gris.setBounds(855,408, 54, 72);
+		    girly_gris.setBounds(855,370, 54, 72);
 		    girly_gris.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		    girly_gris.setContentAreaFilled(false);
 		    girly_gris.setBorderPainted(false);
@@ -236,41 +238,42 @@ public class PanelParameters extends JPanel {
 			param.setContentAreaFilled(false);
 			param.setBorderPainted(false);
 			add(param);
-			taux_rouge.setBounds(150,215, 60, 25);
+			taux_rouge.setBounds(150,180, 60, 25);
 			add(taux_rouge);
-			taux_vert.setBounds(150,285, 60, 25);
+			taux_vert.setBounds(150,250, 60, 25);
 			add(taux_vert);
-			taux_cyan.setBounds(150,350, 60, 25);
+			taux_cyan.setBounds(150,310, 60, 25);
 			add(taux_cyan);
-			taux_magenta.setBounds(150,400, 60, 25);
+			taux_magenta.setBounds(150,360, 60, 25);
 			add(taux_magenta);
-			taux_orange.setBounds(150,450, 60, 25);
+			taux_orange.setBounds(150,410, 60, 25);
 			add(taux_orange);
-			taux_jaune.setBounds(150,500, 60, 25);
+			taux_jaune.setBounds(150,460, 60, 25);
 			add(taux_jaune);
-			taux_bleu.setBounds(150,560, 60, 25);
+			taux_bleu.setBounds(150,520, 60, 25);
 			add(taux_bleu);
-			taux_total_briques.setBounds(150,620, 60, 25);
+			taux_total_briques.setBounds(150,580, 60, 25);
 			add(taux_total_briques);
-			totalBriques.setBounds(100,620, 60, 25);
+			totalBriques.setBounds(100,580, 60, 25);
 			totalBriques.setForeground(new Color(255,255,255));
 			add(totalBriques);
-			regleTotalBriques.setBounds(95,650, 150, 25);
+			regleTotalBriques.setBounds(95,610, 150, 25);
 			regleTotalBriques.setForeground(new Color(255,255,255));
+			regleTotalBriques.setForeground(new Color(150,150,150));
 			add(regleTotalBriques);
-			taux_voyelles.setBounds(500,210, 60, 25);
+			taux_voyelles.setBounds(500,170, 60, 25);
 			add(taux_voyelles);
-			taux_consonnes.setBounds(500,250, 60, 25);
+			taux_consonnes.setBounds(500,210, 60, 25);
 			add(taux_consonnes);		
-			taux_rares.setBounds(500,290, 60, 25);
+			taux_rares.setBounds(500,250, 60, 25);
 			add(taux_rares);
-			taux_total_lettres.setBounds(500,330, 60, 25);
+			taux_total_lettres.setBounds(500,300, 60, 25);
 			add(taux_total_lettres);
-			totalLettres.setBounds(450,330, 60, 25);
+			totalLettres.setBounds(450,300, 60, 25);
 			totalLettres.setForeground(new Color(255,255,255));
 			add(totalLettres);
-			regleTotalLettres.setBounds(570,330, 150, 25);
-			regleTotalLettres.setForeground(new Color(255,255,255));
+			regleTotalLettres.setBounds(445,330, 150, 25);
+			regleTotalLettres.setForeground(new Color(150,150,150));
 			add(regleTotalLettres);
 			facile.setBounds(370,580, 60, 25);	
 			facile.setOpaque(false);
@@ -291,15 +294,14 @@ public class PanelParameters extends JPanel {
 		    }else if (difficile.isSelected()==true){
 		    	difficulte_anagramme =60;
 		    }
-		    bt_verif_letters.setBounds(300,580, 70, 25);	
+		    bt_verif_letters.setBounds(570,300, 70, 25);	
 		    add(bt_verif_letters);
-		    croix_rouge_2.setBounds(300,500, 37, 35);	
-		    croix_rouge_2.setOpaque(false);
+		    croix_rouge_2.setBounds(220,605, 37, 35);	
 		    add(croix_rouge_2);
-		    bt_verif_briques.setBounds(100,480, 70, 25);	
+		    bt_verif_briques.setBounds(220,580, 70, 25);	
 		    add(bt_verif_briques);
-		    croix_rouge_1.setBounds(300,500, 37, 35);	
-		    croix_rouge_1.setOpaque(false);
+		    croix_rouge_1.setBounds(570,325, 37, 35);	
+		    
 		    add(croix_rouge_1);
      } 
 	
