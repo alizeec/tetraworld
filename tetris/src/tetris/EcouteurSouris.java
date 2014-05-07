@@ -288,7 +288,7 @@ public class EcouteurSouris implements MouseListener
             		plateau.motEnCours=plateau.motEnCours+tmp.toString();
             	}
             	// récupération du total de point que vaut le mot
-            	plateau.totalMot+=plateau.briques.get(id).point; 	                		
+            	plateau.totalMot+=plateau.briques.get(id).getPoints(); 	                		
     		}
 
     	}
@@ -299,9 +299,9 @@ public class EcouteurSouris implements MouseListener
     
     public void modeWorddle(int X, int Y,Plateau plateau){
 		StringBuffer tmp = new StringBuffer();
-		if(((plateau.positionEnCours.posY-Y)<=1 && (plateau.positionEnCours.posY-Y)>=-1 )  && ((plateau.positionEnCours.posX-X)<=1 && (plateau.positionEnCours.posX-X)>=-1 ) )
+		if(((plateau.positionEnCours.getPosY()-Y)<=1 && (plateau.positionEnCours.getPosY()-Y)>=-1 )  && ((plateau.positionEnCours.getPosX()-X)<=1 && (plateau.positionEnCours.getPosX()-X)>=-1 ) )
 		{
-			if((plateau.positionEnCours.posY==Y  && plateau.positionEnCours.posX==X)){
+			if((plateau.positionEnCours.getPosY()==Y  && plateau.positionEnCours.getPosX()==X)){
 				plateau.setMessage("Il faut cliquer sur une case autour");
 			}
 			else if(plateau.nbConnexion>7){
@@ -325,13 +325,13 @@ public class EcouteurSouris implements MouseListener
                 		plateau.motEnCours=plateau.motEnCours+tmp.toString();
                 	}
                 	// récupération du total de point que vaut le mot
-                	plateau.totalMot+=plateau.briques.get(id).point; 
-            		plateau.positionEnCours.posY=Y;
-            		plateau.positionEnCours.posX=X;
+                	plateau.totalMot+=plateau.briques.get(id).getPoints(); 
+            		plateau.positionEnCours.setPosY(Y);
+            		plateau.positionEnCours.setPosX(X);
             		plateau.nbConnexion++;
             		boolean existe = false;
             		for (int i=0; i<plateau.BriquesUtilisees.size(); ++i){
-            			if(plateau.BriquesUtilisees.get(i).posX == X && plateau.BriquesUtilisees.get(i).posY == Y){
+            			if(plateau.BriquesUtilisees.get(i).getPosX() == X && plateau.BriquesUtilisees.get(i).getPosY() == Y){
             				existe = true;
             				break;
             			}

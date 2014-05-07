@@ -11,13 +11,13 @@ import javax.swing.JButton;
  *
  */
 public class Cellule implements Serializable{
-	int id;
-	int numero;
-	Forme forme;
-	int posX;
-	int posY;
-	char lettre;
-	int point;
+	private int id;
+	private int numero;
+	private Forme forme;
+	private int posX;
+	private int posY;
+	private char lettre;
+	private int point;
 	boolean utilisee;
 
 	/**
@@ -30,9 +30,9 @@ public class Cellule implements Serializable{
 	 */
 	public Cellule(int id, Forme forme, char lettre, int X, int Y) {
 		this.id = id;
-		this.forme = forme;
-		this.posX = X;
-		this.posY=Y;
+		this.setForme(forme);
+		this.setPosX(X);
+		this.setPosY(Y);
 		this.lettre = lettre;
 		this.utilisee = false;
 	}
@@ -44,9 +44,9 @@ public class Cellule implements Serializable{
 	 */
 	public Cellule(int X, int Y) { 
 		this.id = 0;
-		this.forme = null;
-		this.posX = X;
-		this.posY=Y;
+		this.setForme(null);
+		this.setPosX(X);
+		this.setPosY(Y);
 		this.lettre = 'a';
 	}
 	
@@ -57,28 +57,78 @@ public class Cellule implements Serializable{
 	 */
 	public Cellule(int X, int Y, char lettre) { 
 		this.id = 0;
-		this.forme = null;
-		this.posX = X;
-		this.posY=Y;
+		this.setForme(null);
+		this.setPosX(X);
+		this.setPosY(Y);
 		this.lettre = lettre;
 	}
 	
 	public Cellule(char lettre, int numero, int point){
 		this.lettre = lettre;
-		this.numero= numero;
-		this.point = point;
+		this.setNumero(numero);
+		this.setPoint(point);
 	}
 
 	/**
 	 * 
 	 * @return int id
 	 */
-	public int getId(){
+	int getId(){
 		return this.id;
+	}
+	
+	public void setId(int valeur){
+		this.id=valeur;
 	}
 	
 	public char getLettre(){
 		return lettre;
 	}
+	
+	public void setLettre(char l){
+		this.lettre=l;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public Forme getForme() {
+		return forme;
+	}
+
+	public void setForme(Forme forme) {
+		this.forme = forme;
+	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
+
 
 }

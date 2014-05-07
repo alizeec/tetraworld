@@ -61,8 +61,8 @@ public class Tetraword extends Thread{
  
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
 			  if(plateau.briqueActuelle != null){
-				  int X = plateau.briqueActuelle.getPosition().posX;
-				  int Y = plateau.briqueActuelle.getPosition().posY;
+				  int X = plateau.briqueActuelle.getPosition().getPosX();
+				  int Y = plateau.briqueActuelle.getPosition().getPosY();
 				  Cellule newposition = new Cellule(X, Y+1);
 				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 					  plateau.videCaseBrique(plateau.briqueActuelle);
@@ -87,8 +87,8 @@ public class Tetraword extends Thread{
 	  if(joueurs.size()>1){
 	  if(plateau2.pause==false && plateau2.mode==Mode.TETRIS){
 		  if(plateau2.briqueActuelle != null){
-			  int X = plateau2.briqueActuelle.getPosition().posX;
-			  int Y = plateau2.briqueActuelle.getPosition().posY;
+			  int X = plateau2.briqueActuelle.getPosition().getPosX();
+			  int Y = plateau2.briqueActuelle.getPosition().getPosY();
 			  Cellule newposition = new Cellule(X, Y+1);
 			  if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
 				  plateau2.videCaseBrique(plateau2.briqueActuelle);
@@ -218,7 +218,7 @@ public class Tetraword extends Thread{
 		  boolean result=false;
 		  if(plateau.positionEnCours==null){
 				worddle.initialiseWorddle( plateau);
-				System.out.println("partez de la brique : "+plateau.positionEnCours.posX+" Y:"+ plateau.positionEnCours.posY);
+				System.out.println("partez de la brique : "+plateau.positionEnCours.getPosX()+" Y:"+ plateau.positionEnCours.getPosY());
 			}
 
 		  if (plateau.tempsEcoule < 30*1000) {
