@@ -6,7 +6,7 @@ public class BriqueJaune extends Brique {
 
 	public BriqueJaune(Map<Integer,Cellule> cellules) {
 		// TODO Auto-generated constructor stub
-		super(Forme.BLEU,cellules);
+		super(Forme.JAUNE,cellules);
 		//this.setForme(Forme.JAUNE);
 		
 		// on configure les tableaux des 4 rotations

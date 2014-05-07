@@ -110,7 +110,7 @@ public class PanelJeu extends JPanel{
 	 * @return int
 	 */
 	public int getPixelX(int i, Plateau plateau){
-		int x = (int)(plateau.coinSuppGauche + 300 / plateau.getLargeur()*i);
+		int x = (int)(plateau.getCoinSuppGauche() + 300 / plateau.getLargeur()*i);
 		return x;
 	}
 

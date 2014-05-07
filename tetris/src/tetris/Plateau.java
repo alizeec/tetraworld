@@ -23,7 +23,7 @@ public class Plateau implements Serializable {
 	Cellule tab[][];
 	int LARGEUR = 10;
 	int HAUTEUR = 20;
-	int coinSuppGauche;
+	private int coinSuppGauche;
 	int points;
 	/**
 	 * taux de chaque types de lettre
@@ -99,8 +99,8 @@ public class Plateau implements Serializable {
 	public Plateau(int position, String nom) {
 		// TODO Auto-generated constructor stub
 		this.tab = new Cellule[LARGEUR][HAUTEUR];
-		this.briques = new HashMap();
-		coinSuppGauche = position;
+		this.briques = new HashMap<Integer, Brique>();
+		setCoinSuppGauche(position);
 		this.nom = nom;
 
 		points=0;
@@ -551,6 +551,16 @@ public class Plateau implements Serializable {
         this.transformeEn(sauvegarde.plateau);
         System.out.println("chargement");
      }
+
+
+	public int getCoinSuppGauche() {
+		return coinSuppGauche;
+	}
+
+
+	public void setCoinSuppGauche(int coinSuppGauche) {
+		this.coinSuppGauche = coinSuppGauche;
+	}
 	 
 	 
 	 
