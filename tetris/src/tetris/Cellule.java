@@ -12,10 +12,12 @@ import javax.swing.JButton;
  */
 public class Cellule implements Serializable{
 	int id;
+	int numero;
 	Forme forme;
 	int posX;
 	int posY;
 	char lettre;
+	int point;
 	boolean utilisee;
 
 	/**
@@ -60,6 +62,12 @@ public class Cellule implements Serializable{
 		this.posY=Y;
 		this.lettre = lettre;
 	}
+	
+	public Cellule(char lettre, int numero, int point){
+		this.lettre = lettre;
+		this.numero= numero;
+		this.point = point;
+	}
 
 	/**
 	 * 
@@ -67,6 +75,10 @@ public class Cellule implements Serializable{
 	 */
 	public int getId(){
 		return this.id;
+	}
+	
+	public char getLettre(){
+		return lettre;
 	}
 
 }

@@ -1,11 +1,13 @@
 package tetris;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 
- * classe abstraite qui représente toutes les briques. 
- * On instancie ses fils selon la forme de la brique demandée
+ * classe abstraite qui repr≈Ωsente toutes les briques. 
+ * On instancie ses fils selon la forme de la brique demand≈Ωe
  * 
  *
  */
@@ -13,36 +15,31 @@ import java.io.Serializable;
 
 public abstract class Brique implements Serializable{
 	//tableau courant (haut de base)
-	boolean tab[][];
+	Cellule tab[][];
 	// toutes les rotations possibles
-	boolean haut[][];
-	boolean droite[][];
-	boolean bas[][];
-	boolean gauche[][];
+	Cellule haut[][];
+	Cellule droite[][];
+	Cellule bas[][];
+	Cellule gauche[][];
 	private int id;
 	private Forme forme;
-	//position de la case en haut à gauche
+	//position de la case en haut √† gauche
+	Map<Integer,Cellule> cellules;
 	private Cellule position;
 	private Rotation rotation;
-	private char lettre;
 	static int cpt =0;
 	int point;
 	int nbCellules;
 	
-	/**
-	 * 
-	 * @param Forme forme
-	 * @param char lettre
-	 * @param int point
-	 */
-	public Brique (Forme forme, char lettre, int point){
+	
+	public Brique (Forme forme, Map<Integer,Cellule> cellules){
 		this.id=this.cpt;
 		cpt++;
-		this.position=new Cellule(this.id, forme, this.lettre, 3, 0);
+		this.position=new Cellule(this.id, forme, cellules.get(0).lettre, 3, 0);
+		this.cellules = new HashMap();
+		this.cellules = cellules;
 		this.rotation = Rotation.HAUT;
-		this.lettre=lettre;
 		this.forme = forme;
-		this.point=point;
 		this.nbCellules = 4;
 		
 	}
@@ -66,7 +63,7 @@ public abstract class Brique implements Serializable{
 	
 	/**
 	 * 
-	 * @return Cellule position du coin supérieur gauche
+	 * @return Cellule position du coin sup≈Ωrieur gauche
 	 */
 	public Cellule getPosition(){
 		return this.position;
@@ -78,14 +75,6 @@ public abstract class Brique implements Serializable{
 	 */
 	public Rotation getRotation(){
 		return this.rotation;
-	}
-	
-	/**
-	 * 
-	 * @return char lettre de la brique
-	 */
-	public char getLettre(){
-		return this.lettre;
 	}
 	
 	/**
@@ -139,7 +128,7 @@ public abstract class Brique implements Serializable{
 	
 	
 	/**
-	 * Prend en paramètre une cellule qui est la nouvelle position du coin supérieur gauche de la brique
+	 * Prend en paramÔøΩtre une cellule qui est la nouvelle position du coin sup≈Ωrieur gauche de la brique
 	 * @param Cellule newposition
 	 */
 	public void updatePosition(Cellule newposition){
