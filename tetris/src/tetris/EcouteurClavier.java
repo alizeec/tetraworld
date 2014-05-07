@@ -39,8 +39,8 @@ public class EcouteurClavier implements KeyListener{
 		
 		switch(touche){
 		case KeyEvent.VK_RIGHT :
-			X = plateau1.briqueActuelle.getPosition().posX;
-			Y = plateau1.briqueActuelle.getPosition().posY;
+			X = plateau1.briqueActuelle.getPosition().getPosX();
+			Y = plateau1.briqueActuelle.getPosition().getPosY();
 			newposition = new Cellule(X+1, Y);
 			if(plateau1.verifMove(plateau1.briqueActuelle, newposition)){
 				plateau1.deplaceBrique(plateau1.briqueActuelle, newposition);
@@ -51,8 +51,8 @@ public class EcouteurClavier implements KeyListener{
 		 * aller ˆ gauche pour le joueur1
 		 */
 		case KeyEvent.VK_LEFT :
-			X = plateau1.briqueActuelle.getPosition().posX;
-			Y = plateau1.briqueActuelle.getPosition().posY;
+			X = plateau1.briqueActuelle.getPosition().getPosX();
+			Y = plateau1.briqueActuelle.getPosition().getPosY();
 			newposition = new Cellule(X-1, Y);
 			if(plateau1.verifMove(plateau1.briqueActuelle, newposition)){
 				plateau1.deplaceBrique(plateau1.briqueActuelle, newposition);
@@ -63,8 +63,8 @@ public class EcouteurClavier implements KeyListener{
 		 * accŽl�re la descente pour le joueur1
 		 */
 		case KeyEvent.VK_DOWN :
-			X = plateau1.briqueActuelle.getPosition().posX;
-			Y = plateau1.briqueActuelle.getPosition().posY;
+			X = plateau1.briqueActuelle.getPosition().getPosX();
+			Y = plateau1.briqueActuelle.getPosition().getPosY();
 			newposition = new Cellule(X, Y+1);
 			if(plateau1.verifMove(plateau1.briqueActuelle, newposition)){
 				plateau1.deplaceBrique(plateau1.briqueActuelle, newposition);
@@ -85,8 +85,8 @@ public class EcouteurClavier implements KeyListener{
 		//joueur2
 		case KeyEvent.VK_H :
 			if(plateau2 != null){
-				X = plateau2.briqueActuelle.getPosition().posX;
-				Y = plateau2.briqueActuelle.getPosition().posY;
+				X = plateau2.briqueActuelle.getPosition().getPosX();
+				Y = plateau2.briqueActuelle.getPosition().getPosY();
 				newposition = new Cellule(X+1, Y);
 				if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
 					plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
@@ -99,8 +99,8 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_G :
 			if(plateau2 != null){
-				X = plateau2.briqueActuelle.getPosition().posX;
-				Y = plateau2.briqueActuelle.getPosition().posY;
+				X = plateau2.briqueActuelle.getPosition().getPosX();
+				Y = plateau2.briqueActuelle.getPosition().getPosY();
 				newposition = new Cellule(X-1, Y);
 				if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
 					plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);
@@ -113,8 +113,8 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_B:
 			if(plateau2 != null){
-				X = plateau2.briqueActuelle.getPosition().posX;
-				Y = plateau2.briqueActuelle.getPosition().posY;
+				X = plateau2.briqueActuelle.getPosition().getPosX();
+				Y = plateau2.briqueActuelle.getPosition().getPosY();
 				newposition = new Cellule(X, Y+1);
 				if(plateau2.verifMove(plateau2.briqueActuelle, newposition)){
 					plateau2.deplaceBrique(plateau2.briqueActuelle, newposition);

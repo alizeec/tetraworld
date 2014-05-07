@@ -28,14 +28,14 @@ public abstract class Brique implements Serializable{
 	private Cellule position;
 	private Rotation rotation;
 	static int cpt =0;
-	int point;
-	int nbCellules;
+	private int point;
+	private int nbCellules;
 	
 	
 	public Brique (Forme forme, Map<Integer,Cellule> cellules){
 		this.id=this.cpt;
 		cpt++;
-		this.position=new Cellule(this.id, forme, cellules.get(0).lettre, 3, 0);
+		this.position=new Cellule(this.id, forme, cellules.get(0).getLettre(), 3, 0);
 		this.cellules = new HashMap();
 		this.cellules = cellules;
 		this.rotation = Rotation.HAUT;
@@ -60,6 +60,17 @@ public abstract class Brique implements Serializable{
 		return this.forme;
 	}
 	
+	public int getPoints(){
+		return this.point;
+	}
+	
+	public int getNbCellules(){
+		return this.nbCellules;
+	}
+	
+	public void decrementeNbCellules(){
+		nbCellules--;
+	}
 	
 	/**
 	 * 
@@ -83,7 +94,7 @@ public abstract class Brique implements Serializable{
 	 * fait descendre la brique d'une case
 	 */
 	public boolean descendre(){
-		this.getPosition().posY += 1;
+		this.getPosition().setPosY(this.getPosition().getPosY() + 1);
 		this.updatePosition(this.getPosition());
 		return true;
 	}
@@ -132,8 +143,8 @@ public abstract class Brique implements Serializable{
 	 * @param Cellule newposition
 	 */
 	public void updatePosition(Cellule newposition){
-		this.getPosition().posX=newposition.posX;
-		this.getPosition().posY=newposition.posY;
+		this.getPosition().setPosX(newposition.getPosX());
+		this.getPosition().setPosY(newposition.getPosY());
 	}
 
 

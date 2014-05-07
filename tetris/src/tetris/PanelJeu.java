@@ -21,7 +21,7 @@ import javax.xml.ws.handler.Handler;
 
 
 /**
- * affiche dans la fenÔøΩtre les ≈Ωl≈Ωments de jeu
+ * affiche dans la fenêtre les éléments de jeu
  * 
  *
  */
@@ -45,7 +45,7 @@ public class PanelJeu extends JPanel{
 	 */
 	Image background_geek,background_girly, background;
 	Image perdu;
-	/** affichage des donn≈Ωes et des retours utilisateur
+	/** affichage des données et des retours utilisateur
 	 * 
 	 */
 	JLabel score;
@@ -237,7 +237,7 @@ public class PanelJeu extends JPanel{
 	}
 	
 	/**
-	 * pour afficher les cellules gris≈Ωes (mode worddle)
+	 * pour afficher les cellules grisées (mode worddle)
 	 * @param Graphics g
 	 * @param int i position verticale
 	 * @param int j position horizontale
@@ -308,7 +308,7 @@ public class PanelJeu extends JPanel{
 				if(joueurs.get(0).mode==Mode.WORDDLE){
 					
 					if(joueurs.get(0).positionEnCours!=null){
-						g.drawImage(fleche, getPixelX(joueurs.get(0).positionEnCours.posX,joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.posY)+4, null);
+						g.drawImage(fleche, getPixelX(joueurs.get(0).positionEnCours.getPosX(),joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.getPosY())+4, null);
 						if(joueurs.get(0).motEnCours!=null){
 							g.drawString(joueurs.get(0).motEnCours, 177, 107);
 						}
@@ -364,7 +364,7 @@ public class PanelJeu extends JPanel{
 				
 				if(joueurs.get(0).mode==Mode.WORDDLE){
 					if(joueurs.get(0).positionEnCours!=null){
-						g.drawImage(fleche, getPixelX(joueurs.get(0).positionEnCours.posX,joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.posY)+4, null);
+						g.drawImage(fleche, getPixelX(joueurs.get(0).positionEnCours.getPosX(),joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.getPosY())+4, null);
 						if(joueurs.get(0).motEnCours!=null){
 							g.drawString(joueurs.get(0).motEnCours, 100, 342);
 						}
@@ -416,7 +416,7 @@ public class PanelJeu extends JPanel{
 				if(joueurs.get(1).mode==Mode.WORDDLE){
 					
 					if(joueurs.get(1).positionEnCours!=null){
-						g.drawImage(fleche, getPixelX(joueurs.get(1).positionEnCours.posX,joueurs.get(1)), getPixelY(joueurs.get(1).positionEnCours.posY)+4, null);
+						g.drawImage(fleche, getPixelX(joueurs.get(1).positionEnCours.getPosX(),joueurs.get(1)), getPixelY(joueurs.get(1).positionEnCours.getPosY())+4, null);
 						if(joueurs.get(1).motEnCours!=null){
 							g.drawString(joueurs.get(1).motEnCours, 1084, 342);
 						}
@@ -506,28 +506,28 @@ public class PanelJeu extends JPanel{
 				for(int j=0;j<joueurs.get(k).getLargeur();j++){
 					if(joueurs.get(k).tab[j][i] != null){
 						if(joueurs.get(k).tab[j][i].utilisee == true){
-							afficherCelluleGris(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
+							afficherCelluleGris(g,i,j, joueurs.get(k).tab[j][i].getLettre(), joueurs.get(k));
 						}else{
-							if(joueurs.get(k).tab[j][i].forme == Forme.MAGENTA){
-								afficherCelluleMagenta(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].getForme() == Forme.MAGENTA){
+								afficherCelluleMagenta(g,i,j, joueurs.get(k).tab[j][i].getLettre(), joueurs.get(k));
 							}
-							if(joueurs.get(k).tab[j][i].forme == Forme.BLEU){
-								afficherCelluleBleu(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].getForme() == Forme.BLEU){
+								afficherCelluleBleu(g,i,j, joueurs.get(k).tab[j][i].getLettre(), joueurs.get(k));
 							}
-							if(joueurs.get(k).tab[j][i].forme == Forme.CYAN){
-								afficherCelluleCyan(g,i,j, joueurs.get(k).tab[j][i].lettre ,joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].getForme() == Forme.CYAN){
+								afficherCelluleCyan(g,i,j, joueurs.get(k).tab[j][i].getLettre() ,joueurs.get(k));
 							}
-							if(joueurs.get(k).tab[j][i].forme == Forme.JAUNE){
-								afficherCelluleJaune(g,i,j, joueurs.get(k).tab[j][i].lettre ,joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].getForme() == Forme.JAUNE){
+								afficherCelluleJaune(g,i,j, joueurs.get(k).tab[j][i].getLettre() ,joueurs.get(k));
 							}
-							if(joueurs.get(k).tab[j][i].forme == Forme.ORANGE){
-								afficherCelluleOrange(g,i,j, joueurs.get(k).tab[j][i].lettre ,joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].getForme() == Forme.ORANGE){
+								afficherCelluleOrange(g,i,j, joueurs.get(k).tab[j][i].getLettre() ,joueurs.get(k));
 							}
-							if(joueurs.get(k).tab[j][i].forme == Forme.ROUGE){
-								afficherCelluleRouge(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].getForme() == Forme.ROUGE){
+								afficherCelluleRouge(g,i,j, joueurs.get(k).tab[j][i].getLettre(), joueurs.get(k));
 							}
-							if(joueurs.get(k).tab[j][i].forme == Forme.VERT){
-								afficherCelluleVert(g,i,j, joueurs.get(k).tab[j][i].lettre, joueurs.get(k));
+							if(joueurs.get(k).tab[j][i].getForme() == Forme.VERT){
+								afficherCelluleVert(g,i,j, joueurs.get(k).tab[j][i].getLettre(), joueurs.get(k));
 							}
 						}
 					}
@@ -537,12 +537,13 @@ public class PanelJeu extends JPanel{
 	}
 	
 	/**
-	 * pour avoir et afiicher la pochaine forme de brique
+	 * pour avoir et afficher la pochaine forme de brique
 	 * @param Plateau plateau
 	 * @return ImageIcon
 	 */
 	public ImageIcon getNext(Plateau plateau){
 		ImageIcon icon=null;
+
 		switch(plateau.AVenir){
 			case MAGENTA:
 				icon= new ImageIcon("briqueMagenta.png");

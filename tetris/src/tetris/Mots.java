@@ -88,8 +88,8 @@ public class Mots  {
 		plateau.points+=plateau.totalMot;
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
-			int X = plateau.BriquesUtilisees.get(i).posX;
-			int Y = plateau.BriquesUtilisees.get(i).posY;
+			int X = plateau.BriquesUtilisees.get(i).getPosX();
+			int Y = plateau.BriquesUtilisees.get(i).getPosY();
 				plateau.tab[X][Y].utilisee = false;
 		}
 		plateau.setMessage("Bravo!");
@@ -104,9 +104,9 @@ public class Mots  {
 	public void supprLettresWorddle(Plateau plateau){
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
-			int X = plateau.BriquesUtilisees.get(0).posX;
-			int Y = plateau.BriquesUtilisees.get(0).posY;
-				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).nbCellules--;
+			int X = plateau.BriquesUtilisees.get(0).getPosX();
+			int Y = plateau.BriquesUtilisees.get(0).getPosY();
+				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).decrementeNbCellules();
 				plateau.tab[X][Y] = null;
 				plateau.BriquesUtilisees.remove(0);
 		}
@@ -133,7 +133,7 @@ public class Mots  {
 	for(int i=0; i<plateau.LARGEUR; ++i){
 		for (int j=0; j<plateau.HAUTEUR; ++j){
 			if(plateau.tab[i][j]!=null && plateau.tab[i][j].getId() != plateau.briqueActuelle.getId()){
-				positionsPossibles.add(new Cellule(i,j,plateau.tab[i][j].lettre));
+				positionsPossibles.add(new Cellule(i,j,plateau.tab[i][j].getLettre()));
 			}
 		}
 	}

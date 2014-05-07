@@ -187,18 +187,18 @@ public class Plateau implements Serializable {
 	  */
 	public boolean placeBrique(Brique brique){
 		//rŽcupŽration de la position de la brique pour la placer sur le plateau
-		int X=brique.getPosition().posX;
-		int Y=brique.getPosition().posY;
+		int X=brique.getPosition().getPosX();
+		int Y=brique.getPosition().getPosY();
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ˆ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]!=null){
 					if(tab[X+j][Y+i] == null){
-						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.tab[i][j].getLettre(), X+j, Y+i);
-					}else if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
-						tab[X+j][Y+i].forme=brique.getPosition().forme;
-						tab[X+j][Y+i].id=brique.getId();
-						tab[X+j][Y+i].lettre=brique.tab[i][j].getLettre();
+						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().getForme(), brique.tab[i][j].getLettre(), X+j, Y+i);
+					}else if(tab[X+j][Y+i] != null && tab[X+j][Y+i].getId() != brique.getId()){
+						tab[X+j][Y+i].setForme(brique.getPosition().getForme());
+						tab[X+j][Y+i].setId(brique.getId());
+						tab[X+j][Y+i].setLettre(brique.tab[i][j].getLettre());
 					}
 				}
 			}
@@ -212,13 +212,13 @@ public class Plateau implements Serializable {
 	 * @return boolean
 	 */
 	public boolean videCaseBrique(Brique brique){
-		int X=brique.getPosition().posX;
-		int Y=brique.getPosition().posY;
+		int X=brique.getPosition().getPosX();
+		int Y=brique.getPosition().getPosY();
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ˆ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(X+j <= getLargeur()-1 && Y+i <= getHauteur()-1 && X+j >= 0){
-					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id == brique.getId()){
+					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].getId() == brique.getId()){
 						tab[X+j][Y+i] = null;
 					}
 				}
@@ -237,20 +237,20 @@ public class Plateau implements Serializable {
 				if(tab[j][i]==null){
 					for(int k=i-1;k>=1;--k){
 						if(tab[j][k] != null && tab[j][k].getId()!= briqueActuelle.getId()){
-							if(briques.get(tab[j][k].getId()).nbCellules < 4){ //Si la brique n'est pas entière
+							if(briques.get(tab[j][k].getId()).getNbCellules() < 4){ //Si la brique n'est pas entière
 								int cpt = 1;
 								int l = k;
 								System.out.println(k+cpt);
 								while(k+cpt < 20){
 									if(tab[j][k+cpt] != null) break;
 									System.out.println(tab[j][l].getId());
-									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].forme, tab[j][l].lettre, j, l);
+									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].getForme(), tab[j][l].getLettre(), j, l);
 									tab[j][l] = null;
 									cpt++;
 									l++;
 								}
 							}else{
-								Cellule newposition = new Cellule(briques.get(tab[j][k].getId()).getPosition().posX, briques.get(tab[j][k].getId()).getPosition().posY+1);
+								Cellule newposition = new Cellule(briques.get(tab[j][k].getId()).getPosition().getPosX(), briques.get(tab[j][k].getId()).getPosition().getPosY()+1);
 								if(verifMove(briques.get(tab[j][k].getId()), newposition)){
 									deplaceBrique(briques.get(tab[j][k].getId()), newposition);
 								}
@@ -284,8 +284,8 @@ public class Plateau implements Serializable {
 	 */
 	//
 	public boolean verifMove(Brique brique, Cellule newposition){
-		int X=newposition.posX;
-		int Y=newposition.posY;
+		int X=newposition.getPosX();
+		int Y=newposition.getPosY();
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(brique.tab[i][j]!=null){
@@ -293,8 +293,10 @@ public class Plateau implements Serializable {
 						return false;
 					}
 					
-					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
-						//this.JeuPerdu();
+					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].getId() != brique.getId()){
+						if(this.mode!=Mode.WORDDLE){
+							this.JeuPerdu();
+						}
 
 						return false;
 					}
@@ -363,8 +365,8 @@ public class Plateau implements Serializable {
 	 */
 	public void suppLigne(int index){
 		for(int i=0; i<getLargeur();++i){
-			briques.get(tab[i][index].getId()).nbCellules--;
-			if(briques.get(tab[i][index].getId()).nbCellules <= 0 ){
+			briques.get(tab[i][index].getId()).decrementeNbCellules();
+			if(briques.get(tab[i][index].getId()).getNbCellules() <= 0 ){
 				briques.remove(tab[i][index].getId());
 			}
 			tab[i][index]= null;
