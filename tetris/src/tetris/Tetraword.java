@@ -69,7 +69,7 @@ public class Tetraword extends Thread{
 					  plateau.briqueActuelle.descendre();
 					  plateau.placeBrique(plateau.briqueActuelle);
 				  }else{
-					  plateau.verifLignes(plateau.briqueActuelle);
+					  plateau.verifLignes();
 					  plateau.briqueActuelle = null;
 					  Brique newBrique = plateau.creerBrique();
 					  plateau.briqueActuelle = newBrique;
@@ -95,7 +95,7 @@ public class Tetraword extends Thread{
 				  plateau2.briqueActuelle.descendre();
 				  plateau2.placeBrique(plateau2.briqueActuelle);
 			  }else{
-				  plateau2.verifLignes(plateau2.briqueActuelle);
+				  plateau2.verifLignes();
 				  plateau2.briqueActuelle = null;
 				  Brique newBrique = plateau2.creerBrique();
 				  plateau2.briqueActuelle = newBrique;

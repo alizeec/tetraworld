@@ -192,13 +192,13 @@ public class Plateau implements Serializable {
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ˆ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
-				if(brique.tab[i][j]==true){
+				if(brique.tab[i][j]!=null){
 					if(tab[X+j][Y+i] == null){
-						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.getLettre(), X+j, Y+i);
+						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.getPosition().forme, brique.tab[i][j].getLettre(), X+j, Y+i);
 					}else if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
 						tab[X+j][Y+i].forme=brique.getPosition().forme;
 						tab[X+j][Y+i].id=brique.getId();
-						tab[X+j][Y+i].lettre=brique.getLettre();
+						tab[X+j][Y+i].lettre=brique.tab[i][j].getLettre();
 					}
 				}
 			}
@@ -260,6 +260,7 @@ public class Plateau implements Serializable {
 				}
 			}
 		}
+		verifLignes();
 	}
 	
 	/**
@@ -287,7 +288,7 @@ public class Plateau implements Serializable {
 		int Y=newposition.posY;
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
-				if(brique.tab[i][j]==true){
+				if(brique.tab[i][j]!=null){
 					if(X+j > getLargeur()-1 || Y+i > getHauteur()-1 || X+j < 0){
 						return false;
 					}
@@ -322,18 +323,32 @@ public class Plateau implements Serializable {
 	 * vérifie si une ligne dans tout le tableau est complète
 	 * @param Brique brique
 	 */
-	public void verifLignes(Brique brique){
+	/*public void verifLignes(Brique brique){
 		int X=brique.getPosition().posX;
 		int Y=brique.getPosition().posY;
 		nbLignesCompletes = 0;
 		for (int i=0; i<4; ++i){
-				if(brique.tab[i][0]==true || brique.tab[i][1]==true || brique.tab[i][2]==true || brique.tab[i][3]==true){
+				if(brique.tab[i][0]!=null || brique.tab[i][1]!=null || brique.tab[i][2]!=null || brique.tab[i][3]!=null){
 					if(verfiUneLigne(Y+i)){
 						lignesCompletes[nbLignesCompletes] = Y+i;
 						nbLignesCompletes++;
 					}
 					
 				}
+		}
+		if(nbLignesCompletes > 0){
+			indexLigneSupp = lignesCompletes[0];
+			this.mode=Mode.ANAGRAMME;
+		}
+	}*/
+	
+	public void verifLignes(){
+		nbLignesCompletes = 0;
+		for(int i=getHauteur()-1; i>0; --i){
+					if(verfiUneLigne(i)){
+						lignesCompletes[nbLignesCompletes] = i;
+						nbLignesCompletes++;
+					}
 		}
 		if(nbLignesCompletes > 0){
 			indexLigneSupp = lignesCompletes[0];
@@ -406,60 +421,65 @@ public class Plateau implements Serializable {
 	 */
 	public Brique creerBrique(){
 		Forme forme = AVenir;
+		Map<Integer,Cellule> tmp_cellules = new HashMap();
 		AVenir = Forme.getForme( TAUX_BLEUE,  TAUX_CYAN,  TAUX_JAUNE,  TAUX_MAGENTA,  TAUX_ORANGE,  TAUX_ROUGE,  TAUX_VERTE);
 		// génération aléatoire pondérée de la lettre
-		Integer quotient = (int)(Math.random() * (10-1)) + 1;
-		final String consonnes = "bcdfghjlmnpqrst"; 
-		final String rares = "kvwxyz"; 
-		final String voyelles = "aeiou"; 
-		
-		final int number_voyelles = 5; 
-		final int number_consonnes = 15; 
-		final int number_rares = 6; 
-
-		char lettre='p';
-		int point=0;
-
-		Random r = new Random();
-
-		if(quotient < this.TAUX_RARES){
-		lettre = rares.charAt (r.nextInt (number_rares)); 
-		point=3;
+		for(int i =0; i<4; ++i){
+			Integer quotient = (int)(Math.random() * (10-1)) + 1;
+			final String consonnes = "bcdfghjlmnpqrst"; 
+			final String rares = "kvwxyz"; 
+			final String voyelles = "aeiou"; 
+			
+			final int number_voyelles = 5; 
+			final int number_consonnes = 15; 
+			final int number_rares = 6; 
+	
+			char lettre='p';
+			int point=0;
+	
+			Random r = new Random();
+	
+			if(quotient < this.TAUX_RARES){
+			lettre = rares.charAt (r.nextInt (number_rares)); 
+			point=3;
+			}
+	
+	        else if(quotient < TAUX_RARES+TAUX_CONSONNES){
+	    		lettre = consonnes.charAt (r.nextInt (number_consonnes)); 
+	
+				point=2;
+	        }
+	        else if(quotient < TAUX_RARES+TAUX_CONSONNES+TAUX_VOYELLES){
+	    		lettre = voyelles.charAt (r.nextInt (number_voyelles)); 
+	
+				point=1;
+	        }
+			tmp_cellules.put(i,  new Cellule(lettre, i, point));
 		}
-        else if(quotient < TAUX_RARES+TAUX_CONSONNES){
-    		lettre = consonnes.charAt (r.nextInt (number_consonnes)); 
-
-			point=2;
-        }
-        else if(quotient < TAUX_RARES+TAUX_CONSONNES+TAUX_VOYELLES){
-    		lettre = voyelles.charAt (r.nextInt (number_voyelles)); 
-
-			point=1;
-        }
 		////////
 
 		Brique b = null;
 		switch(forme){
 			case MAGENTA:
-				 b = new BriqueMagenta(lettre,point);
+				 b = new BriqueMagenta(tmp_cellules);
 			break;
 			case BLEU:
-				 b = new BriqueBleue(lettre,point);
+				 b = new BriqueBleue(tmp_cellules);
 			break;
 			case CYAN:
-				 b = new BriqueCyan(lettre,point);
+				 b = new BriqueCyan(tmp_cellules);
 			break;
 			case JAUNE:
-				 b = new BriqueJaune(lettre,point);
+				 b = new BriqueJaune(tmp_cellules);
 			break;
 			case ORANGE:
-				 b = new BriqueOrange(lettre,point);
+				 b = new BriqueOrange(tmp_cellules);
 			break;
 			case ROUGE:
-				 b = new BriqueRouge(lettre,point);
+				 b = new BriqueRouge(tmp_cellules);
 			break;
 			case VERT:
-				 b = new BriqueVerte(lettre,point);
+				 b = new BriqueVerte(tmp_cellules);
 			break;
 		}
 		this.briqueActuelle=b;

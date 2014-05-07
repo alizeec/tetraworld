@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/tetris/Brique.java=UTF-8
 encoding//src/tetris/EcouteurClavier.java=UTF-8
 encoding//src/tetris/EcouteurSouris.java=UTF-8
 encoding//src/tetris/FrameJeu.java=UTF-8

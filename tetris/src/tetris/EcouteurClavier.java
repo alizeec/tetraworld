@@ -34,14 +34,10 @@ public class EcouteurClavier implements KeyListener{
 			this.plateau2 = joueurs.get(1);
 		}
 	}
-	
-	public void keyPressed(KeyEvent e){
+	public void keyPressed(KeyEvent e){//méthode qui écoute lorsque l'on appui sur une touche
 		int touche = e.getKeyCode();
 		
-		switch (touche) {
-		/**
-		 * aller ˆ droite pour le joueur1
-		 */
+		switch(touche){
 		case KeyEvent.VK_RIGHT :
 			X = plateau1.briqueActuelle.getPosition().posX;
 			Y = plateau1.briqueActuelle.getPosition().posY;

@@ -277,7 +277,7 @@ public class EcouteurSouris implements MouseListener
     		if(plateau.tab[X][Y]!=null){
     			//récupération de la brique et de sa lettre
             	int id=plateau.tab[X][Y].getId();
-            	char lettre=plateau.briques.get(id).getLettre();
+            	char lettre=plateau.tab[X][Y].getLettre();
             	
             	//formation du mot
             	tmp=tmp.append(lettre);
@@ -314,7 +314,7 @@ public class EcouteurSouris implements MouseListener
         		if(plateau.tab[X][Y]!=null && plateau.tab[X][Y].utilisee == false){
         			//récupération de la brique et de sa lettre
                 	int id=plateau.tab[X][Y].getId();
-                	char lettre=plateau.briques.get(id).getLettre();
+                	char lettre=plateau.tab[X][Y].getLettre();
                 	plateau.tab[X][Y].utilisee = true;
                 	//formation du mot
                 	tmp=tmp.append(lettre);
