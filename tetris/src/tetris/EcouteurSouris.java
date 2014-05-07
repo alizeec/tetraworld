@@ -48,19 +48,22 @@ public class EcouteurSouris implements MouseListener
 
     
     if(e.getSource() == frame.getPanelParametres().param){
-        Tetraword.setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
-	    if(joueurs.size()>1){
-	    	Tetraword.setTaux(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(1));
+        Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
+	    Tetraword.setTauxFormes(PanelParameters.valeur_taux_bleu, PanelParameters.valeur_taux_cyan, PanelParameters.valeur_taux_jaune,PanelParameters.valeur_taux_magenta, PanelParameters.valeur_taux_orange, PanelParameters.valeur_taux_rouge, PanelParameters.valeur_taux_vert, joueurs.get(0));
+        if(joueurs.size()>1){
+	    	Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(1));
+		    Tetraword.setTauxFormes(PanelParameters.valeur_taux_bleu, PanelParameters.valeur_taux_cyan, PanelParameters.valeur_taux_jaune,PanelParameters.valeur_taux_magenta, PanelParameters.valeur_taux_orange, PanelParameters.valeur_taux_rouge, PanelParameters.valeur_taux_vert, joueurs.get(1));
+
 	    }
-	    System.out.println(joueurs.get(0).mode);
     	frame.setPanel(1);
+    	// a changer, mode TETRIS par modeSauvegarde
 	    joueurs.get(0).mode=Mode.TETRIS;
 
-	    System.out.println(joueurs.get(0).mode);
 	    joueurs.get(0).pause=false;
 
 		if(joueurs.size()>1){
-    		joueurs.get(1).pause=false;
+		    joueurs.get(1).mode=Mode.TETRIS;
+		    joueurs.get(1).pause=false;
 
 		}
 	}

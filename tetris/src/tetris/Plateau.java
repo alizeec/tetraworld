@@ -32,6 +32,17 @@ public class Plateau implements Serializable {
 	int TAUX_CONSONNES;
 	int TAUX_RARES;
 	/**
+	 * taux de chaque types de forme
+	 */
+	int TAUX_BLEUE;
+	int TAUX_CYAN;
+	int TAUX_JAUNE;
+	int TAUX_MAGENTA;
+	int TAUX_ORANGE;
+	int TAUX_ROUGE;
+	int TAUX_VERTE;
+
+	/**
 	 * ensemble des briques posées sur le plateau
 	 */
 	Map<Integer,Brique> briques;
@@ -94,7 +105,7 @@ public class Plateau implements Serializable {
 
 		points=0;
 		perdu=false;
-		AVenir=Forme.getForme();
+		AVenir=Forme.getForme(2,  2,  2,  2,  2,  2,  2);
 		niveau=0;
 		nbLignes=0;
 		pause=false;
@@ -410,8 +421,8 @@ public class Plateau implements Serializable {
 	 */
 	public Brique creerBrique(){
 		Forme forme = AVenir;
-		AVenir = Forme.getForme();
 		Map<Integer,Cellule> tmp_cellules = new HashMap();
+		AVenir = Forme.getForme( TAUX_BLEUE,  TAUX_CYAN,  TAUX_JAUNE,  TAUX_MAGENTA,  TAUX_ORANGE,  TAUX_ROUGE,  TAUX_VERTE);
 		// génération aléatoire pondérée de la lettre
 		for(int i =0; i<4; ++i){
 			Integer quotient = (int)(Math.random() * (10-1)) + 1;
