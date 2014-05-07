@@ -45,10 +45,11 @@ public class Mots  {
 		    }
 		}
 		return false;
+
 	}
 	
 	/**
-	 * indique que le mot est terminé
+	 * indique que le mot est termin√©
 	 * @param String word
 	 * @return boolean
 	 */
@@ -63,8 +64,8 @@ public class Mots  {
 	}
 	
 	/**
-	 * Si le résultat est correct en mode ANAGRAMME
-	 * supprime la ligne et ajoute les points, change de niveau si nécessaire
+	 * Si le r√©sultat est correct en mode ANAGRAMME
+	 * supprime la ligne et ajoute les points, change de niveau si n√©cessaire
 	 * @param Plateau plateau
 	 */
 	public void resultatCorrect(Plateau plateau){
@@ -80,8 +81,8 @@ public class Mots  {
 	}
 	
 	/**
-	 * Si le résultat est correct en mode WORDDLE
-	 * calcul le nombre de points gagné et detruit les briques utilisées
+	 * Si le r√©sultat est correct en mode WORDDLE
+	 * calcul le nombre de points gagn√© et detruit les briques utilis√©es
 	 * @param Plateau plateau
 	 */
 	public void resultatCorrectWorddle(Plateau plateau){
@@ -98,7 +99,7 @@ public class Mots  {
 	}
 	
 	/**
-	 * supprime les lettres utilisées
+	 * supprime les lettres utilis√©es
 	 * @param Plateau plateau
 	 */
 	public void supprLettresWorddle(Plateau plateau){
@@ -123,11 +124,11 @@ public class Mots  {
 	}
 	
 	/** 
-	 * Cherche la cellule de départ parmis les briques présentes sur le plateau en mode WORDDLE
+	 * Cherche la cellule de d√©part parmis les briques pr√©sentes sur le plateau en mode WORDDLE
 	 * @param Plateau plateau
 	 */
 	public void initialiseWorddle(Plateau plateau){
-		/* pour avoir une position de départ aléatoire*/
+		/* pour avoir une position de d√©part al√©atoire*/
 	Vector<Cellule> positionsPossibles= new Vector<Cellule>();
 	
 	for(int i=0; i<plateau.LARGEUR; ++i){
