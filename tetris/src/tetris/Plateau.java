@@ -293,7 +293,9 @@ public class Plateau implements Serializable {
 					}
 					
 					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].id != brique.getId()){
-						//this.JeuPerdu();
+						if(this.mode!=Mode.WORDDLE){
+							this.JeuPerdu();
+						}
 
 						return false;
 					}

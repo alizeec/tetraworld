@@ -21,7 +21,7 @@ import javax.xml.ws.handler.Handler;
 
 
 /**
- * affiche dans la fenÔøΩtre les ≈Ωl≈Ωments de jeu
+ * affiche dans la fenêtre les éléments de jeu
  * 
  *
  */
@@ -45,7 +45,7 @@ public class PanelJeu extends JPanel{
 	 */
 	Image background_geek,background_girly, background;
 	Image perdu;
-	/** affichage des donn≈Ωes et des retours utilisateur
+	/** affichage des données et des retours utilisateur
 	 * 
 	 */
 	JLabel score;
@@ -237,7 +237,7 @@ public class PanelJeu extends JPanel{
 	}
 	
 	/**
-	 * pour afficher les cellules gris≈Ωes (mode worddle)
+	 * pour afficher les cellules grisées (mode worddle)
 	 * @param Graphics g
 	 * @param int i position verticale
 	 * @param int j position horizontale
@@ -537,12 +537,13 @@ public class PanelJeu extends JPanel{
 	}
 	
 	/**
-	 * pour avoir et afiicher la pochaine forme de brique
+	 * pour avoir et afficher la pochaine forme de brique
 	 * @param Plateau plateau
 	 * @return ImageIcon
 	 */
 	public ImageIcon getNext(Plateau plateau){
 		ImageIcon icon=null;
+
 		switch(plateau.AVenir){
 			case MAGENTA:
 				icon= new ImageIcon("briqueMagenta.png");
