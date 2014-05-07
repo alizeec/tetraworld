@@ -55,12 +55,12 @@ public class PanelParameters extends JPanel {
 	    
 	    //taux briques
 	    taux_rouge = new JTextField("2");
-	    taux_orange = new JTextField("1");
+	    taux_orange = new JTextField("2");
 	    taux_jaune = new JTextField("2");
-	    taux_vert = new JTextField("1");
-	    taux_bleu = new JTextField("1");
+	    taux_vert = new JTextField("2");
+	    taux_bleu = new JTextField("2");
 	    taux_cyan = new JTextField("2");
-	    taux_magenta = new JTextField("1");
+	    taux_magenta = new JTextField("2");
 	    total_briques = Integer.valueOf(taux_rouge.getText()) + Integer.valueOf(taux_orange.getText()) + Integer.valueOf(taux_jaune.getText())+ Integer.valueOf(taux_vert.getText())+ Integer.valueOf(taux_bleu.getText())+ Integer.valueOf(taux_cyan.getText())+ Integer.valueOf(taux_magenta.getText());
 	    taux_total_briques = new JTextField();
 	    taux_total_briques.setText(String.valueOf(total_briques));
@@ -99,6 +99,10 @@ public class PanelParameters extends JPanel {
 	  	      	  croix_rouge_1.setVisible(true);
 	  	      	  
 	  	        }
+	  	   else {
+		  	      param.setVisible(true);
+	  	      	  croix_rouge_1.setVisible(false);
+		  	    }
 	        }
 	      });
 	    
@@ -135,12 +139,17 @@ public class PanelParameters extends JPanel {
 	  	      	  croix_rouge_2.setVisible(true);
 	  	      	  
 	  	        }
+	  	    else {
+	  	      param.setVisible(true);
+  	      	  croix_rouge_2.setVisible(false);
+	  	    }
 	        }
 	      });
 	    
 	
 	    
 	    //Niveau
+	    difficulte_anagramme = 30;
 	    facile = new JCheckBox("easy");
 	    normal = new JCheckBox("normal");
 	    difficile = new JCheckBox("hard");

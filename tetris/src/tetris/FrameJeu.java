@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 /**
  * 
- * création de la fenêtre de jeu
+ * cr≈Ωation de la fenÔøΩtre de jeu
  *
  */
 public class FrameJeu extends JFrame{
@@ -37,7 +37,7 @@ public class FrameJeu extends JFrame{
 	static Son musique_girly;
 	
 	/**
-	 * création de la fenêtre en fonction du nombre de joueurs
+	 * cr≈Ωation de la fenÔøΩtre en fonction du nombre de joueurs
 	 * @param LinkedList<Plateau> joueurs liste des joueurs
 	 */
 	public FrameJeu(LinkedList<Plateau> joueurs){
@@ -139,14 +139,18 @@ public class FrameJeu extends JFrame{
 }
 	
 	/**
-	 * charge le bon panel (jeu ou paramètres)
+	 * charge le bon panel (jeu ou paramÔøΩtres)
 	 * @param int panel
 	 */
 	public void setPanel(int panel){
 		if(panel == 1){//Si PanelJeu
 			this.setContentPane(panelJeu);
+			panelJeu.setFocusable(true);
+			panelJeu.requestFocus();
 		}else if(panel==2){//Si PanelParameters
 			this.setContentPane(panelParametres);
+			panelParametres.setFocusable(true);
+			panelParametres.requestFocus();
 		}
 		setVisible(true);
 	}

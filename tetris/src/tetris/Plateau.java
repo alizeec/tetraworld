@@ -105,7 +105,7 @@ public class Plateau implements Serializable {
 
 		points=0;
 		perdu=false;
-		AVenir=Forme.getForme(TAUX_BLEUE,  TAUX_CYAN,  TAUX_JAUNE,  TAUX_MAGENTA,  TAUX_ORANGE,  TAUX_ROUGE,  TAUX_VERTE);
+		AVenir=Forme.getForme(2,  2,  2,  2,  2,  2,  2);
 		niveau=0;
 		nbLignes=0;
 		pause=false;

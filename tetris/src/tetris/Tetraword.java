@@ -23,10 +23,6 @@ public class Tetraword extends Thread{
 	private static final int UPDATES_PER_SECOND = 3;
 	boolean game=true;
 	int cpt = 0;
-	int TAUX_ANAGRAMME = 30;
-	//static int TAUX_VOYELLES=PanelParameters.valeur_taux_voyelles;
-	//static int TAUX_CONSONNES=PanelParameters.valeur_taux_consonnes;
-	//static int TAUX_RARES=PanelParameters.valeur_taux_rares;
 	
 	Plateau joueur;
 	static boolean multijoueur = false;
@@ -62,8 +58,7 @@ public class Tetraword extends Thread{
 	  /*
 	   * Update the game.
 	   */
-
-		  
+ 
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().posX;
@@ -187,13 +182,13 @@ public class Tetraword extends Thread{
 		  jeu.repaint();
 		  if(plateau.motEnCours!=null){
 			  if(anagramme.motfini(plateau.motEnCours)){
-	
+				 
 				try {
 					result=anagramme.findWord(plateau.motEnCours);
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				}
-				if(result && plateau.motEnCours.length()>=calculPourcentage(TAUX_ANAGRAMME)+1){
+				if(result && plateau.motEnCours.length()>=calculPourcentage(PanelParameters.difficulte_anagramme)+1){
 					anagramme.resultatCorrect(plateau);
 				}
 				else{
