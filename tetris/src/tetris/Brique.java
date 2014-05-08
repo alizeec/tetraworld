@@ -146,9 +146,41 @@ public abstract class Brique implements Serializable{
 		this.getPosition().setPosX(newposition.getPosX());
 		this.getPosition().setPosY(newposition.getPosY());
 	}
-
-
 	
+	public void suppCase(int numero){
+		System.out.println("classe brique");
+		for(int i=0; i<4;++i){
+			for(int j=0; j<4;++j){
+				if(this.haut[j][i] != null){
+					if(this.haut[j][i].getNumero() == numero){
+						this.haut[j][i] = null;
+					}
+				}
+				if(this.droite[j][i] != null){
+					if(this.droite[j][i].getNumero() == numero){
+						this.droite[j][i] = null;
+					}
+				}
+				if(this.bas[j][i] != null){
+					if(this.bas[j][i].getNumero() == numero){
+						this.bas[j][i] = null;
+					}
+				}
+				if(this.gauche[j][i] != null){
+					if(this.gauche[j][i].getNumero() == numero){
+						this.gauche[j][i] = null;
+					}
+				}
+			}
+			
+		}
+		if(numero == 1){
+			cellules.get(0).setIndependant(true);
+		}
+		if(numero == 2){
+			cellules.get(3).setIndependant(true);
+		}
+	}
 	
 
 

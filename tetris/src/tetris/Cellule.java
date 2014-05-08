@@ -19,6 +19,7 @@ public class Cellule implements Serializable{
 	private char lettre;
 	private int point;
 	boolean utilisee;
+	boolean independant;
 
 	/**
 	 * 
@@ -35,6 +36,7 @@ public class Cellule implements Serializable{
 		this.setPosY(Y);
 		this.lettre = lettre;
 		this.utilisee = false;
+		this.independant = false;
 	}
 	
 	/**
@@ -48,6 +50,7 @@ public class Cellule implements Serializable{
 		this.setPosX(X);
 		this.setPosY(Y);
 		this.lettre = 'a';
+		this.independant = false;
 	}
 	
 	/**
@@ -61,12 +64,14 @@ public class Cellule implements Serializable{
 		this.setPosX(X);
 		this.setPosY(Y);
 		this.lettre = lettre;
+		this.independant = false;
 	}
 	
 	public Cellule(char lettre, int numero, int point){
 		this.lettre = lettre;
 		this.setNumero(numero);
 		this.setPoint(point);
+		this.independant = false;
 	}
 
 	/**
@@ -128,7 +133,14 @@ public class Cellule implements Serializable{
 	public void setPoint(int point) {
 		this.point = point;
 	}
-
+	
+	public boolean getIndependant(){
+		return independant;
+	}
+	
+	public void setIndependant(boolean independant){
+		this.independant = independant;
+	}
 
 
 }

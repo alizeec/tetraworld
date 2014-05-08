@@ -240,10 +240,8 @@ public class Plateau implements Serializable {
 							if(briques.get(tab[j][k].getId()).getNbCellules() < 4){ //Si la brique n'est pas entière
 								int cpt = 1;
 								int l = k;
-								System.out.println(k+cpt);
 								while(k+cpt < 20){
 									if(tab[j][k+cpt] != null) break;
-									System.out.println(tab[j][l].getId());
 									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].getForme(), tab[j][l].getLettre(), j, l);
 									tab[j][l] = null;
 									cpt++;
@@ -294,7 +292,7 @@ public class Plateau implements Serializable {
 					}
 					
 					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].getId() != brique.getId()){
-						if(this.mode!=Mode.WORDDLE){
+						if(this.mode==Mode.TETRIS){
 							this.JeuPerdu();
 						}
 
@@ -323,39 +321,25 @@ public class Plateau implements Serializable {
 	
 	/**
 	 * vérifie si une ligne dans tout le tableau est complète
-	 * @param Brique brique
+	 * 
 	 */
-	/*public void verifLignes(Brique brique){
-		int X=brique.getPosition().posX;
-		int Y=brique.getPosition().posY;
-		nbLignesCompletes = 0;
-		for (int i=0; i<4; ++i){
-				if(brique.tab[i][0]!=null || brique.tab[i][1]!=null || brique.tab[i][2]!=null || brique.tab[i][3]!=null){
-					if(verfiUneLigne(Y+i)){
-						lignesCompletes[nbLignesCompletes] = Y+i;
-						nbLignesCompletes++;
-					}
-					
-				}
-		}
-		if(nbLignesCompletes > 0){
-			indexLigneSupp = lignesCompletes[0];
-			this.mode=Mode.ANAGRAMME;
-		}
-	}*/
 	
-	public void verifLignes(){
+	public boolean verifLignes(){
+		System.out.println("vérification");
 		nbLignesCompletes = 0;
 		for(int i=getHauteur()-1; i>0; --i){
 					if(verfiUneLigne(i)){
-						lignesCompletes[nbLignesCompletes] = i;
-						nbLignesCompletes++;
+						indexLigneSupp = i;
+						return true;
+						/*lignesCompletes[nbLignesCompletes] = i;
+						nbLignesCompletes++;*/
 					}
 		}
-		if(nbLignesCompletes > 0){
+		return false;
+		/*if(nbLignesCompletes > 0){
 			indexLigneSupp = lignesCompletes[0];
 			this.mode=Mode.ANAGRAMME;
-		}
+		}*/
 	}
 	
 	
