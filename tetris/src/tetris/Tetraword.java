@@ -199,13 +199,6 @@ public class Tetraword extends Thread{
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
-				/*plateau.nbLignesCompletes--;
-				cpt++;*/
-				/*if(plateau.nbLignesCompletes > 0){
-					plateau.indexLigneSupp = plateau.lignesCompletes[cpt];
-				}else{
-					plateau.mode=Mode.TETRIS;
-				}*/
 				if(plateau.verifLignes()==false){
 					plateau.mode=Mode.TETRIS;
 				}

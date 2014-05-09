@@ -93,7 +93,7 @@ public class FrameJeu extends JFrame{
 		//musique	    
 	    musique_geek = new Son("musique_tetris1"); 	    
 	    musique_girly = new Son("musique_tetris2");
-	    musique_geek.lecture();
+	    //musique_geek.lecture();
 	    
 	    //action boutons
 	    panelParametres.play_song.addMouseListener(new EcouteurSouris(joueurs,this));
