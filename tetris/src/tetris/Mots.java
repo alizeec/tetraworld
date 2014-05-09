@@ -24,7 +24,6 @@ public class Mots  {
 
 	public Mots() {
 		// TODO Auto-generated constructor stub
-		file=new File("src/tetris/mots.txt");
 		listMeilleursMots= new LinkedList();
 	}
 	
@@ -36,6 +35,14 @@ public class Mots  {
 	 * @throws FileNotFoundException
 	 */
 	public boolean findWord(String word)  throws FileNotFoundException  {
+		//if(PanelParameters.language==french){
+			file=new File("src/tetris/french.txt");
+		/*}
+		else if(PanelParameters.language==english){
+			file=new File("src/tetris/english.txt");
+
+		}*/
+
 		String mot = word.substring(0, word.length()-1);
 		Scanner scanner = new Scanner(file);
 		while (scanner.hasNext()) {
