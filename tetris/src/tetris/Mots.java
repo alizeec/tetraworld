@@ -38,7 +38,7 @@ public class Mots  {
 	public boolean findWord(String word)  throws FileNotFoundException  {
 		String mot = word.substring(0, word.length()-1);
 		Scanner scanner = new Scanner(file);
-		while (scanner.hasNextLine()) {
+		while (scanner.hasNext()) {
 		    String nextToken = scanner.next();
 		    if (nextToken.equalsIgnoreCase(mot)){
 		    	return true;
