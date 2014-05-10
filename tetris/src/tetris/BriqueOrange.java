@@ -122,7 +122,6 @@ public class BriqueOrange extends Brique {
 	}
 	
 	public void suppCase(int numero){
-		System.out.println("classebriqueOrange");
 		for(int i=0; i<4;++i){
 			for(int j=0; j<4;++j){
 				if(this.haut[j][i] != null){

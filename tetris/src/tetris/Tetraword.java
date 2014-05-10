@@ -196,12 +196,12 @@ public class Tetraword extends Thread{
 				}
 				else{
 					anagramme.resultatInCorrect(plateau);
+					System.out.println("index : "+plateau.indexLigneSupp);
+					plateau.lignesPerdues[plateau.nbLignesPerdues] = plateau.indexLigneSupp;
 					plateau.nbLignesPerdues++;
-					//plateau.mode=Mode.TETRIS;
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
-				System.out.println("cpt :"+plateau.nbLignesPerdues);
 				if(plateau.verifLignes()==false){
 					for(int i=0;i<plateau.nbLignesPerdues;++i){
 						plateau.lignesPerdues[i] = 0;

@@ -316,6 +316,7 @@ public class Plateau implements Serializable {
 	public boolean verfiUneLigne(int indexLigne){
 		for(int j=0; j<nbLignesPerdues;++j){
 			if(lignesPerdues[j] == indexLigne){
+				System.out.println("ligne perdue !");
 				return false;
 			}
 		}

@@ -77,6 +77,7 @@ public class Mots  {
 	 * @param Plateau plateau
 	 */
 	public void resultatCorrect(Plateau plateau){
+		System.out.println(plateau.indexLigneSupp);
 		plateau.suppLigne(plateau.indexLigneSupp);
 		plateau.gravite();
 		plateau.points+=plateau.totalMot;

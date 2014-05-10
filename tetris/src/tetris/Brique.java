@@ -148,7 +148,6 @@ public abstract class Brique implements Serializable{
 	}
 	
 	public void suppCase(int numero){
-		System.out.println("numero:"+numero);
 		for(int i=0; i<4;++i){
 			for(int j=0; j<4;++j){
 				if(this.haut[j][i] != null){

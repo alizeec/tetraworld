@@ -363,7 +363,7 @@ public class EcouteurSouris implements MouseListener
             		plateau.motEnCours=plateau.motEnCours+tmp.toString();
             	}
             	// récupération du total de point que vaut le mot
-            	plateau.totalMot+=plateau.briques.get(id).getPoints(); 
+            	plateau.totalMot+=plateau.tab[X][Y].getPoint(); 
     		}
 
     	}
@@ -400,7 +400,7 @@ public class EcouteurSouris implements MouseListener
                 		plateau.motEnCours=plateau.motEnCours+tmp.toString();
                 	}
                 	// récupération du total de point que vaut le mot
-                	plateau.totalMot+=plateau.briques.get(id).getPoints(); 
+                	plateau.totalMot+=plateau.tab[X][Y].getPoint(); 
             		plateau.positionEnCours.setPosY(Y);
             		plateau.positionEnCours.setPosX(X);
             		plateau.nbConnexion++;
