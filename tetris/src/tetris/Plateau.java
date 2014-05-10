@@ -482,10 +482,10 @@ public class Plateau implements Serializable {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public void sauvegarder()throws FileNotFoundException, IOException {
+	public void sauvegarder(int joueur)throws FileNotFoundException, IOException {
         Sauvegarde sauvegarde = new Sauvegarde();
         sauvegarde.plateau = this;
-        FileOutputStream sortieDeFicher = sortieDeFicher = new FileOutputStream("MaSauvegarde.sa");
+        FileOutputStream sortieDeFicher = sortieDeFicher = new FileOutputStream("MaSauvegarde"+joueur+".sa");
         ObjectOutputStream sortieDObjet = new ObjectOutputStream(sortieDeFicher);
         sortieDObjet.writeObject(sauvegarde);
         sortieDObjet.close();
@@ -521,8 +521,13 @@ public class Plateau implements Serializable {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	 public void charger() throws FileNotFoundException, IOException, ClassNotFoundException {
-        FileInputStream entreeDeFicher  = new FileInputStream("MaSauvegarde.sa");
+	 public void charger(int joueur) throws FileNotFoundException, IOException, ClassNotFoundException {
+        FileInputStream entreeDeFicher = null;
+        if(joueur==1)
+        	entreeDeFicher=new FileInputStream("MaSauvegarde1.sa");
+        else if(joueur==2)
+        	entreeDeFicher=new FileInputStream("MaSauvegarde2.sa");
+
         ObjectInputStream entreeDObjet = new ObjectInputStream(entreeDeFicher);
         Sauvegarde sauvegarde = (Sauvegarde) entreeDObjet.readObject();
         entreeDObjet.close();

@@ -200,7 +200,7 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_S:
 			try {
-				plateau1.sauvegarder();
+				plateau1.sauvegarder(1);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -217,7 +217,7 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_D:
 			try {
-				plateau1.charger();
+				plateau1.charger(1);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -235,7 +235,7 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_L:
 			try {
-				plateau2.sauvegarder();
+				plateau2.sauvegarder(2);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -250,7 +250,7 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_M:
 			try {
-				plateau2.charger();
+				plateau2.charger(2);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
