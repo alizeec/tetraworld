@@ -26,6 +26,7 @@ public class Tetraword extends Thread{
 	
 	Plateau joueur;
 	static boolean multijoueur = false;
+	static boolean gameStarted = false;
 	
 
 
@@ -282,10 +283,16 @@ public class Tetraword extends Thread{
  */
 	public static void main(String[] args) {
 		LinkedList<Plateau> joueurs = new LinkedList<Plateau>();
+		FrameJeu framejeu = new FrameJeu();
+		
+		while(!gameStarted){
+			System.out.println("choix du mode");
+
+		}
+
 		if(!multijoueur){
 		Plateau plateau= new Plateau(349, "Joueur 1");
 		joueurs.add(plateau);
-		//setLettersRates(plateau);
 		setTauxLettres(3, 5, 2, plateau);
 
 		setTauxFormes(2, 2, 2,2, 2, 2, 2,plateau);
@@ -309,8 +316,9 @@ public class Tetraword extends Thread{
 
 		}
 
-
-		FrameJeu framejeu = new FrameJeu(joueurs);
+		
+		framejeu.setJoueurs(joueurs);
+		framejeu.setPanel(1);
 
 		Mots worddle=new Mots();
 		Mots anagramme=new Mots();
