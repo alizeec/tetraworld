@@ -64,6 +64,7 @@ public class Tetraword extends Thread{
 				  int X = plateau.briqueActuelle.getPosition().getPosX();
 				  int Y = plateau.briqueActuelle.getPosition().getPosY();
 				  Cellule newposition = new Cellule(X, Y+1);
+
 				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 					  plateau.videCaseBrique(plateau.briqueActuelle);
 					  plateau.briqueActuelle.descendre();
