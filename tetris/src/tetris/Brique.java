@@ -36,7 +36,7 @@ public abstract class Brique implements Serializable{
 		this.id=this.cpt;
 		cpt++;
 		this.position=new Cellule(this.id, forme, cellules.get(0).getLettre(), 3, 0);
-		this.cellules = new HashMap();
+		this.cellules = new HashMap<Integer, Cellule>();
 		this.cellules = cellules;
 		this.rotation = Rotation.HAUT;
 		this.forme = forme;
@@ -148,7 +148,7 @@ public abstract class Brique implements Serializable{
 	}
 	
 	public void suppCase(int numero){
-		System.out.println("classe brique");
+		System.out.println("numero:"+numero);
 		for(int i=0; i<4;++i){
 			for(int j=0; j<4;++j){
 				if(this.haut[j][i] != null){

@@ -27,17 +27,19 @@ public class Cellule implements Serializable{
 	 * @param Forme forme
 	 * @param char lettre
 	 * @param int point
+	 * @param int numero
 	 * @param boolean independant
 	 * @param int X
 	 * @param int Y
 	 */
-	public Cellule(int id, Forme forme, char lettre, int point, boolean independant, int X, int Y) {
+	public Cellule(int id, Forme forme, char lettre, int point, int numero, boolean independant, int X, int Y) {
 		this.id = id;
 		this.setForme(forme);
 		this.setPosX(X);
 		this.setPosY(Y);
 		this.lettre = lettre;
 		this.point = point;
+		this.numero = numero;
 		this.utilisee = false;
 		this.independant = independant;
 	}
@@ -98,7 +100,7 @@ public class Cellule implements Serializable{
 	 */
 	public Cellule(char lettre, int numero, int point, Forme forme){
 		this.lettre = lettre;
-		this.setNumero(numero);
+		this.numero = numero;
 		this.setPoint(point);
 		this.forme = forme;
 		this.independant = false;
