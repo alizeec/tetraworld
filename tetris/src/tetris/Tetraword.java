@@ -58,7 +58,8 @@ public class Tetraword extends Thread{
 	  /*
 	   * Update the game.
 	   */
- 
+	  System.out.println("mode "+plateau2.mode);
+
 	  if(plateau.pause==false && plateau.mode==Mode.TETRIS){
 			  if(plateau.briqueActuelle != null){
 				  int X = plateau.briqueActuelle.getPosition().getPosX();
@@ -97,7 +98,9 @@ public class Tetraword extends Thread{
 				  plateau2.briqueActuelle.descendre();
 				  plateau2.placeBrique(plateau2.briqueActuelle);
 			  }else{
-				  plateau2.verifLignes();
+				  if(plateau2.verifLignes()==true){
+					  plateau2.mode = Mode.ANAGRAMME;
+				  }
 				  plateau2.briqueActuelle = null;
 				  Brique newBrique = plateau2.creerBrique();
 				  plateau2.briqueActuelle = newBrique;
@@ -118,10 +121,13 @@ public class Tetraword extends Thread{
 	  
 	  if (plateau.mode==Mode.ANAGRAMME || (plateau2!=null && plateau2.mode==Mode.ANAGRAMME)){
 		  if(plateau.mode==Mode.ANAGRAMME){
+			  System.out.println("joueur1");
 			  anagramme( plateau,  anagramme,  jeu);
 		  }
 		  
 		  if(plateau2!=null && plateau2.mode==Mode.ANAGRAMME){
+			  System.out.println("joueur2");
+
 			  anagramme( plateau2,  anagramme,  jeu);
 		  }
 
