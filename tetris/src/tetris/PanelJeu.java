@@ -436,7 +436,7 @@ public class PanelJeu extends JPanel{
 				paramJeu.setVisible(false);
 				supp.setVisible(false);
 			}
-			
+
 			if(joueurs.size()>1 && joueurs.get(0).perdu==true){
 				g.drawImage(perduMulti1, 0, 0, null);
 				valider.setVisible(false);

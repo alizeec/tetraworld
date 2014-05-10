@@ -24,7 +24,6 @@ public enum Forme {
 		Forme forme = null;
 		// génération aléatoire pondérée de la lettre
 				Integer quotient = (int)(Math.random() * (14-1)) + 1;
-				
 				if(quotient < b){
 					forme = Forme.BLEU; 
 				}
@@ -52,6 +51,7 @@ public enum Forme {
 		        	forme = Forme.VERT;	
 		        	
 		        }
+
 				return forme;
     }
 

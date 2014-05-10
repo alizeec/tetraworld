@@ -26,6 +26,8 @@ public class EcouteurSouris implements MouseListener
 	}
 	
 
+	
+
 
 	@Override
 	/**
@@ -50,6 +52,8 @@ public class EcouteurSouris implements MouseListener
     
 
     if(e.getSource() == frame.getPanelDemarrage().bt_start){
+    	System.out.println("choix fait");
+    	Tetraword.gameStarted=true;
     	frame.setPanel(1);
     	FrameJeu.musique_geek.lecture();
 	    }
@@ -57,6 +61,9 @@ public class EcouteurSouris implements MouseListener
     	System.exit(0);
  	    }
     else if(e.getSource() == frame.getPanelDemarrage().bt_multi){
+    	System.out.println("choix fait");
+
+    	Tetraword.gameStarted=true;
     	Tetraword.multijoueur = true;
     	frame.setPanel(1);
  	    }
@@ -356,7 +363,7 @@ public class EcouteurSouris implements MouseListener
             		plateau.motEnCours=plateau.motEnCours+tmp.toString();
             	}
             	// récupération du total de point que vaut le mot
-            	plateau.totalMot+=plateau.briques.get(id).getPoints(); 	                		
+            	plateau.totalMot+=plateau.briques.get(id).getPoints(); 
     		}
 
     	}

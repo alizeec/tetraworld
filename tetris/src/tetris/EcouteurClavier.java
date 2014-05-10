@@ -153,6 +153,7 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_P:
 				plateau1.pause=true;
+				if(plateau2!=null)
 				plateau2.pause=true;
 		break;
 		
@@ -161,6 +162,7 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_O:
 				plateau1.pause=false;
+				if(plateau2!=null)
 				plateau2.pause=false;
 
 		break;
