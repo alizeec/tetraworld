@@ -44,7 +44,7 @@ public class PanelJeu extends JPanel{
 	 * affichage du fond de plateau
 	 */
 	Image background_geek,background_girly, background;
-	Image perdu, perduMulti;
+	Image perdu, perduMulti1, perduMulti2;
 	/** affichage des donn�es et des retours utilisateur
 	 * 
 	 */
@@ -87,7 +87,8 @@ public class PanelJeu extends JPanel{
 		background_girly = new ImageIcon("tetris_girly.gif").getImage();
 		background = background_geek;
 		perdu = new ImageIcon("GameOver.png").getImage();
-		perduMulti = new ImageIcon("GameOverMultijoueur.png").getImage();
+		perduMulti1 = new ImageIcon("GameOverMultijoueur2.png").getImage();
+		perduMulti2 = new ImageIcon("GameOverMultijoueur1.png").getImage();
 		
 		fleche = new ImageIcon("fleche.png").getImage();
 
@@ -436,8 +437,16 @@ public class PanelJeu extends JPanel{
 				supp.setVisible(false);
 			}
 			
-			if(joueurs.size()>1 && joueurs.get(0).perdu==true || joueurs.get(1).perdu==true){
-				g.drawImage(perduMulti, 0, 0, null);
+			if(joueurs.size()>1 && joueurs.get(0).perdu==true){
+				g.drawImage(perduMulti1, 0, 0, null);
+				valider.setVisible(false);
+				valider2.setVisible(false);
+				paramJeu.setVisible(false);
+				supp.setVisible(false);
+				supp2.setVisible(false);
+			}
+			else if (joueurs.size()>1 && joueurs.get(1).perdu==true){
+				g.drawImage(perduMulti2, 0, 0, null);
 				valider.setVisible(false);
 				valider2.setVisible(false);
 				paramJeu.setVisible(false);
