@@ -141,7 +141,7 @@ public class PanelJeu extends JPanel{
 	 * @param char lettre lettre de la brique
 	 * @param Plateau plateau
 	 */
-	public void afficherCelluleMagenta(Graphics g, int i, int j, int lettre, Plateau plateau){
+	public void afficherCelluleMagenta(Graphics g, int i, int j, char lettre, Plateau plateau){
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueMagenta, x, y, null);
@@ -525,7 +525,7 @@ public class PanelJeu extends JPanel{
 							afficherCelluleGris(g,i,j, joueurs.get(k).tab[j][i].getLettre(), joueurs.get(k));
 						}else{
 							if(joueurs.get(k).tab[j][i].getForme() == Forme.MAGENTA){
-								afficherCelluleMagenta(g,i,j, joueurs.get(k).tab[j][i].getNumero(), joueurs.get(k));
+								afficherCelluleMagenta(g,i,j, joueurs.get(k).tab[j][i].getLettre(), joueurs.get(k));
 							}
 							if(joueurs.get(k).tab[j][i].getForme() == Forme.BLEU){
 								afficherCelluleBleu(g,i,j, joueurs.get(k).tab[j][i].getLettre(), joueurs.get(k));

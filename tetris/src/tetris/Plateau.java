@@ -237,7 +237,8 @@ public class Plateau implements Serializable {
 				if(tab[j][i]==null){
 					for(int k=i-1;k>=1;--k){
 						if(tab[j][k] != null && tab[j][k].getId()!= briqueActuelle.getId()){
-							if(briques.get(tab[j][k].getId()).getNbCellules() == 1 || tab[j][k].getIndependant() == true){ //Si la brique n'est pas entière
+							if(briques.get(tab[j][k].getId()).getNbCellules() == 1 || briques.get(tab[j][k].getId()).cellules.get(tab[j][k].getNumero()).getIndependant() == true){ //Si la brique n'est pas entière
+								System.out.println("lettre :"+tab[j][k].getLettre()+" -> independant");
 								int cpt = 1;
 								int l = k;
 								while(k+cpt < 20){
@@ -248,6 +249,7 @@ public class Plateau implements Serializable {
 									l++;
 								}
 							}else{
+								System.out.println("lettre :"+tab[j][k].getLettre()+" -> dépendant");
 								Cellule newposition = new Cellule(briques.get(tab[j][k].getId()).getPosition().getPosX(), briques.get(tab[j][k].getId()).getPosition().getPosY()+1);
 								if(verifMove(briques.get(tab[j][k].getId()), newposition)){
 									deplaceBrique(briques.get(tab[j][k].getId()), newposition);
