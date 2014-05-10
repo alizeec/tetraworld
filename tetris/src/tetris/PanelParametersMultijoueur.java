@@ -30,7 +30,7 @@ public class PanelParametersMultijoueur extends JPanel {
         int total_briques, total_lettres;
         JTextField taux_rouge, taux_vert, taux_bleu, taux_cyan,taux_orange, taux_magenta, taux_jaune,taux_total_briques, taux_voyelles, taux_consonnes, taux_rares, taux_total_lettres;
         JCheckBox facile, normal, difficile;
-        static public int valeur_taux_voyelles, valeur_taux_consonnes, valeur_taux_rares, difficulte_anagramme,valeur_taux_rouge, valeur_taux_vert, valeur_taux_bleu, valeur_taux_cyan,valeur_taux_orange, valeur_taux_magenta, valeur_taux_jaune ;
+        static public int choix_langue, valeur_taux_voyelles, valeur_taux_consonnes, valeur_taux_rares, difficulte_anagramme,valeur_taux_rouge, valeur_taux_vert, valeur_taux_bleu, valeur_taux_cyan,valeur_taux_orange, valeur_taux_magenta, valeur_taux_jaune ;
         ButtonGroup bg = new ButtonGroup();
        
         public PanelParametersMultijoueur(){
@@ -165,7 +165,8 @@ public class PanelParametersMultijoueur extends JPanel {
             //Add background      
             background = new ImageIcon("parametresMultijoueur.png").getImage();
            
-       
+            // Langue  0=en  1=fr
+            choix_langue = 1;
                      
    
 }      

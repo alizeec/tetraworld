@@ -35,13 +35,13 @@ public class Mots  {
 	 * @throws FileNotFoundException
 	 */
 	public boolean findWord(String word)  throws FileNotFoundException  {
-		//if(PanelParameters.language==french){
+		if(PanelParameters.choix_langue==1 || PanelParametersMultijoueur.choix_langue==1){
 			file=new File("src/tetris/french.txt");
-		/*}
-		else if(PanelParameters.language==english){
+		}
+		else if(PanelParameters.choix_langue==0 || PanelParametersMultijoueur.choix_langue==0){
 			file=new File("src/tetris/english.txt");
 
-		}*/
+		}
 
 		String mot = word.substring(0, word.length()-1);
 		Scanner scanner = new Scanner(file);

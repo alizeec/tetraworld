@@ -202,7 +202,8 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametresMulti.en.setVisible(true);
     	frame.panelParametresMulti.fr_gris.setVisible(true);
     	frame.panelParametresMulti.fr.setVisible(false);
-    	
+    	frame.panelParametres.choix_langue = 0;
+    	frame.panelParametresMulti.choix_langue = 0;
          
     }
     else if(e.getSource() == frame.panelParametres.en || e.getSource() == frame.panelParametresMulti.en_gris)
@@ -215,6 +216,8 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametresMulti.en_gris.setVisible(true);
     	frame.panelParametresMulti.fr_gris.setVisible(false);
     	frame.panelParametresMulti.fr.setVisible(true);
+    	frame.panelParametres.choix_langue = 1;
+    	frame.panelParametresMulti.choix_langue = 1;
     	
     }
     else if(e.getSource() == frame.panelParametres.fr || e.getSource() == frame.panelParametresMulti.en_gris)
@@ -227,6 +230,8 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametresMulti.fr_gris.setVisible(true);
     	frame.panelParametresMulti.en_gris.setVisible(false);
     	frame.panelParametresMulti.en.setVisible(true);
+    	frame.panelParametres.choix_langue = 0;
+    	frame.panelParametresMulti.choix_langue = 0;
 
     	
     }
@@ -240,6 +245,8 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametresMulti.fr.setVisible(true);
     	frame.panelParametresMulti.en_gris.setVisible(true);
     	frame.panelParametresMulti.en.setVisible(false);
+    	frame.panelParametres.choix_langue = 1;
+    	frame.panelParametresMulti.choix_langue = 1;
     }
 		
 		
