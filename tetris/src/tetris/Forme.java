@@ -52,7 +52,6 @@ public enum Forme {
 		        	forme = Forme.VERT;	
 		        	
 		        }
-				
 				return forme;
     }
 

@@ -2,9 +2,13 @@ eclipse.preferences.version=1
 encoding//src/tetris/Brique.java=UTF-8
 encoding//src/tetris/EcouteurClavier.java=UTF-8
 encoding//src/tetris/EcouteurSouris.java=UTF-8
+<<<<<<< HEAD
+encoding//src/tetris/Mots.java=UTF-8
+=======
 encoding//src/tetris/FrameJeu.java=UTF-8
 encoding//src/tetris/PanelDemarrage.java=UTF-8
 encoding//src/tetris/PanelJeu.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/alizeec/tetraworld.git
 encoding//src/tetris/PanelParameters.java=UTF-8
 encoding//src/tetris/PanelParametersMultijoueur.java=UTF-8
 encoding//src/tetris/Plateau.java=UTF-8

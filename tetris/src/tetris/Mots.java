@@ -24,7 +24,6 @@ public class Mots  {
 
 	public Mots() {
 		// TODO Auto-generated constructor stub
-		file=new File("src/tetris/mots.txt");
 		listMeilleursMots= new LinkedList();
 	}
 	
@@ -36,19 +35,28 @@ public class Mots  {
 	 * @throws FileNotFoundException
 	 */
 	public boolean findWord(String word)  throws FileNotFoundException  {
+		//if(PanelParameters.language==french){
+			file=new File("src/tetris/french.txt");
+		/*}
+		else if(PanelParameters.language==english){
+			file=new File("src/tetris/english.txt");
+
+		}*/
+
 		String mot = word.substring(0, word.length()-1);
 		Scanner scanner = new Scanner(file);
-		while (scanner.hasNextLine()) {
+		while (scanner.hasNext()) {
 		    String nextToken = scanner.next();
 		    if (nextToken.equalsIgnoreCase(mot)){
 		    	return true;
 		    }
 		}
 		return false;
+
 	}
 	
 	/**
-	 * indique que le mot est terminé
+	 * indique que le mot est termin√©
 	 * @param String word
 	 * @return boolean
 	 */
@@ -63,13 +71,16 @@ public class Mots  {
 	}
 	
 	/**
-	 * Si le résultat est correct en mode ANAGRAMME
-	 * supprime la ligne et ajoute les points, change de niveau si nécessaire
+	 * Si le r√©sultat est correct en mode ANAGRAMME
+	 * supprime la ligne et ajoute les points, change de niveau si n√©cessaire
 	 * @param Plateau plateau
 	 */
 	public void resultatCorrect(Plateau plateau){
 		plateau.suppLigne(plateau.indexLigneSupp);
 		plateau.gravite();
+		for(int i=0; i<plateau.lignesCompletes.length;++i){
+			plateau.lignesCompletes[i]--;
+		}
 		plateau.points+=plateau.totalMot;
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
@@ -80,8 +91,8 @@ public class Mots  {
 	}
 	
 	/**
-	 * Si le résultat est correct en mode WORDDLE
-	 * calcul le nombre de points gagné et detruit les briques utilisées
+	 * Si le r√©sultat est correct en mode WORDDLE
+	 * calcul le nombre de points gagn√© et detruit les briques utilis√©es
 	 * @param Plateau plateau
 	 */
 	public void resultatCorrectWorddle(Plateau plateau){
@@ -98,15 +109,18 @@ public class Mots  {
 	}
 	
 	/**
-	 * supprime les lettres utilisées
+	 * supprime les lettres utilis√©es
 	 * @param Plateau plateau
 	 */
 	public void supprLettresWorddle(Plateau plateau){
+		System.out.println("Supp case");
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtilisees.get(0).getPosX();
 			int Y = plateau.BriquesUtilisees.get(0).getPosY();
 				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).decrementeNbCellules();
+				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).suppCase(plateau.BriquesUtilisees.get(0).getNumero());
+				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).cellules.remove(plateau.BriquesUtilisees.get(0).getNumero());
 				plateau.tab[X][Y] = null;
 				plateau.BriquesUtilisees.remove(0);
 		}
@@ -123,11 +137,11 @@ public class Mots  {
 	}
 	
 	/** 
-	 * Cherche la cellule de départ parmis les briques présentes sur le plateau en mode WORDDLE
+	 * Cherche la cellule de d√©part parmis les briques pr√©sentes sur le plateau en mode WORDDLE
 	 * @param Plateau plateau
 	 */
 	public void initialiseWorddle(Plateau plateau){
-		/* pour avoir une position de départ aléatoire*/
+		/* pour avoir une position de d√©part al√©atoire*/
 	Vector<Cellule> positionsPossibles= new Vector<Cellule>();
 	
 	for(int i=0; i<plateau.LARGEUR; ++i){
@@ -141,6 +155,7 @@ public class Mots  {
 	int nbPositionsPossibles=positionsPossibles.size();
 	Integer r = (int)(Math.random() * (nbPositionsPossibles-1)) + 1;
 	plateau.positionEnCours=positionsPossibles.get(r);
+	
 	}
 	
 

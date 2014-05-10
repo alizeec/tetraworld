@@ -110,7 +110,7 @@ public class PanelJeu extends JPanel{
 	 * @return int
 	 */
 	public int getPixelX(int i, Plateau plateau){
-		int x = (int)(plateau.coinSuppGauche + 300 / plateau.getLargeur()*i);
+		int x = (int)(plateau.getCoinSuppGauche() + 300 / plateau.getLargeur()*i);
 		return x;
 	}
 
@@ -446,30 +446,30 @@ public class PanelJeu extends JPanel{
 	}
 
 
-	/*public void printTab(){
+	public void printTab(){
 		String str = "";
 		for(int i=0;i<plateau.getHauteur();i++){		
 			for(int j=0;j<plateau.getLargeur();j++){
 				if(plateau.tab[j][i] != null){
-					if(plateau.tab[j][i].forme == Forme.MAGENTA){
+					if(plateau.tab[j][i].getForme() == Forme.MAGENTA){
 						str += "M";
 					}
-					if(plateau.tab[j][i].forme == Forme.BLEU){
+					if(plateau.tab[j][i].getForme() == Forme.BLEU){
 						str += "B";
 					}
-					if(plateau.tab[j][i].forme == Forme.CYAN){
+					if(plateau.tab[j][i].getForme() == Forme.CYAN){
 						str += "C";
 					}
-					if(plateau.tab[j][i].forme == Forme.JAUNE){
+					if(plateau.tab[j][i].getForme() == Forme.JAUNE){
 						str += "J";
 					}
-					if(plateau.tab[j][i].forme == Forme.ORANGE){
+					if(plateau.tab[j][i].getForme() == Forme.ORANGE){
 						str += "O";
 					}
-					if(plateau.tab[j][i].forme == Forme.ROUGE){
+					if(plateau.tab[j][i].getForme() == Forme.ROUGE){
 						str += "R";
 					}
-					if(plateau.tab[j][i].forme == Forme.VERT){
+					if(plateau.tab[j][i].getForme() == Forme.VERT){
 						str += "V";
 					}
 				}else{
@@ -481,7 +481,7 @@ public class PanelJeu extends JPanel{
 		System.out.println(str);
 	}
 	
-	public void printTabLettres(){
+	/*public void printTabLettres(){
 		String str = "";
 		for(int i=0;i<plateau.getHauteur();i++){		
 			for(int j=0;j<plateau.getLargeur();j++){

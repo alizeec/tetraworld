@@ -69,7 +69,9 @@ public class Tetraword extends Thread{
 					  plateau.briqueActuelle.descendre();
 					  plateau.placeBrique(plateau.briqueActuelle);
 				  }else{
-					  plateau.verifLignes();
+					  if(plateau.verifLignes()==true){
+						  plateau.mode = Mode.ANAGRAMME;
+					  }
 					  plateau.briqueActuelle = null;
 					  Brique newBrique = plateau.creerBrique();
 					  plateau.briqueActuelle = newBrique;
@@ -184,6 +186,7 @@ public class Tetraword extends Thread{
 			  if(anagramme.motfini(plateau.motEnCours)){
 				 
 				try {
+					System.out.println(plateau.motEnCours);
 					result=anagramme.findWord(plateau.motEnCours);
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();
@@ -196,11 +199,7 @@ public class Tetraword extends Thread{
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
-				plateau.nbLignesCompletes--;
-				cpt++;
-				if(plateau.nbLignesCompletes > 0){
-					plateau.indexLigneSupp = plateau.lignesCompletes[cpt];
-				}else{
+				if(plateau.verifLignes()==false){
 					plateau.mode=Mode.TETRIS;
 				}
 
@@ -228,6 +227,7 @@ public class Tetraword extends Thread{
 				  if(worddle.motfini(plateau.motEnCours)){
 		
 					try {
+						System.out.println(plateau.motEnCours);
 						result=worddle.findWord(plateau.motEnCours);
 					} catch (FileNotFoundException e1) {
 						e1.printStackTrace();
@@ -237,7 +237,6 @@ public class Tetraword extends Thread{
 					}else{
 						worddle.resultatCorrectWorddle(plateau);
 					}
-					System.out.println("fini");
 					plateau.motEnCours=null;
 					plateau.totalMot=0;
 					plateau.nbConnexion=0;
@@ -246,7 +245,6 @@ public class Tetraword extends Thread{
 			  }
 			  
 		  }else{
-			  System.out.println("temps ecoulé");
 			  worddle.supprLettresWorddle(plateau);
 			  plateau.mode=Mode.TETRIS;
 		  }
@@ -289,8 +287,11 @@ public class Tetraword extends Thread{
 		joueurs.add(plateau);
 		//setLettersRates(plateau);
 		setTauxLettres(3, 5, 2, plateau);
+
 		setTauxFormes(2, 2, 2,2, 2, 2, 2,plateau);
-		
+
+		setTauxFormes(2, 2, 4,1, 1, 2, 2,plateau);
+
 		}
 		else if(multijoueur){
 		Plateau plateau= new Plateau(256, "Joueur 1");

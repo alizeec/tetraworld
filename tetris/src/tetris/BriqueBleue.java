@@ -56,12 +56,12 @@ public class BriqueBleue extends Brique {
 
 		this.droite[1][0]=null;
 		this.droite[1][1]=null;
-		this.droite[1][2]=cellules.get(0);
-		this.droite[1][3]=cellules.get(1);
+		this.droite[1][2]=cellules.get(1);
+		this.droite[1][3]=cellules.get(0);
 
 		this.droite[2][0]=null;
-		this.droite[2][1]=cellules.get(2);
-		this.droite[2][2]=cellules.get(3);
+		this.droite[2][1]=cellules.get(3);
+		this.droite[2][2]=cellules.get(2);
 		this.droite[2][3]=null;
 		
 		this.droite[3][0]=null;
@@ -71,11 +71,52 @@ public class BriqueBleue extends Brique {
 	}
 	
 	public void configurebas(){
-		this.bas = (Cellule[][])haut.clone();
+		this.bas = new Cellule[4][4];
+		
+		this.bas[0][0]=null;
+		this.bas[0][1]=cellules.get(3);
+		this.bas[0][2]=null;
+		this.bas[0][3]=null;
+
+
+		this.bas[1][0]=null;
+		this.bas[1][1]=cellules.get(2);
+		this.bas[1][2]=cellules.get(1);
+		this.bas[1][3]=null;
+
+		this.bas[2][0]=null;
+		this.bas[2][1]=null;
+		this.bas[2][2]=cellules.get(0);
+		this.bas[2][3]=null;
+		
+		this.bas[3][0]=null;
+		this.bas[3][1]=null;
+		this.bas[3][2]=null;
+		this.bas[3][3]=null;
 	}
 	
 	public void configuregauche(){
-		this.gauche = (Cellule[][])droite.clone();
+		this.gauche = new Cellule[4][4];
+		this.gauche[0][0]=null;
+		this.gauche[0][1]=null;
+		this.gauche[0][2]=null;
+		this.gauche[0][3]=null;
+
+
+		this.gauche[1][0]=null;
+		this.gauche[1][1]=null;
+		this.gauche[1][2]=cellules.get(2);
+		this.gauche[1][3]=cellules.get(3);
+
+		this.gauche[2][0]=null;
+		this.gauche[2][1]=cellules.get(0);
+		this.gauche[2][2]=cellules.get(1);
+		this.gauche[2][3]=null;
+		
+		this.gauche[3][0]=null;
+		this.gauche[3][1]=null;
+		this.gauche[3][2]=null;
+		this.gauche[3][3]=null;
 	}
 
 	
