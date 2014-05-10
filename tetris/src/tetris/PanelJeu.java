@@ -21,7 +21,7 @@ import javax.xml.ws.handler.Handler;
 
 
 /**
- * affiche dans la fenêtre les éléments de jeu
+ * affiche dans la fenÔøΩtre les ÔøΩlÔøΩments de jeu
  * 
  *
  */
@@ -45,7 +45,7 @@ public class PanelJeu extends JPanel{
 	 */
 	Image background_geek,background_girly, background;
 	Image perdu;
-	/** affichage des données et des retours utilisateur
+	/** affichage des donnÔøΩes et des retours utilisateur
 	 * 
 	 */
 	JLabel score;
@@ -143,7 +143,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueMagenta, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -158,7 +158,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueBleu, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -173,7 +173,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueCyan, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -188,7 +188,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j,plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueJaune, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -203,7 +203,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueOrange, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -218,7 +218,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j,plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueRouge, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -233,11 +233,11 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueVert, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
-	 * pour afficher les cellules grisées (mode worddle)
+	 * pour afficher les cellules grisÔøΩes (mode worddle)
 	 * @param Graphics g
 	 * @param int i position verticale
 	 * @param int j position horizontale

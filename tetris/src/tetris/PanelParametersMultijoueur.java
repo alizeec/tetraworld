@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  *
  */
 @SuppressWarnings("serial")
-public class PanelParameters extends JPanel {
+public class PanelParametersMultijoueur extends JPanel {
         Image background;
         JLabel picture, totalBriques, regleTotalBriques, totalLettres, regleTotalLettres;      
         JButton bt_verif_letters, croix_rouge_1,croix_rouge_2, play_song, stop_song, song_played, song_stoped, param, geek_gris, geek_jaune, girly_gris,girly_jaune,en,en_gris,fr,fr_gris,bt_verif_briques;
@@ -33,7 +33,7 @@ public class PanelParameters extends JPanel {
         static public int valeur_taux_voyelles, valeur_taux_consonnes, valeur_taux_rares, difficulte_anagramme,valeur_taux_rouge, valeur_taux_vert, valeur_taux_bleu, valeur_taux_cyan,valeur_taux_orange, valeur_taux_magenta, valeur_taux_jaune ;
         ButtonGroup bg = new ButtonGroup();
        
-        public PanelParameters(){
+        public PanelParametersMultijoueur(){
                 this.setLayout(new FlowLayout());
                 //bt play musique
             play_song = new JButton(new ImageIcon("sound_on_jaune.png"));
@@ -163,7 +163,7 @@ public class PanelParameters extends JPanel {
             bg.add(difficile);
            
             //Add background      
-            background = new ImageIcon("fond_param.png").getImage();
+            background = new ImageIcon("parametresMultijoueur.png").getImage();
            
        
                      
@@ -175,119 +175,119 @@ public class PanelParameters extends JPanel {
          public void paintComponent(Graphics g) {
                     super.paintComponent(g);
                     g.drawImage(background,0,0,null);    
-                    play_song.setBounds(775, 170, 63, 93);
+                    play_song.setBounds(1005, 200, 63, 93);
                     play_song.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     play_song.setContentAreaFilled(false);
                     play_song.setBorderPainted(false);
                     add(play_song);
-                    stop_song.setBounds(845, 167, 63, 93);
+                    stop_song.setBounds(1080, 198, 63, 93);
                     stop_song.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     stop_song.setContentAreaFilled(false);
                     stop_song.setBorderPainted(false);
                     add(stop_song);
-                    song_played.setBounds(775, 170, 63, 93);
+                    song_played.setBounds(1005, 200, 63, 93);
                     song_played.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     song_played.setContentAreaFilled(false);
                     song_played.setBorderPainted(false);
                     add(song_played);
-                    song_stoped.setBounds(845, 167, 63, 93);
+                    song_stoped.setBounds(1080, 198, 63, 93);
                     song_stoped.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     song_stoped.setContentAreaFilled(false);
                     song_stoped.setBorderPainted(false);
                     add(song_stoped);
-                    geek_jaune.setBounds(770, 360, 74, 60);
+                    geek_jaune.setBounds(1005, 423, 74, 60);
                     geek_jaune.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     geek_jaune.setContentAreaFilled(false);
                     geek_jaune.setBorderPainted(false);
                     add(geek_jaune);
-                    geek_gris.setBounds(770, 360, 74, 60);
+                    geek_gris.setBounds(1005, 423, 74, 60);
                     geek_gris.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     geek_gris.setContentAreaFilled(false);
                     geek_gris.setBorderPainted(false);
                     add(geek_gris);
-                    girly_jaune.setBounds(855, 350, 54, 72);
+                    girly_jaune.setBounds(1090, 410, 54, 72);
                     girly_jaune.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     girly_jaune.setContentAreaFilled(false);
                     girly_jaune.setBorderPainted(false);
                     add(girly_jaune);
-                    girly_gris.setBounds(855,350, 54, 72);
+                    girly_gris.setBounds(1090,410, 54, 72);
                     girly_gris.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     girly_gris.setContentAreaFilled(false);
                     girly_gris.setBorderPainted(false);
                     add(girly_gris);
-                    en.setBounds(855,500, 54, 72);
+                    en.setBounds(1020,590, 54, 72);
                     en.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     en.setContentAreaFilled(false);
                     en.setBorderPainted(false);
                     add(en);
-                    en_gris.setBounds(855,500, 54, 72);
+                    en_gris.setBounds(1020,590, 54, 72);
                     en_gris.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     en_gris.setContentAreaFilled(false);
                     en_gris.setBorderPainted(false);
                     add(en_gris);
-                    fr.setBounds(790,500, 54, 72);
+                    fr.setBounds(1100,590, 54, 72);
                     fr.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     fr.setContentAreaFilled(false);
                     fr.setBorderPainted(false);
                     add(fr);
-                    fr_gris.setBounds(790,500, 54, 72);
+                    fr_gris.setBounds(1100,590, 54, 72);
                     fr_gris.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     fr_gris.setContentAreaFilled(false);
                     fr_gris.setBorderPainted(false);
                     add(fr_gris);
-                    param.setBounds(950,10, 34, 34);
+                    param.setBounds(1220,15, 34, 34);
                     param.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     param.setContentAreaFilled(false);
                     param.setBorderPainted(false);
                     add(param);
-                    taux_rouge.setBounds(150,180, 60, 25);
+                    taux_rouge.setBounds(240,230, 60, 25);
                     add(taux_rouge);
-                    taux_vert.setBounds(150,250, 60, 25);
+                    taux_vert.setBounds(240,300, 60, 25);
                     add(taux_vert);
-                    taux_cyan.setBounds(150,310, 60, 25);
+                    taux_cyan.setBounds(240,380, 60, 25);
                     add(taux_cyan);
-                    taux_magenta.setBounds(150,360, 60, 25);
+                    taux_magenta.setBounds(240,440, 60, 25);
                     add(taux_magenta);
-                    taux_orange.setBounds(150,410, 60, 25);
+                    taux_orange.setBounds(240,500, 60, 25);
                     add(taux_orange);
-                    taux_jaune.setBounds(150,460, 60, 25);
-                        add(taux_jaune);
-                        taux_bleu.setBounds(150,520, 60, 25);
-                        add(taux_bleu);
-                        taux_total_briques.setBounds(150,580, 60, 25);
-                        add(taux_total_briques);
-                        totalBriques.setBounds(100,580, 60, 25);
-                        totalBriques.setForeground(new Color(255,255,255));
-                        add(totalBriques);
-                        regleTotalBriques.setBounds(95,610, 150, 25);
-                        regleTotalBriques.setForeground(new Color(150,150,150));
-                        add(regleTotalBriques);
-                        taux_voyelles.setBounds(500,185, 60, 25);
-                        add(taux_voyelles);
-                        taux_consonnes.setBounds(500,240, 60, 25);
-                        add(taux_consonnes);           
-                        taux_rares.setBounds(500,300, 60, 25);
-                        add(taux_rares);
-                        taux_total_lettres.setBounds(500,360, 60, 25);
-                        add(taux_total_lettres);
-                        totalLettres.setBounds(450,360, 60, 25);
-                        totalLettres.setForeground(new Color(255,255,255));
-                        add(totalLettres);
-                        regleTotalLettres.setBounds(445,390, 150, 25);
-                        regleTotalLettres.setForeground(new Color(150,150,150));
-                        add(regleTotalLettres);
-                        facile.setBounds(380,520, 60, 25);     
-                        facile.setOpaque(false);
-                        facile.setForeground(new Color(255,255,255));
-                        add(facile);
-                        normal.setBounds(480,520, 70, 25);     
-                        normal.setOpaque(false);
-                        normal.setForeground(new Color(255,255,255));
-                        add(normal);
-                        difficile.setBounds(580,520, 70, 25);  
-                        difficile.setOpaque(false);
-                        difficile.setForeground(new Color(255,255,255));
-                        add(difficile);
+                    taux_jaune.setBounds(240,565, 60, 25);
+                     add(taux_jaune);
+                     taux_bleu.setBounds(240,640, 60, 25);
+                     add(taux_bleu);
+                     taux_total_briques.setBounds(240,690, 60, 25);
+                     add(taux_total_briques);
+                     totalBriques.setBounds(200,690, 60, 25);
+                     totalBriques.setForeground(new Color(255,255,255));
+                     add(totalBriques);
+                     regleTotalBriques.setBounds(183,715, 150, 25);
+                     regleTotalBriques.setForeground(new Color(150,150,150));
+                     add(regleTotalBriques);
+                     taux_voyelles.setBounds(640,220, 60, 25);
+                     add(taux_voyelles);
+                     taux_consonnes.setBounds(640,295, 60, 25);
+                     add(taux_consonnes);           
+                     taux_rares.setBounds(640,370, 60, 25);
+                     add(taux_rares);
+                     taux_total_lettres.setBounds(640,440, 60, 25);
+                     add(taux_total_lettres);
+                     totalLettres.setBounds(580,440, 60, 25);
+                     totalLettres.setForeground(new Color(255,255,255));
+                     add(totalLettres);
+                     regleTotalLettres.setBounds(580,470, 150, 25);
+                     regleTotalLettres.setForeground(new Color(150,150,150));
+                     add(regleTotalLettres);
+                     facile.setBounds(500,620, 60, 25);     
+                     facile.setOpaque(false);
+                     facile.setForeground(new Color(255,255,255));
+                     add(facile);
+                     normal.setBounds(620,620, 70, 25);     
+                     normal.setOpaque(false);
+                     normal.setForeground(new Color(255,255,255));
+                     add(normal);
+                     difficile.setBounds(750,620, 70, 25);  
+                     difficile.setOpaque(false);
+                     difficile.setForeground(new Color(255,255,255));
+                     add(difficile);
                     if(facile.isSelected()==true){
                         difficulte_anagramme = 10;
                     }else if (normal.isSelected()==true){
@@ -295,14 +295,14 @@ public class PanelParameters extends JPanel {
                     }else if (difficile.isSelected()==true){
                         difficulte_anagramme =60;
                     }
-                    bt_verif_letters.setBounds(570,360, 70, 25);   
+                    bt_verif_letters.setBounds(720,440, 70, 25);   
                     add(bt_verif_letters);
-                    croix_rouge_2.setBounds(570,385, 37, 35);	
+                    croix_rouge_2.setBounds(700,465, 37, 35);	
                     croix_rouge_2.setOpaque(false);
                     add(croix_rouge_2);
-                    bt_verif_briques.setBounds(220,580, 70, 25);	
+                    bt_verif_briques.setBounds(320,690, 70, 25);	
                     add(bt_verif_briques);
-                    croix_rouge_1.setBounds(220,605, 37, 35);	
+                    croix_rouge_1.setBounds(305,710, 37, 35);	
                     croix_rouge_1.setOpaque(false);
                     add(croix_rouge_1);
      }
