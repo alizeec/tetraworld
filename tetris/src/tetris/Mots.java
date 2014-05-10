@@ -81,6 +81,7 @@ public class Mots  {
 		for(int i=0; i<plateau.lignesCompletes.length;++i){
 			plateau.lignesCompletes[i]--;
 		}
+		System.out.println("Points: "+plateau.totalMot);
 		plateau.points+=plateau.totalMot;
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;

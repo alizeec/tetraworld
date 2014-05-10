@@ -288,7 +288,7 @@ public class EcouteurSouris implements MouseListener
             		plateau.motEnCours=plateau.motEnCours+tmp.toString();
             	}
             	// récupération du total de point que vaut le mot
-            	plateau.totalMot+=plateau.briques.get(id).getPoints(); 	                		
+            	plateau.totalMot+=plateau.briques.get(id).getPoints(); 
     		}
 
     	}

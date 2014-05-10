@@ -21,7 +21,7 @@ import javax.xml.ws.handler.Handler;
 
 
 /**
- * affiche dans la fenêtre les éléments de jeu
+ * affiche dans la fenÔøΩtre les ÔøΩlÔøΩments de jeu
  * 
  *
  */
@@ -45,7 +45,7 @@ public class PanelJeu extends JPanel{
 	 */
 	Image background_geek,background_girly, background;
 	Image perdu;
-	/** affichage des données et des retours utilisateur
+	/** affichage des donnÔøΩes et des retours utilisateur
 	 * 
 	 */
 	JLabel score;
@@ -237,7 +237,7 @@ public class PanelJeu extends JPanel{
 	}
 	
 	/**
-	 * pour afficher les cellules grisées (mode worddle)
+	 * pour afficher les cellules grisÔøΩes (mode worddle)
 	 * @param Graphics g
 	 * @param int i position verticale
 	 * @param int j position horizontale
@@ -428,13 +428,27 @@ public class PanelJeu extends JPanel{
 			}
 			
 
-			if(joueurs.get(0).perdu==true){
+			if(joueurs.size()==1 && joueurs.get(0).perdu==true){
 				g.drawImage(perdu, 0, 0, null);
 				valider.setVisible(false);
+				supp.setVisible(false);
+				paramJeu.setVisible(false);
+
+
 			}
 			
+			if(joueurs.size()>1 && joueurs.get(0).perdu==true){
+				g.drawImage(perdu, 0, 0, null);
+				g.drawString("Le joueur2 a gagn√©", 600, 600);
+				valider.setVisible(false);
+				supp.setVisible(false);
+				paramJeu.setVisible(false);
+			}
 			if(joueurs.size()>1 && joueurs.get(1).perdu==true){
 				g.drawImage(perdu, 0, 0, null);
+				g.drawString("Le joueur1 a gagn√©", 600, 600);
+				supp.setVisible(false);
+				paramJeu.setVisible(false);
 				valider.setVisible(false);
 			}
 			
