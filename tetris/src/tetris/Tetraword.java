@@ -25,7 +25,7 @@ public class Tetraword extends Thread{
 	int cpt = 0;
 	
 	Plateau joueur;
-	static boolean multijoueur = false;
+	static boolean multijoueur = true;
 	
 
 
