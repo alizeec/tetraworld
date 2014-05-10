@@ -60,15 +60,18 @@ public class EcouteurSouris implements MouseListener
     	Tetraword.multijoueur = true;
     	frame.setPanel(1);
  	    }
-    
-    if(e.getSource() == frame.getPanelParametres().param){
-        Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
-	    Tetraword.setTauxFormes(PanelParameters.valeur_taux_bleu, PanelParameters.valeur_taux_cyan, PanelParameters.valeur_taux_jaune,PanelParameters.valeur_taux_magenta, PanelParameters.valeur_taux_orange, PanelParameters.valeur_taux_rouge, PanelParameters.valeur_taux_vert, joueurs.get(0));
-        if(joueurs.size()>1){
-	    	Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(1));
-		    Tetraword.setTauxFormes(PanelParameters.valeur_taux_bleu, PanelParameters.valeur_taux_cyan, PanelParameters.valeur_taux_jaune,PanelParameters.valeur_taux_magenta, PanelParameters.valeur_taux_orange, PanelParameters.valeur_taux_rouge, PanelParameters.valeur_taux_vert, joueurs.get(1));
-
-	    }
+    //clic param mode solo
+    if(e.getSource() == frame.getPanelParametres().param || e.getSource() == frame.getPanelParametresMultijoueur().param){
+    	
+    		 Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
+    		 Tetraword.setTauxFormes(PanelParameters.valeur_taux_bleu, PanelParameters.valeur_taux_cyan, PanelParameters.valeur_taux_jaune,PanelParameters.valeur_taux_magenta, PanelParameters.valeur_taux_orange, PanelParameters.valeur_taux_rouge, PanelParameters.valeur_taux_vert, joueurs.get(0));
+    	
+    	 if(joueurs.size()>1){
+	    	Tetraword.setTauxLettres(PanelParametersMultijoueur.valeur_taux_consonnes, PanelParametersMultijoueur.valeur_taux_voyelles, PanelParametersMultijoueur.valeur_taux_rares, joueurs.get(1));
+		    Tetraword.setTauxFormes(PanelParametersMultijoueur.valeur_taux_bleu, PanelParametersMultijoueur.valeur_taux_cyan, PanelParametersMultijoueur.valeur_taux_jaune,PanelParametersMultijoueur.valeur_taux_magenta, PanelParametersMultijoueur.valeur_taux_orange, PanelParametersMultijoueur.valeur_taux_rouge, PanelParametersMultijoueur.valeur_taux_vert, joueurs.get(1));
+			Tetraword.setTauxLettres(PanelParametersMultijoueur.valeur_taux_consonnes, PanelParametersMultijoueur.valeur_taux_voyelles, PanelParametersMultijoueur.valeur_taux_rares, joueurs.get(0));
+		    Tetraword.setTauxFormes(PanelParametersMultijoueur.valeur_taux_bleu, PanelParametersMultijoueur.valeur_taux_cyan, PanelParametersMultijoueur.valeur_taux_jaune,PanelParametersMultijoueur.valeur_taux_magenta, PanelParametersMultijoueur.valeur_taux_orange, PanelParametersMultijoueur.valeur_taux_rouge, PanelParametersMultijoueur.valeur_taux_vert, joueurs.get(0));
+		  }
     	frame.setPanel(1);
     	// a changer, mode TETRIS par modeSauvegarde
 	    joueurs.get(0).mode=Mode.TETRIS;
@@ -79,8 +82,9 @@ public class EcouteurSouris implements MouseListener
 		    joueurs.get(1).mode=Mode.TETRIS;
 		    joueurs.get(1).pause=false;
 
-		}
+	 }
 	}
+    
     		
     if(e.getSource() == frame.getPanelJeu().valider){
     	joueurs.get(0).motEnCours+="\n";

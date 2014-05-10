@@ -174,10 +174,18 @@ public class FrameJeu extends JFrame{
 	
 	/**
 	 * 
-	 * @return PanelDemarrage panelParametres
+	 * @return PanelDemarrage panelDemarrage
 	 */
 	public PanelDemarrage getPanelDemarrage(){
 		return panelDemarrage;
+}
+	
+	/**
+	 * 
+	 * @return PanelParametersMultijoueur panelParametresMulti
+	 */
+	public PanelParametersMultijoueur getPanelParametresMultijoueur(){
+		return panelParametresMulti;
 }
 	/**
 	 * charge le bon panel (jeu ou param�tres)
