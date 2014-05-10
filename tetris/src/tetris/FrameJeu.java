@@ -25,6 +25,8 @@ import javax.swing.JPanel;
 public class FrameJeu extends JFrame{
 	private PanelJeu panelJeu;
 	PanelParameters panelParametres;
+	PanelParametersMultijoueur panelParametresMulti;
+	PanelDemarrage panelDemarrage;
 	private Plateau plateau1;
 	private LinkedList<Plateau> joueurs;
 
@@ -74,11 +76,8 @@ public class FrameJeu extends JFrame{
         panelJeu.supp2.addMouseListener(new EcouteurSouris(joueurs,this));
 	    panelJeu.paramJeu.addMouseListener(new EcouteurSouris(joueurs,this));
 	    
-	    
-
-
-	    
-	    panelParametres = new PanelParameters();
+		
+		panelParametres = new PanelParameters();
 		panelParametres.setOpaque(false);
 		panelParametres.setFocusable(true);
 		panelParametres.requestFocus();
@@ -87,13 +86,35 @@ public class FrameJeu extends JFrame{
 		panelParametres.geek_gris.setVisible(false);
 		panelParametres.girly_jaune.setVisible(false);
 		panelParametres.en.setVisible(false);
-		
+			
 		panelParametres.param.addMouseListener(new EcouteurSouris(joueurs,this));
+		
+	    
+		panelParametresMulti = new PanelParametersMultijoueur();
+		panelParametresMulti.setOpaque(false);
+		panelParametresMulti.setFocusable(true);
+		panelParametresMulti.requestFocus();
+		panelParametresMulti.stop_song.setVisible(false);
+		panelParametresMulti.song_played.setVisible(false);
+		panelParametresMulti.geek_gris.setVisible(false);
+		panelParametresMulti.girly_jaune.setVisible(false);
+		panelParametresMulti.en.setVisible(false);
+		
+		panelParametresMulti.param.addMouseListener(new EcouteurSouris(joueurs,this));
+		
+		panelDemarrage = new PanelDemarrage();
+		panelDemarrage.setOpaque(false);
+		panelDemarrage.setFocusable(true);
+		panelDemarrage.requestFocus();
 		
 		//musique	    
 	    musique_geek = new Son("musique_tetris1"); 	    
 	    musique_girly = new Son("musique_tetris2");
-	    musique_geek.lecture();
+
+	  	    
+	    //action boutons  normal
+
+	    //musique_geek.lecture();
 	    
 	    //action boutons
 	    panelParametres.play_song.addMouseListener(new EcouteurSouris(joueurs,this));
@@ -109,16 +130,29 @@ public class FrameJeu extends JFrame{
 	    panelParametres.fr.addMouseListener(new EcouteurSouris(joueurs,this));
 	    panelParametres.en_gris.addMouseListener(new EcouteurSouris(joueurs,this));
 	    panelParametres.fr_gris.addMouseListener(new EcouteurSouris(joueurs,this));
+	    // action boutons multi
+	    panelParametresMulti.play_song.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.song_played.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.song_stoped.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.stop_song.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.geek_jaune.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.geek_gris.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.girly_jaune.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.girly_gris.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.en.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.fr.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.en_gris.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelParametresMulti.fr_gris.addMouseListener(new EcouteurSouris(joueurs,this));
+	    // action boutons demarrage
+	    panelDemarrage.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelDemarrage.bt_start.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelDemarrage.bt_multi.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelDemarrage.bt_exit.addMouseListener(new EcouteurSouris(joueurs,this));
 	    
 	    
-	    
-	    
-
-	    //border.add(panelJeu,BorderLayout.CENTER);
-	    
-	    this.setPanel(1);
+	    this.setPanel(4);
 	  	
-		//this.getContentPane().add(border);
 	    setVisible(true);
 	}
 	
@@ -139,6 +173,21 @@ public class FrameJeu extends JFrame{
 }
 	
 	/**
+	 * 
+	 * @return PanelDemarrage panelDemarrage
+	 */
+	public PanelDemarrage getPanelDemarrage(){
+		return panelDemarrage;
+}
+	
+	/**
+	 * 
+	 * @return PanelParametersMultijoueur panelParametresMulti
+	 */
+	public PanelParametersMultijoueur getPanelParametresMultijoueur(){
+		return panelParametresMulti;
+}
+	/**
 	 * charge le bon panel (jeu ou param�tres)
 	 * @param int panel
 	 */
@@ -151,6 +200,15 @@ public class FrameJeu extends JFrame{
 			this.setContentPane(panelParametres);
 			panelParametres.setFocusable(true);
 			panelParametres.requestFocus();
+		}else if(panel==3){//Si PanelParametersMultijoueur
+			this.setContentPane(panelParametresMulti);
+			panelParametresMulti.setFocusable(true);
+			panelParametresMulti.requestFocus();
+		}
+		else if(panel==4){//Si Panel Accueil
+			this.setContentPane(panelDemarrage);
+			panelDemarrage.setFocusable(true);
+			panelDemarrage.requestFocus();
 		}
 		setVisible(true);
 	}

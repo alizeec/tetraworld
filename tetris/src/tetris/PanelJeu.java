@@ -44,7 +44,7 @@ public class PanelJeu extends JPanel{
 	 * affichage du fond de plateau
 	 */
 	Image background_geek,background_girly, background;
-	Image perdu;
+	Image perdu, perduMulti1, perduMulti2;
 	/** affichage des donn�es et des retours utilisateur
 	 * 
 	 */
@@ -86,7 +86,9 @@ public class PanelJeu extends JPanel{
 		}
 		background_girly = new ImageIcon("tetris_girly.gif").getImage();
 		background = background_geek;
-		perdu = new ImageIcon("perdu.png").getImage();
+		perdu = new ImageIcon("GameOver.png").getImage();
+		perduMulti1 = new ImageIcon("GameOverMultijoueur2.png").getImage();
+		perduMulti2 = new ImageIcon("GameOverMultijoueur1.png").getImage();
 		
 		fleche = new ImageIcon("fleche.png").getImage();
 
@@ -143,7 +145,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueMagenta, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -158,7 +160,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueBleu, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -173,7 +175,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueCyan, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -188,7 +190,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j,plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueJaune, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -203,7 +205,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueOrange, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -218,7 +220,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j,plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueRouge, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -233,7 +235,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueVert, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 	/**
@@ -428,28 +430,28 @@ public class PanelJeu extends JPanel{
 			}
 			
 
-			if(joueurs.size()==1 && joueurs.get(0).perdu==true){
+			if(joueurs.get(0).perdu==true){
 				g.drawImage(perdu, 0, 0, null);
 				valider.setVisible(false);
-				supp.setVisible(false);
 				paramJeu.setVisible(false);
-
-
+				supp.setVisible(false);
 			}
-			
+
 			if(joueurs.size()>1 && joueurs.get(0).perdu==true){
-				g.drawImage(perdu, 0, 0, null);
-				g.drawString("Le joueur2 a gagné", 600, 600);
+				g.drawImage(perduMulti1, 0, 0, null);
 				valider.setVisible(false);
-				supp.setVisible(false);
+				valider2.setVisible(false);
 				paramJeu.setVisible(false);
+				supp.setVisible(false);
+				supp2.setVisible(false);
 			}
-			if(joueurs.size()>1 && joueurs.get(1).perdu==true){
-				g.drawImage(perdu, 0, 0, null);
-				g.drawString("Le joueur1 a gagné", 600, 600);
-				supp.setVisible(false);
-				paramJeu.setVisible(false);
+			else if (joueurs.size()>1 && joueurs.get(1).perdu==true){
+				g.drawImage(perduMulti2, 0, 0, null);
 				valider.setVisible(false);
+				valider2.setVisible(false);
+				paramJeu.setVisible(false);
+				supp.setVisible(false);
+				supp2.setVisible(false);
 			}
 			
 
@@ -460,30 +462,30 @@ public class PanelJeu extends JPanel{
 	}
 
 
-	/*public void printTab(){
+	public void printTab(){
 		String str = "";
 		for(int i=0;i<plateau.getHauteur();i++){		
 			for(int j=0;j<plateau.getLargeur();j++){
 				if(plateau.tab[j][i] != null){
-					if(plateau.tab[j][i].forme == Forme.MAGENTA){
+					if(plateau.tab[j][i].getForme() == Forme.MAGENTA){
 						str += "M";
 					}
-					if(plateau.tab[j][i].forme == Forme.BLEU){
+					if(plateau.tab[j][i].getForme() == Forme.BLEU){
 						str += "B";
 					}
-					if(plateau.tab[j][i].forme == Forme.CYAN){
+					if(plateau.tab[j][i].getForme() == Forme.CYAN){
 						str += "C";
 					}
-					if(plateau.tab[j][i].forme == Forme.JAUNE){
+					if(plateau.tab[j][i].getForme() == Forme.JAUNE){
 						str += "J";
 					}
-					if(plateau.tab[j][i].forme == Forme.ORANGE){
+					if(plateau.tab[j][i].getForme() == Forme.ORANGE){
 						str += "O";
 					}
-					if(plateau.tab[j][i].forme == Forme.ROUGE){
+					if(plateau.tab[j][i].getForme() == Forme.ROUGE){
 						str += "R";
 					}
-					if(plateau.tab[j][i].forme == Forme.VERT){
+					if(plateau.tab[j][i].getForme() == Forme.VERT){
 						str += "V";
 					}
 				}else{
@@ -495,7 +497,7 @@ public class PanelJeu extends JPanel{
 		System.out.println(str);
 	}
 	
-	public void printTabLettres(){
+	/*public void printTabLettres(){
 		String str = "";
 		for(int i=0;i<plateau.getHauteur();i++){		
 			for(int j=0;j<plateau.getLargeur();j++){

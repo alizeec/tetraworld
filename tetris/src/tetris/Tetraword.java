@@ -26,6 +26,7 @@ public class Tetraword extends Thread{
 	
 	Plateau joueur;
 	static boolean multijoueur = false;
+	
 
 
 
@@ -39,7 +40,7 @@ public class Tetraword extends Thread{
 	 */
 	
 	public void startGame(LinkedList<Plateau> joueurs , FrameJeu jeu, Mots worddle, Mots anagramme) {
-    
+	
 	 long start = 0L;
 	 long sleepDuration = 0L;
 
@@ -53,7 +54,6 @@ public class Tetraword extends Thread{
 	   * dŽbut de la boucle
 	   */
 	  start = System.currentTimeMillis();
-	  
 	  
 	  /*
 	   * Update the game.
@@ -184,7 +184,7 @@ public class Tetraword extends Thread{
 		  jeu.repaint();
 		  if(plateau.motEnCours!=null){
 			  if(anagramme.motfini(plateau.motEnCours)){
-				 
+
 				try {
 					System.out.println(plateau.motEnCours);
 					result=anagramme.findWord(plateau.motEnCours);
@@ -199,13 +199,6 @@ public class Tetraword extends Thread{
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
-				plateau.nbLignesCompletes--;
-				cpt++;
-				if(plateau.nbLignesCompletes > 0){
-					plateau.indexLigneSupp = plateau.lignesCompletes[cpt];
-				}else{
-					plateau.mode=Mode.TETRIS;
-				}
 				if(plateau.verifLignes()==false){
 					plateau.mode=Mode.TETRIS;
 				}
@@ -294,7 +287,11 @@ public class Tetraword extends Thread{
 		joueurs.add(plateau);
 		//setLettersRates(plateau);
 		setTauxLettres(3, 5, 2, plateau);
+
+		setTauxFormes(2, 2, 2,2, 2, 2, 2,plateau);
+
 		setTauxFormes(2, 2, 4,1, 1, 2, 2,plateau);
+
 		}
 		else if(multijoueur){
 		Plateau plateau= new Plateau(256, "Joueur 1");

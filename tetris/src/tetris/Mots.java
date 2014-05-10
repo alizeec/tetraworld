@@ -1,3 +1,4 @@
+
 package tetris;
 
 import java.io.File;
@@ -35,13 +36,13 @@ public class Mots  {
 	 * @throws FileNotFoundException
 	 */
 	public boolean findWord(String word)  throws FileNotFoundException  {
-		//if(PanelParameters.language==french){
+		if(PanelParameters.choix_langue==1 || PanelParametersMultijoueur.choix_langue==1){
 			file=new File("src/tetris/french.txt");
-		/*}
-		else if(PanelParameters.language==english){
+		}
+		else if(PanelParameters.choix_langue==0 || PanelParametersMultijoueur.choix_langue==0){
 			file=new File("src/tetris/english.txt");
 
-		}*/
+		}
 
 		String mot = word.substring(0, word.length()-1);
 		Scanner scanner = new Scanner(file);
@@ -81,7 +82,6 @@ public class Mots  {
 		for(int i=0; i<plateau.lignesCompletes.length;++i){
 			plateau.lignesCompletes[i]--;
 		}
-		System.out.println("Points: "+plateau.totalMot);
 		plateau.points+=plateau.totalMot;
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
@@ -114,6 +114,7 @@ public class Mots  {
 	 * @param Plateau plateau
 	 */
 	public void supprLettresWorddle(Plateau plateau){
+		System.out.println("Supp case");
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtilisees.get(0).getPosX();
