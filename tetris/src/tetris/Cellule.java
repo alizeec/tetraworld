@@ -58,9 +58,7 @@ public class Cellule implements Serializable{
 		this.setPosX(X);
 		this.setPosY(Y);
 		this.lettre = lettre;
-		this.point = point;
 		this.utilisee = false;
-		this.independant = independant;
 	}
 	
 	/**
@@ -73,7 +71,6 @@ public class Cellule implements Serializable{
 		this.setForme(null);
 		this.setPosX(X);
 		this.setPosY(Y);
-		this.lettre = lettre;
 		this.independant = false;
 	}
 	

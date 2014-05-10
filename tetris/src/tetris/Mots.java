@@ -78,9 +78,6 @@ public class Mots  {
 	public void resultatCorrect(Plateau plateau){
 		plateau.suppLigne(plateau.indexLigneSupp);
 		plateau.gravite();
-		for(int i=0; i<plateau.lignesCompletes.length;++i){
-			plateau.lignesCompletes[i]--;
-		}
 		plateau.points+=plateau.totalMot;
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
@@ -120,7 +117,6 @@ public class Mots  {
 			int Y = plateau.BriquesUtilisees.get(0).getPosY();
 				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).decrementeNbCellules();
 				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).suppCase(plateau.BriquesUtilisees.get(0).getNumero());
-				plateau.briques.get(plateau.BriquesUtilisees.get(0).getId()).cellules.remove(plateau.BriquesUtilisees.get(0).getNumero());
 				plateau.tab[X][Y] = null;
 				plateau.BriquesUtilisees.remove(0);
 		}

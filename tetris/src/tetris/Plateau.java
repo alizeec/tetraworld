@@ -84,8 +84,9 @@ public class Plateau implements Serializable {
 	 * ligne à casser
 	 */
 	int indexLigneSupp;
-	int lignesCompletes[];
-	int nbLignesCompletes;
+	int lignesPerdues[];
+	int nbLignesPerdues;
+	
 
 	/** pour le mode WORDDLE
 	 * position de la brique "centrale"
@@ -118,8 +119,8 @@ public class Plateau implements Serializable {
 		SauvegardeMode =  this.mode;
 		
 		indexLigneSupp=0;
-		nbLignesCompletes = 0;
-		this.lignesCompletes = new int[20];
+		this.lignesPerdues = new int[20];
+		nbLignesPerdues = 0;
 		nbConnexion=0;
 		BriquesUtilisees = new LinkedList<Cellule>();
 	}
@@ -313,8 +314,18 @@ public class Plateau implements Serializable {
 	 * @return boolean
 	 */
 	public boolean verfiUneLigne(int indexLigne){
+		for(int j=0; j<nbLignesPerdues;++j){
+			if(lignesPerdues[j] == indexLigne){
+				return false;
+			}
+		}
 		for(int i=0; i<getLargeur();++i){
 			if(tab[i][indexLigne] == null){
+				for(int j=0; i<nbLignesPerdues;++i){
+					if(lignesPerdues[i] == indexLigne){
+						return false;
+					}
+				}
 				return false;
 			}
 		}
@@ -328,20 +339,13 @@ public class Plateau implements Serializable {
 	
 	public boolean verifLignes(){
 		System.out.println("vérification");
-		nbLignesCompletes = 0;
 		for(int i=getHauteur()-1; i>0; --i){
 					if(verfiUneLigne(i)){
 						indexLigneSupp = i;
 						return true;
-						/*lignesCompletes[nbLignesCompletes] = i;
-						nbLignesCompletes++;*/
 					}
 		}
 		return false;
-		/*if(nbLignesCompletes > 0){
-			indexLigneSupp = lignesCompletes[0];
-			this.mode=Mode.ANAGRAMME;
-		}*/
 	}
 	
 	
@@ -352,6 +356,7 @@ public class Plateau implements Serializable {
 	public void suppLigne(int index){
 		for(int i=0; i<getLargeur();++i){
 			briques.get(tab[i][index].getId()).decrementeNbCellules();
+			briques.get(tab[i][index].getId()).suppCase(tab[i][index].getNumero());
 			if(briques.get(tab[i][index].getId()).getNbCellules() <= 0 ){
 				briques.remove(tab[i][index].getId());
 			}
@@ -501,8 +506,6 @@ public class Plateau implements Serializable {
 		//pour le mode ANAGRAMME et WORDDLE
 		motEnCours = plateau.motEnCours;
 		totalMot= plateau.totalMot;
-		lignesCompletes = plateau.lignesCompletes;
-		nbLignesCompletes= plateau.nbLignesCompletes;
 		mode = plateau.mode;
 
 		positionEnCours=null;

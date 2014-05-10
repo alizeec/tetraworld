@@ -22,7 +22,6 @@ public class Tetraword extends Thread{
 
 	private static final int UPDATES_PER_SECOND = 3;
 	boolean game=true;
-	int cpt = 0;
 	
 	Plateau joueur;
 	static boolean multijoueur = false;
@@ -196,10 +195,17 @@ public class Tetraword extends Thread{
 				}
 				else{
 					anagramme.resultatInCorrect(plateau);
+					plateau.nbLignesPerdues++;
+					//plateau.mode=Mode.TETRIS;
 				}
 				plateau.motEnCours=null;
 				plateau.totalMot=0;
+				System.out.println("cpt :"+plateau.nbLignesPerdues);
 				if(plateau.verifLignes()==false){
+					for(int i=0;i<plateau.nbLignesPerdues;++i){
+						plateau.lignesPerdues[i] = 0;
+					}
+					plateau.nbLignesPerdues = 0;
 					plateau.mode=Mode.TETRIS;
 				}
 
