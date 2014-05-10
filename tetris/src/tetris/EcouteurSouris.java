@@ -35,7 +35,11 @@ public class EcouteurSouris implements MouseListener
     {
    
     if(e.getSource() == frame.getPanelJeu().paramJeu){
-    	    frame.setPanel(2);
+    	if(joueurs.size()==1){    
+    	frame.setPanel(2);
+    	}else if (joueurs.size()==2){
+    		frame.setPanel(3);
+    	}
     		joueurs.get(0).mode=Mode.PARAMETRES;
     		joueurs.get(0).pause=true;
     		if(joueurs.size()>1){
@@ -45,16 +49,29 @@ public class EcouteurSouris implements MouseListener
     	}
     
 
-
-    
-    if(e.getSource() == frame.getPanelParametres().param){
-        Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
-	    Tetraword.setTauxFormes(PanelParameters.valeur_taux_bleu, PanelParameters.valeur_taux_cyan, PanelParameters.valeur_taux_jaune,PanelParameters.valeur_taux_magenta, PanelParameters.valeur_taux_orange, PanelParameters.valeur_taux_rouge, PanelParameters.valeur_taux_vert, joueurs.get(0));
-        if(joueurs.size()>1){
-	    	Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(1));
-		    Tetraword.setTauxFormes(PanelParameters.valeur_taux_bleu, PanelParameters.valeur_taux_cyan, PanelParameters.valeur_taux_jaune,PanelParameters.valeur_taux_magenta, PanelParameters.valeur_taux_orange, PanelParameters.valeur_taux_rouge, PanelParameters.valeur_taux_vert, joueurs.get(1));
-
+    if(e.getSource() == frame.getPanelDemarrage().bt_start){
+    	frame.setPanel(1);
+    	FrameJeu.musique_geek.lecture();
 	    }
+    else if(e.getSource() == frame.getPanelDemarrage().bt_exit){
+    	System.exit(0);
+ 	    }
+    else if(e.getSource() == frame.getPanelDemarrage().bt_multi){
+    	Tetraword.multijoueur = true;
+    	frame.setPanel(1);
+ 	    }
+    //clic param mode solo
+    if(e.getSource() == frame.getPanelParametres().param || e.getSource() == frame.getPanelParametresMultijoueur().param){
+    	
+    		 Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
+    		 Tetraword.setTauxFormes(PanelParameters.valeur_taux_bleu, PanelParameters.valeur_taux_cyan, PanelParameters.valeur_taux_jaune,PanelParameters.valeur_taux_magenta, PanelParameters.valeur_taux_orange, PanelParameters.valeur_taux_rouge, PanelParameters.valeur_taux_vert, joueurs.get(0));
+    	
+    	 if(joueurs.size()>1){
+	    	Tetraword.setTauxLettres(PanelParametersMultijoueur.valeur_taux_consonnes, PanelParametersMultijoueur.valeur_taux_voyelles, PanelParametersMultijoueur.valeur_taux_rares, joueurs.get(1));
+		    Tetraword.setTauxFormes(PanelParametersMultijoueur.valeur_taux_bleu, PanelParametersMultijoueur.valeur_taux_cyan, PanelParametersMultijoueur.valeur_taux_jaune,PanelParametersMultijoueur.valeur_taux_magenta, PanelParametersMultijoueur.valeur_taux_orange, PanelParametersMultijoueur.valeur_taux_rouge, PanelParametersMultijoueur.valeur_taux_vert, joueurs.get(1));
+			Tetraword.setTauxLettres(PanelParametersMultijoueur.valeur_taux_consonnes, PanelParametersMultijoueur.valeur_taux_voyelles, PanelParametersMultijoueur.valeur_taux_rares, joueurs.get(0));
+		    Tetraword.setTauxFormes(PanelParametersMultijoueur.valeur_taux_bleu, PanelParametersMultijoueur.valeur_taux_cyan, PanelParametersMultijoueur.valeur_taux_jaune,PanelParametersMultijoueur.valeur_taux_magenta, PanelParametersMultijoueur.valeur_taux_orange, PanelParametersMultijoueur.valeur_taux_rouge, PanelParametersMultijoueur.valeur_taux_vert, joueurs.get(0));
+		  }
     	frame.setPanel(1);
     	// a changer, mode TETRIS par modeSauvegarde
 	    joueurs.get(0).mode=Mode.TETRIS;
@@ -65,8 +82,9 @@ public class EcouteurSouris implements MouseListener
 		    joueurs.get(1).mode=Mode.TETRIS;
 		    joueurs.get(1).pause=false;
 
-		}
+	 }
 	}
+    
     		
     if(e.getSource() == frame.getPanelJeu().valider){
     	joueurs.get(0).motEnCours+="\n";
@@ -76,37 +94,48 @@ public class EcouteurSouris implements MouseListener
     	joueurs.get(1).motEnCours+="\n";
 	}
     
-    if(e.getSource() == frame.panelParametres.play_song)
-    {            
+    if(e.getSource() == frame.panelParametres.play_song || e.getSource() == frame.panelParametresMulti.play_song)
+    {           
     	frame. musique_geek.stop();
     	frame.panelParametres.stop_song.setVisible(true);
     	frame.panelParametres.song_played.setVisible(true);
     	frame.panelParametres.play_song.setVisible(false);
+    	frame.panelParametresMulti.stop_song.setVisible(true);
+    	frame.panelParametresMulti.song_played.setVisible(true);
+    	frame.panelParametresMulti.play_song.setVisible(false);
          
     }
-    else if(e.getSource() == frame.panelParametres.stop_song)
-    {
+    else if(e.getSource() == frame.panelParametres.stop_song || e.getSource() == frame.panelParametresMulti.stop_song)
+    {System.out.println("coucou");      
     	frame.musique_geek.lecture();
     	frame.panelParametres.stop_song.setVisible(false);
     	frame.panelParametres.play_song.setVisible(true);
+      	frame.panelParametresMulti.stop_song.setVisible(false);
+    	frame.panelParametresMulti.play_song.setVisible(true);
     }
-    else if(e.getSource() == frame.panelParametres.song_stoped)
-    {
+    else if(e.getSource() == frame.panelParametres.song_stoped || e.getSource() == frame.panelParametresMulti.song_stoped)
+    {System.out.println("coucou");      
     	frame.musique_geek.stop();
     	frame.panelParametres.play_song.setVisible(false);
     	frame.panelParametres.stop_song.setVisible(true);
     	frame.panelParametres.song_played.setVisible(true);
+       	frame.panelParametresMulti.play_song.setVisible(false);
+    	frame.panelParametresMulti.stop_song.setVisible(true);
+    	frame.panelParametresMulti.song_played.setVisible(true);
     }
-    else if(e.getSource() == frame.panelParametres.song_played)
-    {
+    else if(e.getSource() == frame.panelParametres.song_played || e.getSource() == frame.panelParametresMulti.song_played)
+    {System.out.println("coucou");      
     	frame.musique_geek.lecture();
     	frame.panelParametres.stop_song.setVisible(false);
     	frame.panelParametres.play_song.setVisible(true);
     	frame.panelParametres.song_stoped.setVisible(true);
+    	frame.panelParametresMulti.stop_song.setVisible(false);
+    	frame.panelParametresMulti.play_song.setVisible(true);
+    	frame.panelParametresMulti.song_stoped.setVisible(true);
     }
     
     //bt bg
-    if(e.getSource() == frame.panelParametres.geek_jaune)
+    if(e.getSource() == frame.panelParametres.geek_jaune || e.getSource() == frame.panelParametresMulti.geek_jaune)
     {            
     	frame.musique_geek.stop();
     	frame.musique_girly.lecture();
@@ -114,75 +143,114 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.geek_gris.setVisible(true);
     	frame.panelParametres.girly_jaune.setVisible(true);
     	frame.panelParametres.girly_gris.setVisible(false);
+    	frame.panelParametresMulti.geek_jaune.setVisible(false);
+    	frame.panelParametresMulti.geek_gris.setVisible(true);
+    	frame.panelParametresMulti.girly_jaune.setVisible(true);
+    	frame.panelParametresMulti.girly_gris.setVisible(false);
     	frame.getPanelJeu().background = frame.getPanelJeu().background_girly;
     	
          
     }
-    else if(e.getSource() == frame.panelParametres.geek_gris)
+    else if(e.getSource() == frame.panelParametres.geek_gris || e.getSource() == frame.panelParametresMulti.geek_gris)
     {
     	//frame.musique_geek.lecture();
     	frame.panelParametres.geek_gris.setVisible(false);
     	frame.panelParametres.geek_jaune.setVisible(true);
     	frame.panelParametres.girly_jaune.setVisible(false);
     	frame.panelParametres.girly_gris.setVisible(true);
+    	frame.panelParametresMulti.geek_gris.setVisible(false);
+    	frame.panelParametresMulti.geek_jaune.setVisible(true);
+    	frame.panelParametresMulti.girly_jaune.setVisible(false);
+    	frame.panelParametresMulti.girly_gris.setVisible(true);
     	frame.getPanelJeu().background = frame.getPanelJeu().background_geek;
     	
     }
-    else if(e.getSource() == frame.panelParametres.girly_gris)
+    else if(e.getSource() == frame.panelParametres.girly_gris || e.getSource() == frame.panelParametresMulti.girly_gris)
     {
     	//frame.musique_geek.stop();
     	frame.panelParametres.girly_gris.setVisible(false);
     	frame.panelParametres.girly_jaune.setVisible(true);
     	frame.panelParametres.geek_jaune.setVisible(false);
     	frame.panelParametres.geek_gris.setVisible(true);
+    	frame.panelParametresMulti.girly_gris.setVisible(false);
+    	frame.panelParametresMulti.girly_jaune.setVisible(true);
+    	frame.panelParametresMulti.geek_jaune.setVisible(false);
+    	frame.panelParametresMulti.geek_gris.setVisible(true);
     	frame.getPanelJeu().background = frame.getPanelJeu().background_girly;
     	frame.musique_geek.stop();
     	frame.musique_girly.lecture();
     	
     }
-    else if(e.getSource() == frame.panelParametres.girly_jaune)
+    else if(e.getSource() == frame.panelParametres.girly_jaune || e.getSource() == frame.panelParametresMulti.girly_jaune)
     {
     	//frame.musique_geek.lecture();
     	frame.panelParametres.girly_jaune.setVisible(false);
     	frame.panelParametres.girly_gris.setVisible(true);
     	frame.panelParametres.geek_jaune.setVisible(true);
     	frame.panelParametres.geek_gris.setVisible(false);
+     	frame.panelParametresMulti.girly_jaune.setVisible(false);
+    	frame.panelParametresMulti.girly_gris.setVisible(true);
+    	frame.panelParametresMulti.geek_jaune.setVisible(true);
+    	frame.panelParametresMulti.geek_gris.setVisible(false);
     	frame.getPanelJeu().background = frame.getPanelJeu().background_geek;
     }
     
     //bt langue
-    if(e.getSource() == frame.panelParametres.en_gris)
+    if(e.getSource() == frame.panelParametres.en_gris || e.getSource() == frame.panelParametresMulti.en_gris)
     {           
     	frame.panelParametres.en_gris.setVisible(false);
     	frame.panelParametres.en.setVisible(true);
     	frame.panelParametres.fr_gris.setVisible(true);
     	frame.panelParametres.fr.setVisible(false);
-    	
+     	frame.panelParametresMulti.en_gris.setVisible(false);
+    	frame.panelParametresMulti.en.setVisible(true);
+    	frame.panelParametresMulti.fr_gris.setVisible(true);
+    	frame.panelParametresMulti.fr.setVisible(false);
+    	frame.panelParametres.choix_langue = 0;
+    	frame.panelParametresMulti.choix_langue = 0;
          
     }
-    else if(e.getSource() == frame.panelParametres.en)
+    else if(e.getSource() == frame.panelParametres.en || e.getSource() == frame.panelParametresMulti.en_gris)
     {
     	frame.panelParametres.en.setVisible(false);
     	frame.panelParametres.en_gris.setVisible(true);
     	frame.panelParametres.fr_gris.setVisible(false);
     	frame.panelParametres.fr.setVisible(true);
+    	frame.panelParametresMulti.en.setVisible(false);
+    	frame.panelParametresMulti.en_gris.setVisible(true);
+    	frame.panelParametresMulti.fr_gris.setVisible(false);
+    	frame.panelParametresMulti.fr.setVisible(true);
+    	frame.panelParametres.choix_langue = 1;
+    	frame.panelParametresMulti.choix_langue = 1;
     	
     }
-    else if(e.getSource() == frame.panelParametres.fr)
+    else if(e.getSource() == frame.panelParametres.fr || e.getSource() == frame.panelParametresMulti.en_gris)
     {
     	frame.panelParametres.fr.setVisible(false);
     	frame.panelParametres.fr_gris.setVisible(true);
     	frame.panelParametres.en_gris.setVisible(false);
     	frame.panelParametres.en.setVisible(true);
+    	frame.panelParametresMulti.fr.setVisible(false);
+    	frame.panelParametresMulti.fr_gris.setVisible(true);
+    	frame.panelParametresMulti.en_gris.setVisible(false);
+    	frame.panelParametresMulti.en.setVisible(true);
+    	frame.panelParametres.choix_langue = 0;
+    	frame.panelParametresMulti.choix_langue = 0;
 
     	
     }
-    else if(e.getSource() == frame.panelParametres.fr_gris)
+    else if(e.getSource() == frame.panelParametres.fr_gris || e.getSource() == frame.panelParametresMulti.en_gris)
     {
     	frame.panelParametres.fr_gris.setVisible(false);
     	frame.panelParametres.fr.setVisible(true);
     	frame.panelParametres.en_gris.setVisible(true);
     	frame.panelParametres.en.setVisible(false);
+    	frame.panelParametresMulti.fr_gris.setVisible(false);
+    	frame.panelParametresMulti.fr.setVisible(true);
+    	frame.panelParametresMulti.en_gris.setVisible(true);
+    	frame.panelParametresMulti.en.setVisible(false);
+    	frame.panelParametres.choix_langue = 1;
+    	frame.panelParametresMulti.choix_langue = 1;
     }
 		
 		
