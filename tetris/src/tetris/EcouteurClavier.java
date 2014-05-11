@@ -133,21 +133,6 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		
-		
-		
-		
-		/**
-		 * lancement du jeu, crŽe la premi�re brique
-		 */
-		case KeyEvent.VK_C :
-				Brique b = plateau1.creerBrique();
-				plateau1.placeBrique(b);
-				if(plateau2!=null){
-					Brique b2 = plateau2.creerBrique();
-					plateau2.placeBrique(b2);
-				}
-		break;
-		
 		/**
 		 * met en pause
 		 */
