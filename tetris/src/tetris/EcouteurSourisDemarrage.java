@@ -16,6 +16,7 @@ public class EcouteurSourisDemarrage implements MouseListener{
 		    	Tetraword.gameStarted=true;
 		    	//frame.setPanel(1);
 		    	FrameJeu.musique_geek.lecture();
+		    	
 			    }
 		    else if(e.getSource() == frame.getPanelDemarrage().bt_exit){
 		    	System.exit(0);

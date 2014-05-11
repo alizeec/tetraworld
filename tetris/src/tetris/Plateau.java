@@ -193,7 +193,7 @@ public class Plateau implements Serializable {
 		// ajout de la forme (niveau graphique) et de l'id (niveau physique) ˆ la cellule du plateau
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
-				if(brique.tab[i][j]!=null){
+				if(brique.tab[i][j]!=null && brique.tab[i][j].getIndependant() == false){
 					if(tab[X+j][Y+i] == null){
 						tab[X+j][Y+i] = new Cellule(brique.getId(), brique.tab[i][j].getForme(), brique.tab[i][j].getLettre(), brique.tab[i][j].getPoint(), brique.tab[i][j].getNumero(), brique.tab[i][j].getIndependant(), X+j, Y+i);
 					}else if(tab[X+j][Y+i] != null && tab[X+j][Y+i].getId() != brique.getId()){
@@ -285,11 +285,13 @@ public class Plateau implements Serializable {
 	 */
 	//
 	public boolean verifMove(Brique brique, Cellule newposition){
+		System.out.println("verif move");
 		int X=newposition.getPosX();
 		int Y=newposition.getPosY();
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
-				if(brique.tab[i][j]!=null && brique.tab[i][j].getIndependant() == false){
+				//brique.cellules.get(brique.tab[i][j].getNumero()).getIndependant() == false
+				if(brique.tab[i][j]!=null && brique.cellules.get(brique.tab[i][j].getNumero()).getIndependant() == false){
 					if(X+j > getLargeur()-1 || Y+i > getHauteur()-1 || X+j < 0){
 						return false;
 					}
@@ -355,6 +357,7 @@ public class Plateau implements Serializable {
 	 * @param int index
 	 */
 	public void suppLigne(int index){
+		System.out.println("suppr ligne : "+index);
 		for(int i=0; i<getLargeur();++i){
 			briques.get(tab[i][index].getId()).decrementeNbCellules();
 			briques.get(tab[i][index].getId()).suppCase(tab[i][index].getNumero());

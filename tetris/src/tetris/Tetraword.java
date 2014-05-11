@@ -46,9 +46,14 @@ public class Tetraword extends Thread{
 
 	  Plateau plateau = joueurs.get(0);
 	  Plateau plateau2 = null;
+	  Brique b = plateau.creerBrique();
+	  plateau.placeBrique(b);
 	  if(joueurs.size()>1){
 		   plateau2 = joueurs.get(1);
+		   Brique b2 = plateau2.creerBrique();
+			plateau2.placeBrique(b2);
 	  }
+	  
 	 while(game) {
 	  /*
 	   * dŽbut de la boucle
@@ -64,6 +69,7 @@ public class Tetraword extends Thread{
 				  int X = plateau.briqueActuelle.getPosition().getPosX();
 				  int Y = plateau.briqueActuelle.getPosition().getPosY();
 				  Cellule newposition = new Cellule(X, Y+1);
+
 				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 					  plateau.videCaseBrique(plateau.briqueActuelle);
 					  plateau.briqueActuelle.descendre();
@@ -300,6 +306,10 @@ public class Tetraword extends Thread{
 
 		if(!multijoueur){
 		Plateau plateau= new Plateau(349, "Joueur 1");
+		/*if(plateau2!=null){
+			Brique b2 = plateau2.creerBrique();
+			plateau2.placeBrique(b2);
+		}*/
 		joueurs.add(plateau);
 		setTauxLettres(3, 5, 2, plateau);
 
@@ -325,7 +335,7 @@ public class Tetraword extends Thread{
 		
 		framejeu.setJoueurs(joueurs);
 		framejeu.setPanel(1);
-
+		
 		Mots worddle=new Mots();
 		Mots anagramme=new Mots();
 
