@@ -166,7 +166,8 @@ public class FrameJeu extends JFrame{
 	public void setJoueurs(LinkedList<Plateau> joueurs){
 		if(joueurs.size()==2){
 			dimension = new Dimension(1276,794);
-		    this.setSize(dimension);
+			this.setSize(dimension);
+
 
         }
 		

@@ -559,7 +559,6 @@ public class PanelJeu extends JPanel{
 	 */
 	public ImageIcon getNext(Plateau plateau){
 		ImageIcon icon=null;
-
 		switch(plateau.AVenir){
 			case MAGENTA:
 				icon= new ImageIcon("briqueMagenta.png");

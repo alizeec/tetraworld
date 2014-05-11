@@ -433,7 +433,6 @@ public class Plateau implements Serializable {
 	
 				point=1;
 	        }
-			System.out.println(i);
 			tmp_cellules.put(i,  new Cellule(lettre, i, point, forme));
 		}
 		////////

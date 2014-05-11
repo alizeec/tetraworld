@@ -305,8 +305,6 @@ public class Tetraword extends Thread{
 
 		setTauxFormes(2, 2, 2,2, 2, 2, 2,plateau);
 
-		setTauxFormes(2, 2, 4,1, 1, 2, 2,plateau);
-
 		}
 		else if(multijoueur){
 		Plateau plateau= new Plateau(256, "Joueur 1");
