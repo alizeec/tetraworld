@@ -26,7 +26,7 @@ public class EcouteurSourisDemarrage implements MouseListener{
 
 		    	Tetraword.gameStarted=true;
 		    	Tetraword.multijoueur = true;
-		    	//frame.setPanel(1);
+		    	FrameJeu.musique_geek.lecture();
 		 	    }
 	    }
 
