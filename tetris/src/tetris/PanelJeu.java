@@ -43,7 +43,7 @@ public class PanelJeu extends JPanel{
 	/**
 	 * affichage du fond de plateau
 	 */
-	Image background_geek,background_girly, background;
+	Image background_geek,background_girly,background;
 	Image perdu, perduMulti1, perduMulti2;
 	/** affichage des donn�es et des retours utilisateur
 	 * 
@@ -79,12 +79,12 @@ public class PanelJeu extends JPanel{
 		imageBriqueGris = new ImageIcon("cellule_gris.png").getImage();
 		if(nbJoueurs==1){
 			background_geek = new ImageIcon("tetris.gif").getImage();
+			background_girly = new ImageIcon("tetris_girly.gif").getImage();
 		}
 		else if (nbJoueurs==2){
-			background_geek = new ImageIcon("tetrisMultijoueur.png").getImage();
-	
+			background_girly = new ImageIcon("tetrisMultijoueurGirly.png").getImage();
+			background_geek = new ImageIcon("tetrisMultijoueur.png").getImage();	
 		}
-		background_girly = new ImageIcon("tetris_girly.gif").getImage();
 		background = background_geek;
 		perdu = new ImageIcon("GameOver.png").getImage();
 		perduMulti1 = new ImageIcon("GameOverMultijoueur2.png").getImage();
