@@ -73,6 +73,7 @@ public class Tetraword extends Thread{
 				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 					  plateau.videCaseBrique(plateau.briqueActuelle);
 					  plateau.briqueActuelle.descendre();
+					  System.out.println("placement brique");
 					  plateau.placeBrique(plateau.briqueActuelle);
 				  }else{
 					  if(plateau.verifLignes()==true){
@@ -204,7 +205,6 @@ public class Tetraword extends Thread{
 				}
 				else{
 					anagramme.resultatInCorrect(plateau);
-					System.out.println("index : "+plateau.indexLigneSupp);
 					plateau.lignesPerdues[plateau.nbLignesPerdues] = plateau.indexLigneSupp;
 					plateau.nbLignesPerdues++;
 				}
@@ -256,11 +256,20 @@ public class Tetraword extends Thread{
 					plateau.totalMot=0;
 					plateau.nbConnexion=0;
 					plateau.positionEnCours=null;
+
 				  }
 			  }
 			  
 		  }else{
-			  worddle.supprLettresWorddle(plateau);
+				plateau.motEnCours=null;
+				plateau.totalMot=0;
+				plateau.nbConnexion=0;
+				plateau.positionEnCours=null;
+				 worddle.supprLettresWorddle(plateau);
+
+				plateau.BriquesUtilisees.clear();
+
+			  
 			  plateau.mode=Mode.TETRIS;
 		  }
 	}

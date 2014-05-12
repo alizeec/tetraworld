@@ -95,13 +95,14 @@ public class Mots  {
 	 */
 	public void resultatCorrectWorddle(Plateau plateau){
 		plateau.points+=plateau.totalMot;
-		int taille=plateau.BriquesUtilisees.size();
+		int taille=plateau.BriquesUtiliseesEnCours.size();
 		for (int i=0; i<taille; ++i){
-			int X = plateau.BriquesUtilisees.get(i).getPosX();
-			int Y = plateau.BriquesUtilisees.get(i).getPosY();
-			System.out.println(plateau.BriquesUtilisees.get(i).getLettre());
+			int X = plateau.BriquesUtiliseesEnCours.get(i).getPosX();
+			int Y = plateau.BriquesUtiliseesEnCours.get(i).getPosY();
 			plateau.tab[X][Y].utilisee = false;
+			plateau.BriquesUtilisees.add(plateau.BriquesUtiliseesEnCours.get(i));
 		}
+		plateau.BriquesUtiliseesEnCours.clear();
 		plateau.setMessage("Bravo!");
 
 
@@ -112,7 +113,6 @@ public class Mots  {
 	 * @param Plateau plateau
 	 */
 	public void supprLettresWorddle(Plateau plateau){
-		System.out.println("Supp case");
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtilisees.get(0).getPosX();
@@ -150,8 +150,10 @@ public class Mots  {
 		}
 	}
 	
+
 	int nbPositionsPossibles=positionsPossibles.size();
-	Integer r = (int)(Math.random() * (nbPositionsPossibles));
+	System.out.println("Nombre de positions :"+nbPositionsPossibles);
+	Integer r = (int)(Math.random() * (nbPositionsPossibles-1)) + 1;
 	plateau.positionEnCours=positionsPossibles.get(r);
 	
 	}

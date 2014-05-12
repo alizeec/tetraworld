@@ -24,7 +24,6 @@ public enum Forme {
 		Forme forme = null;
 		// génération aléatoire pondérée de la lettre
 				Integer quotient = (int)(Math.random() * (14-1)) + 1;
-				System.out.println(quotient);
 				if(quotient < b){
 					forme = Forme.BLEU; 
 				}
@@ -53,10 +52,10 @@ public enum Forme {
 		        	
 		        }
 
+				System.out.println("quotient: "+quotient);
 				if(forme==null){
 					forme=getForme(b,  c,  j,  m,  o,  r,  v);
 				}
-				System.out.println(forme);
 				return forme;
     }
 

@@ -132,8 +132,8 @@ public class PanelParameters extends JPanel {
             bt_verif_letters.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                   valeur_taux_voyelles = Integer.valueOf(taux_voyelles.getText());
-                  valeur_taux_consonnes = Integer.valueOf(taux_voyelles.getText());
-                  valeur_taux_rares = Integer.valueOf(taux_voyelles.getText());
+                  valeur_taux_consonnes = Integer.valueOf(taux_consonnes.getText());
+                  valeur_taux_rares = Integer.valueOf(taux_rares.getText());
                   total_lettres = Integer.valueOf(taux_consonnes.getText()) + Integer.valueOf(taux_voyelles.getText()) + Integer.valueOf(taux_rares.getText());
                   taux_total_lettres.setText(String.valueOf(total_lettres));
                  
