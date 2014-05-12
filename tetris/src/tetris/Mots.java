@@ -95,12 +95,20 @@ public class Mots  {
 	 */
 	public void resultatCorrectWorddle(Plateau plateau){
 		plateau.points+=plateau.totalMot;
+		boolean existe =false;
 		int taille=plateau.BriquesUtiliseesEnCours.size();
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtiliseesEnCours.get(i).getPosX();
 			int Y = plateau.BriquesUtiliseesEnCours.get(i).getPosY();
 
 			plateau.tab[X][Y].utilisee = false;
+			for (int j=0; j<plateau.BriquesUtilisees.size(); ++j){
+    			if(plateau.BriquesUtilisees.get(j).getPosX() == X && plateau.BriquesUtilisees.get(j).getPosY() == Y){
+    				existe = true;
+    				break;
+    			}
+    		}
+			if(existe == false)
 			plateau.BriquesUtilisees.add(plateau.BriquesUtiliseesEnCours.get(i));
 		}
 		plateau.BriquesUtiliseesEnCours.clear();

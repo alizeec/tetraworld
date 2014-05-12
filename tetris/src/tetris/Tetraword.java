@@ -253,9 +253,15 @@ public class Tetraword extends Thread{
 				plateau.totalMot=0;
 				plateau.nbConnexion=0;
 				plateau.positionEnCours=null;
-				 worddle.supprLettresWorddle(plateau);
+				worddle.supprLettresWorddle(plateau);
 
 				plateau.BriquesUtilisees.clear();
+				for(int i=0; i<plateau.BriquesUtiliseesEnCours.size(); ++i){
+					int X = plateau.BriquesUtiliseesEnCours.get(i).getPosX();
+					int Y = plateau.BriquesUtiliseesEnCours.get(i).getPosY();
+					plateau.tab[X][Y].utilisee = false;
+					
+				}
 				plateau.BriquesUtiliseesEnCours.clear();
 
 			  plateau.mode=Mode.TETRIS;

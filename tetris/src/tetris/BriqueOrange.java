@@ -3,6 +3,7 @@ package tetris;
 import java.util.Map;
 
 public class BriqueOrange extends Brique {
+	int suppPrecedent;
 
 	public BriqueOrange(Map<Integer,Cellule> cellules) {
 		// TODO Auto-generated constructor stub
@@ -16,6 +17,7 @@ public class BriqueOrange extends Brique {
 		this.configuregauche();
 		// on met le tableau haut de base (sens normal)
 		this.tab = this.haut;
+		this.suppPrecedent = 5;
 
 		
 	}
@@ -144,6 +146,24 @@ public class BriqueOrange extends Brique {
 						this.gauche[j][i] = null;
 					}
 				}
+				if(numero == 0 && suppPrecedent == 2){
+					cellules.get(1).setIndependant(true);
+					cellules.get(3).setIndependant(true);
+				}
+				if(numero == 1 && suppPrecedent == 3){
+					cellules.get(0).setIndependant(true);
+					cellules.get(2).setIndependant(true);
+				}
+				if(numero == 3 && suppPrecedent == 1){
+					cellules.get(0).setIndependant(true);
+					cellules.get(2).setIndependant(true);
+				}
+				if(numero == 2 && suppPrecedent == 0){
+					cellules.get(1).setIndependant(true);
+					cellules.get(3).setIndependant(true);
+				}
+					
+				this.suppPrecedent = numero;
 			}
 			
 		}

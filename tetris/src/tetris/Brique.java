@@ -156,37 +156,49 @@ public abstract class Brique implements Serializable{
 	public void updatePosition(Cellule newposition){
 		this.getPosition().setPosX(newposition.getPosX());
 		this.getPosition().setPosY(newposition.getPosY());
-		for(int i=0; i<4;++i){
+		/*for(int i=0; i<4;++i){
 			for(int j=0; j<4;++j){
 				if(tab[i][j]!=null && tab[i][j].getIndependant()==false){
 					tab[i][j].setPosX(newposition.getPosX()+i);
 					tab[i][j].setPosY(newposition.getPosY()+j);
 				}
 			}	
-		}
+		}*/
 	}
 	
 	public void suppCase(int numero){
+		System.out.println("Lettre : "+cellules.get(0).getLettre()+"numero :"+numero);
 		for(int i=0; i<4;++i){
 			for(int j=0; j<4;++j){
-				if(this.haut[j][i] != null){
-					if(this.haut[j][i].getNumero() == numero){
-						this.haut[j][i] = null;
+				if(this.haut[i][j] == null){
+					System.out.print("x");
+				}else{
+					System.out.print(this.haut[i][j].getNumero());
+				}
+			}
+			System.out.println("\n");
+		}
+		for(int i=0; i<4;++i){
+			for(int j=0; j<4;++j){
+				if(this.haut[i][j] != null){
+					if(this.haut[i][j].getNumero() == numero){
+						System.out.println("Numero suppr :"+this.haut[i][j].getNumero());
+						this.haut[i][j] = null;
 					}
 				}
-				if(this.droite[j][i] != null){
-					if(this.droite[j][i].getNumero() == numero){
-						this.droite[j][i] = null;
+				if(this.droite[i][j] != null){
+					if(this.droite[i][j].getNumero() == numero){
+						this.droite[i][j] = null;
 					}
 				}
-				if(this.bas[j][i] != null){
-					if(this.bas[j][i].getNumero() == numero){
-						this.bas[j][i] = null;
+				if(this.bas[i][j] != null){
+					if(this.bas[i][j].getNumero() == numero){
+						this.bas[i][j] = null;
 					}
 				}
-				if(this.gauche[j][i] != null){
-					if(this.gauche[j][i].getNumero() == numero){
-						this.gauche[j][i] = null;
+				if(this.gauche[i][j] != null){
+					if(this.gauche[i][j].getNumero() == numero){
+						this.gauche[i][j] = null;
 					}
 				}
 			}
@@ -197,6 +209,20 @@ public abstract class Brique implements Serializable{
 		}
 		if(numero == 2){
 			cellules.get(3).setIndependant(true);
+		}
+		for(int i=0; i<4;++i){
+			for(int j=0; j<4;++j){
+				if(this.haut[i][j] == null){
+					System.out.print("x");
+				}else{
+					if(this.haut[i][j].getIndependant() == true){
+						System.out.print(this.haut[i][j].getNumero()+"i");
+					}else{
+						System.out.print(this.haut[i][j].getNumero()+"d");
+					}
+				}
+			}
+			System.out.println("\n");
 		}
 	}
 	
