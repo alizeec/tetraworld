@@ -83,7 +83,7 @@ public class Mots  {
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
 		plateau.changementNiveau();
-		plateau.setMessage("Bravo!");
+		plateau.setMessage("Congratulation!");
 
 
 	}
@@ -99,12 +99,12 @@ public class Mots  {
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtiliseesEnCours.get(i).getPosX();
 			int Y = plateau.BriquesUtiliseesEnCours.get(i).getPosY();
-			System.out.println("Lettre : "+plateau.BriquesUtiliseesEnCours.get(i).getLettre()+"X :"+X+" Y :"+Y);
+
 			plateau.tab[X][Y].utilisee = false;
 			plateau.BriquesUtilisees.add(plateau.BriquesUtiliseesEnCours.get(i));
 		}
 		plateau.BriquesUtiliseesEnCours.clear();
-		plateau.setMessage("Bravo!");
+		plateau.setMessage("Congratulation!");
 
 
 	}
@@ -131,7 +131,7 @@ public class Mots  {
 	 * @param Plateau plateau
 	 */
 	public void resultatInCorrect(Plateau plateau){
-		plateau.setMessage("Perdu!");
+		plateau.setMessage("You lose!");
 
 	}
 	

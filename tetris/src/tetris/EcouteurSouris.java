@@ -19,6 +19,8 @@ public class EcouteurSouris implements MouseListener
 	FrameJeu frame;
 	Mots anagramme;
 	String background;
+	static Mode modePrecedent1;
+
 	
 	EcouteurSouris(LinkedList<Plateau> joueurs, FrameJeu frame){
 		this.frame = frame;
@@ -42,6 +44,7 @@ public class EcouteurSouris implements MouseListener
     	}else if (joueurs.size()==2){
     		frame.setPanel(3);
     	}
+    		modePrecedent1=joueurs.get(0).mode;
     		joueurs.get(0).mode=Mode.PARAMETRES;
     		joueurs.get(0).pause=true;
     		if(joueurs.size()>1){
@@ -66,6 +69,7 @@ public class EcouteurSouris implements MouseListener
     	FrameJeu.musique_geek.lecture();
 
  	    }
+    
     //clic param mode solo
     if(e.getSource() == frame.getPanelParametres().param || e.getSource() == frame.getPanelParametresMultijoueur().param){
     	
@@ -79,24 +83,30 @@ public class EcouteurSouris implements MouseListener
 		    Tetraword.setTauxFormes(PanelParametersMultijoueur.valeur_taux_bleu, PanelParametersMultijoueur.valeur_taux_cyan, PanelParametersMultijoueur.valeur_taux_jaune,PanelParametersMultijoueur.valeur_taux_magenta, PanelParametersMultijoueur.valeur_taux_orange, PanelParametersMultijoueur.valeur_taux_rouge, PanelParametersMultijoueur.valeur_taux_vert, joueurs.get(0));
 		  }
     	frame.setPanel(1);
-    	// a changer, mode TETRIS par modeSauvegarde
-	    joueurs.get(0).mode=Mode.TETRIS;
 
-	    joueurs.get(0).pause=false;
+    	joueurs.get(0).mode=modePrecedent1;
+    	joueurs.get(0).pause=false;
 
 		if(joueurs.size()>1){
-		    joueurs.get(1).mode=Mode.TETRIS;
 		    joueurs.get(1).pause=false;
 
 	 }
 	}
     
     		
-    if(e.getSource() == frame.getPanelJeu().valider){
+    if(e.getSource() == frame.getPanelJeu().valider_geek){
     	joueurs.get(0).motEnCours+="\n";
 	}
     
-    if(e.getSource() == frame.getPanelJeu().valider2){
+    if(e.getSource() == frame.getPanelJeu().valider_girly){
+    	joueurs.get(0).motEnCours+="\n";
+	}
+    
+    if(e.getSource() == frame.getPanelJeu().valider_geek_j2){
+    	joueurs.get(1).motEnCours+="\n";
+	}
+    
+    if(e.getSource() == frame.getPanelJeu().valider_girly_j2){
     	joueurs.get(1).motEnCours+="\n";
 	}
     
@@ -289,14 +299,28 @@ public class EcouteurSouris implements MouseListener
     }
 		
 		
-		if(e.getSource() == frame.getPanelJeu().supp){
+		if(e.getSource() == frame.getPanelJeu().supp_geek){
 			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
 			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
 				joueurs.get(0).nbConnexion--;
 			}
 		}
 		
-		if(e.getSource() == frame.getPanelJeu().supp2){
+		if(e.getSource() == frame.getPanelJeu().supp_girly){
+			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
+			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
+				joueurs.get(0).nbConnexion--;
+			}
+		}
+		
+		if(e.getSource() == frame.getPanelJeu().supp_geek_j2){
+			joueurs.get(1).motEnCours = joueurs.get(1).motEnCours.substring(0, joueurs.get(1).motEnCours.length()-1);
+			if(joueurs.get(1).mode==Mode.WORDDLE && joueurs.get(1).nbConnexion>=1){
+				joueurs.get(1).nbConnexion--;
+			}
+		}
+		
+		if(e.getSource() == frame.getPanelJeu().supp_girly_j2){
 			joueurs.get(1).motEnCours = joueurs.get(1).motEnCours.substring(0, joueurs.get(1).motEnCours.length()-1);
 			if(joueurs.get(1).mode==Mode.WORDDLE && joueurs.get(1).nbConnexion>=1){
 				joueurs.get(1).nbConnexion--;
@@ -396,7 +420,7 @@ public class EcouteurSouris implements MouseListener
 
     	}
 		else{
-			plateau.setMessage("Vous devez cliquer sur la ligne complète");
+			plateau.setMessage("You have to click on a full line");
 		}
     }
     
@@ -405,10 +429,10 @@ public class EcouteurSouris implements MouseListener
 		if(((plateau.positionEnCours.getPosY()-Y)<=1 && (plateau.positionEnCours.getPosY()-Y)>=-1 )  && ((plateau.positionEnCours.getPosX()-X)<=1 && (plateau.positionEnCours.getPosX()-X)>=-1 ) )
 		{
 			if((plateau.positionEnCours.getPosY()==Y  && plateau.positionEnCours.getPosX()==X)){
-				plateau.setMessage("Il faut cliquer sur une case autour");
+				plateau.setMessage("You have to click on a cell beside");
 			}
 			else if(plateau.nbConnexion>7){
-				plateau.setMessage("Le mot est trop long");
+				plateau.setMessage("Your word is too long");
 
 			}
 			else{
@@ -432,19 +456,10 @@ public class EcouteurSouris implements MouseListener
             		plateau.positionEnCours.setPosY(Y);
             		plateau.positionEnCours.setPosX(X);
             		plateau.nbConnexion++;
-            		/*for (int i=0; i<plateau.BriquesUtiliseesEnCours.size(); ++i){
-            			if(plateau.BriquesUtiliseesEnCours.get(i).getPosX() == X && plateau.BriquesUtiliseesEnCours.get(i).getPosY() == Y){
-            				existe = true;
-            				break;
-            			}
-            		}
-            		if(existe == false){*/
-            			System.out.println("Ecouteur : X = "+X+" Y="+Y);
-            			plateau.BriquesUtiliseesEnCours.add(plateau.tab[X][Y]);
-            		//}
+            		plateau.BriquesUtiliseesEnCours.add(plateau.tab[X][Y]);
         		}
         		else{
-        			System.out.println("rien dans cette case");
+        			System.out.println("This cell is empty");
 
         		}
 			}
