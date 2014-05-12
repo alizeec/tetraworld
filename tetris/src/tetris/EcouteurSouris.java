@@ -52,7 +52,6 @@ public class EcouteurSouris implements MouseListener
     
 
     if(e.getSource() == frame.getPanelDemarrage().bt_start){
-    	System.out.println("choix fait");
     	Tetraword.gameStarted=true;
     	frame.setPanel(1);
     	FrameJeu.musique_geek.lecture();
@@ -61,11 +60,11 @@ public class EcouteurSouris implements MouseListener
     	System.exit(0);
  	    }
     else if(e.getSource() == frame.getPanelDemarrage().bt_multi){
-    	System.out.println("choix fait");
-
     	Tetraword.gameStarted=true;
     	Tetraword.multijoueur = true;
     	frame.setPanel(1);
+    	FrameJeu.musique_geek.lecture();
+
  	    }
     //clic param mode solo
     if(e.getSource() == frame.getPanelParametres().param || e.getSource() == frame.getPanelParametresMultijoueur().param){

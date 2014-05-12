@@ -378,7 +378,6 @@ public class PanelJeu extends JPanel{
 				
 				// Joueur2
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-				afficherPlateau(g);
 				valider2.setBounds(1060, 380, 62, 29);
 				valider2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				valider2.setContentAreaFilled(false);
