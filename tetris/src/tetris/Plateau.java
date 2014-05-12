@@ -223,7 +223,7 @@ public class Plateau implements Serializable {
 		for (int i=0; i<4; ++i){
 			for (int j=0; j<4 ; ++j){
 				if(X+j <= getLargeur()-1 && Y+i <= getHauteur()-1 && X+j >= 0){
-					if(tab[X+j][Y+i] != null && tab[X+j][Y+i].getIndependant() == false && tab[X+j][Y+i].getId() == brique.getId()){
+					if(tab[X+j][Y+i] != null && briques.get(tab[X+j][Y+i].getId()).cellules.get(tab[X+j][Y+i].getNumero()).getIndependant() == false && tab[X+j][Y+i].getId() == brique.getId()){
 						tab[X+j][Y+i] = null;
 					}
 				}
@@ -246,7 +246,8 @@ public class Plateau implements Serializable {
 								int l = k;
 								while(k+cpt < 20){
 									if(tab[j][k+cpt] != null) break;
-									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].getForme(), tab[j][l].getLettre(), tab[j][l].getPoint(), tab[j][l].getNumero(), tab[j][l].getIndependant(),  j, k+cpt);
+									System.out.println("independante tombe");
+									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].getForme(), tab[j][l].getLettre(), tab[j][l].getPoint(), tab[j][l].getNumero(), briques.get(tab[j][l].getId()).cellules.get(tab[j][l].getNumero()).getIndependant(),  j, k+cpt);
 									tab[j][l] = null;
 									cpt++;
 									l++;
