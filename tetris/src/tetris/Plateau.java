@@ -133,7 +133,7 @@ public class Plateau implements Serializable {
 	// GETTER et SETTER
 	
 	/**
-	 * 
+	 * donne la largeur
 	 * @return int largeur
 	 */
 	public int getLargeur(){
@@ -141,7 +141,7 @@ public class Plateau implements Serializable {
 	}
 	
 /**
- * 
+ * donne la hauteur
  * @return int hauteur
  */
 	public int getHauteur(){
@@ -149,7 +149,7 @@ public class Plateau implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * donne le score du joueur
 	 * @return int score
 	 */
 	public int getScore(){
@@ -157,7 +157,7 @@ public class Plateau implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * donne le niveau
 	 * @return int niveau
 	 */
 	public int getNiveau(){
@@ -310,6 +310,12 @@ public class Plateau implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * Vérifie que la rotation est possible sur une copie avant de tourner la vraie brique
+	 * @param Brique
+	 * @param Cellule
+	 * @return boolean
+	 */
 	public boolean verifMoveRotate(Brique briqueReele, Cellule newposition){
 		Brique brique = briqueReele.clone();
 			brique.tourner();
@@ -410,7 +416,7 @@ public class Plateau implements Serializable {
 	 */
 	public Brique creerBrique(){
 		Forme forme = AVenir;
-		Map<Integer,Cellule> tmp_cellules = new HashMap();
+		Map<Integer,Cellule> tmp_cellules = new HashMap<Integer, Cellule>();
 		AVenir = Forme.getForme( TAUX_BLEUE,  TAUX_CYAN,  TAUX_JAUNE,  TAUX_MAGENTA,  TAUX_ORANGE,  TAUX_ROUGE,  TAUX_VERTE);
 		// génération aléatoire pondérée de la lettre
 		for(int i =0; i<4; ++i){
@@ -477,6 +483,9 @@ public class Plateau implements Serializable {
 
 	}
 	
+	/**
+	 * crée un timer pour le mode WORDDLE
+	 */
 	public void timer(){
 		instantDepart = System.currentTimeMillis();
 		tempsEcoule = 0L;
@@ -547,11 +556,19 @@ public class Plateau implements Serializable {
      }
 
 
+	 /**
+	  * donne le coin supérieur gauche d'un plateau
+	  * @return int
+	  */
 	public int getCoinSuppGauche() {
 		return coinSuppGauche;
 	}
 
 
+	 /**
+	  * modifie le coin supérieur gauche d'un plateau
+	  * @param int
+	  */
 	public void setCoinSuppGauche(int coinSuppGauche) {
 		this.coinSuppGauche = coinSuppGauche;
 	}

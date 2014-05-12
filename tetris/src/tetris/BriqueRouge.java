@@ -20,7 +20,9 @@ public class BriqueRouge extends Brique {
 		
 	}
 	
-
+	/**
+	 * donne la brique en position HAUT
+	 */
 	public void configurehaut(){
 		this.haut = new Cellule[4][4];
 		
@@ -46,6 +48,9 @@ public class BriqueRouge extends Brique {
 		this.haut[3][3]=null;
 	}
 
+	/**
+	 * donne la brique en position DROITE
+	 */
 	public void configuredroite(){
 		this.droite = new Cellule[4][4];
 		this.droite[0][0]=null;
@@ -70,6 +75,10 @@ public class BriqueRouge extends Brique {
 		this.droite[3][3]=null;
 	}
 	
+	
+	/**
+	 * donne la brique en position BAS
+	 */
 	public void configurebas(){
 		this.bas = new Cellule[4][4];
 		
@@ -95,6 +104,9 @@ public class BriqueRouge extends Brique {
 		this.bas[3][3]=null;
 	}
 	
+	/**
+	 * donne la brique en position GAUCHE
+	 */
 	public void configuregauche(){
 		this.gauche = new Cellule[4][4];
 		this.gauche[0][0]=null;
@@ -119,6 +131,9 @@ public class BriqueRouge extends Brique {
 		this.gauche[3][3]=null;
 	}
 
+	/**
+	 * permet de cloner la brique
+	 */
 	public  BriqueRouge clone(){
 		BriqueRouge b = new BriqueRouge(this.cellules);
 		b.bas=this.bas;

@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 /**
  * 
- * crŽation de la fen�tre de jeu
+ * création de la fenètre de jeu
  *
  */
 public class FrameJeu extends JFrame{
@@ -40,8 +40,8 @@ public class FrameJeu extends JFrame{
 	static Son musique_girly;
 	
 	/**
-	 * crŽation de la fen�tre en fonction du nombre de joueurs
-	 * @param LinkedList<Plateau> joueurs liste des joueurs
+	 * création de la fenêtre 
+	 * 
 	 */
 	public FrameJeu(){
 		this.setTitle("TetraWord");        
@@ -137,7 +137,7 @@ public class FrameJeu extends JFrame{
 		return panelParametresMulti;
 }
 	/**
-	 * charge le bon panel (jeu ou param�tres)
+	 * charge le bon panel (jeu ou paramètres)
 	 * @param int panel
 	 */
 	public void setPanel(int panel){
@@ -162,7 +162,10 @@ public class FrameJeu extends JFrame{
 		setVisible(true);
 	}
 
-	
+	/**
+	 * donne la liste des joueurs à la Frame 
+	 * @param LinkedList<Plateau>
+	 */
 	public void setJoueurs(LinkedList<Plateau> joueurs){
 		if(joueurs.size()==2){
 			dimension = new Dimension(1276,794);

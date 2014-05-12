@@ -22,7 +22,7 @@ public class Cellule implements Serializable{
 	boolean independant;
 
 	/**
-	 * UtilisÈ pour les cellules du plateau
+	 * Utilisé pour les cellules du plateau
 	 * @param int id
 	 * @param Forme forme
 	 * @param char lettre
@@ -45,7 +45,7 @@ public class Cellule implements Serializable{
 	}
 	
 	/**
-	 * UtilisÈ pour la position d'un brique
+	 * Utilisé pour la position d'un brique
 	 * @param int id
 	 * @param Forme forme
 	 * @param char lettre
@@ -90,7 +90,7 @@ public class Cellule implements Serializable{
 	}
 	
 	/**
-	 * Utilisée pour les cellules des briques qui n'ont pas besoin de position car celle ci est calculÈ en fonction de la position de la brique
+	 * Utilisée pour les cellules des briques qui n'ont pas besoin de position car celle ci est calculé en fonction de la position de la brique
 	 * @param char lettre
 	 * @param int numero
 	 * @param int point
@@ -111,62 +111,122 @@ public class Cellule implements Serializable{
 		return this.id;
 	}
 	
+	/**
+	 * modifie l'id
+	 * @param int
+	 */
 	public void setId(int valeur){
 		this.id=valeur;
 	}
 	
+	/**
+	 * donne la lettre
+	 * @return char
+	 */
 	public char getLettre(){
 		return lettre;
 	}
 	
+	/**
+	 * modifie la lettre
+	 * @param char
+	 */
 	public void setLettre(char l){
 		this.lettre=l;
 	}
 
+	/**
+	 * donne le numéro (dans une brique)
+	 * @return int
+	 */
 	public int getNumero() {
 		return numero;
 	}
 
+	/**
+	 * modifie le numéro (dans une brique)
+	 * @param int
+	 */
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 
+	/**
+	 * donne la forme
+	 * @return Forme
+	 */
 	public Forme getForme() {
 		return forme;
 	}
 
+	/**
+	 * modifie la forme
+	 * @param Forme
+	 */
 	public void setForme(Forme forme) {
 		this.forme = forme;
 	}
 
+	/**
+	 * donne la position en X
+	 * @return int
+	 */
 	public int getPosX() {
 		return posX;
 	}
 
+	/**
+	 * modifie la position en X
+	 * @param int
+	 */
 	public void setPosX(int posX) {
 		this.posX = posX;
 	}
 
+	/**
+	 * donne la position en Y
+	 * @return int
+	 */
 	public int getPosY() {
 		return posY;
 	}
 
+	/**
+	 * modifie la position en Y
+	 * @param int
+	 */
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
 
+	/**
+	 * donne le point de la cellule
+	 * @return int
+	 */
 	public int getPoint() {
 		return point;
 	}
 
+	/**
+	 * modifie le point
+	 * @param int
+	 */
 	public void setPoint(int point) {
 		this.point = point;
 	}
 	
+	/**
+	 * permet de savoir si la cellule est indépendante ou non
+	 * @return boolean
+	 */
 	public boolean getIndependant(){
 		return independant;
 	}
 	
+	/**
+	 * permet de dire si la cellule est indépendante ou non
+	 * @return boolean
+	 */
 	public void setIndependant(boolean independant){
 		this.independant = independant;
 	}

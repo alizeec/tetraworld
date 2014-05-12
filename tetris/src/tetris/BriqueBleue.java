@@ -2,6 +2,8 @@ package tetris;
 
 import java.util.Map;
 
+
+
 public class BriqueBleue extends Brique {
 
 	public BriqueBleue(Map<Integer,Cellule> cellules) {
@@ -20,7 +22,9 @@ public class BriqueBleue extends Brique {
 		
 	}
 	
-
+	/**
+	 * donne la brique en position HAUT
+	 */
 	public void configurehaut(){
 		this.haut = new Cellule[4][4];
 		
@@ -46,6 +50,9 @@ public class BriqueBleue extends Brique {
 		this.haut[3][3]=null;
 	}
 
+	/**
+	 * donne la brique en position DROITE
+	 */
 	public void configuredroite(){
 		this.droite = new Cellule[4][4];
 		this.droite[0][0]=null;
@@ -70,6 +77,9 @@ public class BriqueBleue extends Brique {
 		this.droite[3][3]=null;
 	}
 	
+	/**
+	 * donne la brique en position BAS
+	 */
 	public void configurebas(){
 		this.bas = new Cellule[4][4];
 		
@@ -95,6 +105,9 @@ public class BriqueBleue extends Brique {
 		this.bas[3][3]=null;
 	}
 	
+	/**
+	 * donne la brique en position GAUCHE
+	 */
 	public void configuregauche(){
 		this.gauche = new Cellule[4][4];
 		this.gauche[0][0]=null;
@@ -119,6 +132,9 @@ public class BriqueBleue extends Brique {
 		this.gauche[3][3]=null;
 	}
 
+	/**
+	 * permet de cloner la brique
+	 */
 	public  BriqueBleue clone(){
 		BriqueBleue b = new BriqueBleue(this.cellules);
 		b.bas=this.bas;

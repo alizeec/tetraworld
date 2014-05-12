@@ -38,6 +38,7 @@ public class EcouteurSouris implements MouseListener
     public void mouseClicked(MouseEvent e) 
     {
    
+	// lorsqu'on clique sur le bouton param
     if(e.getSource() == frame.getPanelJeu().paramJeu){
     	if(joueurs.size()==1){    
     	frame.setPanel(2);
@@ -53,24 +54,8 @@ public class EcouteurSouris implements MouseListener
     		}
     	}
     
-
-    if(e.getSource() == frame.getPanelDemarrage().bt_start){
-    	Tetraword.gameStarted=true;
-    	frame.setPanel(1);
-    	FrameJeu.musique_geek.lecture();
-	    }
-    else if(e.getSource() == frame.getPanelDemarrage().bt_exit){
-    	System.exit(0);
- 	    }
-    else if(e.getSource() == frame.getPanelDemarrage().bt_multi){
-    	Tetraword.gameStarted=true;
-    	Tetraword.multijoueur = true;
-    	frame.setPanel(1);
-    	FrameJeu.musique_geek.lecture();
-
- 	    }
     
-    //clic param mode solo
+    //sortir du mode paramètre 
     if(e.getSource() == frame.getPanelParametres().param || e.getSource() == frame.getPanelParametresMultijoueur().param){
     	
     		 Tetraword.setTauxLettres(PanelParameters.valeur_taux_consonnes, PanelParameters.valeur_taux_voyelles, PanelParameters.valeur_taux_rares, joueurs.get(0));
@@ -93,19 +78,22 @@ public class EcouteurSouris implements MouseListener
 	 }
 	}
     
-    		
+    // valider un mot thème geek joueur1	
     if(e.getSource() == frame.getPanelJeu().valider_geek){
     	joueurs.get(0).motEnCours+="\n";
 	}
     
+    // valider un mot thème girly joueur1	
     if(e.getSource() == frame.getPanelJeu().valider_girly){
     	joueurs.get(0).motEnCours+="\n";
 	}
     
+    // valider un mot thème geek joueur2	
     if(e.getSource() == frame.getPanelJeu().valider_geek_j2){
     	joueurs.get(1).motEnCours+="\n";
 	}
     
+    // valider un mot thème girly joueur2	
     if(e.getSource() == frame.getPanelJeu().valider_girly_j2){
     	joueurs.get(1).motEnCours+="\n";
 	}
@@ -162,7 +150,7 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametresMulti.song_stoped.setVisible(true);
     }
     
-    //bt bg
+    //bt background
     if(e.getSource() == frame.panelParametres.geek_jaune || e.getSource() == frame.panelParametresMulti.geek_jaune){  
     	if(frame.musique_geek.lecture()==true)  {   
     		frame.musique_geek.stop();
@@ -298,7 +286,7 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametresMulti.choix_langue = 1;
     }
 		
-		
+		// supprimer une lettre thème geek pour joueur1
 		if(e.getSource() == frame.getPanelJeu().supp_geek){
 			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
 			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
@@ -306,6 +294,7 @@ public class EcouteurSouris implements MouseListener
 			}
 		}
 		
+		// supprimer une lettre thème girly pour joueur1
 		if(e.getSource() == frame.getPanelJeu().supp_girly){
 			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
 			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
@@ -313,6 +302,7 @@ public class EcouteurSouris implements MouseListener
 			}
 		}
 		
+		// supprimer une lettre thème geek pour joueur2
 		if(e.getSource() == frame.getPanelJeu().supp_geek_j2){
 			joueurs.get(1).motEnCours = joueurs.get(1).motEnCours.substring(0, joueurs.get(1).motEnCours.length()-1);
 			if(joueurs.get(1).mode==Mode.WORDDLE && joueurs.get(1).nbConnexion>=1){
@@ -320,6 +310,7 @@ public class EcouteurSouris implements MouseListener
 			}
 		}
 		
+		// supprimer une lettre thème girly pour joueur2
 		if(e.getSource() == frame.getPanelJeu().supp_girly_j2){
 			joueurs.get(1).motEnCours = joueurs.get(1).motEnCours.substring(0, joueurs.get(1).motEnCours.length()-1);
 			if(joueurs.get(1).mode==Mode.WORDDLE && joueurs.get(1).nbConnexion>=1){
@@ -327,6 +318,9 @@ public class EcouteurSouris implements MouseListener
 			}
 		}
 		
+		
+		
+		// détection des clic dans les plateaux
     	if (e.getButton()==MouseEvent.BUTTON1){
     		
     		if(joueurs.size()==1){

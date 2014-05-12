@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
  
 /**
- * affiche le panel des param�tres
+ * affiche le panel des paramétres
  *
  *
  */

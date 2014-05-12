@@ -3,6 +3,11 @@ package tetris;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * récupère les actions utilisateur sur le panneau de démarrage
+ * 
+ *
+ */
 public class EcouteurSourisDemarrage implements MouseListener{
 	FrameJeu frame;
 
@@ -11,16 +16,18 @@ public class EcouteurSourisDemarrage implements MouseListener{
 	}
 
 	   public void mouseClicked(MouseEvent e) {
+		   //lancement en mode solo
 		    if(e.getSource() == frame.getPanelDemarrage().bt_start){
 		    	System.out.println("choix fait");
 		    	Tetraword.gameStarted=true;
-		    	//frame.setPanel(1);
 		    	FrameJeu.musique_geek.lecture();
 		    	
 			    }
+		    // quitter
 		    else if(e.getSource() == frame.getPanelDemarrage().bt_exit){
 		    	System.exit(0);
 		 	    }
+		    // lancement en mode multijoueur
 		    else if(e.getSource() == frame.getPanelDemarrage().bt_multi){
 		    	System.out.println("choix fait");
 

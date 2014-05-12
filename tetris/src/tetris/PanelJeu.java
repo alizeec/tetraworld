@@ -21,7 +21,7 @@ import javax.xml.ws.handler.Handler;
 
 
 /**
- * affiche dans la fen�tre les �l�ments de jeu
+ * affiche dans la fenêtre les éléments de jeu
  * 
  *
  */
@@ -45,7 +45,7 @@ public class PanelJeu extends JPanel{
 	 */
 	Image background_geek,background_girly,background;
 	Image perdu, perduMulti1, perduMulti2;
-	/** affichage des donn�es et des retours utilisateur
+	/** affichage des données et des retours utilisateur
 	 * 
 	 */
 	JLabel score;

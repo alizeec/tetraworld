@@ -22,7 +22,9 @@ public class BriqueOrange extends Brique {
 		
 	}
 	
-
+	/**
+	 * donne la brique en position HAUT
+	 */
 	public void configurehaut(){
 		this.haut = new Cellule[4][4];
 		
@@ -48,6 +50,9 @@ public class BriqueOrange extends Brique {
 		this.haut[3][3]=null;
 	}
 
+	/**
+	 * donne la brique en position DROITE
+	 */
 	public void configuredroite(){
 		this.droite = new Cellule[4][4];
 		
@@ -73,6 +78,9 @@ public class BriqueOrange extends Brique {
 		this.droite[3][3]=null;
 	}
 	
+	/**
+	 * donne la brique en position BAS
+	 */
 	public void configurebas(){
 		this.bas = new Cellule[4][4];
 		
@@ -98,6 +106,9 @@ public class BriqueOrange extends Brique {
 		this.bas[3][3]=null;
 	}
 	
+	/**
+	 * donne la brique en position GAUCHE
+	 */
 	public void configuregauche(){
 		this.gauche = new Cellule[4][4];
 		
@@ -123,6 +134,9 @@ public class BriqueOrange extends Brique {
 		this.gauche[3][3]=null;
 	}
 	
+	/**
+	 * permet de gérer la gravité lors de la suppression de cellule en mode worddle
+	 */
 	public void suppCase(int numero){
 		for(int i=0; i<4;++i){
 			for(int j=0; j<4;++j){
@@ -169,6 +183,9 @@ public class BriqueOrange extends Brique {
 		}
 	}
 	
+	/**
+	 * permet de cloner la brique
+	 */
 	public  BriqueOrange clone(){
 		BriqueOrange b = new BriqueOrange(this.cellules);
 		b.bas=this.bas;

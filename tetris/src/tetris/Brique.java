@@ -6,8 +6,8 @@ import java.util.Map;
 
 /**
  * 
- * classe abstraite qui reprŽsente toutes les briques. 
- * On instancie ses fils selon la forme de la brique demandŽe
+ * classe abstraite qui représente toutes les briques. 
+ * On instancie ses fils selon la forme de la brique demandée
  * 
  *
  */
@@ -45,56 +45,80 @@ public abstract class Brique implements Serializable{
 	}
 	
 	/**
-	 * 
-	 * @return int id
+	 * donne l'id de la brique
+	 * @return int 
 	 */
 	public int getId(){
 		return this.id;
 	}
 	
+	/**
+	 * 
+	 * @param int
+	 */
 	public void setId(int id){
 		this.id=id;
 	}
+	
 	/**
-	 * 
+	 * donne la forme
 	 * @return Forme
 	 */
 	public Forme getForme(){
 		return this.forme;
 	}
 	
+	/**
+	 * donne le nombre de points que vaut la brique
+	 * @return int
+	 */
 	public int getPoints(){
 		return this.point;
 	}
 	
+	/**
+	 * retourne le nombre de cellules qu'a la brique
+	 * @return int
+	 */
 	public int getNbCellules(){
 		return this.nbCellules;
 	}
 	
+	/**
+	 * décrémente le nombre de cellule
+	 */
 	public void decrementeNbCellules(){
 		nbCellules--;
 	}
 	
 	/**
-	 * 
-	 * @return Cellule position du coin supŽrieur gauche
+	 * donne la position du coin supérieur gauche
+	 * @return Cellule 
 	 */
 	public Cellule getPosition(){
 		return this.position;
 	}
 	
+	/**
+	 * modifie la position du coin supérieur gauche
+	 * @param Cellule
+	 */
 	public void setPosition(Cellule p){
 		this.position=p;
 	}
 	
 	/**
-	 * 
-	 * @return Rotation rotation de la brique(HAUT, GAUCHE, BAS, DROITE)
+	 * donne la rotation de la brique(HAUT, GAUCHE, BAS, DROITE)
+	 * @return Rotation 
 	 */
 	public Rotation getRotation(){
 		return this.rotation;
 	}
 	
+	/**
+	 * modifie la rotation
+	 * @param Rotation
+	 */
 	public void setRotation(Rotation r){
 		this.rotation=r;
 	}
@@ -112,8 +136,8 @@ public abstract class Brique implements Serializable{
 
 
 	/**
-	 * 
-	 * @param Forme forme
+	 * modifie la forme
+	 * @param Forme 
 	 */
 	public void setForme(Forme forme) {
 		this.forme = forme;
@@ -150,7 +174,7 @@ public abstract class Brique implements Serializable{
 	
 	
 	/**
-	 * Prend en param�tre une cellule qui est la nouvelle position du coin supŽrieur gauche de la brique
+	 * Prend en paramètre une cellule qui est la nouvelle position du coin supérieur gauche de la brique
 	 * @param Cellule newposition
 	 */
 	public void updatePosition(Cellule newposition){
@@ -166,6 +190,10 @@ public abstract class Brique implements Serializable{
 		}*/
 	}
 	
+	/**
+	 * supprime une cellule de la brique
+	 * @param int
+	 */
 	public void suppCase(int numero){
 		System.out.println("Lettre : "+cellules.get(0).getLettre()+"numero :"+numero);
 		for(int i=0; i<4;++i){

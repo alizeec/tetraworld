@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 /**
  * 
- * rŽcup�re les actions clavier de l'utilisateur
+ * récupère les actions clavier de l'utilisateur
  *
  */
 public class EcouteurClavier implements KeyListener{
@@ -48,7 +48,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * aller ˆ gauche pour le joueur1
+		 * aller à gauche pour le joueur1
 		 */
 		case KeyEvent.VK_LEFT :
 			X = plateau1.briqueActuelle.getPosition().getPosX();
@@ -60,7 +60,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * accŽl�re la descente pour le joueur1
+		 * accélère la descente pour le joueur1
 		 */
 		case KeyEvent.VK_DOWN :
 			X = plateau1.briqueActuelle.getPosition().getPosX();
@@ -82,7 +82,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * aller ˆ droite pour le joueur2
+		 * aller à droite pour le joueur2
 		 */
 		//joueur2
 		case KeyEvent.VK_H :
@@ -97,7 +97,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * aller ˆ gauche pour le joueur2
+		 * aller à gauche pour le joueur2
 		 */
 		case KeyEvent.VK_G :
 			if(plateau2 != null){
@@ -110,7 +110,7 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
-		/** accŽl�re la descente pour le joueur2
+		/** accélère la descente pour le joueur2
 		 * 
 		 */
 		case KeyEvent.VK_B:
@@ -188,7 +188,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * sauvegarde l'Žtat en cours du joueur1
+		 * sauvegarde l'état en cours du joueur1
 		 */
 		case KeyEvent.VK_L:
 			try {
@@ -204,7 +204,7 @@ public class EcouteurClavier implements KeyListener{
 		
 
 		
-		/** charge la derni�re sauvegarde du joueur1
+		/** charge la dernière sauvegarde du joueur1
 		 * 
 		 */
 		case KeyEvent.VK_M:
@@ -223,7 +223,7 @@ public class EcouteurClavier implements KeyListener{
 		break;
 		
 		/**
-		 * sauvegarde l'�tat en cours du joueur2
+		 * sauvegarde l'état en cours du joueur2
 		 */
 		case KeyEvent.VK_S:
 			if(joueurs.size()>1){
@@ -239,7 +239,7 @@ public class EcouteurClavier implements KeyListener{
 			}
 		break;
 		
-		/** charge la derni�re sauvegarde du joueur2
+		/** charge la dernière sauvegarde du joueur2
 		 * 
 		 */
 		case KeyEvent.VK_D:

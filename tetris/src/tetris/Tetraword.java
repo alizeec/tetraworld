@@ -12,7 +12,7 @@ import java.util.Timer;
 
 
 /**
- * boucle principale. Jeu en lui-m�me
+ * boucle principale. Jeu en lui-même
  * 
  *
  */
@@ -34,7 +34,7 @@ public class Tetraword extends Thread{
 	/**
 	 * boucle principale
 	 * @param joueurs liste des joueurs
-	 * @param jeu fen�tre
+	 * @param jeu fenêtre
 	 * @param worddle pour le mode WORDDLE
 	 * @param anagramme pour le mode ANAGRAMME
 	 */
@@ -269,7 +269,7 @@ public class Tetraword extends Thread{
 	}
 	
 	/**
-	 * dŽfinie les taux pour chaques types de lettres (consonnes, voyelles, rares)
+	 * définie les taux pour chaques types de lettres (consonnes, voyelles, rares)
 	 * @param plateau
 	 */
 	public static void setTauxLettres(int consonnes, int voyelles, int rares, Plateau plateau){
@@ -279,7 +279,7 @@ public class Tetraword extends Thread{
 	}
 	
 	/**
-	 * dŽfinie les taux pour chaques types de briques 
+	 * définie les taux pour chaques types de briques 
 	 * @param plateau
 	 */
 	public static void setTauxFormes(int bleue, int cyan, int jaune,int magenta, int orange, int rouge, int verte, Plateau plateau){
