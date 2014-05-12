@@ -454,16 +454,16 @@ public class EcouteurSouris implements MouseListener
             		plateau.positionEnCours.setPosY(Y);
             		plateau.positionEnCours.setPosX(X);
             		plateau.nbConnexion++;
-            		boolean existe = false;
-            		for (int i=0; i<plateau.BriquesUtilisees.size(); ++i){
-            			if(plateau.BriquesUtilisees.get(i).getPosX() == X && plateau.BriquesUtilisees.get(i).getPosY() == Y){
+            		/*for (int i=0; i<plateau.BriquesUtiliseesEnCours.size(); ++i){
+            			if(plateau.BriquesUtiliseesEnCours.get(i).getPosX() == X && plateau.BriquesUtiliseesEnCours.get(i).getPosY() == Y){
             				existe = true;
             				break;
             			}
             		}
-            		if(existe == false){
-            			plateau.BriquesUtilisees.add(plateau.tab[X][Y]);
-            		}
+            		if(existe == false){*/
+            			System.out.println("Ecouteur : X = "+X+" Y="+Y);
+            			plateau.BriquesUtiliseesEnCours.add(plateau.tab[X][Y]);
+            		//}
         		}
         		else{
         			System.out.println("rien dans cette case");

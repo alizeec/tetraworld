@@ -145,6 +145,14 @@ public abstract class Brique implements Serializable{
 	public void updatePosition(Cellule newposition){
 		this.getPosition().setPosX(newposition.getPosX());
 		this.getPosition().setPosY(newposition.getPosY());
+		for(int i=0; i<4;++i){
+			for(int j=0; j<4;++j){
+				if(tab[i][j]!=null && tab[i][j].getIndependant()==false){
+					tab[i][j].setPosX(newposition.getPosX()+i);
+					tab[i][j].setPosY(newposition.getPosY()+j);
+				}
+			}	
+		}
 	}
 	
 	public void suppCase(int numero){
