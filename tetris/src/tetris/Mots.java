@@ -99,6 +99,10 @@ public class Mots  {
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtiliseesEnCours.get(i).getPosX();
 			int Y = plateau.BriquesUtiliseesEnCours.get(i).getPosY();
+			System.out.println("X: "+X );
+			System.out.println("Y: "+Y );
+
+			System.out.println(plateau.BriquesUtiliseesEnCours.get(i).getLettre());
 			plateau.tab[X][Y].utilisee = false;
 			plateau.BriquesUtilisees.add(plateau.BriquesUtiliseesEnCours.get(i));
 		}

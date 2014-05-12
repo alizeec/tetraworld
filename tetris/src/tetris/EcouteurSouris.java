@@ -432,15 +432,7 @@ public class EcouteurSouris implements MouseListener
             		plateau.positionEnCours.setPosY(Y);
             		plateau.positionEnCours.setPosX(X);
             		plateau.nbConnexion++;
-            		/*for (int i=0; i<plateau.BriquesUtiliseesEnCours.size(); ++i){
-            			if(plateau.BriquesUtiliseesEnCours.get(i).getPosX() == X && plateau.BriquesUtiliseesEnCours.get(i).getPosY() == Y){
-            				existe = true;
-            				break;
-            			}
-            		}
-            		if(existe == false){*/
-            			plateau.BriquesUtiliseesEnCours.add(plateau.tab[X][Y]);
-            		//}
+            		plateau.BriquesUtiliseesEnCours.add(plateau.tab[X][Y]);
         		}
         		else{
         			System.out.println("rien dans cette case");
