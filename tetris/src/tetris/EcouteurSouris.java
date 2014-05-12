@@ -19,6 +19,8 @@ public class EcouteurSouris implements MouseListener
 	FrameJeu frame;
 	Mots anagramme;
 	String background;
+	static Mode modePrecedent1;
+
 	
 	EcouteurSouris(LinkedList<Plateau> joueurs, FrameJeu frame){
 		this.frame = frame;
@@ -42,6 +44,7 @@ public class EcouteurSouris implements MouseListener
     	}else if (joueurs.size()==2){
     		frame.setPanel(3);
     	}
+    		modePrecedent1=joueurs.get(0).mode;
     		joueurs.get(0).mode=Mode.PARAMETRES;
     		joueurs.get(0).pause=true;
     		if(joueurs.size()>1){
@@ -66,6 +69,7 @@ public class EcouteurSouris implements MouseListener
     	FrameJeu.musique_geek.lecture();
 
  	    }
+    
     //clic param mode solo
     if(e.getSource() == frame.getPanelParametres().param || e.getSource() == frame.getPanelParametresMultijoueur().param){
     	
@@ -79,13 +83,11 @@ public class EcouteurSouris implements MouseListener
 		    Tetraword.setTauxFormes(PanelParametersMultijoueur.valeur_taux_bleu, PanelParametersMultijoueur.valeur_taux_cyan, PanelParametersMultijoueur.valeur_taux_jaune,PanelParametersMultijoueur.valeur_taux_magenta, PanelParametersMultijoueur.valeur_taux_orange, PanelParametersMultijoueur.valeur_taux_rouge, PanelParametersMultijoueur.valeur_taux_vert, joueurs.get(0));
 		  }
     	frame.setPanel(1);
-    	// a changer, mode TETRIS par modeSauvegarde
-	    joueurs.get(0).mode=Mode.TETRIS;
 
-	    joueurs.get(0).pause=false;
+    	joueurs.get(0).mode=modePrecedent1;
+    	joueurs.get(0).pause=false;
 
 		if(joueurs.size()>1){
-		    joueurs.get(1).mode=Mode.TETRIS;
 		    joueurs.get(1).pause=false;
 
 	 }
