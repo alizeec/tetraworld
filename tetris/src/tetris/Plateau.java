@@ -238,7 +238,6 @@ public class Plateau implements Serializable {
 					for(int k=i-1;k>=1;--k){
 						if(tab[j][k] != null && tab[j][k].getId()!= briqueActuelle.getId()){
 							if(briques.get(tab[j][k].getId()).getNbCellules() == 1 || briques.get(tab[j][k].getId()).cellules.get(tab[j][k].getNumero()).getIndependant() == true){ //Si la brique n'est pas entière
-								System.out.println("lettre :"+tab[j][k].getLettre()+" -> independant");
 								int cpt = 1;
 								int l = k;
 								while(k+cpt < 20){

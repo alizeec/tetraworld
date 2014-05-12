@@ -259,6 +259,10 @@ public class Tetraword extends Thread{
 			  }
 			  
 		  }else{
+			  plateau.motEnCours=null;
+			  plateau.totalMot=0;
+			  plateau.nbConnexion=0;
+			  plateau.positionEnCours=null;
 			  worddle.supprLettresWorddle(plateau);
 			  plateau.mode=Mode.TETRIS;
 		  }

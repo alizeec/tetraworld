@@ -139,7 +139,8 @@ public class Mots  {
 	public void initialiseWorddle(Plateau plateau){
 		/* pour avoir une position de départ aléatoire*/
 	Vector<Cellule> positionsPossibles= new Vector<Cellule>();
-	
+	int nbPositionsPossibles=positionsPossibles.size();
+	System.out.println("Nombre de positions début :"+nbPositionsPossibles);
 	for(int i=0; i<plateau.LARGEUR; ++i){
 		for (int j=0; j<plateau.HAUTEUR; ++j){
 			if(plateau.tab[i][j]!=null && plateau.tab[i][j].getId() != plateau.briqueActuelle.getId()){
@@ -148,7 +149,7 @@ public class Mots  {
 		}
 	}
 	
-	int nbPositionsPossibles=positionsPossibles.size();
+	nbPositionsPossibles=positionsPossibles.size();
 	System.out.println("Nombre de positions :"+nbPositionsPossibles);
 	Integer r = (int)(Math.random() * (nbPositionsPossibles-1)) + 1;
 	plateau.positionEnCours=positionsPossibles.get(r);
