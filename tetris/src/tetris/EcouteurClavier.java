@@ -209,7 +209,7 @@ public class EcouteurClavier implements KeyListener{
 				plateau1.charger(1);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				plateau1.setMessage("You have to save first");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -245,7 +245,7 @@ public class EcouteurClavier implements KeyListener{
 					plateau2.charger(2);
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					plateau2.setMessage("You have to save first");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
