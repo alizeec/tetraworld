@@ -300,7 +300,6 @@ public class Plateau implements Serializable {
 						if(this.mode==Mode.TETRIS){
 							this.JeuPerdu();
 						}
-
 						return false;
 					}
 					
@@ -309,6 +308,15 @@ public class Plateau implements Serializable {
 		}
 		return true;
 	}
+	
+	public boolean verifMoveRotate(Brique briqueReele, Cellule newposition){
+		Brique brique = briqueReele.clone();
+			brique.tourner();
+			return verifMove(brique, newposition);
+		
+	}
+	
+	
 	
 	/**
 	 * vérifie si une ligne en particulier est complète

@@ -152,4 +152,19 @@ public class BriqueVerte extends Brique {
 		}
 	}
 	
+	
+	public  BriqueVerte clone(){
+		BriqueVerte b = new BriqueVerte(this.cellules);
+		b.bas=this.bas;
+		b.droite=this.droite;
+		b.gauche=this.gauche;
+		b.haut=this.haut;
+		b.setId(this.getId());
+
+		b.setForme(this.getForme());
+		b.setPosition(this.getPosition());
+		b.setRotation(this.getRotation());
+		return b;
+	}
+	
 }

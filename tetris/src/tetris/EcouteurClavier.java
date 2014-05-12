@@ -75,8 +75,10 @@ public class EcouteurClavier implements KeyListener{
 		 * tourne la brique pour le joueur1
 		 */
 		case KeyEvent.VK_UP :
+		if(plateau1.verifMoveRotate(plateau1.briqueActuelle, plateau1.briqueActuelle.getPosition())){
 			plateau1.briqueActuelle.tourner();
 			plateau1.deplaceBrique(plateau1.briqueActuelle, plateau1.briqueActuelle.getPosition());
+		}
 		break;
 		
 		/**
@@ -127,8 +129,10 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_SPACE :
 			if(plateau2 != null){
-			plateau2.briqueActuelle.tourner();
-			plateau2.deplaceBrique(plateau2.briqueActuelle, plateau2.briqueActuelle.getPosition());
+				if(plateau2.verifMoveRotate(plateau2.briqueActuelle, plateau2.briqueActuelle.getPosition())){
+					plateau2.briqueActuelle.tourner();
+					plateau2.deplaceBrique(plateau2.briqueActuelle, plateau2.briqueActuelle.getPosition());
+				}
 			}
 		break;
 		

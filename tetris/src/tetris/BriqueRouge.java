@@ -119,5 +119,18 @@ public class BriqueRouge extends Brique {
 		this.gauche[3][3]=null;
 	}
 
+	public  BriqueRouge clone(){
+		BriqueRouge b = new BriqueRouge(this.cellules);
+		b.bas=this.bas;
+		b.droite=this.droite;
+		b.gauche=this.gauche;
+		b.haut=this.haut;
+		b.setId(this.getId());
+
+		b.setForme(this.getForme());
+		b.setPosition(this.getPosition());
+		b.setRotation(this.getRotation());
+		return b;
+	}
 	
 }
