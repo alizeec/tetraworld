@@ -237,7 +237,7 @@ public class Tetraword extends Thread{
 						e1.printStackTrace();
 					}
 					if(!result){
-						worddle.resultatCorrectWorddle(plateau);
+						worddle.resultatInCorrect(plateau);
 					}else{
 						worddle.resultatCorrectWorddle(plateau);
 					}

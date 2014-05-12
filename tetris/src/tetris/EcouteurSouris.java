@@ -95,19 +95,19 @@ public class EcouteurSouris implements MouseListener
     
     		
     if(e.getSource() == frame.getPanelJeu().valider_geek){
-    	joueurs.get(1).motEnCours+="\n";
+    	joueurs.get(0).motEnCours+="\n";
 	}
     
     if(e.getSource() == frame.getPanelJeu().valider_girly){
-    	joueurs.get(1).motEnCours+="\n";
+    	joueurs.get(0).motEnCours+="\n";
 	}
     
     if(e.getSource() == frame.getPanelJeu().valider_geek_j2){
-    	joueurs.get(0).motEnCours+="\n";
+    	joueurs.get(1).motEnCours+="\n";
 	}
     
     if(e.getSource() == frame.getPanelJeu().valider_girly_j2){
-    	joueurs.get(0).motEnCours+="\n";
+    	joueurs.get(1).motEnCours+="\n";
 	}
     
     if(e.getSource() == frame.panelParametres.play_song || e.getSource() == frame.panelParametresMulti.play_song)
@@ -299,28 +299,28 @@ public class EcouteurSouris implements MouseListener
     }
 		
 		
-		if(e.getSource() == frame.getPanelJeu().supp_geek_j2){
-			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
-			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
-				joueurs.get(0).nbConnexion--;
-			}
-		}
-		
-		if(e.getSource() == frame.getPanelJeu().supp_girly_j2){
-			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
-			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
-				joueurs.get(0).nbConnexion--;
-			}
-		}
-		
 		if(e.getSource() == frame.getPanelJeu().supp_geek){
+			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
+			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
+				joueurs.get(0).nbConnexion--;
+			}
+		}
+		
+		if(e.getSource() == frame.getPanelJeu().supp_girly){
+			joueurs.get(0).motEnCours = joueurs.get(0).motEnCours.substring(0, joueurs.get(0).motEnCours.length()-1);
+			if(joueurs.get(0).mode==Mode.WORDDLE && joueurs.get(0).nbConnexion>=1){
+				joueurs.get(0).nbConnexion--;
+			}
+		}
+		
+		if(e.getSource() == frame.getPanelJeu().supp_geek_j2){
 			joueurs.get(1).motEnCours = joueurs.get(1).motEnCours.substring(0, joueurs.get(1).motEnCours.length()-1);
 			if(joueurs.get(1).mode==Mode.WORDDLE && joueurs.get(1).nbConnexion>=1){
 				joueurs.get(1).nbConnexion--;
 			}
 		}
 		
-		if(e.getSource() == frame.getPanelJeu().supp_girly){
+		if(e.getSource() == frame.getPanelJeu().supp_girly_j2){
 			joueurs.get(1).motEnCours = joueurs.get(1).motEnCours.substring(0, joueurs.get(1).motEnCours.length()-1);
 			if(joueurs.get(1).mode==Mode.WORDDLE && joueurs.get(1).nbConnexion>=1){
 				joueurs.get(1).nbConnexion--;
