@@ -53,12 +53,10 @@ public class PanelJeu extends JPanel{
 	Image next2;
 	JLabel level;
 	JButton finish;
-	JButton valider;
-	JButton supp;
-	JButton valider2;
-	JButton supp2;
+	JButton valider_geek,supp_geek,valider_girly,supp_girly;
+	JButton valider_geek_j2,supp_geek_j2,valider_girly_j2,supp_girly_j2;
 	JButton paramJeu;
-	Image fleche;
+	Image fleche, fleche_girly;
 	JLabel message;
 
 	
@@ -91,16 +89,21 @@ public class PanelJeu extends JPanel{
 		perduMulti2 = new ImageIcon("GameOverMultijoueur1.png").getImage();
 		
 		fleche = new ImageIcon("fleche.png").getImage();
-
+		fleche_girly = new ImageIcon("fleche_girly.png").getImage();
+		
 		score = new JLabel();
 		level=new JLabel();
 
 
 		finish=new JButton();
-		valider= new JButton(new ImageIcon("bt_ok.png" ));
-		supp= new JButton(new ImageIcon("bt_supp.png" ));
-		valider2= new JButton(new ImageIcon("bt_ok.png" ));
-		supp2= new JButton(new ImageIcon("bt_supp.png" ));
+		valider_geek= new JButton(new ImageIcon("bt_ok_geek.png" ));
+		supp_geek= new JButton(new ImageIcon("bt_suppr_geek.png" ));
+		valider_girly= new JButton(new ImageIcon("bt_ok_girly.png" ));
+		supp_girly= new JButton(new ImageIcon("bt_suppr_girly.png" ));
+		valider_geek_j2= new JButton(new ImageIcon("bt_ok_geek.png" ));
+		supp_geek_j2= new JButton(new ImageIcon("bt_suppr_geek.png" ));
+		valider_girly_j2= new JButton(new ImageIcon("bt_ok_girly.png" ));
+		supp_girly_j2= new JButton(new ImageIcon("bt_suppr_girly.png" ));
 		paramJeu= new JButton(new ImageIcon("parametres_bt.gif" ));
 
 	}
@@ -266,16 +269,37 @@ public class PanelJeu extends JPanel{
 			if(nbJoueurs==1){
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 				afficherPlateau(g);
-				valider.setBounds(150, 130, 62, 29);
-				valider.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				valider.setContentAreaFilled(false);
-				valider.setBorderPainted(false);
-				add(valider);
-				supp.setBounds(220, 130, 62, 29);
-				supp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				supp.setContentAreaFilled(false);
-				supp.setBorderPainted(false);
-				add(supp);
+				if(background == background_geek){
+					valider_girly.setVisible(false);
+					valider_geek.setVisible(true);
+					valider_geek.setBounds(150, 130, 62, 29);
+					valider_geek.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					valider_geek.setContentAreaFilled(false);
+					valider_geek.setBorderPainted(false);
+					add(valider_geek);
+					supp_girly.setVisible(false);
+					supp_geek.setVisible(true);
+					supp_geek.setBounds(220, 130, 62, 29);
+					supp_geek.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					supp_geek.setContentAreaFilled(false);
+					supp_geek.setBorderPainted(false);
+					add(supp_geek);
+				} else if(background == background_girly){
+					valider_geek.setVisible(false);
+					valider_girly.setVisible(true);
+					valider_girly.setBounds(150, 130, 62, 29);
+					valider_girly.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					valider_girly.setContentAreaFilled(false);
+					valider_girly.setBorderPainted(false);
+					add(valider_girly);
+					supp_geek.setVisible(false);
+					supp_girly.setVisible(true);
+					supp_girly.setBounds(220, 130, 62, 29);
+					supp_girly.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					supp_girly.setContentAreaFilled(false);
+					supp_girly.setBorderPainted(false);
+					add(supp_girly);
+				}
 				paramJeu.setBounds(950,10, 34, 34);
 				paramJeu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				paramJeu.setContentAreaFilled(false);
@@ -306,7 +330,12 @@ public class PanelJeu extends JPanel{
 				
 				
 				if(joueurs.get(0).mode==Mode.ANAGRAMME){
-					g.drawImage(fleche, 310, getPixelY(joueurs.get(0).indexLigneSupp)+4, null);
+					if(background == background_geek){
+						g.drawImage(fleche, 310, getPixelY(joueurs.get(0).indexLigneSupp)+4, null);
+					}
+					else if(background == background_girly){
+						g.drawImage(fleche_girly, 310, getPixelY(joueurs.get(0).indexLigneSupp)+4, null);
+					}
 					if(joueurs.get(0).motEnCours!=null){
 						g.drawString(joueurs.get(0).motEnCours, 177, 107);
 					}
@@ -315,7 +344,12 @@ public class PanelJeu extends JPanel{
 				if(joueurs.get(0).mode==Mode.WORDDLE){
 					
 					if(joueurs.get(0).positionEnCours!=null){
-						g.drawImage(fleche, getPixelX(joueurs.get(0).positionEnCours.getPosX(),joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.getPosY())+4, null);
+						if(background == background_geek){
+							g.drawImage(fleche, getPixelX(joueurs.get(0).positionEnCours.getPosX(),joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.getPosY())+4, null);
+						}
+						else if(background == background_girly){
+							g.drawImage(fleche_girly, getPixelX(joueurs.get(0).positionEnCours.getPosX(),joueurs.get(0)), getPixelY(joueurs.get(0).positionEnCours.getPosY())+4, null);
+						}
 						if(joueurs.get(0).motEnCours!=null){
 							g.drawString(joueurs.get(0).motEnCours, 177, 107);
 						}
@@ -330,16 +364,38 @@ public class PanelJeu extends JPanel{
 				//Joueur 1
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 				afficherPlateau(g);
-				valider.setBounds(30, 380, 62, 29);
-				valider.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				valider.setContentAreaFilled(false);
-				valider.setBorderPainted(false);
-				add(valider);
-				supp.setBounds(120, 380, 62, 29);
-				supp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				supp.setContentAreaFilled(false);
-				supp.setBorderPainted(false);
-				add(supp);
+				if(background == background_geek){
+					valider_girly.setVisible(false);
+					valider_geek.setVisible(true);
+					valider_geek.setBounds(30, 380, 62, 29);
+					valider_geek.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					valider_geek.setContentAreaFilled(false);
+					valider_geek.setBorderPainted(false);
+					add(valider_geek);
+					supp_girly.setVisible(false);
+					supp_geek.setVisible(true);
+					supp_geek.setBounds(120, 380, 62, 29);
+					supp_geek.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					supp_geek.setContentAreaFilled(false);
+					supp_geek.setBorderPainted(false);
+					add(supp_geek);
+				}
+				if(background == background_girly){
+					valider_geek.setVisible(false);
+					valider_girly.setVisible(true);
+					valider_girly.setBounds(30, 380, 62, 29);
+					valider_girly.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					valider_girly.setContentAreaFilled(false);
+					valider_girly.setBorderPainted(false);
+					add(valider_girly);
+					supp_geek.setVisible(false);
+					supp_girly.setVisible(true);
+					supp_girly.setBounds(120, 380, 62, 29);
+					supp_girly.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					supp_girly.setContentAreaFilled(false);
+					supp_girly.setBorderPainted(false);
+					add(supp_girly);
+				}			
 				paramJeu.setBounds(600,10, 34, 34);
 				paramJeu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				paramJeu.setContentAreaFilled(false);
@@ -387,17 +443,39 @@ public class PanelJeu extends JPanel{
 				
 				
 				// Joueur2
-				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-				valider2.setBounds(1060, 380, 62, 29);
-				valider2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				valider2.setContentAreaFilled(false);
-				valider2.setBorderPainted(false);
-				add(valider2);
-				supp2.setBounds(1170, 380, 62, 29);
-				supp2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				supp2.setContentAreaFilled(false);
-				supp2.setBorderPainted(false);
-				add(supp2);
+				g.setFont(new Font("Helevetica", Font.PLAIN, 25));
+				if(background == background_geek){
+					valider_girly_j2.setVisible(false);
+					valider_geek_j2.setVisible(true);
+					valider_geek_j2.setBounds(1060, 380, 62, 29);
+					valider_geek_j2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					valider_geek_j2.setContentAreaFilled(false);
+					valider_geek_j2.setBorderPainted(false);
+					add(valider_geek_j2);
+					supp_girly_j2.setVisible(false);
+					supp_geek_j2.setVisible(true);
+					supp_geek_j2.setBounds(1170, 380, 62, 29);
+					supp_geek_j2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					supp_geek_j2.setContentAreaFilled(false);
+					supp_geek_j2.setBorderPainted(false);
+					add(supp_geek_j2);
+					} 
+					else if(background == background_girly){
+						valider_geek_j2.setVisible(false);
+						valider_girly_j2.setVisible(true);
+						valider_girly_j2.setBounds(1060, 380, 62, 29);
+						valider_girly_j2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+						valider_girly_j2.setContentAreaFilled(false);
+						valider_girly_j2.setBorderPainted(false);
+						add(valider_girly_j2);
+						supp_geek_j2.setVisible(false);
+						supp_girly_j2.setVisible(true);
+						supp_girly_j2.setBounds(1170, 380, 62, 29);
+						supp_girly_j2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+						supp_girly_j2.setContentAreaFilled(false);
+						supp_girly_j2.setBorderPainted(false);
+						add(supp_girly_j2);
+					}
 				
 				g.drawImage(next1, 50, 150, null);
 				g.drawString(String.valueOf(joueurs.get(1).getScore()), 1144, 605);
@@ -446,26 +524,36 @@ public class PanelJeu extends JPanel{
 
 			if(joueurs.get(0).perdu==true){
 				g.drawImage(perdu, 0, 0, null);
-				valider.setVisible(false);
+				valider_geek.setVisible(false);
+				valider_girly.setVisible(false);
 				paramJeu.setVisible(false);
-				supp.setVisible(false);
+				supp_geek.setVisible(false);
+				supp_girly.setVisible(false);
 			}
 
 			if(joueurs.size()>1 && joueurs.get(0).perdu==true){
 				g.drawImage(perduMulti1, 0, 0, null);
-				valider.setVisible(false);
-				valider2.setVisible(false);
+				valider_geek.setVisible(false);
+				valider_girly.setVisible(false);
+				valider_geek_j2.setVisible(false);
+				valider_girly_j2.setVisible(false);
 				paramJeu.setVisible(false);
-				supp.setVisible(false);
-				supp2.setVisible(false);
+				supp_geek.setVisible(false);
+				supp_girly.setVisible(false);
+				supp_geek_j2.setVisible(false);
+				supp_girly_j2.setVisible(false);
 			}
 			else if (joueurs.size()>1 && joueurs.get(1).perdu==true){
 				g.drawImage(perduMulti2, 0, 0, null);
-				valider.setVisible(false);
-				valider2.setVisible(false);
+				valider_geek.setVisible(false);
+				valider_girly.setVisible(false);
+				valider_geek_j2.setVisible(false);
+				valider_girly_j2.setVisible(false);
 				paramJeu.setVisible(false);
-				supp.setVisible(false);
-				supp2.setVisible(false);
+				supp_geek.setVisible(false);
+				supp_girly.setVisible(false);
+				supp_geek_j2.setVisible(false);
+				supp_girly_j2.setVisible(false);
 			}
 			
 

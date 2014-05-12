@@ -180,10 +180,14 @@ public class FrameJeu extends JFrame{
 	    panelJeu.requestFocus();
 	    panelJeu.addKeyListener(new EcouteurClavier(joueurs, this));
         panelJeu.addMouseListener(new EcouteurSouris(joueurs,this));
-        panelJeu.valider.addMouseListener(new EcouteurSouris(joueurs,this));
-        panelJeu.supp.addMouseListener(new EcouteurSouris(joueurs,this));
-        panelJeu.valider2.addMouseListener(new EcouteurSouris(joueurs,this));
-        panelJeu.supp2.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.valider_geek.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.supp_geek.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.valider_girly.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.supp_girly.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.valider_geek_j2.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.supp_geek_j2.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.valider_girly_j2.addMouseListener(new EcouteurSouris(joueurs,this));
+        panelJeu.supp_girly_j2.addMouseListener(new EcouteurSouris(joueurs,this));
 	    panelJeu.paramJeu.addMouseListener(new EcouteurSouris(joueurs,this));
 	    
 		panelParametres.param.addMouseListener(new EcouteurSouris(joueurs,this));
