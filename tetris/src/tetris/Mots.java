@@ -99,7 +99,8 @@ public class Mots  {
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtilisees.get(i).getPosX();
 			int Y = plateau.BriquesUtilisees.get(i).getPosY();
-				plateau.tab[X][Y].utilisee = false;
+			System.out.println(plateau.BriquesUtilisees.get(i).getLettre());
+			plateau.tab[X][Y].utilisee = false;
 		}
 		plateau.setMessage("Bravo!");
 
@@ -150,7 +151,7 @@ public class Mots  {
 	}
 	
 	int nbPositionsPossibles=positionsPossibles.size();
-	Integer r = (int)(Math.random() * (nbPositionsPossibles-1)) + 1;
+	Integer r = (int)(Math.random() * (nbPositionsPossibles));
 	plateau.positionEnCours=positionsPossibles.get(r);
 	
 	}
