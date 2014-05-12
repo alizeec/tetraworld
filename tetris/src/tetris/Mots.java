@@ -111,7 +111,6 @@ public class Mots  {
 	 * @param Plateau plateau
 	 */
 	public void supprLettresWorddle(Plateau plateau){
-		System.out.println("Supp case");
 		int taille=plateau.BriquesUtilisees.size();
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtilisees.get(0).getPosX();
@@ -150,6 +149,7 @@ public class Mots  {
 	}
 	
 	int nbPositionsPossibles=positionsPossibles.size();
+	System.out.println("Nombre de positions :"+nbPositionsPossibles);
 	Integer r = (int)(Math.random() * (nbPositionsPossibles-1)) + 1;
 	plateau.positionEnCours=positionsPossibles.get(r);
 	

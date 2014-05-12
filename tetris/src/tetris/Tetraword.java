@@ -204,7 +204,6 @@ public class Tetraword extends Thread{
 				}
 				else{
 					anagramme.resultatInCorrect(plateau);
-					System.out.println("index : "+plateau.indexLigneSupp);
 					plateau.lignesPerdues[plateau.nbLignesPerdues] = plateau.indexLigneSupp;
 					plateau.nbLignesPerdues++;
 				}

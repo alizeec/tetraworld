@@ -232,7 +232,6 @@ public class Plateau implements Serializable {
 	 * en mode worddle, fait tomber les bouts de briques en suspension
 	 */
 	public void gravite(){
-		System.out.println("gravité");
 		for(int i=getHauteur()-1;i>=1;--i){
 			for(int j=0;j<getLargeur();j++){
 				if(tab[j][i]==null){
@@ -250,7 +249,6 @@ public class Plateau implements Serializable {
 									l++;
 								}
 							}else{
-								System.out.println("lettre :"+tab[j][k].getLettre()+" -> dépendant");
 								Cellule newposition = new Cellule(briques.get(tab[j][k].getId()).getPosition().getPosX(), briques.get(tab[j][k].getId()).getPosition().getPosY()+1);
 								if(verifMove(briques.get(tab[j][k].getId()), newposition)){
 									deplaceBrique(briques.get(tab[j][k].getId()), newposition);
@@ -285,7 +283,6 @@ public class Plateau implements Serializable {
 	 */
 	//
 	public boolean verifMove(Brique brique, Cellule newposition){
-		System.out.println("verif move");
 		int X=newposition.getPosX();
 		int Y=newposition.getPosY();
 		for (int i=0; i<4; ++i){
@@ -341,7 +338,6 @@ public class Plateau implements Serializable {
 	 */
 	
 	public boolean verifLignes(){
-		System.out.println("vérification");
 		for(int i=getHauteur()-1; i>0; --i){
 					if(verfiUneLigne(i)){
 						indexLigneSupp = i;
@@ -357,7 +353,6 @@ public class Plateau implements Serializable {
 	 * @param int index
 	 */
 	public void suppLigne(int index){
-		System.out.println("suppr ligne : "+index);
 		for(int i=0; i<getLargeur();++i){
 			briques.get(tab[i][index].getId()).decrementeNbCellules();
 			briques.get(tab[i][index].getId()).suppCase(tab[i][index].getNumero());
