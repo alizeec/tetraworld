@@ -159,8 +159,9 @@ public class EcouteurClavier implements KeyListener{
 		/**
 		 * lance le mode WORDDLE pour le joueur1
 		 */
-		case KeyEvent.VK_EQUALS:
+		case KeyEvent.VK_I:
 			if(plateau2 == null ||plateau2.mode != Mode.WORDDLE){
+				
 				plateau1.mode=Mode.WORDDLE;
 				
 			}
@@ -174,14 +175,16 @@ public class EcouteurClavier implements KeyListener{
 		 * lance le mode WORDDLE pour le joueur2
 		 */
 		case KeyEvent.VK_W:
-			if(plateau2 != null && plateau1.mode != Mode.WORDDLE){
-				plateau2.mode=Mode.WORDDLE;
-				
+			if(plateau2 != null){
+				if( plateau1.mode != Mode.WORDDLE){
+					plateau2.mode=Mode.WORDDLE;
+					
+				}
+				else{
+					System.out.println("Votre adversaire est deja en mode worddle");
+				}
+				plateau2.timer();
 			}
-			else{
-				System.out.println("Votre adversaire est deja en mode worddle");
-			}
-			plateau2.timer();
 		break;
 		
 		/**
@@ -209,7 +212,7 @@ public class EcouteurClavier implements KeyListener{
 				plateau1.charger(1);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
-				plateau1.setMessage("You have to save first");
+				plateau1.setMessage("You have to save first with L");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -245,7 +248,7 @@ public class EcouteurClavier implements KeyListener{
 					plateau2.charger(2);
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
-					plateau2.setMessage("You have to save first");
+					plateau2.setMessage("You have to save first with S");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

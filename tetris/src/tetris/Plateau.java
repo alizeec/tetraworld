@@ -502,6 +502,7 @@ public class Plateau implements Serializable {
 	 * change la plateau en cours par le plateau chargé
 	 * @param Plateau plateau
 	 */
+	@SuppressWarnings("unchecked")
 	public void transformeEn(Plateau plateau){
 		tab= plateau.tab.clone();
 		points= plateau.points;
@@ -515,8 +516,10 @@ public class Plateau implements Serializable {
 		motEnCours = plateau.motEnCours;
 		totalMot= plateau.totalMot;
 		mode = plateau.mode;
-
-		positionEnCours=null;
+		
+		BriquesUtiliseesEnCours=(LinkedList<Cellule>) plateau.BriquesUtiliseesEnCours.clone();
+		BriquesUtilisees=(LinkedList<Cellule>) plateau.BriquesUtilisees.clone();
+		positionEnCours=plateau.positionEnCours;
 
 	}
 	
@@ -537,6 +540,9 @@ public class Plateau implements Serializable {
         Sauvegarde sauvegarde = (Sauvegarde) entreeDObjet.readObject();
         entreeDObjet.close();
         this.transformeEn(sauvegarde.plateau);
+        if(this.mode==Mode.WORDDLE){
+        	timer();
+        }
      }
 
 
