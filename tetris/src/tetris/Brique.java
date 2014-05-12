@@ -52,6 +52,9 @@ public abstract class Brique implements Serializable{
 		return this.id;
 	}
 	
+	public void setId(int id){
+		this.id=id;
+	}
 	/**
 	 * 
 	 * @return Forme
@@ -80,12 +83,20 @@ public abstract class Brique implements Serializable{
 		return this.position;
 	}
 	
+	public void setPosition(Cellule p){
+		this.position=p;
+	}
+	
 	/**
 	 * 
 	 * @return Rotation rotation de la brique(HAUT, GAUCHE, BAS, DROITE)
 	 */
 	public Rotation getRotation(){
 		return this.rotation;
+	}
+	
+	public void setRotation(Rotation r){
+		this.rotation=r;
 	}
 	
 	/**
@@ -215,7 +226,7 @@ public abstract class Brique implements Serializable{
 		}
 	}
 	
-
+	protected abstract Brique clone();
 
 
 }

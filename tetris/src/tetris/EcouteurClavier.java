@@ -75,8 +75,10 @@ public class EcouteurClavier implements KeyListener{
 		 * tourne la brique pour le joueur1
 		 */
 		case KeyEvent.VK_UP :
+		if(plateau1.verifMoveRotate(plateau1.briqueActuelle, plateau1.briqueActuelle.getPosition())){
 			plateau1.briqueActuelle.tourner();
 			plateau1.deplaceBrique(plateau1.briqueActuelle, plateau1.briqueActuelle.getPosition());
+		}
 		break;
 		
 		/**
@@ -127,8 +129,10 @@ public class EcouteurClavier implements KeyListener{
 		 */
 		case KeyEvent.VK_SPACE :
 			if(plateau2 != null){
-			plateau2.briqueActuelle.tourner();
-			plateau2.deplaceBrique(plateau2.briqueActuelle, plateau2.briqueActuelle.getPosition());
+				if(plateau2.verifMoveRotate(plateau2.briqueActuelle, plateau2.briqueActuelle.getPosition())){
+					plateau2.briqueActuelle.tourner();
+					plateau2.deplaceBrique(plateau2.briqueActuelle, plateau2.briqueActuelle.getPosition());
+				}
 			}
 		break;
 		
@@ -155,7 +159,7 @@ public class EcouteurClavier implements KeyListener{
 		/**
 		 * lance le mode WORDDLE pour le joueur1
 		 */
-		case KeyEvent.VK_W:
+		case KeyEvent.VK_EQUALS:
 			if(plateau2 == null ||plateau2.mode != Mode.WORDDLE){
 				plateau1.mode=Mode.WORDDLE;
 				
@@ -169,7 +173,7 @@ public class EcouteurClavier implements KeyListener{
 		/**
 		 * lance le mode WORDDLE pour le joueur2
 		 */
-		case KeyEvent.VK_X:
+		case KeyEvent.VK_W:
 			if(plateau2 != null && plateau1.mode != Mode.WORDDLE){
 				plateau2.mode=Mode.WORDDLE;
 				
@@ -183,7 +187,7 @@ public class EcouteurClavier implements KeyListener{
 		/**
 		 * sauvegarde l'Žtat en cours du joueur1
 		 */
-		case KeyEvent.VK_S:
+		case KeyEvent.VK_L:
 			try {
 				plateau1.sauvegarder(1);
 			} catch (FileNotFoundException e1) {
@@ -200,12 +204,12 @@ public class EcouteurClavier implements KeyListener{
 		/** charge la derni�re sauvegarde du joueur1
 		 * 
 		 */
-		case KeyEvent.VK_D:
+		case KeyEvent.VK_M:
 			try {
 				plateau1.charger(1);
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				plateau1.setMessage("You have to save first");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -218,7 +222,7 @@ public class EcouteurClavier implements KeyListener{
 		/**
 		 * sauvegarde l'�tat en cours du joueur2
 		 */
-		case KeyEvent.VK_L:
+		case KeyEvent.VK_S:
 			if(joueurs.size()>1){
 				try {
 					plateau2.sauvegarder(2);
@@ -235,13 +239,13 @@ public class EcouteurClavier implements KeyListener{
 		/** charge la derni�re sauvegarde du joueur2
 		 * 
 		 */
-		case KeyEvent.VK_M:
+		case KeyEvent.VK_D:
 			if(joueurs.size()>1){
 				try {
 					plateau2.charger(2);
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					plateau2.setMessage("You have to save first");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

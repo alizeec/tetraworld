@@ -353,13 +353,13 @@ public class EcouteurSouris implements MouseListener
     	if(joueurs.size()==2){
     		if(joueurs.get(0).mode==Mode.ANAGRAMME || joueurs.get(0).mode==Mode.WORDDLE){
             	//verifie qu'on est dans le tableau
-            	if(e.getX()<254 || e.getX()>555 || e.getY()<110 || e.getY()>715){
+            	if(e.getX()<715 || e.getX()>1016 || e.getY()<110 || e.getY()>715){
                     System.out.printf("hors du  tableau \n ");
             	}
             	else{
             		//pour avoir la cellule correspondante
-                     int X = (e.getX()-254)/30;
-                     int Y = (e.getY() - 110)/30;
+            		int X = (e.getX()-715)/30;
+                    int Y = (e.getY() - 110)/30;
                     
                     if(joueurs.get(0).mode==Mode.ANAGRAMME){
                     	modeAnagramme(X,Y, joueurs.get(0));
@@ -373,12 +373,13 @@ public class EcouteurSouris implements MouseListener
     		}
     		if(joueurs.get(1).mode==Mode.ANAGRAMME || joueurs.get(1).mode==Mode.WORDDLE){
             	//verifie qu'on est dans le tableau
-            	if(e.getX()<715 || e.getX()>1016 || e.getY()<110 || e.getY()>715){
+                if(e.getX()<254 || e.getX()>555 || e.getY()<110 || e.getY()>715){
+
                     System.out.printf("hors du  tableau \n ");
             	}
             	else{
             		//pour avoir la cellule correspondante
-                     int X = (e.getX()-715)/30;
+                     int X = (e.getX()-254)/30;
                      int Y = (e.getY() - 110)/30;
                     
                     if(joueurs.get(1).mode==Mode.ANAGRAMME){

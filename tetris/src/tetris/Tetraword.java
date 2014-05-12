@@ -69,7 +69,6 @@ public class Tetraword extends Thread{
 				  int X = plateau.briqueActuelle.getPosition().getPosX();
 				  int Y = plateau.briqueActuelle.getPosition().getPosY();
 				  Cellule newposition = new Cellule(X, Y+1);
-
 				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 					  plateau.videCaseBrique(plateau.briqueActuelle);
 					  plateau.briqueActuelle.descendre();
@@ -237,7 +236,7 @@ public class Tetraword extends Thread{
 						e1.printStackTrace();
 					}
 					if(!result){
-						worddle.resultatCorrectWorddle(plateau);
+						worddle.resultatInCorrect(plateau);
 					}else{
 						worddle.resultatCorrectWorddle(plateau);
 					}
@@ -307,13 +306,10 @@ public class Tetraword extends Thread{
 			System.out.println("choix du mode");
 
 		}
+		System.out.println(multijoueur);
 
 		if(!multijoueur){
 		Plateau plateau= new Plateau(349, "Joueur 1");
-		/*if(plateau2!=null){
-			Brique b2 = plateau2.creerBrique();
-			plateau2.placeBrique(b2);
-		}*/
 		joueurs.add(plateau);
 		setTauxLettres(3, 5, 2, plateau);
 
@@ -321,9 +317,9 @@ public class Tetraword extends Thread{
 
 		}
 		else if(multijoueur){
-		Plateau plateau= new Plateau(256, "Joueur 1");
+		Plateau plateau= new Plateau(716, "Joueur 1");
 
-		Plateau plateau2= new Plateau(716, "Joueur 2");
+		Plateau plateau2= new Plateau(256, "Joueur 2");
 		joueurs.add(plateau);
 		joueurs.add(plateau2);
 
