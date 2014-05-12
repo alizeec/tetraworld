@@ -73,6 +73,7 @@ public class Tetraword extends Thread{
 				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 					  plateau.videCaseBrique(plateau.briqueActuelle);
 					  plateau.briqueActuelle.descendre();
+					  System.out.println("placement brique");
 					  plateau.placeBrique(plateau.briqueActuelle);
 				  }else{
 					  if(plateau.verifLignes()==true){
@@ -200,7 +201,7 @@ public class Tetraword extends Thread{
 					e1.printStackTrace();
 				}
 				if(result && plateau.motEnCours.length()>=calculPourcentage(PanelParameters.difficulte_anagramme)+1){
-					anagramme.resultatCorrect(plateau);
+					anagramme.resultatCorrectAnagramme(plateau);
 				}
 				else{
 					anagramme.resultatInCorrect(plateau);
@@ -255,15 +256,20 @@ public class Tetraword extends Thread{
 					plateau.totalMot=0;
 					plateau.nbConnexion=0;
 					plateau.positionEnCours=null;
+
 				  }
 			  }
 			  
 		  }else{
-			  plateau.motEnCours=null;
-			  plateau.totalMot=0;
-			  plateau.nbConnexion=0;
-			  plateau.positionEnCours=null;
-			  worddle.supprLettresWorddle(plateau);
+				plateau.motEnCours=null;
+				plateau.totalMot=0;
+				plateau.nbConnexion=0;
+				plateau.positionEnCours=null;
+				 worddle.supprLettresWorddle(plateau);
+
+				plateau.BriquesUtilisees.clear();
+				plateau.BriquesUtiliseesEnCours.clear();
+
 			  plateau.mode=Mode.TETRIS;
 		  }
 	}

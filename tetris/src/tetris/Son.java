@@ -9,10 +9,6 @@ public class Son {
     public AudioClip ac ;
     public String name_song;
     
-	/*public Son() {
-		url = Son.class.getResource("musique_tetris1.wav");
-		ac = Applet.newAudioClip(url);
-	}*/
 	
 	public Son(String name) {
 		name_song = name;
@@ -21,12 +17,18 @@ public class Son {
 		
 	}
 	
-	public void lecture(){		
+	public boolean lecture(){		
 		ac.play();
+		return true;
 	}
 	
-	public void stop(){		
+	public void boucle(){		
+		ac.loop();
+	}
+		
+	public boolean stop(){		
 		ac.stop();
+		return true;
 	}
  
 }

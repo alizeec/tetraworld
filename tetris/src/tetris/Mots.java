@@ -76,7 +76,7 @@ public class Mots  {
 	 * supprime la ligne et ajoute les points, change de niveau si nécessaire
 	 * @param Plateau plateau
 	 */
-	public void resultatCorrect(Plateau plateau){
+	public void resultatCorrectAnagramme(Plateau plateau){
 		plateau.suppLigne(plateau.indexLigneSupp);
 		plateau.gravite();
 		plateau.points+=plateau.totalMot;
@@ -95,12 +95,15 @@ public class Mots  {
 	 */
 	public void resultatCorrectWorddle(Plateau plateau){
 		plateau.points+=plateau.totalMot;
-		int taille=plateau.BriquesUtilisees.size();
+		int taille=plateau.BriquesUtiliseesEnCours.size();
 		for (int i=0; i<taille; ++i){
-			int X = plateau.BriquesUtilisees.get(i).getPosX();
-			int Y = plateau.BriquesUtilisees.get(i).getPosY();
-				plateau.tab[X][Y].utilisee = false;
+			int X = plateau.BriquesUtiliseesEnCours.get(i).getPosX();
+			int Y = plateau.BriquesUtiliseesEnCours.get(i).getPosY();
+			System.out.println("Lettre : "+plateau.BriquesUtiliseesEnCours.get(i).getLettre()+"X :"+X+" Y :"+Y);
+			plateau.tab[X][Y].utilisee = false;
+			plateau.BriquesUtilisees.add(plateau.BriquesUtiliseesEnCours.get(i));
 		}
+		plateau.BriquesUtiliseesEnCours.clear();
 		plateau.setMessage("Bravo!");
 
 
@@ -139,8 +142,6 @@ public class Mots  {
 	public void initialiseWorddle(Plateau plateau){
 		/* pour avoir une position de départ aléatoire*/
 	Vector<Cellule> positionsPossibles= new Vector<Cellule>();
-	int nbPositionsPossibles=positionsPossibles.size();
-	System.out.println("Nombre de positions début :"+nbPositionsPossibles);
 	for(int i=0; i<plateau.LARGEUR; ++i){
 		for (int j=0; j<plateau.HAUTEUR; ++j){
 			if(plateau.tab[i][j]!=null && plateau.tab[i][j].getId() != plateau.briqueActuelle.getId()){
@@ -149,8 +150,8 @@ public class Mots  {
 		}
 	}
 	
-	nbPositionsPossibles=positionsPossibles.size();
-	System.out.println("Nombre de positions :"+nbPositionsPossibles);
+
+	int nbPositionsPossibles=positionsPossibles.size();
 	Integer r = (int)(Math.random() * (nbPositionsPossibles-1)) + 1;
 	plateau.positionEnCours=positionsPossibles.get(r);
 	

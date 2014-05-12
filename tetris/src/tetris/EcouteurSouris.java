@@ -102,7 +102,8 @@ public class EcouteurSouris implements MouseListener
     
     if(e.getSource() == frame.panelParametres.play_song || e.getSource() == frame.panelParametresMulti.play_song)
     {           
-    	frame. musique_geek.stop();
+    	frame.musique_girly.stop();    	
+    	frame.musique_geek.stop();
     	frame.panelParametres.stop_song.setVisible(true);
     	frame.panelParametres.song_played.setVisible(true);
     	frame.panelParametres.play_song.setVisible(false);
@@ -112,16 +113,22 @@ public class EcouteurSouris implements MouseListener
          
     }
     else if(e.getSource() == frame.panelParametres.stop_song || e.getSource() == frame.panelParametresMulti.stop_song)
-    {System.out.println("coucou");      
-    	frame.musique_geek.lecture();
+    {   
+    	if(frame.getPanelJeu().background == frame.getPanelJeu().background_girly){
+    		frame.musique_girly.lecture();    	
+    	} 
+    	else if(frame.getPanelJeu().background == frame.getPanelJeu().background_geek){
+    		frame.musique_geek.lecture();    	
+    	} 
     	frame.panelParametres.stop_song.setVisible(false);
     	frame.panelParametres.play_song.setVisible(true);
       	frame.panelParametresMulti.stop_song.setVisible(false);
     	frame.panelParametresMulti.play_song.setVisible(true);
     }
     else if(e.getSource() == frame.panelParametres.song_stoped || e.getSource() == frame.panelParametresMulti.song_stoped)
-    {System.out.println("coucou");      
-    	frame.musique_geek.stop();
+    {   	   
+    	frame.musique_girly.stop();    	
+    	frame.musique_geek.stop();    
     	frame.panelParametres.play_song.setVisible(false);
     	frame.panelParametres.stop_song.setVisible(true);
     	frame.panelParametres.song_played.setVisible(true);
@@ -130,8 +137,13 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametresMulti.song_played.setVisible(true);
     }
     else if(e.getSource() == frame.panelParametres.song_played || e.getSource() == frame.panelParametresMulti.song_played)
-    {System.out.println("coucou");      
-    	frame.musique_geek.lecture();
+    {  	
+    	if(frame.getPanelJeu().background == frame.getPanelJeu().background_girly){
+		frame.musique_girly.lecture();    	
+    	} 
+    	else if(frame.getPanelJeu().background == frame.getPanelJeu().background_geek){
+    		frame.musique_geek.lecture();    	
+    	} 
     	frame.panelParametres.stop_song.setVisible(false);
     	frame.panelParametres.play_song.setVisible(true);
     	frame.panelParametres.song_stoped.setVisible(true);
@@ -141,10 +153,13 @@ public class EcouteurSouris implements MouseListener
     }
     
     //bt bg
-    if(e.getSource() == frame.panelParametres.geek_jaune || e.getSource() == frame.panelParametresMulti.geek_jaune)
-    {            
-    	frame.musique_geek.stop();
-    	frame.musique_girly.lecture();
+    if(e.getSource() == frame.panelParametres.geek_jaune || e.getSource() == frame.panelParametresMulti.geek_jaune){  
+    	if(frame.musique_geek.lecture()==true)  {   
+    		frame.musique_geek.stop();
+    		frame.musique_girly.lecture();
+    	} else{
+    		frame.musique_girly.lecture();
+    	}
     	frame.panelParametres.geek_jaune.setVisible(false);
     	frame.panelParametres.geek_gris.setVisible(true);
     	frame.panelParametres.girly_jaune.setVisible(true);
@@ -159,7 +174,12 @@ public class EcouteurSouris implements MouseListener
     }
     else if(e.getSource() == frame.panelParametres.geek_gris || e.getSource() == frame.panelParametresMulti.geek_gris)
     {
-    	//frame.musique_geek.lecture();
+    	if(frame.musique_girly.lecture()==true)  {   
+    		frame.musique_girly.stop();
+    		frame.musique_geek.lecture();
+    	} else{
+    		frame.musique_geek.lecture();
+    	}	
     	frame.panelParametres.geek_gris.setVisible(false);
     	frame.panelParametres.geek_jaune.setVisible(true);
     	frame.panelParametres.girly_jaune.setVisible(false);
@@ -173,7 +193,12 @@ public class EcouteurSouris implements MouseListener
     }
     else if(e.getSource() == frame.panelParametres.girly_gris || e.getSource() == frame.panelParametresMulti.girly_gris)
     {
-    	//frame.musique_geek.stop();
+    	if(frame.musique_geek.lecture()==true)  {   
+    		frame.musique_geek.stop();
+    		frame.musique_girly.lecture();
+    	} else{
+    		frame.musique_girly.lecture();
+    	}
     	frame.panelParametres.girly_gris.setVisible(false);
     	frame.panelParametres.girly_jaune.setVisible(true);
     	frame.panelParametres.geek_jaune.setVisible(false);
@@ -183,13 +208,17 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametresMulti.geek_jaune.setVisible(false);
     	frame.panelParametresMulti.geek_gris.setVisible(true);
     	frame.getPanelJeu().background = frame.getPanelJeu().background_girly;
-    	frame.musique_geek.stop();
-    	frame.musique_girly.lecture();
+
     	
     }
     else if(e.getSource() == frame.panelParametres.girly_jaune || e.getSource() == frame.panelParametresMulti.girly_jaune)
     {
-    	//frame.musique_geek.lecture();
+    	if(frame.musique_girly.lecture()==true)  {   
+    		frame.musique_girly.stop();
+    		frame.musique_geek.lecture();
+    	} else{
+    		frame.musique_geek.lecture();
+    	}
     	frame.panelParametres.girly_jaune.setVisible(false);
     	frame.panelParametres.girly_gris.setVisible(true);
     	frame.panelParametres.geek_jaune.setVisible(true);
@@ -403,16 +432,16 @@ public class EcouteurSouris implements MouseListener
             		plateau.positionEnCours.setPosY(Y);
             		plateau.positionEnCours.setPosX(X);
             		plateau.nbConnexion++;
-            		boolean existe = false;
-            		for (int i=0; i<plateau.BriquesUtilisees.size(); ++i){
-            			if(plateau.BriquesUtilisees.get(i).getPosX() == X && plateau.BriquesUtilisees.get(i).getPosY() == Y){
+            		/*for (int i=0; i<plateau.BriquesUtiliseesEnCours.size(); ++i){
+            			if(plateau.BriquesUtiliseesEnCours.get(i).getPosX() == X && plateau.BriquesUtiliseesEnCours.get(i).getPosY() == Y){
             				existe = true;
             				break;
             			}
             		}
-            		if(existe == false){
-            			plateau.BriquesUtilisees.add(plateau.tab[X][Y]);
-            		}
+            		if(existe == false){*/
+            			System.out.println("Ecouteur : X = "+X+" Y="+Y);
+            			plateau.BriquesUtiliseesEnCours.add(plateau.tab[X][Y]);
+            		//}
         		}
         		else{
         			System.out.println("rien dans cette case");

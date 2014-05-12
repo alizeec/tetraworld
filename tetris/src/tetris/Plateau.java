@@ -91,7 +91,9 @@ public class Plateau implements Serializable {
 	/** pour le mode WORDDLE
 	 * position de la brique "centrale"
 	 */	Cellule positionEnCours;
+	LinkedList<Cellule> BriquesUtiliseesEnCours;
 	LinkedList<Cellule> BriquesUtilisees;
+
 	int nbConnexion;
 	
 	long instantDepart;
@@ -123,6 +125,8 @@ public class Plateau implements Serializable {
 		nbLignesPerdues = 0;
 		nbConnexion=0;
 		BriquesUtilisees = new LinkedList<Cellule>();
+		BriquesUtiliseesEnCours = new LinkedList<Cellule>();
+
 	}
 	
 	
@@ -242,7 +246,7 @@ public class Plateau implements Serializable {
 								int l = k;
 								while(k+cpt < 20){
 									if(tab[j][k+cpt] != null) break;
-									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].getForme(), tab[j][l].getLettre(), tab[j][l].getPoint(), tab[j][l].getNumero(), tab[j][l].getIndependant(),  j, l);
+									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].getForme(), tab[j][l].getLettre(), tab[j][l].getPoint(), tab[j][l].getNumero(), tab[j][l].getIndependant(),  j, k+cpt);
 									tab[j][l] = null;
 									cpt++;
 									l++;
@@ -320,7 +324,7 @@ public class Plateau implements Serializable {
 		}
 		for(int i=0; i<getLargeur();++i){
 			if(tab[i][indexLigne] == null){
-				for(int j=0; i<nbLignesPerdues;++i){
+				for(int j=0; j<nbLignesPerdues;++j){
 					if(lignesPerdues[i] == indexLigne){
 						return false;
 					}
