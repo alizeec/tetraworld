@@ -242,12 +242,11 @@ public class Plateau implements Serializable {
 					for(int k=i-1;k>=1;--k){
 						if(tab[j][k] != null && tab[j][k].getId()!= briqueActuelle.getId()){
 							if(briques.get(tab[j][k].getId()).getNbCellules() == 1 || briques.get(tab[j][k].getId()).cellules.get(tab[j][k].getNumero()).getIndependant() == true){ //Si la brique n'est pas entière
-								System.out.println("lettre :"+tab[j][k].getLettre()+" -> independant");
 								int cpt = 1;
 								int l = k;
 								while(k+cpt < 20){
 									if(tab[j][k+cpt] != null) break;
-									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].getForme(), tab[j][l].getLettre(), tab[j][l].getPoint(), tab[j][l].getNumero(), tab[j][l].getIndependant(),  j, l);
+									tab[j][k+cpt] = new Cellule(tab[j][l].getId(), tab[j][l].getForme(), tab[j][l].getLettre(), tab[j][l].getPoint(), tab[j][l].getNumero(), tab[j][l].getIndependant(),  j, k+cpt);
 									tab[j][l] = null;
 									cpt++;
 									l++;
@@ -325,7 +324,7 @@ public class Plateau implements Serializable {
 		}
 		for(int i=0; i<getLargeur();++i){
 			if(tab[i][indexLigne] == null){
-				for(int j=0; i<nbLignesPerdues;++i){
+				for(int j=0; j<nbLignesPerdues;++j){
 					if(lignesPerdues[i] == indexLigne){
 						return false;
 					}

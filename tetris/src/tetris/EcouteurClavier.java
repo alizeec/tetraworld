@@ -219,14 +219,16 @@ public class EcouteurClavier implements KeyListener{
 		 * sauvegarde l'�tat en cours du joueur2
 		 */
 		case KeyEvent.VK_L:
-			try {
-				plateau2.sauvegarder(2);
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(joueurs.size()>1){
+				try {
+					plateau2.sauvegarder(2);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		break;
 		
@@ -234,17 +236,19 @@ public class EcouteurClavier implements KeyListener{
 		 * 
 		 */
 		case KeyEvent.VK_M:
-			try {
-				plateau2.charger(2);
-			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(joueurs.size()>1){
+				try {
+					plateau2.charger(2);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		break;
 

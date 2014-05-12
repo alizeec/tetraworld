@@ -396,7 +396,7 @@ public class EcouteurSouris implements MouseListener
 
     	}
 		else{
-			plateau.setMessage("Vous devez cliquer sur la ligne complète");
+			plateau.setMessage("You have to click on a full line");
 		}
     }
     
@@ -405,10 +405,10 @@ public class EcouteurSouris implements MouseListener
 		if(((plateau.positionEnCours.getPosY()-Y)<=1 && (plateau.positionEnCours.getPosY()-Y)>=-1 )  && ((plateau.positionEnCours.getPosX()-X)<=1 && (plateau.positionEnCours.getPosX()-X)>=-1 ) )
 		{
 			if((plateau.positionEnCours.getPosY()==Y  && plateau.positionEnCours.getPosX()==X)){
-				plateau.setMessage("Il faut cliquer sur une case autour");
+				plateau.setMessage("You have to click on a cell beside");
 			}
 			else if(plateau.nbConnexion>7){
-				plateau.setMessage("Le mot est trop long");
+				plateau.setMessage("Your word is too long");
 
 			}
 			else{
@@ -435,7 +435,7 @@ public class EcouteurSouris implements MouseListener
             		plateau.BriquesUtiliseesEnCours.add(plateau.tab[X][Y]);
         		}
         		else{
-        			System.out.println("rien dans cette case");
+        			System.out.println("This cell is empty");
 
         		}
 			}

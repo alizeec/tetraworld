@@ -76,14 +76,14 @@ public class Mots  {
 	 * supprime la ligne et ajoute les points, change de niveau si nécessaire
 	 * @param Plateau plateau
 	 */
-	public void resultatCorrect(Plateau plateau){
+	public void resultatCorrectAnagramme(Plateau plateau){
 		plateau.suppLigne(plateau.indexLigneSupp);
 		plateau.gravite();
 		plateau.points+=plateau.totalMot;
 		plateau.points+=plateau.getNiveau()+1;
 		plateau.nbLignes++;
 		plateau.changementNiveau();
-		plateau.setMessage("Bravo!");
+		plateau.setMessage("Congratulation!");
 
 
 	}
@@ -99,15 +99,12 @@ public class Mots  {
 		for (int i=0; i<taille; ++i){
 			int X = plateau.BriquesUtiliseesEnCours.get(i).getPosX();
 			int Y = plateau.BriquesUtiliseesEnCours.get(i).getPosY();
-			System.out.println("X: "+X );
-			System.out.println("Y: "+Y );
 
-			System.out.println(plateau.BriquesUtiliseesEnCours.get(i).getLettre());
 			plateau.tab[X][Y].utilisee = false;
 			plateau.BriquesUtilisees.add(plateau.BriquesUtiliseesEnCours.get(i));
 		}
 		plateau.BriquesUtiliseesEnCours.clear();
-		plateau.setMessage("Bravo!");
+		plateau.setMessage("Congratulation!");
 
 
 	}
@@ -134,7 +131,7 @@ public class Mots  {
 	 * @param Plateau plateau
 	 */
 	public void resultatInCorrect(Plateau plateau){
-		plateau.setMessage("Perdu!");
+		plateau.setMessage("You lose!");
 
 	}
 	
@@ -145,7 +142,6 @@ public class Mots  {
 	public void initialiseWorddle(Plateau plateau){
 		/* pour avoir une position de départ aléatoire*/
 	Vector<Cellule> positionsPossibles= new Vector<Cellule>();
-	
 	for(int i=0; i<plateau.LARGEUR; ++i){
 		for (int j=0; j<plateau.HAUTEUR; ++j){
 			if(plateau.tab[i][j]!=null && plateau.tab[i][j].getId() != plateau.briqueActuelle.getId()){
@@ -156,7 +152,6 @@ public class Mots  {
 	
 
 	int nbPositionsPossibles=positionsPossibles.size();
-	System.out.println("Nombre de positions :"+nbPositionsPossibles);
 	Integer r = (int)(Math.random() * (nbPositionsPossibles-1)) + 1;
 	plateau.positionEnCours=positionsPossibles.get(r);
 	

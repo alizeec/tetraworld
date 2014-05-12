@@ -201,7 +201,7 @@ public class Tetraword extends Thread{
 					e1.printStackTrace();
 				}
 				if(result && plateau.motEnCours.length()>=calculPourcentage(PanelParameters.difficulte_anagramme)+1){
-					anagramme.resultatCorrect(plateau);
+					anagramme.resultatCorrectAnagramme(plateau);
 				}
 				else{
 					anagramme.resultatInCorrect(plateau);
@@ -268,8 +268,8 @@ public class Tetraword extends Thread{
 				 worddle.supprLettresWorddle(plateau);
 
 				plateau.BriquesUtilisees.clear();
+				plateau.BriquesUtiliseesEnCours.clear();
 
-			  
 			  plateau.mode=Mode.TETRIS;
 		  }
 	}

@@ -287,14 +287,19 @@ public class PanelJeu extends JPanel{
 				next1 = getNext(joueurs.get(0)).getImage();
 				g.drawImage(next1, 720, 80, null);
 				
-				if(!joueurs.get(0).getMessage().equals("Perdu!") && !joueurs.get(0).getMessage().equals("Bravo!")){
+				if(!joueurs.get(0).getMessage().equals("You lose!") && !joueurs.get(0).getMessage().equals("Congratulation!")){
 					g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
 					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 50, 190);
 		
 				}
-				if(joueurs.get(0).getMessage().equals("Perdu!") || joueurs.get(0).getMessage().equals("Bravo!")){
+				if(joueurs.get(0).getMessage().equals("You lose!")){
 					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 200, 190);
+					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 80, 190);
+		
+				}
+				if(joueurs.get(0).getMessage().equals("Congratulation!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 60, 190);
 		
 				}
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
@@ -345,14 +350,19 @@ public class PanelJeu extends JPanel{
 				g.drawString(String.valueOf(joueurs.get(0).getNiveau()), 100, 700);
 				next1 = getNext(joueurs.get(0)).getImage();
 				
-				if(!joueurs.get(0).getMessage().equals("Perdu!") && !joueurs.get(0).getMessage().equals("Bravo!")){
+				if(!joueurs.get(0).getMessage().equals("You lose!") && !joueurs.get(0).getMessage().equals("Congratulation!")){
 					g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
 					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 5, 470);
 		
 				}
-				if(joueurs.get(0).getMessage().equals("Perdu!") || joueurs.get(0).getMessage().equals("Bravo!")){
+				if(joueurs.get(0).getMessage().equals("You lose!")){
 					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 90, 470);
+					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 35, 470);
+		
+				}
+				if(joueurs.get(0).getMessage().equals("Congratulation!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+					g.drawString(String.valueOf(joueurs.get(0).getMessage()), 15, 470);
 		
 				}
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
@@ -395,14 +405,19 @@ public class PanelJeu extends JPanel{
 				next2 = getNext(joueurs.get(1)).getImage();
 				g.drawImage(next2, 1100, 150, null);
 				
-				if(!joueurs.get(1).getMessage().equals("Perdu!") && !joueurs.get(1).getMessage().equals("Bravo!")){
+				if(!joueurs.get(1).getMessage().equals("You lose!") && !joueurs.get(1).getMessage().equals("Congratulation!")){
 					g.setFont(new Font("Helevetica", Font.PLAIN, 15)); 
 					g.drawString(String.valueOf(joueurs.get(1).getMessage()), 1020, 470);
 		
 				}
-				if(joueurs.get(1).getMessage().equals("Perdu!") || joueurs.get(1).getMessage().equals("Bravo!")){
+				if(joueurs.get(1).getMessage().equals("You lose!")){
 					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
-					g.drawString(String.valueOf(joueurs.get(1).getMessage()), 1122, 470);
+					g.drawString(String.valueOf(joueurs.get(1).getMessage()), 1050, 470);
+		
+				}
+				if(joueurs.get(1).getMessage().equals("Congratulation!")){
+					g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
+					g.drawString(String.valueOf(joueurs.get(1).getMessage()), 1030, 470);
 		
 				}
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
@@ -496,20 +511,7 @@ public class PanelJeu extends JPanel{
 		System.out.println(str);
 	}
 	
-	/*public void printTabLettres(){
-		String str = "";
-		for(int i=0;i<plateau.getHauteur();i++){		
-			for(int j=0;j<plateau.getLargeur();j++){
-				if(plateau.tab[j][i] != null){
-					str+=plateau.tab[j][i].lettre;
-				}else{
-					str += "0";
-				}
-			}
-			str += "\n";
-		}
-		System.out.println(str);
-	}*/
+
 	
 	/**
 	 * pour afficher les plateaux
