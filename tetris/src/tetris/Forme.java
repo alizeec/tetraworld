@@ -52,9 +52,8 @@ public enum Forme {
 		        	
 		        }
 
-				System.out.println("quotient: "+quotient);
 				if(forme==null){
-					forme=getForme(b,  c,  j,  m,  o,  r,  v);
+					forme=Forme.VERT;
 				}
 				return forme;
     }

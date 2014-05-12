@@ -487,7 +487,6 @@ public class Plateau implements Serializable {
         ObjectOutputStream sortieDObjet = new ObjectOutputStream(sortieDeFicher);
         sortieDObjet.writeObject(sauvegarde);
         sortieDObjet.close();
-        System.out.println("sauvegarde");
 
     }
 	
@@ -530,7 +529,6 @@ public class Plateau implements Serializable {
         Sauvegarde sauvegarde = (Sauvegarde) entreeDObjet.readObject();
         entreeDObjet.close();
         this.transformeEn(sauvegarde.plateau);
-        System.out.println("chargement");
      }
 
 

@@ -73,7 +73,6 @@ public class Tetraword extends Thread{
 				  if(plateau.verifMove(plateau.briqueActuelle, newposition)){
 					  plateau.videCaseBrique(plateau.briqueActuelle);
 					  plateau.briqueActuelle.descendre();
-					  System.out.println("placement brique");
 					  plateau.placeBrique(plateau.briqueActuelle);
 				  }else{
 					  if(plateau.verifLignes()==true){
@@ -149,7 +148,6 @@ public class Tetraword extends Thread{
 	  }
 	  
 	     if (plateau.mode==Mode.PARAMETRES){
-	    	 //jeu.repaint();
 
 	     }
 	  
@@ -169,15 +167,6 @@ public class Tetraword extends Thread{
 	
 	
 
-	/**
-	 * calcul de pourcentage pour la difficultŽ du mode ANAGRAMME
-	 * @param int taux sur 100
-	 * @return
-	 */
-	public  int calculPourcentage(int taux){
-		System.out.println((10*taux)/100);
-		return (10*taux)/100;
-	}
 
 
 
@@ -200,7 +189,7 @@ public class Tetraword extends Thread{
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				}
-				if(result && plateau.motEnCours.length()>=calculPourcentage(PanelParameters.difficulte_anagramme)+1){
+				if(result && plateau.motEnCours.length()>=PanelParameters.difficulte_anagramme){
 					anagramme.resultatCorrectAnagramme(plateau);
 				}
 				else{

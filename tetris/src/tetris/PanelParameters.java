@@ -152,7 +152,7 @@ public class PanelParameters extends JPanel {
        
            
             //Niveau
-            difficulte_anagramme = 30;
+            difficulte_anagramme = 3;
             facile = new JCheckBox("easy");
             normal = new JCheckBox("normal");
             difficile = new JCheckBox("hard");
@@ -289,11 +289,11 @@ public class PanelParameters extends JPanel {
                         difficile.setForeground(new Color(255,255,255));
                         add(difficile);
                     if(facile.isSelected()==true){
-                        difficulte_anagramme = 10;
+                        difficulte_anagramme = 2;
                     }else if (normal.isSelected()==true){
-                        difficulte_anagramme =30;
+                        difficulte_anagramme =3;
                     }else if (difficile.isSelected()==true){
-                        difficulte_anagramme =60;
+                        difficulte_anagramme =6;
                     }
                     bt_verif_letters.setBounds(570,360, 70, 25);   
                     add(bt_verif_letters);
