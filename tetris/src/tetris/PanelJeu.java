@@ -253,7 +253,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueGris, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 /**
