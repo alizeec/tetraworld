@@ -159,7 +159,7 @@ public class EcouteurClavier implements KeyListener{
 		/**
 		 * lance le mode WORDDLE pour le joueur1
 		 */
-		case KeyEvent.VK_I:
+		case KeyEvent.VK_EQUALS:
 			if(plateau2 == null ||plateau2.mode != Mode.WORDDLE){
 				
 				plateau1.mode=Mode.WORDDLE;
@@ -226,7 +226,7 @@ public class EcouteurClavier implements KeyListener{
 		 * sauvegarde l'état en cours du joueur2
 		 */
 		case KeyEvent.VK_S:
-			if(joueurs.size()>1){
+			if(plateau2!=null){
 				try {
 					plateau2.sauvegarder(2);
 				} catch (FileNotFoundException e1) {
@@ -243,7 +243,7 @@ public class EcouteurClavier implements KeyListener{
 		 * 
 		 */
 		case KeyEvent.VK_D:
-			if(joueurs.size()>1){
+			if(plateau2!=null){
 				try {
 					plateau2.charger(2);
 				} catch (FileNotFoundException e1) {
