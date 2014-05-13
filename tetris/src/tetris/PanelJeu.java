@@ -253,7 +253,7 @@ public class PanelJeu extends JPanel{
 		int x = (getPixelX(j, plateau));
 		int y = (getPixelY(i));
 		g.drawImage(imageBriqueGris, x, y, null);
-		g.drawString(""+lettre, x+7, y+15);
+		g.drawString(""+lettre, x+7, y+20);
 	}
 	
 /**
@@ -354,7 +354,7 @@ public class PanelJeu extends JPanel{
 							g.drawString(joueurs.get(0).motEnCours, 177, 107);
 						}
 					}
-					int temps = (int)(60 -( joueurs.get(0).tempsEcoule/1000));
+					int temps = (int)(30 -( joueurs.get(0).tempsEcoule/1000));
 					g.drawString("Temps restant : "+temps, 100, 220);
 				}
 			}

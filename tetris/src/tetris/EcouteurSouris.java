@@ -396,10 +396,11 @@ public class EcouteurSouris implements MouseListener
     	if(Y==plateau.indexLigneSupp){
 			plateau.setMessage("");
     		StringBuffer tmp = new StringBuffer();
-    		if(plateau.tab[X][Y]!=null){
+    		if(plateau.tab[X][Y]!=null && plateau.tab[X][Y].utilisee == false){
     			//récupération de la brique et de sa lettre
             	int id=plateau.tab[X][Y].getId();
             	char lettre=plateau.tab[X][Y].getLettre();
+            	plateau.tab[X][Y].utilisee = true;
             	
             	//formation du mot
             	tmp=tmp.append(lettre);
@@ -410,7 +411,8 @@ public class EcouteurSouris implements MouseListener
             		plateau.motEnCours=plateau.motEnCours+tmp.toString();
             	}
             	// récupération du total de point que vaut le mot
-            	plateau.totalMot+=plateau.tab[X][Y].getPoint(); 
+            	plateau.totalMot+=plateau.tab[X][Y].getPoint();
+            	plateau.BriquesUtiliseesEnCours.add(plateau.tab[X][Y]);
     		}
 
     	}
