@@ -195,22 +195,10 @@ public abstract class Brique implements Serializable{
 	 * @param int
 	 */
 	public void suppCase(int numero){
-		System.out.println("Lettre : "+cellules.get(0).getLettre()+"numero :"+numero);
-		for(int i=0; i<4;++i){
-			for(int j=0; j<4;++j){
-				if(this.haut[i][j] == null){
-					System.out.print("x");
-				}else{
-					System.out.print(this.haut[i][j].getNumero());
-				}
-			}
-			System.out.println("\n");
-		}
 		for(int i=0; i<4;++i){
 			for(int j=0; j<4;++j){
 				if(this.haut[i][j] != null){
 					if(this.haut[i][j].getNumero() == numero){
-						System.out.println("Numero suppr :"+this.haut[i][j].getNumero());
 						this.haut[i][j] = null;
 					}
 				}
@@ -237,20 +225,6 @@ public abstract class Brique implements Serializable{
 		}
 		if(numero == 2){
 			cellules.get(3).setIndependant(true);
-		}
-		for(int i=0; i<4;++i){
-			for(int j=0; j<4;++j){
-				if(this.haut[i][j] == null){
-					System.out.print("x");
-				}else{
-					if(this.haut[i][j].getIndependant() == true){
-						System.out.print(this.haut[i][j].getNumero()+"i");
-					}else{
-						System.out.print(this.haut[i][j].getNumero()+"d");
-					}
-				}
-			}
-			System.out.println("\n");
 		}
 	}
 	

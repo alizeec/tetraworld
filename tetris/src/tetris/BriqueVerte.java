@@ -135,7 +135,6 @@ public class BriqueVerte extends Brique {
 	 * permet de gérer la gravité en cas de suppression de cellule en mode worddle
 	 */
 	public void suppCase(int numero){
-		System.out.println("classebriqueOrange");
 		for(int i=0; i<4;++i){
 			for(int j=0; j<4;++j){
 				if(this.haut[j][i] != null){

@@ -285,6 +285,22 @@ public class EcouteurSouris implements MouseListener
     	frame.panelParametres.choix_langue = 1;
     	frame.panelParametresMulti.choix_langue = 1;
     }
+    
+    if(e.getSource() == frame.getPanelJeu().modifJaune)
+    {           
+    	System.out.println("ModifJaune");
+    	frame.panelJeu.modifJaune.setVisible(false);
+    	frame.panelJeu.modif.setVisible(true);
+         
+    }
+    
+    if(e.getSource() == frame.getPanelJeu().modifJauneJ2)
+    {           
+    	System.out.println("ModifJauneJ2");
+    	frame.panelJeu.modifJauneJ2.setVisible(false);
+    	frame.panelJeu.modifJ2.setVisible(true);
+         
+    }
 		
 		// supprimer une lettre thème geek pour joueur1
 		if(e.getSource() == frame.getPanelJeu().supp_geek){

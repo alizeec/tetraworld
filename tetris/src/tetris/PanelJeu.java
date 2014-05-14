@@ -58,6 +58,7 @@ public class PanelJeu extends JPanel{
 	JButton paramJeu;
 	Image fleche, fleche_girly;
 	JLabel message;
+	JButton modifJaune, modif, modifJauneJ2, modifJ2;
 
 	
 	int x;
@@ -90,6 +91,12 @@ public class PanelJeu extends JPanel{
 		
 		fleche = new ImageIcon("fleche.png").getImage();
 		fleche_girly = new ImageIcon("fleche_girly.png").getImage();
+		
+		modifJaune = new JButton(new ImageIcon("modif_jaune.png" ));
+		modif = new JButton(new ImageIcon("modif.png" ));
+		
+		modifJauneJ2 = new JButton(new ImageIcon("modif_jaune.png" ));
+		modifJ2 =new JButton(new ImageIcon("modif.png" ));
 		
 		score = new JLabel();
 		level=new JLabel();
@@ -423,6 +430,30 @@ public class PanelJeu extends JPanel{
 				}
 				g.setFont(new Font("Helevetica", Font.PLAIN, 25)); 
 				
+				modifJaune.setBounds(90, 450, 30, 31);
+				modifJaune.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				modifJaune.setContentAreaFilled(false);
+				modifJaune.setBorderPainted(false);
+				add(modifJaune);
+				
+				modif.setBounds(90, 450, 30, 31);
+				modif.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				modif.setContentAreaFilled(false);
+				modif.setBorderPainted(false);
+				add(modif);
+				
+				modifJauneJ2.setBounds(1130, 450, 30, 31);
+				modifJauneJ2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				modifJauneJ2.setContentAreaFilled(false);
+				modifJauneJ2.setBorderPainted(false);
+				add(modifJauneJ2);
+				
+				modifJ2.setBounds(1130, 450, 30, 31);
+				modifJ2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				modifJ2.setContentAreaFilled(false);
+				modifJ2.setBorderPainted(false);
+				add(modifJ2);
+				
 				if(joueurs.get(1).mode==Mode.ANAGRAMME){
 					g.drawImage(fleche, 220, getPixelY(joueurs.get(1).indexLigneSupp)+4, null);
 					if(joueurs.get(1).motEnCours!=null){
@@ -515,7 +546,7 @@ public class PanelJeu extends JPanel{
 							g.drawString(joueurs.get(0).motEnCours, 1084, 342);
 						}
 					}
-					int temps = (int)(60 -( joueurs.get(0).tempsEcoule/1000));
+					int temps = (int)(30 -( joueurs.get(0).tempsEcoule/1000));
 					g.drawString("Temps restant : "+temps, 1034, 54);
 				}
 				
@@ -562,44 +593,6 @@ public class PanelJeu extends JPanel{
 		
 
 	}
-
-
-	public void printTab(){
-		String str = "";
-		for(int i=0;i<plateau.getHauteur();i++){		
-			for(int j=0;j<plateau.getLargeur();j++){
-				if(plateau.tab[j][i] != null){
-					if(plateau.tab[j][i].getForme() == Forme.MAGENTA){
-						str += "M";
-					}
-					if(plateau.tab[j][i].getForme() == Forme.BLEU){
-						str += "B";
-					}
-					if(plateau.tab[j][i].getForme() == Forme.CYAN){
-						str += "C";
-					}
-					if(plateau.tab[j][i].getForme() == Forme.JAUNE){
-						str += "J";
-					}
-					if(plateau.tab[j][i].getForme() == Forme.ORANGE){
-						str += "O";
-					}
-					if(plateau.tab[j][i].getForme() == Forme.ROUGE){
-						str += "R";
-					}
-					if(plateau.tab[j][i].getForme() == Forme.VERT){
-						str += "V";
-					}
-				}else{
-					str += "0";
-				}
-			}
-			str += "\n";
-		}
-		System.out.println(str);
-	}
-	
-
 	
 	/**
 	 * pour afficher les plateaux

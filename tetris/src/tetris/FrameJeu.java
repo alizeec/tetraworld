@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  *
  */
 public class FrameJeu extends JFrame{
-	private PanelJeu panelJeu;
+	PanelJeu panelJeu;
 	Dimension dimension;
 	PanelParameters panelParametres;
 	PanelParametersMultijoueur panelParametresMulti;
@@ -192,6 +192,11 @@ public class FrameJeu extends JFrame{
         panelJeu.valider_girly_j2.addMouseListener(new EcouteurSouris(joueurs,this));
         panelJeu.supp_girly_j2.addMouseListener(new EcouteurSouris(joueurs,this));
 	    panelJeu.paramJeu.addMouseListener(new EcouteurSouris(joueurs,this));
+	    
+	    panelJeu.modif.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelJeu.modifJaune.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelJeu.modifJ2.addMouseListener(new EcouteurSouris(joueurs,this));
+	    panelJeu.modifJauneJ2.addMouseListener(new EcouteurSouris(joueurs,this));
 	    
 		panelParametres.param.addMouseListener(new EcouteurSouris(joueurs,this));
 		panelParametresMulti.param.addMouseListener(new EcouteurSouris(joueurs,this));
