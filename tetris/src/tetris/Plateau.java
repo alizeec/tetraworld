@@ -67,6 +67,8 @@ public class Plateau implements Serializable {
 	
 	//sauvegarde mode de jeu
 	public Mode SauvegardeMode;
+	// lancé du modificateur
+	public int nbSauvegarde;
 	
 /** pour le mode ANAGRAMME et WORDDLE
  * 
@@ -119,6 +121,8 @@ public class Plateau implements Serializable {
 		totalMot=0;
 		
 		SauvegardeMode =  this.mode;
+		// lancé du modificateur
+		nbSauvegarde=0;
 		
 		indexLigneSupp=0;
 		this.lignesPerdues = new int[20];
@@ -509,6 +513,28 @@ public class Plateau implements Serializable {
     }
 	
 	/**
+	 * pour le modificateur
+	 * @param joueur
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public void sauvegarderModificateur(int joueur)throws FileNotFoundException, IOException {
+        Sauvegarde sauvegarde = new Sauvegarde();
+        sauvegarde.plateau = this;
+        FileOutputStream sortieDeFicher = sortieDeFicher = new FileOutputStream("MaSauvegarde"+joueur+"Numero"+nbSauvegarde+".sa");
+        ObjectOutputStream sortieDObjet = new ObjectOutputStream(sortieDeFicher);
+        sortieDObjet.writeObject(sauvegarde);
+        if(nbSauvegarde==9){
+        	nbSauvegarde=0;
+        }
+        else{
+        	nbSauvegarde++;
+        }
+        sortieDObjet.close();
+
+    }
+	
+	/**
 	 * change la plateau en cours par le plateau chargé
 	 * @param Plateau plateau
 	 */
@@ -554,6 +580,30 @@ public class Plateau implements Serializable {
         	timer();
         }
      }
+	 
+	 /**
+	  * pour le modificateur
+	  * @param joueur
+	  * @param numSauvegarde
+	  * @throws FileNotFoundException
+	  * @throws IOException
+	  * @throws ClassNotFoundException
+	  */
+	 public void chargerModificateur(int joueur, int numSauvegarde) throws FileNotFoundException, IOException, ClassNotFoundException {
+	        FileInputStream entreeDeFicher = null;
+	        if(joueur==1)
+	        	entreeDeFicher=new FileInputStream("MaSauvegarde1"+"Numero"+numSauvegarde+".sa");
+	        else if(joueur==2)
+	        	entreeDeFicher=new FileInputStream("MaSauvegarde2"+"Numero"+numSauvegarde+".sa");
+
+	        ObjectInputStream entreeDObjet = new ObjectInputStream(entreeDeFicher);
+	        Sauvegarde sauvegarde = (Sauvegarde) entreeDObjet.readObject();
+	        entreeDObjet.close();
+	        this.transformeEn(sauvegarde.plateau);
+	        if(this.mode==Mode.WORDDLE){
+	        	timer();
+	        }
+	     }
 
 
 	 /**
@@ -572,6 +622,23 @@ public class Plateau implements Serializable {
 	public void setCoinSuppGauche(int coinSuppGauche) {
 		this.coinSuppGauche = coinSuppGauche;
 	}
+	
+	/**
+	 * reculer le jeu de l'adversaire de 10 tours de boucle
+	 * @param plateau
+	 * @param numJoueur
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	 public void jeterModificateur(Plateau plateau, int numJoueur) throws FileNotFoundException, IOException, ClassNotFoundException{
+		 if(plateau.nbSauvegarde==9){
+			 plateau.chargerModificateur(numJoueur,0);
+		 }
+		 else{
+			 plateau.chargerModificateur(numJoueur,plateau.nbSauvegarde+1);
+		 }
+	 }
 	 
 	 
 	 

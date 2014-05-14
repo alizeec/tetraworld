@@ -37,9 +37,11 @@ public class Tetraword extends Thread{
 	 * @param jeu fenêtre
 	 * @param worddle pour le mode WORDDLE
 	 * @param anagramme pour le mode ANAGRAMME
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
 	
-	public void startGame(LinkedList<Plateau> joueurs , FrameJeu jeu, Mots worddle, Mots anagramme) {
+	public void startGame(LinkedList<Plateau> joueurs , FrameJeu jeu, Mots worddle, Mots anagramme) throws FileNotFoundException, IOException {
 	
 	 long start = 0L;
 	 long sleepDuration = 0L;
@@ -150,7 +152,11 @@ public class Tetraword extends Thread{
 
 	     }
 	  
+	     if(joueurs.size()>1){
+	    	 plateau.sauvegarderModificateur(1);
+	    	 plateau2.sauvegarderModificateur(2);
 
+	     }
 	  
 	  sleepDuration = (1000L / (UPDATES_PER_SECOND + plateau.getNiveau())) - (System.currentTimeMillis() - start);
 	  
@@ -312,8 +318,10 @@ public class Tetraword extends Thread{
 /**
  * main principal
  * @param args
+ * @throws IOException 
+ * @throws FileNotFoundException 
  */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		LinkedList<Plateau> joueurs = new LinkedList<Plateau>();
 		FrameJeu framejeu = new FrameJeu();
 		

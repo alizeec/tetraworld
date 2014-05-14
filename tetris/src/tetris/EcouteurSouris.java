@@ -2,6 +2,8 @@ package tetris;
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Vector;
 
@@ -288,15 +290,42 @@ public class EcouteurSouris implements MouseListener
     
     if(e.getSource() == frame.getPanelJeu().modifJaune)
     {           
-    	System.out.println("ModifJaune");
+		if(joueurs.size()>1){
+			
+			try {
+				joueurs.get(1).jeterModificateur(joueurs.get(0), 1);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				joueurs.get(1).setMessage("Wait");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
     	frame.panelJeu.modifJaune.setVisible(false);
     	frame.panelJeu.modif.setVisible(true);
          
     }
     
-    if(e.getSource() == frame.getPanelJeu().modifJauneJ2)
-    {           
-    	System.out.println("ModifJauneJ2");
+    if(e.getSource() == frame.getPanelJeu().modifJauneJ2){           
+		if(joueurs.size()>1){
+			
+				try {
+					joueurs.get(0).jeterModificateur(joueurs.get(1), 2);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					joueurs.get(0).setMessage("Wait");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
     	frame.panelJeu.modifJauneJ2.setVisible(false);
     	frame.panelJeu.modifJ2.setVisible(true);
          

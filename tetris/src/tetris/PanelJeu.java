@@ -573,6 +573,11 @@ public class PanelJeu extends JPanel{
 				supp_girly.setVisible(false);
 				supp_geek_j2.setVisible(false);
 				supp_girly_j2.setVisible(false);
+				modifJaune.setVisible(false);
+				modifJauneJ2.setVisible(false);
+				modif.setVisible(false);
+				modifJ2.setVisible(false);
+
 			}
 			else if (joueurs.size()>1 && joueurs.get(1).perdu==true){
 				g.drawImage(perduMulti2, 0, 0, null);
@@ -585,6 +590,10 @@ public class PanelJeu extends JPanel{
 				supp_girly.setVisible(false);
 				supp_geek_j2.setVisible(false);
 				supp_girly_j2.setVisible(false);
+				modifJaune.setVisible(false);
+				modifJauneJ2.setVisible(false);
+				modif.setVisible(false);
+				modifJ2.setVisible(false);
 			}
 			
 

@@ -159,7 +159,7 @@ public class EcouteurClavier implements KeyListener{
 		/**
 		 * lance le mode WORDDLE pour le joueur1
 		 */
-		case KeyEvent.VK_EQUALS:
+		case KeyEvent.VK_I:
 			if(plateau2 == null ||plateau2.mode != Mode.WORDDLE){
 				
 				plateau1.mode=Mode.WORDDLE;
